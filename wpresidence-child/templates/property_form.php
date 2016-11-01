@@ -60,10 +60,9 @@ global $option_slider;
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane fade commonForm" id="university-housing">
 			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_post" name="new_post">
-				<div class="form-group col-md-12 highlight">
-					<label class="control-label">Select your university</label>
-					<input type="text" class="form-control" placeholder="Start typing the name of your university">
-				</div>
+				
+				<?php get_template_part('templates/submit_templates/select_university'); ?>
+				
 				<div class="col-md-12 headingPanel">
 					<h3>Please Enter Your Room Details</h3>
 				</div>
@@ -151,13 +150,13 @@ global $option_slider;
 					<textarea rows="4" class="form-control" placeholder="Please brief your room details "></textarea>
 				</div>
 				<div class="form-group col-md-12 full-width profile-page">
-					 <?php get_template_part('templates/submit_templates/property_images'); ?>
+					 <?php include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				
 				<div class="col-md-12 headingPanel">
 					<h3>Location Address</h3>
 				</div>
-				
+				<?php get_template_part('templates/submit_templates/property_location'); ?>
 				<div class="col-md-12 locationWrapper">
 					<div class="locationContainer">
 						<div class="form-group full-width">

@@ -69,6 +69,7 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $property_zip                   =   esc_html( get_post_meta($edit_id, 'property_zip', true) );
      $country_selected               =   esc_html( get_post_meta($edit_id, 'property_country', true) );
     $prop_stat                      =   esc_html( get_post_meta($edit_id, 'property_status', true) );
+    $university                      =   esc_html( get_post_meta($edit_id, 'property_university', true) );
     $property_status                =   '';
 
 
@@ -209,6 +210,7 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $plan_rooms_array               =   '';
     $plan_bath_array                =   '';
     $plan_price_array               =   '';
+    $university						=   '';
     
     
     $custom_fields = get_option( 'wp_estate_custom_fields', true);    
@@ -325,6 +327,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
         $property_zip                   =   wp_kses( $_POST['property_zip'],$allowed_html);
         $country_selected               =   wp_kses( $_POST['property_country'],$allowed_html);     
         $prop_stat                      =   wp_kses( $_POST['property_status'],$allowed_html);
+        $university                      =   wp_kses( $_POST['property_university'],$allowed_html);
         $property_status                =   '';
         
         foreach ($status_values_array as $key=>$value) {
@@ -571,6 +574,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
             update_post_meta($post_id, 'property_bedrooms', $property_bedrooms);
             update_post_meta($post_id, 'property_bathrooms', $property_bathrooms);
             update_post_meta($post_id, 'property_status', $prop_stat);
+            update_post_meta($post_id, 'property_university', $university);
             update_post_meta($post_id, 'property_price', $property_price);
             update_post_meta($post_id, 'property_label', $property_label);
             update_post_meta($post_id, 'property_label_before', $property_label_before);
@@ -748,6 +752,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
         $property_zip                   =   wp_kses( esc_html($_POST['property_zip']),$allowed_html);
         $country_selected               =   wp_kses( esc_html($_POST['property_country']),$allowed_html);     
         $prop_stat                      =   wp_kses( esc_html($_POST['property_status']),$allowed_html);
+        $university                      =   wp_kses( esc_html($_POST['property_university']),$allowed_html);
         $property_status                =   '';
         
         foreach ($status_values_array as $key=>$value) {
@@ -969,6 +974,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
             update_post_meta($post_id, 'property_bedrooms', $property_bedrooms);
             update_post_meta($post_id, 'property_bathrooms', $property_bathrooms);
             update_post_meta($post_id, 'property_status', $prop_stat);
+            update_post_meta($post_id, 'property_university', $university);
             update_post_meta($post_id, 'property_price', $property_price);
             update_post_meta($post_id, 'property_label', $property_label);
             update_post_meta($post_id, 'property_label_before', $property_label_before);

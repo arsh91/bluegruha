@@ -2183,5 +2183,9 @@ jQuery(document).ready(function ($) {
         }
     }
 
+	$('#property_university').keyup(function(){
+		alert('here');
+	});
+
 }); // end ready jquery
 //End ready ********************************************************************
