@@ -1,0 +1,21 @@
+/*
+ Theme Name:   Wp Residence Child Theme
+ Theme URI:    http://www.wpbeginner.com/
+ Description:  A Twenty Thirteen child theme 
+ Author:       WPBeginner
+ Author URI:   http://www.wpbeginner.com
+ Template:     wpresidence
+ Version:      1.0.0
+*/
+
+@import url("../wpresidence/style.css");
+
+.child-adv-search .wpresidence_button {display: none;}
+.child-adv-search {background: #fdfdfd none repeat scroll 0 0;height: auto;width: auto;}
+.child-adv-search .adv1-holder {height: auto;}
+.child-adv-search #adv-search-header-1{display:none;}
+.child-adv-search  .adv1-holder .adv_search_slider{width: 25%;}
+.child_theme.info_details{height:auto;max-height:266px;min-height:80px;}
+.child_theme.info_details .prop_pricex{position:relative;float:left;}
+.email_varify_cont{display:none;float:left;}
+.disabled_contact_btn{opacity:0.5;}
