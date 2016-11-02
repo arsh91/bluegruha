@@ -2183,9 +2183,49 @@ jQuery(document).ready(function ($) {
         }
     }
 
+	/*
+	* Arsh Sharma Function is used for universities autocomplete box
+	*/
+	var timer = 0;
 	$('#property_university').keyup(function(){
-		alert('here');
+		var obj = $(this);
+		var keyword = obj.val();
+		var ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		if(keyword){
+			clearTimeout (timer);
+			timer = setTimeout(function(){
+						$.ajax({
+							type: 'POST',
+							url: ajaxurl,
+							data: {
+								'action'            :   'uni_search',
+								'keyword'         	:   keyword
+							},
+							success: function (data) {
+								obj.parent().find('.uni_result').remove();
+								obj.parent().append(data);
+								obj.parent().find('.uni_result li.university').unbind('click').bind('click', selectUni);
+							},
+							error: function (errorThrown) {
+								alert('error');
+							}
+						});
+					}, 500);
+		}
 	});
 
+	function selectUni(){
+		var uniName = $(this).html();
+		var uniId = $(this).data('id');
+		$('#hdproperty_university').val(uniId);
+		$('#property_university').val(uniName);
+		$(this).parents('.uni_result').hide();
+	}
+	
+	$(window).click(function() {
+		if($('li').hasClass('uni_not_found')){
+			$('ul.uni_result').hide();
+		}
+	});
 }); // end ready jquery
 //End ready ********************************************************************

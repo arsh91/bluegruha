@@ -130,3 +130,7 @@ button.featuredAdd{float:left;}
 .addType{width: calc(100% - 149px);}
 }
 .bootstrap-select>.dropdown-toggle{box-shadow: none; text-transform: capitalize;}
+ul.uni_result{background: #fff none repeat scroll 0 0;float: left;left: 18%;list-style-position: inside;padding: 5px 10px;position: relative;top: -13px;width: 79%;z-index: 1;}
+.uni_result li{float: left;margin: 0 0 5px;padding: 5px 10px;width: 100%;}
+.uni_result li.university {border-bottom: 1px solid;cursor:pointer;}
+.uni_result li.university:hover{background:#efefef;}

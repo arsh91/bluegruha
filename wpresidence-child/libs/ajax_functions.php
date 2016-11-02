@@ -4052,4 +4052,29 @@ function wpestate_ajax_paypal_pack_recuring_generation(){
 }
 
 endif; // end   wpestate_ajax_paypal_pack_recuring_generation  - de la ajax_upload
+
+add_action( 'wp_ajax_nopriv_uni_search', 'uni_search' );  
+add_action( 'wp_ajax_uni_search', 'uni_search' );
+
+if( !function_exists('uni_search') ):
+    function uni_search(){
+        global $wpdb;
+		$keyword               =   sanitize_text_field($_POST['keyword']);
+		$result = $wpdb->get_results("SELECT name, id FROM wp_universities WHERE name like '$keyword%'");
+		$html = '<ul class = "uni_result">';
+		if(!empty($result)){
+			foreach($result as $key=>$val){
+				$html .="<li data-id='$val->id' class ='university'>".$val->name."</li>";
+			}
+		}else{
+			$html .='<li class="uni_not_found">Hmm. Looks like we missed your university. We will get on to it immediately. Please do go ahead with your ad</li>';
+		}
+		$html .='</ul>';
+		
+		echo $html;
+		exit;
+    }
+endif;
+
+
 ?>
