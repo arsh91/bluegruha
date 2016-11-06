@@ -88,15 +88,16 @@ if ($ga != '') { ?>
 
 <?php
 //print_r($_COOKIE);
-?>
 
+if (is_page_template('user_dashboard_add.php') ){
+?>
 <!-- Initialize the plugin: -->
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#amenities, #amenitiesRoom').multiselect();
 	});
 </script>
-
+<?php } ?>
 
 </div> <!-- end class container -->
 </div> <!-- end website wrapper -->

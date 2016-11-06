@@ -47,7 +47,7 @@ if ($action=='edit'){
 }
 
 ?>
-<div class="submit_container">
+<div class="submit_container col-md-12">
 <div class="submit_container_header"><?php _e('Listing Media','wpestate');?></div>
     <div id="upload-container">                 
         <div id="aaiu-upload-container">                 

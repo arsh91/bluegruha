@@ -62,114 +62,14 @@ global $option_slider;
 			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_post" name="new_post">
 				
 				<?php get_template_part('templates/submit_templates/select_university'); ?>
+				<?php get_template_part('templates/submit_templates/room_details'); ?>
 				
-				<div class="col-md-12 headingPanel">
-					<h3>Please Enter Your Room Details</h3>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Bedroom type *</label>
-					<div class="options" id="bedRoom">
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionsBedroom" checked><i class="fa fa-user" aria-hidden="true"></i>Seprate
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionsBedroom"><i class="fa fa-users" aria-hidden="true"></i>Shared
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Bathroom type *</label>
-					<div class="options" id="bathRoom">
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionsBathroom" checked><i class="fa fa-user" aria-hidden="true"></i>Seprate
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionsBathroom"><i class="fa fa-users" aria-hidden="true"></i>Shared
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Room Rent</label>
-					<input type="text" class="form-control" placeholder="Per Month">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Security Deposit</label>
-					<input type="text" class="form-control">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Available From</label>
-					<input type="text" class="form-control">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Amenities</label>
-					<select id="amenities" multiple="multiple">
-						<option value="Washer">Washer</option>
-						<option value="Garage">Garage</option>
-						<option value="Aircon">Aircon</option>
-					</select>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Roomie Gender *</label>
-					<div class="options" id="gender">
-						<div class="radio">
-							<label>
-								<input type="radio" name="roomieGender" checked><i class="fa fa-venus-mars" aria-hidden="true"></i>Any
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="roomieGender"><i class="fa fa-female" aria-hidden="true"></i>Female
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="roomieGender"><i class="fa fa-male" aria-hidden="true"></i>Male
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Language</label>
-					<input type="text" class="form-control">
-				</div>
-				
-				<div class="col-md-12 headingPanel">
-					<h3>Other details</h3>
-				</div>
-				
-				<div class="form-group col-md-12 full-width">
-					<label class="control-label">Room Description (optional)</label>
-					<textarea rows="4" class="form-control" placeholder="Please brief your room details "></textarea>
-				</div>
 				<div class="form-group col-md-12 full-width profile-page">
 					 <?php include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				
-				<div class="col-md-12 headingPanel">
-					<h3>Location Address</h3>
-				</div>
-				<?php get_template_part('templates/submit_templates/property_location'); ?>
-				<div class="col-md-12 locationWrapper">
-					<div class="locationContainer">
-						<div class="form-group full-width">
-							<label class="control-label">Location Address</label>
-							<input type="text" placeholder="Enter home or street address" class="form-control">
-						</div>
-						<div class="form-group full-width">
-							<label class="control-label">Apartment name</label>
-							<input type="text" placeholder="Enter your Apartment name" class="form-control">
-						</div>
-						<div class="map">Map will appear here</div>
-					</div>
-				</div>
+				<?php get_template_part('templates/submit_templates/location_section'); ?>
+				
 				
 				<div class="col-md-12 headingPanel">
 					<h3>Please Enter Your Contact Details</h3>

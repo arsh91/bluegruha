@@ -54,6 +54,7 @@ button.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.
 .locationContainer{float:left; width:100%; /*border-top:1px solid #cfcfcf; border-bottom:1px solid #cfcfcf; padding-top:30px; padding-bottom:30px;*/ margin-bottom:20px;}
 .locationContainer .form-group{float:left; width:100%; margin-bottom:20px;}
 .locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:156px;}
+.locationContainer .map #googleMapsubmit {height:154px;margin:0px;}
 .tooltipCustom{border-radius:5px; padding:10px 20px; background:rgba(0,0,0,0.6); color:#fff; position:absolute; top:-35px; left:390px; font-size:12px;}
 .tooltipCustom:after {
 	right: 100%;
