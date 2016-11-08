@@ -60,9 +60,10 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 <div class="form-group col-md-6">
 	<label class="control-label">Amenities</label>
 	<select id="amenities" multiple="multiple" name ="amenities">
-		<option value="Washer">Washer</option>
+		<option value="Washer/Dryer">Washer/Dryer</option>
 		<option value="Garage">Garage</option>
-		<option value="Aircon">Aircon</option>
+		<option value="Swimming pool">Swimming pool</option>
+		<option value="Gym/Fitness center">Gym/Fitness center</option>
 	</select>
 </div>
 <div class="form-group col-md-6">

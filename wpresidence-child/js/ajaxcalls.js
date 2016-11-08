@@ -1653,11 +1653,11 @@ jQuery(document).ready(function ($) {
 					if (!data.sent) {
 						$('#alert-agent-contact').empty();
 						$('.email_varify_cont').show();
-						$('#agent_submit').attr('disabled',true);
-						$('#agent_submit').addClass('disabled_contact_btn');
+						$('#agent_submit, #postAdd').attr('disabled',true);
+						$('#agent_submit, #postAdd').addClass('disabled_contact_btn');
 					}else{
-						$('#agent_submit').attr('disabled',false);
-						$('#agent_submit').removeClass('disabled_contact_btn');
+						$('#agent_submit, #postAdd').attr('disabled',false);
+						$('#agent_submit, #postAdd').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
 						$('.email_varify_cont').hide();
 						$('#varify_cont_email').text("Varify Email");
@@ -1700,12 +1700,12 @@ jQuery(document).ready(function ($) {
     
 	$('#agent_contact_otp').blur(function(){
 		if($(this).val()){
-			$('#agent_submit').attr('disabled',false);
-			$('#agent_submit').removeClass('disabled_contact_btn');
+			$('#agent_submit, #postAdd').attr('disabled',false);
+			$('#agent_submit, #postAdd').removeClass('disabled_contact_btn');
 
 		}else{
-			$('#agent_submit').attr('disabled',true);
-			$('#agent_submit').addClass('disabled_contact_btn');
+			$('#agent_submit, #postAdd').attr('disabled',true);
+			$('#agent_submit, #postAdd').addClass('disabled_contact_btn');
 		}
 	});
 

@@ -42,8 +42,8 @@ img{max-width:100%;}
 .formContainer .options .radio label.activeRadio i{color:#fff;}
 .formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #003f61; float: left; font-size: 16px; font-weight: 300; padding: 10px 20px; width: 100%; margin-bottom:35px; margin-top:10px;}
 .addType #featured + small + span{color:#448701; font-weight:600;}
-button.postAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
-button.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: right; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
+input.postAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
+span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: right; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
 button.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
 .addType input{position:relative; opacity:0.01;}
 .addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #3c90be; border-radius:50%; top:2px; left:-20px; position:relative;}
@@ -92,14 +92,14 @@ ul#featuredAd{display:none;}
 .innerContainer .nav-tabs li,.innerContainer .nav-tabs.active li{margin-right:0; width:33.33%;}
 .innerContainer .nav-tabs li a i, .innerContainer .nav-tabs.active li a i{font-size:28px; margin-bottom:8px;}
 .innerContainer .nav-tabs li a i.fa-home, .innerContainer .nav-tabs.active li a i.fa-home{font-size:32px; height:32px; max-height:32px;}
-button.postAdd{width:100%; font-size:16px;}
+input.postAdd{width:100%; font-size:16px;}
 .commonForm .form-group{padding-left:0; padding-right:0;}
 .headingPanel{padding-left:0; padding-right:0;}
 .tooltipCustom{top:80px; left:calc(50% - 85px); width:170px;}
 .tooltipCustom::after{top:-15px; left:calc(50% - 15px); transform: rotate(90deg);}
 }
 @media only screen and (max-width: 991px){
-button.verification{float:left; width:100%;}
+span.verification{float:left; width:100%;}
 .commonForm .form-group.highlight{width:100%;}
 .highlight em{width:100%;}
 .headingPanel{float:left; width:100%;}

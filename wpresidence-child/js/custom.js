@@ -2,6 +2,8 @@ jQuery(document).ready(function() {
     jQuery(".innerContainer .nav-tabs li a").click(function() {
 		jQuery('.innerContainer .nav-tabs').addClass("active");
 		jQuery('.innerContainer .nav-tabs li').removeClass("col-md-6");
+		var termId= jQuery(this).data('term');
+		jQuery('input[name=term_id]').val(termId);
 	});
 	
 	jQuery(".formContainer .options .radio label input[type='radio']").each(function() {

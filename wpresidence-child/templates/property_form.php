@@ -50,7 +50,7 @@ global $option_slider;
 		<?php
 			foreach($actions as $key=>$val){
 		?>
-				<li class="col-md-4"><a href="#<?php echo $val->slug; ?>" aria-controls="<?php echo $val->slug; ?>" role="tab" data-toggle="tab"><i class="fa <?php echo $val->description; ?>" aria-hidden="true"></i><?php echo $val->name; ?></a></li>
+				<li class="col-md-4" ><a href="#<?php echo $val->slug; ?>" aria-controls="<?php echo $val->slug; ?>" role="tab" data-toggle="tab" data-term="<?php echo $val->term_taxonomy_id; ?>"><i class="fa <?php echo $val->description; ?>" aria-hidden="true"></i><?php echo $val->name; ?></a></li>
 		<?php
 			}
 		?>
@@ -58,6 +58,11 @@ global $option_slider;
 	<hr />
 	<!-- Tab panes -->
 	<div class="tab-content">
+		<?php
+		   if($show_err){
+			   print '<div class="alert alert-danger">'.$show_err.'</div>';
+		   }
+		?>
 		<div role="tabpanel" class="tab-pane fade commonForm" id="university-housing">
 			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_post" name="new_post">
 				
@@ -65,35 +70,13 @@ global $option_slider;
 				<?php get_template_part('templates/submit_templates/room_details'); ?>
 				
 				<div class="form-group col-md-12 full-width profile-page">
-					 <?php include(locate_template('templates/submit_templates/property_images.php')); ?>
+					<?php include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				
 				<?php get_template_part('templates/submit_templates/location_section'); ?>
 				
+				<?php get_template_part('templates/submit_templates/contact_details'); ?>
 				
-				<div class="col-md-12 headingPanel">
-					<h3>Please Enter Your Contact Details</h3>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Name</label>
-					<input type="text" class="form-control" placeholder="John Doe">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Phone Number</label>
-					<input type="text" class="form-control" placeholder="(555)555-5555">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Email</label>
-					<input type="email" class="form-control">
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Verification</label>
-					<button class="verification">Verify your email</button>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">OTP</label>
-					<input type="text" class="form-control" placeholder="Please enter your OTP">
-				</div>
 				<div class="form-group col-md-12 addTypeCon">
 					<label class="control-label">Add Type</label>
 					<div id="addType" class="addType">
@@ -110,7 +93,9 @@ global $option_slider;
 					</div>
 				</div>
 				<div class="col-md-12 buttonContainer">
-					<button id="postAdd" class="postAdd">Post your free add</button>
+					<input name="action" value="submit_property" type="hidden" />
+					<input name="term_id" value="" type="hidden" />
+					<input type="submit" id="postAdd" class="postAdd" value="Post your free add" name="add_property" />
 					<div class="tooltipCustom">
 						<ul id="freeAd">
 							<li>Valid upto 7 days</li>
@@ -126,6 +111,9 @@ global $option_slider;
 						</ul>
 					</div>
 				</div>
+				<input type="hidden" name="edit_id" value="<?php print $edit_id;?>">
+				<input type="hidden" name="images_todelete" id="images_todelete" value="">
+				<?php wp_nonce_field('submit_new_estate','new_estate'); ?>
 			</form>
 		</div>
 

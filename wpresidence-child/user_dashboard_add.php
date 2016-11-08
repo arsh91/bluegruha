@@ -270,10 +270,15 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////// Submit Code
 ///////////////////////////////////////////////////////////////////////////////////////////
+if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='submit_property' ) {
+	if ( !isset($_POST['new_estate']) || !wp_verify_nonce($_POST['new_estate'],'submit_new_estate') ){
+	   exit('Sorry, your not submiting from site'); 
+	}
 
+}
 
 if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
-    
+
     $paid_submission_status    = esc_html ( get_option('wp_estate_paid_submission','') );
      
     if ( $paid_submission_status!='membership' || ( $paid_submission_status== 'membership' || wpestate_get_current_user_listings($userID) > 0)  ){ // if user can submit
