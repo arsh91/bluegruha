@@ -64,7 +64,7 @@ global $option_slider;
 		   }
 		?>
 		<div role="tabpanel" class="tab-pane fade commonForm" id="university-housing">
-			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_post" name="new_post">
+			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_uni_post" name="new_post">
 				
 				<?php get_template_part('templates/submit_templates/select_university'); ?>
 				<?php get_template_part('templates/submit_templates/room_details'); ?>
@@ -93,9 +93,9 @@ global $option_slider;
 					</div>
 				</div>
 				<div class="col-md-12 buttonContainer">
-					<input name="action" value="submit_property" type="hidden" />
+					<input name="action" value="submit_uni_property" type="hidden" />
 					<input name="term_id" value="" type="hidden" />
-					<input type="submit" id="postAdd" class="postAdd" value="Post your free add" name="add_property" />
+					<input type="submit" id="postUniAdd" class="postUniAdd" value="Post your free add" name="add_property" />
 					<div class="tooltipCustom">
 						<ul id="freeAd">
 							<li>Valid upto 7 days</li>

@@ -38,25 +38,25 @@ jQuery(document).ready(function() {
 	});
 	
 	jQuery(".formContainer.university #addType .radio label input[type='radio']#featured").click(function() {
-		jQuery('.university #postAdd').text('Post your featured add').addClass('featuredAdd');
+		jQuery('.university #postUniAdd').text('Post your featured add').addClass('featuredAdd');
 		jQuery('.university ul#freeAd').hide();
 		jQuery('.university ul#featuredAd').show();
 	});
 	
 	jQuery(".formContainer.university #addType .radio label input[type='radio']#free").click(function() {
-		jQuery('.university #postAdd').text('Post your free add').removeClass('featuredAdd');
+		jQuery('.university #postUniAdd').text('Post your free add').removeClass('featuredAdd');
 		jQuery('.university ul#freeAd').show();
 		jQuery('.university ul#featuredAd').hide();
 	});
 	
 	jQuery(".formContainer.property #addType .radio label input[type='radio']#featured").click(function() {
-		jQuery('.property #postAdd').text('Post your featured property').addClass('featuredAdd');
+		jQuery('.property #postUniAdd').text('Post your featured property').addClass('featuredAdd');
 		jQuery('.property ul#freeAd').hide();
 		jQuery('.property ul#featuredAd').show();
 	});
 	
 	jQuery(".formContainer.property #addType .radio label input[type='radio']#free").click(function() {
-		jQuery('.property #postAdd').text('Post your free add').removeClass('featuredAdd');
+		jQuery('.property #postUniAdd').text('Post your free add').removeClass('featuredAdd');
 		jQuery('.property ul#freeAd').show();
 		jQuery('.property ul#featuredAd').hide();
 	});
@@ -67,13 +67,13 @@ jQuery(document).ready(function() {
 	});
 	
 	jQuery(".formContainer.room #addType .radio label input[type='radio']#featured").click(function() {
-		jQuery('.room #postAdd').text('Post your featured Room').addClass('featuredAdd');
+		jQuery('.room #postUniAdd').text('Post your featured Room').addClass('featuredAdd');
 		jQuery('.room ul#freeAd').hide();
 		jQuery('.room ul#featuredAd').show();
 	});
 	
 	jQuery(".formContainer.room #addType .radio label input[type='radio']#free").click(function() {
-		jQuery('.room #postAdd').text('Post your free add').removeClass('featuredAdd');
+		jQuery('.room #postUniAdd').text('Post your free add').removeClass('featuredAdd');
 		jQuery('.room ul#freeAd').show();
 		jQuery('.room ul#featuredAd').hide();
 	});

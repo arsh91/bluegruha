@@ -42,9 +42,9 @@ img{max-width:100%;}
 .formContainer .options .radio label.activeRadio i{color:#fff;}
 .formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #003f61; float: left; font-size: 16px; font-weight: 300; padding: 10px 20px; width: 100%; margin-bottom:35px; margin-top:10px;}
 .addType #featured + small + span{color:#448701; font-weight:600;}
-input.postAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
+input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
 span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: right; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
-button.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
+input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
 .addType input{position:relative; opacity:0.01;}
 .addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #3c90be; border-radius:50%; top:2px; left:-20px; position:relative;}
 .addType input:checked + small.customRadio{background:#3c90be;}
@@ -92,7 +92,7 @@ ul#featuredAd{display:none;}
 .innerContainer .nav-tabs li,.innerContainer .nav-tabs.active li{margin-right:0; width:33.33%;}
 .innerContainer .nav-tabs li a i, .innerContainer .nav-tabs.active li a i{font-size:28px; margin-bottom:8px;}
 .innerContainer .nav-tabs li a i.fa-home, .innerContainer .nav-tabs.active li a i.fa-home{font-size:32px; height:32px; max-height:32px;}
-input.postAdd{width:100%; font-size:16px;}
+input.postUniAdd{width:100%; font-size:16px;}
 .commonForm .form-group{padding-left:0; padding-right:0;}
 .headingPanel{padding-left:0; padding-right:0;}
 .tooltipCustom{top:80px; left:calc(50% - 85px); width:170px;}
@@ -116,7 +116,7 @@ span.verification{float:left; width:100%;}
 @media only screen and (min-width: 641px) and (max-width: 991px){
 .commonForm .addTypeCon.form-group {width: 100%;}
 .buttonContainer{float:left; width:100%;}
-button.featuredAdd{float:left;}
+input.featuredAdd{float:left;}
 .commonForm .form-group{float:left; width:50%;}
 .commonForm .form-group.full-width{width:100%;}
 .innerContainer .nav-tabs li a{font-size:20px; max-width:100%;}
@@ -135,3 +135,4 @@ ul.uni_result{background: #fff none repeat scroll 0 0;float: left;left: 18%;list
 .uni_result li{float: left;margin: 0 0 5px;padding: 5px 10px;width: 100%;}
 .uni_result li.university {border-bottom: 1px solid;cursor:pointer;}
 .uni_result li.university:hover{background:#efefef;}
+.commonForm .form-group input:invalid{border:1px solid red;}

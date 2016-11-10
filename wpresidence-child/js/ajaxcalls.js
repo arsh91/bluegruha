@@ -1653,11 +1653,11 @@ jQuery(document).ready(function ($) {
 					if (!data.sent) {
 						$('#alert-agent-contact').empty();
 						$('.email_varify_cont').show();
-						$('#agent_submit, #postAdd').attr('disabled',true);
-						$('#agent_submit, #postAdd').addClass('disabled_contact_btn');
+						$('#agent_submit, #postUniAdd').attr('disabled',true);
+						$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
 					}else{
-						$('#agent_submit, #postAdd').attr('disabled',false);
-						$('#agent_submit, #postAdd').removeClass('disabled_contact_btn');
+						$('#agent_submit, #postUniAdd').attr('disabled',false);
+						$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
 						$('.email_varify_cont').hide();
 						$('#varify_cont_email').text("Varify Email");
@@ -1675,7 +1675,7 @@ jQuery(document).ready(function ($) {
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
 		$('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
 		if(email != ''){
-			 $.ajax({
+			$.ajax({
 				type: 'POST',
 				dataType: 'json',
 				url: ajaxurl,
@@ -1700,12 +1700,12 @@ jQuery(document).ready(function ($) {
     
 	$('#agent_contact_otp').blur(function(){
 		if($(this).val()){
-			$('#agent_submit, #postAdd').attr('disabled',false);
-			$('#agent_submit, #postAdd').removeClass('disabled_contact_btn');
+			$('#agent_submit, #postUniAdd').attr('disabled',false);
+			$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
 
 		}else{
-			$('#agent_submit, #postAdd').attr('disabled',true);
-			$('#agent_submit, #postAdd').addClass('disabled_contact_btn');
+			$('#agent_submit, #postUniAdd').attr('disabled',true);
+			$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
 		}
 	});
 
@@ -2227,5 +2227,42 @@ jQuery(document).ready(function ($) {
 			$('ul.uni_result').hide();
 		}
 	});
+	
+	$('form#new_uni_post').submit(function(e){
+		var err = 0;
+		if($('#property_university').val() == ''){
+			err = 1;
+			$('#property_university').attr('required', 'required');
+			$('html, body').animate({
+				scrollTop: $("#property_university").offset().top-100
+			}, 2000);
+		}
+		if($('#property_address').val() == ''){
+			
+			$('#property_address').attr('required', 'required');
+			if(!err){
+				$('html, body').animate({
+					scrollTop: $("#property_address").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if($('#agent_user_email').val() == ''){
+			
+			$('#agent_user_email').attr('required', 'required');
+			if(!err){
+				$('html, body').animate({
+					scrollTop: $("#agent_user_email").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(err){
+			 e.preventDefault();
+		}
+		
+		return true;
+	});	
+	
 }); // end ready jquery
 //End ready ********************************************************************
