@@ -53,23 +53,10 @@ input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.7
 .highlight em {color: #7c8187; float: right; font-size: 12px; font-weight: 600; margin-top: 10px; width: calc(100% - 183px);}
 .locationContainer{float:left; width:100%; /*border-top:1px solid #cfcfcf; border-bottom:1px solid #cfcfcf; padding-top:30px; padding-bottom:30px;*/ margin-bottom:20px;}
 .locationContainer .form-group{float:left; width:100%; margin-bottom:20px;}
-.locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:156px;}
-.locationContainer .map #googleMapsubmit {height:154px;margin:0px;}
+.locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:156px;position:relative;}
+.locationContainer .map #googleMapsubmit {height:100%;margin:0px;}
 .tooltipCustom{border-radius:5px; padding:10px 20px; background:rgba(0,0,0,0.6); color:#fff; position:absolute; top:-35px; left:390px; font-size:12px;}
-.tooltipCustom:after {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(102, 102, 102, 0);
-	border-right-color: #666666;
-	border-width: 15px;
-	margin-top: -15px;
-}
+.tooltipCustom:after {right: 100%;top: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(102, 102, 102, 0);border-right-color: #666666;border-width: 15px;margin-top: -15px;}
 ul#featuredAd{display:none;}
 .tooltipCustom ul {padding:0;margin:0;}
 .tooltipCustom li {list-style:none; margin:5px 0;}

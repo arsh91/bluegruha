@@ -18,7 +18,7 @@
 	<label class="control-label">Email</label>
 	<input type="email" class="form-control" name="agent_email" id="agent_user_email" style="float:right;margin:0;">
 </div>
-<div class="email_varify_cont" style="float:none;">
+<div>
 	<div class="form-group col-md-6">
 		<label class="control-label">Verification</label>
 		<span class="verification" id="varify_cont_email">Verify your email</span>
