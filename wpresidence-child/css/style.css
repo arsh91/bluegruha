@@ -17,11 +17,11 @@ img{max-width:100%;}
 .innerContainer .nav-tabs li a:hover,.innerContainer .nav-tabs li.active a,.innerContainer .nav-tabs li a.active,.innerContainer .nav-tabs li a:focus{background:#003f61; border:none; color:#fff; cursor:pointer;}
 .innerContainer .nav-tabs li a i {display: block; max-height:36px; font-size: 36px; margin-bottom: 15px;}
 .innerContainer .nav-tabs li a i.fa-home {font-size: 44px;}
-.formContainer{margin-top:15px; float:left;}
+.formContainer{margin-top:15px; float:left;font-size:14px;}
 .commonForm input.form-control,.commonForm .formContainer .bootstrap-select,.commonForm .formContainer .btn-group{box-shadow:none; border-color:#c4c4c4; max-width:calc(100% - 185px); min-width:calc(100% - 183px); float:right; height:36px; font-weight:300;}
 .commonForm .formContainer .multiselect{max-width:225px; min-width:225px; text-align:left;box-shadow: none; }
 .commonForm .formContainer .multiselect-selected-text {float: left; width: calc(100% - 10px);}
-.commonForm .form-group{margin-bottom:30px;height:36px;}
+.commonForm .form-group{margin-bottom:30px;}
 .form-group.full-width {height: auto !important;}
 .full-width label{margin-bottom:20px;}
 .form-group textarea, .form-group textarea:focus {border-color: #c4c4c4; box-shadow:none; resize:none; font-weight:300;}
@@ -31,11 +31,11 @@ img{max-width:100%;}
 .addType .radio label{font-size:14px;}
 .commonForm {float: left; width: 100%;}
 .addType .radio {display: inline-block; margin-right: 35px;}
-.formContainer .options .radio {float:left; width:50%; margin:0;height:100%;}
+.formContainer .options .radio {float:left; width:50%; margin:0;}
 .formContainer #gender .radio{width:33.33%;}
 .formContainer #gender .radio label{font-size:13px; padding-top:8px; padding-bottom:8px;}
 .formContainer #gender .radio label i{margin-right:5px;}
-.formContainer .options .radio label {height:100%;float:left; width:100%; text-align:center; padding-bottom: 7px; padding-top: 7px; padding-left:0;font-size:14px;}
+.formContainer .options .radio label {float:left; width:100%; text-align:center; padding-bottom: 7px; padding-top: 7px; padding-left:0;font-size:14px;}
 .formContainer .options .radio label i{color:#3c90be; margin-right:10px;}
 .formContainer .options .radio label input[type="radio"]{opacity:0.01; position:absolute; padding:0; margin:0;}
 .formContainer .options .radio label.activeRadio{background:#3c90be; color:#fff;}
@@ -50,15 +50,16 @@ input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.7
 .addType input:checked + small.customRadio{background:#3c90be;}
 .commonForm .highlight label label{color:#003f61;}
 .commonForm .highlight input.form-control{border-color:#003f61;}
+.commonForm .highlight input.form-control.required{border-color:red;}
 .highlight em {color: #7c8187; float: right; font-size: 12px; font-weight: 600; margin-top: 10px; width: calc(100% - 183px);}
 .locationContainer{float:left; width:100%; /*border-top:1px solid #cfcfcf; border-bottom:1px solid #cfcfcf; padding-top:30px; padding-bottom:30px;*/ margin-bottom:20px;}
 .locationContainer .form-group{float:left; width:100%; margin-bottom:20px;}
-.locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:156px;position:relative;}
-.locationContainer .map #googleMapsubmit {height:100%;margin:0px;}
+.locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:200px;position:relative;}
+.locationContainer .map #googleMapsubmit {height:200px;margin:0px;position:absolute !important;}
 .tooltipCustom{border-radius:5px; padding:10px 20px; background:rgba(0,0,0,0.6); color:#fff; position:absolute; top:-35px; left:390px; font-size:12px;}
 .tooltipCustom:after {right: 100%;top: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(102, 102, 102, 0);border-right-color: #666666;border-width: 15px;margin-top: -15px;}
 ul#featuredAd{display:none;}
-.tooltipCustom ul {padding:0;margin:0;}
+.tooltipCustom ul {padding:0;}
 .tooltipCustom li {list-style:none; margin:5px 0;}
 .formContainer .options.roomCount{border:none;}
 .roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#003f61; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
@@ -116,10 +117,29 @@ input.featuredAdd{float:left;}
 .highlight em{width: calc(100% - 149px);}
 .roomCount a{width:30px;}
 .addType{width: calc(100% - 149px);}
+.commonForm .highlight input.form-control {border-color: #003f61;max-width: calc(100% - 185px);min-width: calc(100% - 185px);}
 }
 .bootstrap-select>.dropdown-toggle{box-shadow: none; text-transform: capitalize;}
-ul.uni_result{background: #fff none repeat scroll 0 0;float: left;left: 18%;list-style-position: inside;padding: 5px 10px;position: relative;top: -13px;width: 79%;z-index: 1;}
-.uni_result li{float: left;margin: 0 0 5px;padding: 5px 10px;width: 100%;}
-.uni_result li.university {border-bottom: 1px solid;cursor:pointer;}
-.uni_result li.university:hover{background:#efefef;}
+ul.uni_result {
+  background: #efefef none repeat scroll 0 0;
+  float: left;
+  max-height: 253px;
+  list-style: outside none none;
+  overflow-y: auto;
+  position: absolute;
+  right: 15px;
+  top: 36px;
+  width: calc(100% - 213px);
+  z-index: 1;
+}
+.uni_loader {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+.uni_result li {float: left;padding: 5px 15px 7px;width: 100%; font-size:13px;}
+.uni_result li.university {border-bottom: 1px solid #cfcfcf;cursor: pointer;}
+.uni_result li.university:hover {background: #3c90be none repeat scroll 0 0;color: #ffffff;}
 .commonForm .form-group input:invalid{border:1px solid red;}
+.submit_container {border: medium none;box-shadow: none;}
+.form-group .uni_loader{display:none;}

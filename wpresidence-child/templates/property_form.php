@@ -41,7 +41,8 @@ global $current_user;
 global $custom_fields_array;
 global $option_slider;
 
-	$actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC'));
+$universities_list = get_universities();
+$actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC'));
 ?>
 <div class="innerContainer">
 	<h2>Please Select your Property Type</h2>
@@ -58,6 +59,7 @@ global $option_slider;
 	<hr />
 	<!-- Tab panes -->
 	<div class="tab-content">
+
 		<?php
 		   if($show_err){
 			   print '<div class="alert alert-danger">'.$show_err.'</div>';
@@ -93,6 +95,7 @@ global $option_slider;
 					</div>
 				</div>
 				<div class="col-md-12 buttonContainer">
+					<input id="uni_list" value='<?php echo json_encode($universities_list); ?>' type="hidden" />
 					<input name="action" value="submit_uni_property" type="hidden" />
 					<input name="term_id" value="" type="hidden" />
 					<input type="submit" id="postUniAdd" class="postUniAdd" value="Post your free add" name="add_property" />

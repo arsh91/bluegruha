@@ -47,8 +47,11 @@ if ($action=='edit'){
 }
 
 ?>
+<div class="col-md-12 headingPanel">
+	<h3>Listing Media</h3>
+</div>
 <div class="submit_container col-md-12">
-<div class="submit_container_header"><?php _e('Listing Media','wpestate');?></div>
+<!--<div class="submit_container_header"><?php //_e('Listing Media','wpestate');?></div>-->
     <div id="upload-container">                 
         <div id="aaiu-upload-container">                 
             <div id="aaiu-upload-imagelist">
@@ -99,9 +102,9 @@ if ($action=='edit'){
                     printf( __(' You can upload maximum %s images','wpestate'),$max_images);
                 }
                 print '</br>'; 
-                _e('** Double click on the image to select featured.','wpestate');print '</br>';
-                _e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
-                _e('**** PDF files upload supported as well.','wpestate');?>
+                //_e('** Double click on the image to select featured.','wpestate');print '</br>';
+                //_e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
+                //_e('**** PDF files upload supported as well.','wpestate');?>
             </p>
         </div>  
     </div>

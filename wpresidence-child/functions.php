@@ -33,6 +33,9 @@ function mapfunctionsChanges(){
 	wp_deregister_script('custom-js');
 	wp_register_script('custom-js',  get_stylesheet_directory_uri() .'/js/custom'.$mimify_prefix.'.js');
 	
+	wp_deregister_script('google_map_submit');
+	wp_register_script('google_map_submit', get_stylesheet_directory_uri().'/js/google_js/google_map_submit'.$mimify_prefix .'.js');
+	
 	/*css include*/
 	wp_deregister_style('bootstrap-css');
 	wp_register_style('bootstrap-css',  get_stylesheet_directory_uri() .'/css/bootstrap.min'.$mimify_prefix.'.css');
@@ -49,6 +52,12 @@ add_filter( 'wp_image_editors', 'change_graphic_lib');
 
 function change_graphic_lib($array) {
 	return array( 'WP_Image_Editor_GD', 'WP_Image_Editor_Imagick');
+}
+
+function get_universities(){
+	global $wpdb;
+	$result = $wpdb->get_results("SELECT * FROM wp_universities");
+	return $result;
 }
 
 ?>

@@ -22,16 +22,17 @@ global $property_county_state;
 <div class="col-md-12 locationWrapper">
 	<div class="locationContainer">
 		<div class="form-group full-width">
-			<label class="control-label"><?php _e('Location Address','wpestate');?></label>
+			<label class="control-label"><?php _e('Location Address *','wpestate');?></label>
 			<input type="text" placeholder="Enter home or street address" class="form-control" id="property_address" size="40" name="property_address" rows="3" cols="42" value ="<?php print $property_address; ?>">
 		</div>
 		<div class="form-group full-width">
 			<label class="control-label">Apartment name</label>
 			<input type="text" placeholder="Enter your Apartment name" class="form-control" name="apartment_name">
 		</div>
+		<!--
 		<div class="form-group full-width">
-			<button id="google_capture"  class="wpresidence_button wpresidence_success"><?php _e('Place Pin with Property Address','wpestate');?></button>
-		</div>
+			<button id="google_capture"  class="wpresidence_button wpresidence_success"><?php //_e('Place Pin with Property Address','wpestate');?></button>
+		</div>-->
 		<div class="map">
 			<div id="googleMapsubmit" ></div>   
 		</div>  

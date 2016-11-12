@@ -4066,8 +4066,6 @@ if( !function_exists('uni_search') ):
 			foreach($result as $key=>$val){
 				$html .="<li data-id='$val->id' class ='university'>".$val->name."</li>";
 			}
-		}else{
-			$html .='<li class="uni_not_found">Hmm. Looks like we missed your university. We will get on to it immediately. Please do go ahead with your ad</li>';
 		}
 		$html .='</ul>';
 		

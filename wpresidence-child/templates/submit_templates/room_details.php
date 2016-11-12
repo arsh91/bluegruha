@@ -45,8 +45,8 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	</div>
 </div>
 <div class="form-group col-md-6">
-	<label class="control-label">Room Rent</label>
-	<input type="text" class="form-control" placeholder="Per Month" name = "rent">
+	<label class="control-label">Room Rent *</label>
+	<input type="text" class="form-control" placeholder="Per Month" name = "rent" id = "room_rent">
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Security Deposit</label>
@@ -72,15 +72,15 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 		<?php
 			$tmp = 0;
 			foreach($categories as $key=>$val){
-			$checked = '';
-			if($tmp == 0){
-				$checked = 'checked';
-				$tmp = 1;
-			}
+				$checked = '';
+				if($tmp == 0){
+					$checked = 'checked';
+					$tmp = 1;
+				}
 		?>
 			<div class="radio">
 				<label>
-					<input type="radio" name="roomie_gender" value="<?php echo $val->term_taxonomy_id; ?>" <?php echo $checked; ?>><i class="fa <?php echo $val->description; ?>" aria-hidden="true"></i><?php echo $val->name; ?>
+					<input type="radio" name="roomie_gender" value="<?php echo $val->term_taxonomy_id; ?>" <?php echo $checked; ?> /><i class="fa <?php echo $val->description; ?>" aria-hidden="true"></i><?php echo $val->name; ?>
 				</label>
 			</div>
 		<?php } ?>
@@ -93,6 +93,11 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 
 <div class="col-md-12 headingPanel">
 	<h3>Other details</h3>
+</div>
+
+<div class="form-group col-md-12 full-width">
+	<label class="control-label">Title *</label>
+	<input type="text" class="form-control" name="title" id="prop_title"/>
 </div>
 
 <div class="form-group col-md-12 full-width">

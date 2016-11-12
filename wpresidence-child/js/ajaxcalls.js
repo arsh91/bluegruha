@@ -2192,6 +2192,7 @@ jQuery(document).ready(function ($) {
 		var keyword = obj.val();
 		var ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
 		if(keyword){
+			$('.uni_loader').show();
 			clearTimeout (timer);
 			timer = setTimeout(function(){
 						$.ajax({
@@ -2205,9 +2206,10 @@ jQuery(document).ready(function ($) {
 								obj.parent().find('.uni_result').remove();
 								obj.parent().append(data);
 								obj.parent().find('.uni_result li.university').unbind('click').bind('click', selectUni);
+								$('.uni_loader').hide();
 							},
 							error: function (errorThrown) {
-								alert('error');
+								$('.uni_loader').hide();
 							}
 						});
 					}, 500);
