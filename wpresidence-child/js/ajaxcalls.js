@@ -1650,16 +1650,22 @@ jQuery(document).ready(function ($) {
 					'email'		: email
 				},
 				success: function (data) {
-					if (!data.sent) {
+					if (data.sent == false) {
 						$('#alert-agent-contact').empty();
-						$('.email_varify_cont').show();
 						$('#agent_submit, #postUniAdd').attr('disabled',true);
 						$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+						$('#agent_user_email').removeClass('required');
+						if(data.response){
+							$('#alert-agent-contact').empty().append(data.response);
+							$('#agent_user_email').addClass('required');
+						}else{
+							$('#alert-agent-contact').empty();
+							$('#agent_user_email').removeClass('required');
+						}
 					}else{
 						$('#agent_submit, #postUniAdd').attr('disabled',false);
 						$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
-						$('.email_varify_cont').hide();
 						$('#varify_cont_email').text("Varify Email");
 					}
 				}
@@ -1685,7 +1691,8 @@ jQuery(document).ready(function ($) {
 				},
 				success: function (data) {
 					$('#alert-agent-contact').empty().append(data.response);
-					$('#varify_cont_email').text("Resend OTP");
+					if(data.sent == true)
+						$('#varify_cont_email').text("Resend OTP");
 				},
 				error: function (errorThrown) {
 					// console.log(errorThrown);
@@ -1699,13 +1706,32 @@ jQuery(document).ready(function ($) {
 	});
     
 	$('#agent_contact_otp').blur(function(){
-		if($(this).val()){
-			$('#agent_submit, #postUniAdd').attr('disabled',false);
-			$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
-
+	
+		var otp = $(this).val();
+		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		$('#alert-agent-contact').empty().append(ajaxcalls_vars.checking);
+		if(otp != ''){
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: ajaxurl,
+				data: {
+					'action'    :   'wpestate_ajax_agent_contact_form_check_otp',
+					'otp'		: otp
+				},
+				success: function (data) {
+					if(data.sent == false){
+						$('#alert-agent-contact').empty().append(data.response);
+						$('#agent_submit, #postUniAdd').attr('disabled',true);
+						$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+					}else{
+						$('#agent_submit, #postUniAdd').attr('disabled',false);
+						$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
+					}
+				}
+			});
 		}else{
-			$('#agent_submit, #postUniAdd').attr('disabled',true);
-			$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+			$('#alert-agent-contact').empty().append('Please enter OTP.');
 		}
 	});
 
@@ -2186,85 +2212,45 @@ jQuery(document).ready(function ($) {
 	/*
 	* Arsh Sharma Function is used for universities autocomplete box
 	*/
-	var timer = 0;
-	$('#property_university').keyup(function(){
-		var obj = $(this);
-		var keyword = obj.val();
-		var ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		if(keyword){
-			$('.uni_loader').show();
-			clearTimeout (timer);
-			timer = setTimeout(function(){
-						$.ajax({
-							type: 'POST',
-							url: ajaxurl,
-							data: {
-								'action'            :   'uni_search',
-								'keyword'         	:   keyword
-							},
-							success: function (data) {
-								obj.parent().find('.uni_result').remove();
-								obj.parent().append(data);
-								obj.parent().find('.uni_result li.university').unbind('click').bind('click', selectUni);
-								$('.uni_loader').hide();
-							},
-							error: function (errorThrown) {
-								$('.uni_loader').hide();
-							}
-						});
-					}, 500);
-		}
-	});
+	// var timer = 0;
+	// $('#property_university').keyup(function(){
+		// var obj = $(this);
+		// var keyword = obj.val();
+		// var ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		// if(keyword){
+			// $('.uni_loader').show();
+			// clearTimeout (timer);
+			// timer = setTimeout(function(){
+						// $.ajax({
+							// type: 'POST',
+							// url: ajaxurl,
+							// data: {
+								// 'action'            :   'uni_search',
+								// 'keyword'         	:   keyword
+							// },
+							// success: function (data) {
+								// obj.parent().find('.uni_result, em').remove();
+								// obj.parent().append(data);
+								// obj.parent().find('.uni_result li.university').unbind('click').bind('click', selectUni);
+								// $('.uni_loader').hide();
+							// },
+							// error: function (errorThrown) {
+								// $('.uni_loader').hide();
+							// }
+						// });
+					// }, 500);
+		// }
+	// });
 
-	function selectUni(){
-		var uniName = $(this).html();
-		var uniId = $(this).data('id');
-		$('#hdproperty_university').val(uniId);
-		$('#property_university').val(uniName);
-		$(this).parents('.uni_result').hide();
-	}
-	
-	$(window).click(function() {
-		if($('li').hasClass('uni_not_found')){
-			$('ul.uni_result').hide();
-		}
-	});
-	
-	$('form#new_uni_post').submit(function(e){
-		var err = 0;
-		if($('#property_university').val() == ''){
-			err = 1;
-			$('#property_university').attr('required', 'required');
-			$('html, body').animate({
-				scrollTop: $("#property_university").offset().top-100
-			}, 2000);
-		}
-		if($('#property_address').val() == ''){
-			
-			$('#property_address').attr('required', 'required');
-			if(!err){
-				$('html, body').animate({
-					scrollTop: $("#property_address").offset().top-100
-				}, 2000);
-			}
-			err = 1;
-		}
-		if($('#agent_user_email').val() == ''){
-			
-			$('#agent_user_email').attr('required', 'required');
-			if(!err){
-				$('html, body').animate({
-					scrollTop: $("#agent_user_email").offset().top-100
-				}, 2000);
-			}
-			err = 1;
-		}
-		if(err){
-			 e.preventDefault();
-		}
-		
-		return true;
-	});	
+	// function selectUni(){
+		// var uniName = $(this).html();
+		// var uniId = $(this).data('id');
+		// var uniDomain = '@'+$(this).data('domain');
+		// $('#hdproperty_university').val(uniId);
+		// $('#property_university').val(uniName);
+		// $('#agent_user_email').val(uniDomain);
+		// $(this).parents('.uni_result').hide();
+	// }
 	
 }); // end ready jquery
 //End ready ********************************************************************

@@ -43,7 +43,7 @@ img{max-width:100%;}
 .formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #003f61; float: left; font-size: 16px; font-weight: 300; padding: 10px 20px; width: 100%; margin-bottom:35px; margin-top:10px;}
 .addType #featured + small + span{color:#448701; font-weight:600;}
 input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
-span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: right; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
+span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
 input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
 .addType input{position:relative; opacity:0.01;}
 .addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #3c90be; border-radius:50%; top:2px; left:-20px; position:relative;}
@@ -118,8 +118,10 @@ input.featuredAdd{float:left;}
 .roomCount a{width:30px;}
 .addType{width: calc(100% - 149px);}
 .commonForm .highlight input.form-control {border-color: #003f61;max-width: calc(100% - 185px);min-width: calc(100% - 185px);}
+
 }
 .bootstrap-select>.dropdown-toggle{box-shadow: none; text-transform: capitalize;}
+/*
 ul.uni_result {
   background: #efefef none repeat scroll 0 0;
   float: left;
@@ -140,6 +142,20 @@ ul.uni_result {
 .uni_result li {float: left;padding: 5px 15px 7px;width: 100%; font-size:13px;}
 .uni_result li.university {border-bottom: 1px solid #cfcfcf;cursor: pointer;}
 .uni_result li.university:hover {background: #3c90be none repeat scroll 0 0;color: #ffffff;}
-.commonForm .form-group input:invalid{border:1px solid red;}
+*/
 .submit_container {border: medium none;box-shadow: none;}
 .form-group .uni_loader{display:none;}
+.commonForm .form-group input.required{border:1px solid red;}
+
+.ui-autocomplete {max-height: 256px;overflow-y: auto;/* prevent horizontal scrollbar */overflow-x: hidden;}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {height: 256px;}
+.commonForm .form-control {margin-bottom:0px}
+.form-group.col-md-12.title-field {margin-bottom: 15px;}
+.form-group{position:relative;}
+.validation_msg {bottom: -20px;color: red;font-size: 12px;position: absolute;right: 13px;width: auto;}
+.full-width .validation_msg{bottom: -7px;right: 0;}
+.image-section-add-property .submit_container{margin-bottom:0;padding-bottom:0;}
+.commonForm  .alert-box .alert-message{max-width:256px;}

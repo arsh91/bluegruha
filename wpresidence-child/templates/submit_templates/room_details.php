@@ -19,7 +19,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<div class="options" id="bedRoom">
 		<div class="radio">
 			<label>
-				<input type="radio" name="bedroom_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Seprate
+				<input type="radio" name="bedroom_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Separate
 			</label>
 		</div>
 		<div class="radio">
@@ -34,7 +34,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<div class="options" id="bathRoom">
 		<div class="radio">
 			<label>
-				<input type="radio" name="bath_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Seprate
+				<input type="radio" name="bath_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Separate
 			</label>
 		</div>
 		<div class="radio">
@@ -47,27 +47,10 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 <div class="form-group col-md-6">
 	<label class="control-label">Room Rent *</label>
 	<input type="text" class="form-control" placeholder="Per Month" name = "rent" id = "room_rent">
+
 </div>
 <div class="form-group col-md-6">
-	<label class="control-label">Security Deposit</label>
-	<input type="text" class="form-control" name = "security_amount">
-</div>
-<div class="form-group col-md-6">
-	<label class="control-label">Available From</label>
-	<input type="text" class="form-control" name="available_from" id="available_from">
-	<?php echo wpestate_date_picker_translation_return('available_from'); ?>
-</div>
-<div class="form-group col-md-6">
-	<label class="control-label">Amenities</label>
-	<select id="amenities" multiple="multiple" name ="amenities">
-		<option value="Washer/Dryer">Washer/Dryer</option>
-		<option value="Garage">Garage</option>
-		<option value="Swimming pool">Swimming pool</option>
-		<option value="Gym/Fitness center">Gym/Fitness center</option>
-	</select>
-</div>
-<div class="form-group col-md-6">
-	<label class="control-label">Roomie Gender *</label>
+	<label class="control-label">Gender Preference *</label>
 	<div class="options" id="gender">
 		<?php
 			$tmp = 0;
@@ -87,7 +70,26 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	</div>
 </div>
 <div class="form-group col-md-6">
-	<label class="control-label">Language</label>
+	<label class="control-label">Security Deposit</label>
+	<input type="text" class="form-control" name = "security_amount">
+</div>
+<div class="form-group col-md-6">
+	<label class="control-label">Available From</label>
+	<input type="text" class="form-control" name="available_from" id="available_from">
+	<?php echo wpestate_date_picker_translation_return('available_from'); ?>
+</div>
+
+<div class="form-group col-md-6">
+	<label class="control-label">Amenities</label>
+	<select id="amenities" multiple="multiple" name ="amenities">
+		<option value="Washer/Dryer">Washer/Dryer</option>
+		<option value="Garage">Garage</option>
+		<option value="Swimming pool">Swimming pool</option>
+		<option value="Gym/Fitness center">Gym/Fitness center</option>
+	</select>
+</div>
+<div class="form-group col-md-6">
+	<label class="control-label">Language Preference</label>
 	<input type="text" class="form-control" name="language">
 </div>
 
@@ -95,12 +97,11 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<h3>Other details</h3>
 </div>
 
-<div class="form-group col-md-12 full-width">
+<div class="form-group col-md-12 title-field">
 	<label class="control-label">Title *</label>
 	<input type="text" class="form-control" name="title" id="prop_title"/>
 </div>
-
 <div class="form-group col-md-12 full-width">
-	<label class="control-label">Room Description (optional)</label>
+	<label class="control-label">Room Description</label>
 	<textarea rows="4" class="form-control" placeholder="Please brief your room details " name="description"></textarea>
 </div>

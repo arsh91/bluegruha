@@ -1,11 +1,7 @@
 <div class="col-md-12 headingPanel">
 	<h3>Please Enter Your Contact Details</h3>
 </div>
-<div class="col-md-12 ">
-	<div class="alert-box error">
-		<div class="alert-message" id="alert-agent-contact"></div>
-	</div> 
-</div>
+
 <div class="form-group col-md-6">
 	<label class="control-label">Name *</label>
 	<input type="text" class="form-control" placeholder="John Doe" name="agent_name" id = "agent_name">
@@ -20,11 +16,15 @@
 </div>
 <div>
 	<div class="form-group col-md-6">
-		<label class="control-label">Verification</label>
 		<span class="verification" id="varify_cont_email">Verify your email</span>
 	</div>
 	<div class="form-group col-md-6">
-		<label class="control-label">OTP</label>
+		<label class="control-label">One Time Password (OTP)</label>
 		<input type="text" class="form-control" placeholder="Please enter your OTP" name="otp" id="agent_contact_otp">
 	</div>
+</div>
+<div class="col-md-6">
+	<div class="alert-box error">
+		<div class="alert-message" id="alert-agent-contact"></div>
+	</div> 
 </div>

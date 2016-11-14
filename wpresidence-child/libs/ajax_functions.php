@@ -3649,26 +3649,27 @@ if( !function_exists('wpestate_ajax_agent_contact_form_send_otp') ):
 function wpestate_ajax_agent_contact_form_send_otp(){
 	 //Check email
 	if ( isset($_POST['email']) || trim($_POST['name']) ==__('Your Email','wpestate') ) {
-		  if( trim($_POST['email']) ==''){
-				echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
-				exit(); 
-		  } else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
-				echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
-				exit();
-		  } else {
-				$email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
-		  }
+		if( trim($_POST['email']) ==''){
+			echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
+			exit(); 
+		} else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
+			echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
+			exit();
+		} else {
+			$email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
+		}
+		  
+		unset($_SESSION['contact_otp']);
+		$_SESSION['contact_otp'] = rand (1000 , 9999);
+		$message .= __('Please use this OTP for Email Varification','wpestate').": " . $_SESSION['contact_otp'] . "\n\n ";
+		$message .="\n\n".__('Message sent from ','wpestate').$permalink;
+		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
+		
+		$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
+		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent on your Email, Please check.','wpestate') ) ); 
 	}
 
-	unset($_SESSION['contact_otp']);
-	$_SESSION['contact_otp'] = rand (1000 , 9999);
-	$message .= __('Please use this OTP for Email Varification','wpestate').": " . $_SESSION['contact_otp'] . "\n\n ";
-	$message .="\n\n".__('Message sent from ','wpestate').$permalink;
-	$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
-	
-	$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
-	echo json_encode(array('sent'=>false, 'response'=>__('OTP sent on your Email, Please check.','wpestate') ) ); 
-	 exit();
+	exit();
 
 }
 
@@ -3701,6 +3702,28 @@ function wpestate_ajax_agent_contact_form_check_email(){
 
 endif; // end   wpestate_ajax_agent_contact_form_check_email
 
+add_action( 'wp_ajax_nopriv_wpestate_ajax_agent_contact_form_check_otp', 'wpestate_ajax_agent_contact_form_check_otp' );  
+add_action( 'wp_ajax_wpestate_ajax_agent_contact_form_check_otp', 'wpestate_ajax_agent_contact_form_check_otp');  
+if( !function_exists('wpestate_ajax_agent_contact_form_check_otp') ):
+
+	function wpestate_ajax_agent_contact_form_check_otp(){
+		if(isset($_SESSION['contact_otp'])){
+			if ( isset($_POST['otp'])) {
+				if($_SESSION['contact_otp'] != $_POST['otp']){
+					echo json_encode(array('sent'=>false, 'response'=>__('OTP doesn\'t match, Please check again!','wpestate') ) ); 	
+				}else{
+					echo json_encode(array('sent'=>true));
+				}
+			}else{
+				echo json_encode(array('sent'=>false, 'response'=>__('OTP field can not be empty.','wpestate') ) );
+			}
+		}else{
+			echo json_encode(array('sent'=>false, 'response'=>__('Please verify your email first.','wpestate') ) );
+		}
+		exit();
+	}
+
+endif; // end   wpestate_ajax_agent_contact_form_check_otp
 //////////////////////////////////////////////////////////////////////////////
 /// Ajax adv search contact function
 ////////////////////////////////////////////////////////////////////////////////
@@ -4060,15 +4083,18 @@ if( !function_exists('uni_search') ):
     function uni_search(){
         global $wpdb;
 		$keyword               =   sanitize_text_field($_POST['keyword']);
-		$result = $wpdb->get_results("SELECT name, id FROM wp_universities WHERE name like '$keyword%'");
-		$html = '<ul class = "uni_result">';
-		if(!empty($result)){
-			foreach($result as $key=>$val){
-				$html .="<li data-id='$val->id' class ='university'>".$val->name."</li>";
-			}
-		}
-		$html .='</ul>';
+		$result = $wpdb->get_results("SELECT * FROM wp_universities WHERE name like '$keyword%'");
 		
+		if(!empty($result)){
+			$html = '<ul class = "uni_result">';
+				foreach($result as $key=>$val){
+					$html .="<li data-id='$val->id' data-domain='$val->domain' class ='university'>".$val->name."</li>";
+				}
+			$html .='</ul>';
+			
+		}else{
+			$html = '<em>Hmm. Looks like we missed your university. We will get on to it immediately. Please do go ahead with your ad.</em>';
+		}
 		echo $html;
 		exit;
     }

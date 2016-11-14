@@ -92,33 +92,18 @@ jQuery(document).ready(function() {
 		jQuery(this).addClass('selected');
 	});
 	
-	// var uni_list = jQuery('#uni_list').val();
-	// jQuery( "#property_university" ).autocomplete({
-		// source: uni_list
-	// });
-	// jQuery("#property_university").autocomplete({
-		// source: function(req, response) {
-			// var re = jQuery.ui.autocomplete.escapeRegex(req.term);
-			// var matcher = new RegExp("^" + re, "i");
-			// response(jQuery.grep(uni_list, function(item) {
-				// return matcher.test(item.value);
-			// }));
-		// },
-		// select: function(event, ui) {
-			// alert('here');
-		// }
-	// });
-	
 	
 	// university form validations
 	
-	function checkMandatory(var obj){
+	function checkMandatory(obj){
 		if(obj){
 			var val = jQuery(obj).val();
-			if(!val){
-				jQuery(obj).addClass('requried');
+			if(val == ''){
+				jQuery(obj).addClass('required');
+				jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery(obj));
 			}else{
-				jQuery(obj).removeClass('requried');
+				jQuery(obj).removeClass('required');
+				jQuery(obj).parent().find('.validation_msg').remove();
 			}
 		}
 		return true;
@@ -146,5 +131,61 @@ jQuery(document).ready(function() {
 		checkMandatory(this);
 	});
 	
+	jQuery('form#new_uni_post').submit(function(e){
+		var err = 0;
+		if(jQuery('#property_university').val() == ''){
+			err = 1;
+			jQuery('#property_university').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#property_university'));
+			jQuery('html, body').animate({
+				scrollTop: jQuery("#property_university").offset().top-100
+			}, 2000);
+		}
+		if(jQuery('#property_address').val() == ''){
+			
+			jQuery('#property_address').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#property_address'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#property_address").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(jQuery('#agent_user_email').val() == ''){
+			
+			jQuery('#agent_user_email').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#agent_user_email'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#agent_user_email").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(err){
+			e.preventDefault();
+		}
+		
+		return true;
+	});	
+	
+	var university_list = JSON.parse(jQuery('#uni_list').val());
+	
+	jQuery( "#property_university" ).autocomplete({
+	  source: university_list,
+	  select: function( event, ui ) {
+				jQuery('#hdproperty_university').val(ui.item.id);
+				jQuery('#agent_user_email').val(ui.item.domain);
+			}
+	});
+	
+	// Overrides the default autocomplete filter function to search only from the beginning of the string
+    jQuery.ui.autocomplete.filter = function (array, term) {
+        var matcher = new RegExp("^" + jQuery.ui.autocomplete.escapeRegex(term), "i");
+        return jQuery.grep(array, function (value) {
+            return matcher.test(value.label || value.value || value);
+        });
+    };
 	
 });

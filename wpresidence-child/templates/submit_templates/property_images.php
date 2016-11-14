@@ -94,18 +94,20 @@ if ($action=='edit'){
             </button>
             <input type="hidden" name="attachid" id="attachid" value="<?php echo esc_html($attachid);?>">
             <input type="hidden" name="attachthumb" id="attachthumb" value="<?php echo esc_html($thumbid);?>">
-            <p class="full_form full_form_image">
-                <?php 
-                //_e('* At least 1 image is required for a valid submission.Minimum size is 500/500px.','wpestate');
-                $max_images=intval   ( get_option('wp_estate_prop_image_number','') );
-                if($max_images!=0){
-                    printf( __(' You can upload maximum %s images','wpestate'),$max_images);
-                }
-                print '</br>'; 
-                //_e('** Double click on the image to select featured.','wpestate');print '</br>';
-                //_e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
-                //_e('**** PDF files upload supported as well.','wpestate');?>
-            </p>
+			<?php 
+			//_e('* At least 1 image is required for a valid submission.Minimum size is 500/500px.','wpestate');
+			$max_images=intval   ( get_option('wp_estate_prop_image_number','') );
+			if($max_images!=0){ ?>
+				<p class="full_form full_form_image">
+			<?php
+				printf( __(' You can upload maximum %s images','wpestate'),$max_images);
+			?>
+			</p>
+			<?php
+			}
+			//_e('** Double click on the image to select featured.','wpestate');print '</br>';
+			//_e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
+			//_e('**** PDF files upload supported as well.','wpestate');?>
         </div>  
     </div>
     <?php

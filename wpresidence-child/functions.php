@@ -56,7 +56,7 @@ function change_graphic_lib($array) {
 
 function get_universities(){
 	global $wpdb;
-	$result = $wpdb->get_results("SELECT * FROM wp_universities");
+	$result = $wpdb->get_results("SELECT name as value, domain as domain, id FROM wp_universities");
 	return $result;
 }
 

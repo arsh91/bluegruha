@@ -71,7 +71,7 @@ $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>
 				<?php get_template_part('templates/submit_templates/select_university'); ?>
 				<?php get_template_part('templates/submit_templates/room_details'); ?>
 				
-				<div class="form-group col-md-12 full-width profile-page">
+				<div class="form-group col-md-12 full-width profile-page image-section-add-property">
 					<?php include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				
@@ -98,7 +98,7 @@ $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>
 					<input id="uni_list" value='<?php echo json_encode($universities_list); ?>' type="hidden" />
 					<input name="action" value="submit_uni_property" type="hidden" />
 					<input name="term_id" value="" type="hidden" />
-					<input type="submit" id="postUniAdd" class="postUniAdd" value="Post your free add" name="add_property" />
+					<input type="submit" id="postUniAdd" class="postUniAdd disabled_contact_btn" value="Post your free add" name="add_property" disabled="disabled" />
 					<div class="tooltipCustom">
 						<ul id="freeAd">
 							<li>Valid upto 7 days</li>
