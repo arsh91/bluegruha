@@ -147,11 +147,11 @@ ul.uni_result {
 .form-group .uni_loader{display:none;}
 .commonForm .form-group input.required{border:1px solid red;}
 
-.ui-autocomplete {max-height: 256px;overflow-y: auto;/* prevent horizontal scrollbar */overflow-x: hidden;}
+.ui-autocomplete {max-height: 100px;overflow-y: auto;/* prevent horizontal scrollbar */overflow-x: hidden;}
 /* IE 6 doesn't support max-height
 * we use height instead, but this forces the menu to always be this tall
 */
-* html .ui-autocomplete {height: 256px;}
+* html .ui-autocomplete {height: 100px;}
 .commonForm .form-control {margin-bottom:0px}
 .form-group.col-md-12.title-field {margin-bottom: 15px;}
 .form-group{position:relative;}

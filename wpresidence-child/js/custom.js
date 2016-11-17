@@ -178,6 +178,9 @@ jQuery(document).ready(function() {
 				jQuery('#hdproperty_university').val(ui.item.id);
 				jQuery('#agent_user_email').val(ui.item.domain);
 			}
+		search:function(event, ui){
+			console.log(ui);
+		}
 	});
 	
 	// Overrides the default autocomplete filter function to search only from the beginning of the string

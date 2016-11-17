@@ -306,7 +306,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='submit_uni_proper
 		$apartment_name 				=	wp_kses( $_POST['apartment_name'],$allowed_html);
         $university                      =   wp_kses( $_POST['property_university'],$allowed_html);
 		if($apartment_name != ''){
-			$post_title                   =   $apartment_name.', '.$university ;
+			$post_title                   =   $university.', '. $apartment_name;
 		}else{
 			$post_title                   =   $university ;
 		}
