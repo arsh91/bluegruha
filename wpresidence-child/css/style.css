@@ -4,28 +4,30 @@ img{max-width:100%;}
 .mb-0{margin-bottom:0 !important;}
 .mt-0{margin-top:0 !important;}
 .innerContainer{margin-bottom:50px; float:left; width:100%;}
-.innerContainer h2{color:#434a54; font-size:36px; font-weight:300; margin-top:0; margin-bottom:30px;}
+.innerContainer h2{color:#666; font-size:30px; font-weight:normal; margin-top:0; margin-bottom:20px;}
 .innerContainer .nav-tabs{border:none;}
-.innerContainer hr{border-color:#cfcfcf;}
-.innerContainer .nav-tabs.active li{width:200px; padding-left:15px; margin-right:20px; padding-right:15px;}
+.innerContainer hr{border-color:#cfcfcf; display:none;}
+.innerContainer .nav-tabs.active + hr{display:block;}
+.innerContainer .nav-tabs.active li{width:170px; padding-left:15px; margin-right:15px; padding-right:15px;}
 .innerContainer .nav-tabs.active li:last-child{margin-right:0px;}
-.innerContainer .nav-tabs.active li a{font-size:18px; font-weight:600; width:200px; max-height:115px; padding-top:25px;}
-.innerContainer .nav-tabs.active li a i{font-size:30px; max-height:30px;}
-.innerContainer .nav-tabs.active li a i.fa-home{font-size:40px;}
+.innerContainer .nav-tabs.active li a{font-size:14px; font-weight:600; width:170px; max-height:115px; padding-top:20px; height:100px;}
+.innerContainer .nav-tabs.active li a i{font-size:24px; max-height:30px;}
+.innerContainer .nav-tabs.active li a i.fa-home{font-size:30px; margin-bottom:10px;}
 .innerContainer .nav-tabs li{width:33.33%;}
-.innerContainer .nav-tabs li a{border:none; text-align:center; background:#3c90be; color:#fff; border-radius:5px; height:145px; font-size:22px; padding-top:32px; padding-bottom:30px; cursor:pointer; margin-right:0; padding-left:8px; padding-right:8px;}
-.innerContainer .nav-tabs li a:hover,.innerContainer .nav-tabs li.active a,.innerContainer .nav-tabs li a.active,.innerContainer .nav-tabs li a:focus{background:#003f61; border:none; color:#fff; cursor:pointer;}
+.innerContainer .nav-tabs li a{border:none; text-align:center; background:#666; color:#fff; border-radius:5px; height:145px; font-size:22px; padding-top:32px; padding-bottom:30px; cursor:pointer; margin-right:0; padding-left:8px; padding-right:8px;}
+.innerContainer .nav-tabs li a:hover,.innerContainer .nav-tabs li.active a,.innerContainer .nav-tabs li a.active,.innerContainer .nav-tabs li a:focus{background:#a5cd38; border:none; color:#fff; cursor:pointer;}
 .innerContainer .nav-tabs li a i {display: block; max-height:36px; font-size: 36px; margin-bottom: 15px;}
 .innerContainer .nav-tabs li a i.fa-home {font-size: 44px;}
-.formContainer{margin-top:15px; float:left;font-size:14px;}
-.commonForm input.form-control,.commonForm .formContainer .bootstrap-select,.commonForm .formContainer .btn-group{box-shadow:none; border-color:#c4c4c4; max-width:calc(100% - 185px); min-width:calc(100% - 183px); float:right; height:36px; font-weight:300;}
-.commonForm .formContainer .multiselect{max-width:225px; min-width:225px; text-align:left;box-shadow: none; }
-.commonForm .formContainer .multiselect-selected-text {float: left; width: calc(100% - 10px);}
-.commonForm .form-group{margin-bottom:30px;}
-.form-group.full-width {height: auto !important;}
-.full-width label{margin-bottom:20px;}
+.container h6 {color: #666; font-size: 24px;}
+.formContainer{float:left;}
+.commonForm input.form-control,.commonForm .formContainer .bootstrap-select,.commonForm .formContainer .btn-group{box-shadow:none; border-color:#c4c4c4; max-width:calc(100% - 185px); min-width:calc(100% - 183px); float:right; height:36px; font-weight:300; font-size:13px;}
+.commonForm .formContainer .multiselect{max-width:225px; min-width:225px; text-align:left;}
+.commonForm .formContainer .multiselect-selected-text {float: left; width: calc(100% - 10px); overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.commonForm .form-group{margin-bottom:20px;}
+.full-width label{margin-bottom:20px; margin-top:0 !important; position:relative; top:7px;}
+.labelInline{top:0 !important;}
 .form-group textarea, .form-group textarea:focus {border-color: #c4c4c4; box-shadow:none; resize:none; font-weight:300;}
-.commonForm label.control-label{float:left; font-size:16px; color:#434a54; font-weight:300; margin-top:7px; margin-right:20px;}
+.commonForm label.control-label{float:left; font-size:14px; color:#666666; font-weight:600; margin-top:7px; margin-right:20px;}
 .formContainer .options {float: right; height:36px; width: 225px; border:1px solid #c4c4c4; border-radius:4px;}
 .addType{float:right; width:calc(100% - 183px);}
 .addType .radio label{font-size:14px;}
@@ -35,21 +37,21 @@ img{max-width:100%;}
 .formContainer #gender .radio{width:33.33%;}
 .formContainer #gender .radio label{font-size:13px; padding-top:8px; padding-bottom:8px;}
 .formContainer #gender .radio label i{margin-right:5px;}
-.formContainer .options .radio label {float:left; width:100%; text-align:center; padding-bottom: 7px; padding-top: 7px; padding-left:0;font-size:14px;}
-.formContainer .options .radio label i{color:#3c90be; margin-right:10px;}
+.formContainer .options .radio label {float:left; width:100%; text-align:center; padding-bottom: 8px; font-size:13px; padding-top: 8px; padding-left:0;}
+.formContainer .options .radio label i{color:#a5cd38; margin-right:10px;}
 .formContainer .options .radio label input[type="radio"]{opacity:0.01; position:absolute; padding:0; margin:0;}
-.formContainer .options .radio label.activeRadio{background:#3c90be; color:#fff;}
+.formContainer .options .radio label.activeRadio{background:#a5cd38; color:#fff;}
 .formContainer .options .radio label.activeRadio i{color:#fff;}
-.formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #003f61; float: left; font-size: 16px; font-weight: 300; padding: 10px 20px; width: 100%; margin-bottom:35px; margin-top:10px;}
+.formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #265603; float: left; font-size: 16px; font-weight: normal; padding: 10px 20px; width: 100%; margin-bottom:20px; margin-top:0px;}
 .addType #featured + small + span{color:#448701; font-weight:600;}
-input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
-span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
+input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#a5cd38; box-shadow: 0 4px 0 0 rgba(36, 86, 3, 0.75);}
+span.verification {background: #a5cd38 none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
 input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
 .addType input{position:relative; opacity:0.01;}
-.addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #3c90be; border-radius:50%; top:2px; left:-20px; position:relative;}
-.addType input:checked + small.customRadio{background:#3c90be;}
+.addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #a5cd38; border-radius:50%; top:2px; left:-20px; position:relative;}
+.addType input:checked + small.customRadio{background:#a5cd38;}
 .commonForm .highlight label label{color:#003f61;}
-.commonForm .highlight input.form-control{border-color:#003f61;}
+.commonForm .highlight input.form-control{border-color:#003f61;font-weight:normal;}
 .commonForm .highlight input.form-control.required{border-color:red;}
 .highlight em {color: #7c8187; float: right; font-size: 12px; font-weight: 600; margin-top: 10px; width: calc(100% - 183px);}
 .locationContainer{float:left; width:100%; /*border-top:1px solid #cfcfcf; border-bottom:1px solid #cfcfcf; padding-top:30px; padding-bottom:30px;*/ margin-bottom:20px;}
@@ -65,6 +67,35 @@ ul#featuredAd{display:none;}
 .roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#003f61; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
 .formContainer .options.roomCount a:hover, .formContainer .options.roomCount a.selected{color:#fff; background:#003f61; border-color:#003f61;}
 .roomCount a:last-child{margin-right:0;}
+.rightSidebar h4{font-weight:300; background: #e4e4e4;padding:10px 15px;font-size: 16px;border-bottom: 1px solid #cfcfcf; height:36px; border-radius: 5px 5px 0px 0px;color:#003f61; float:left; width:100%;}
+.ownerInfo{padding:0 15px 10px 15px; float:left; width:100%;}
+.ownerInfo h5{color: #3c90be; float: left; font-size: 22px; font-weight: 300; margin-bottom: 20px; width: 100%;}
+.ownerInfo span{display:block;margin:10px 0;color:#333333;font-size:13px;}
+.ownerInfo span i{color:#3c90be; width:12px; margin-right:10px; font-size:12px;}
+.rightSidebar input.form-control, .rightSidebar textarea.form-control {float: left; margin: 10px 0; box-shadow:none;}
+.rightSidebar input.form-control[type="submit"]{background:#4d9a01; font-size:16px; height:46px;}
+.amenitiesDetails{float:left; width:100%; margin-top:15px;}
+.amenitiesDetails span{float:left; width:25%; margin-bottom:15px;}
+.customNavigation{text-align: center;}
+#propertySimilar{margin-bottom:50px; margin-top:50px;}
+#propertySimilar .owl-wrapper-outer{padding:0 55px;}
+#propertySimilar .owl-item {display: inline-block; float:none;}
+#propertySimilar .owl-item .item{box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15); float:left; width:100%; border-radius:3px;}
+#propertySimilar .owl-item .item img {width:100%;}
+#propertySimilar .owl-prev{float:left; position:relative; font-size:0px;}
+#propertySimilar .owl-prev:before{content:"\f053"; position:absolute; font:normal normal normal 20px/1 FontAwesome; left:0; color:#999999;}
+#propertySimilar .owl-next{float:right; font-size:0px;}
+#propertySimilar .owl-next:before{content:"\f054"; position:absolute; font:normal normal normal 20px/1 FontAwesome; right:0; color:#999999;}
+#propertySimilar .owl-nav {position: absolute; top: 130px; width: 100%;}
+.itemContent{padding: 0 10px 10px;}
+.itemContent h3 {font-size: 14px; font-weight: 600; margn-top:15px; color:#333333; margin-top:15px;}
+.propertyLocation{font-size: 11px; color:#999999;}
+.propertyLocation i{margin-right:3px; font-size:14px;}
+.amenitiesDetails i{color:#3c90be; margin-right:5px; float:left; margin-top:3px;}	
+.specifications {margin-top: 15px; font-size:11px;}
+.specifications span.specs{color:#333; margin-right:15px;}
+.specifications span.specs i{margin-right:2px; font-size:14px; color:#999999;}
+.specifications span.price{float:right; font-size:14px; color:#4d9a01; font-weight:600; top:-2px; position:relative;}
 @media only screen and (max-width: 360px){
 .innerContainer .nav.nav-tabs li a{height:145px !important;}
 }
@@ -112,9 +143,14 @@ input.featuredAdd{float:left;}
 .innerContainer .nav-tabs.active li a{width:100%; padding-left:8px; padding-right:8px;}
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px){
+.commonForm .highlight input.form-control {
+  border-color: #003f61;
+  max-width: calc(100% - 185px);
+  min-width: calc(100% - 185px);
+}
 .formContainer .options, .commonForm .formContainer .multiselect{width:186px; max-width: 186px; min-width: 186px;}
 .commonForm input.form-control, .commonForm .formContainer .bootstrap-select, .commonForm .formContainer .btn-group{min-width: calc(100% - 149px); max-width: calc(100% - 149px);}
-.highlight em{width: calc(100% - 149px);}
+.highlight em{width: calc(100% - 185px);}
 .roomCount a{width:30px;}
 .addType{width: calc(100% - 149px);}
 .commonForm .highlight input.form-control {border-color: #003f61;max-width: calc(100% - 185px);min-width: calc(100% - 185px);}
@@ -147,7 +183,7 @@ ul.uni_result {
 .form-group .uni_loader{display:none;}
 .commonForm .form-group input.required{border:1px solid red;}
 
-.ui-autocomplete {max-height: 100px;overflow-y: auto;/* prevent horizontal scrollbar */overflow-x: hidden;}
+.ui-autocomplete {border: 1px solid #666666 !important;border-radius: 5px !important;max-height: 113px;overflow-x: hidden;overflow-y: auto;padding: 0;}
 /* IE 6 doesn't support max-height
 * we use height instead, but this forces the menu to always be this tall
 */
@@ -155,8 +191,14 @@ ul.uni_result {
 .commonForm .form-control {margin-bottom:0px}
 .form-group.col-md-12.title-field {margin-bottom: 15px;}
 .form-group{position:relative;}
-.validation_msg {bottom: -20px;color: red;font-size: 12px;position: absolute;right: 13px;width: auto;}
+.validation_msg {bottom: -16px;color: red;font-size: 11px;position: absolute;right: 13px;width: auto;}
 .full-width .validation_msg{bottom: -7px;right: 0;}
 .image-section-add-property .submit_container{margin-bottom:0;padding-bottom:0;}
 .commonForm  .alert-box .alert-message{max-width:256px;}
 .uni_not_found_msg{display:none;}
+.container.content_wrapper {margin-top: 20px;}
+.commonForm .formContainer .multiselect{box-shadow: none;text-transform:capitalize;}
+.ui-menu .ui-menu-item {border-bottom: 1px solid #666666;cursor: pointer;margin: 0 !important;padding: 7px 10px !important;width: 100% !important;}
+.ui-autocomplete.ui-menu .ui-state-focus{background-color: #a5cd38 !important;}
+.wpresidence_success {background-color: #a5cd38;border-bottom: 3px solid #84aa1d;}
+.wpresidence_success:hover {background-color: #82b005;}
