@@ -173,13 +173,17 @@ jQuery(document).ready(function() {
 	var university_list = JSON.parse(jQuery('#uni_list').val());
 	
 	jQuery( "#property_university" ).autocomplete({
-	  source: university_list,
-	  select: function( event, ui ) {
-				jQuery('#hdproperty_university').val(ui.item.id);
-				jQuery('#agent_user_email').val(ui.item.domain);
+		source: university_list,
+		response:function(event, ui){
+			if (ui.content.length === 0) {
+				jQuery('.uni_not_found_msg').show();
+			}else{
+				jQuery('.uni_not_found_msg').hide();
 			}
-		search:function(event, ui){
-			console.log(ui);
+		},
+		change: function( event, ui ) {
+			jQuery('#hdproperty_university').val(ui.item.id);
+			jQuery('#agent_user_email').val(ui.item.domain);
 		}
 	});
 	

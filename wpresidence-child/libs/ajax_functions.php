@@ -3680,6 +3680,7 @@ add_action( 'wp_ajax_wpestate_ajax_agent_contact_form_check_email', 'wpestate_aj
 if( !function_exists('wpestate_ajax_agent_contact_form_check_email') ):
 
 function wpestate_ajax_agent_contact_form_check_email(){
+	global $wpdb;
 	 //Check email
 	if ( isset($_POST['email']) || trim($_POST['email']) ==__('Your Email','wpestate') ) {
 		  if( trim($_POST['email']) ==''){
@@ -3689,12 +3690,25 @@ function wpestate_ajax_agent_contact_form_check_email(){
 				echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
 				exit();
 		  } else {
-				
+				$response = '';
+				$uni_id	 =	 sanitize_text_field($_POST['uni_id']);
+				if($uni_id != ''){
+					$result = $wpdb->get_results("SELECT domain FROM wp_universities WHERE id = $uni_id");
+					if(!empty($result)){
+						$emailArr = explode('@', $_POST['email']);
+						
+						if($result[0]->domain != $emailArr[1]){
+							$response = 'For making your ad verified, Please use your university email.';
+						}else{
+							$response = 'Thanks for using your university email, it will make your ad verified.';
+						}
+					}
+				}
 				if(in_array($_POST['email'], $_SESSION['varified_emails'])){
-					echo json_encode(array('sent'=>true)); 
+					echo json_encode(array('sent'=>true, 'response'=>$response)); 
 					exit;
 				}
-				echo json_encode(array('sent'=>false)); 
+				echo json_encode(array('sent'=>false, 'response'=>$response)); 
 				exit;
 		  }
 	}

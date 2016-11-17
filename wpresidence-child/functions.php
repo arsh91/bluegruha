@@ -60,4 +60,18 @@ function get_universities(){
 	return $result;
 }
 
+function checkEmailWithDomain($email, $uni_id){
+	global $wpdb;
+	if($email && $uni_id){
+		$result = $wpdb->get_results("SELECT domain FROM wp_universities WHERE id = $uni_id");
+		if(!empty($result)){
+			$emailArr = explode('@', $email);
+			if($result[0]->domain != $emailArr[1]){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 ?>

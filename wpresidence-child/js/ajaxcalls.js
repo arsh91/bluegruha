@@ -1637,7 +1637,9 @@ jQuery(document).ready(function ($) {
 
 
 	$('#agent_user_email').blur(function(){
+		var uni_id = '';
 		var email = $(this).val();
+		uni_id = $('input[name=hdproperty_university]').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
 		if($(this).val()){
 			
@@ -1647,7 +1649,8 @@ jQuery(document).ready(function ($) {
 				url: ajaxurl,
 				data: {
 					'action'    :   'wpestate_ajax_agent_contact_form_check_email',
-					'email'		: email
+					'email'		:	email,
+					'uni_id'	:	uni_id
 				},
 				success: function (data) {
 					if (data.sent == false) {

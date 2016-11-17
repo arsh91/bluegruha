@@ -159,3 +159,4 @@ ul.uni_result {
 .full-width .validation_msg{bottom: -7px;right: 0;}
 .image-section-add-property .submit_container{margin-bottom:0;padding-bottom:0;}
 .commonForm  .alert-box .alert-message{max-width:256px;}
+.uni_not_found_msg{display:none;}
