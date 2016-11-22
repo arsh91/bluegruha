@@ -629,6 +629,8 @@ function wpestate_scripts() {
             $is_profile=1;    
         }
         
+		$max_file_size  = 2 * 1000 * 1000;
+		
         $plup_url = add_query_arg( array(
             'action' => 'me_upload',
             'base'  =>$is_profile,
