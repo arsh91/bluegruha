@@ -183,7 +183,7 @@ ul.uni_result {
 .form-group .uni_loader{display:none;}
 .commonForm .form-group input.required{border:1px solid red;}
 
-.ui-autocomplete {border: 1px solid #666666 !important;border-radius: 5px !important;max-height: 113px;overflow-x: hidden;overflow-y: auto;padding: 0;}
+.ui-autocomplete {border: 1px solid #666666 !important;border-radius: 5px !important;max-height: 141px;overflow-x: hidden;overflow-y: auto;padding: 0;}
 /* IE 6 doesn't support max-height
 * we use height instead, but this forces the menu to always be this tall
 */
@@ -198,7 +198,7 @@ ul.uni_result {
 .uni_not_found_msg{display:none;}
 .container.content_wrapper {margin-top: 20px;}
 .commonForm .formContainer .multiselect{box-shadow: none;text-transform:capitalize;}
-.ui-menu .ui-menu-item {border-bottom: 1px solid #666666;cursor: pointer;margin: 0 !important;padding: 7px 10px !important;width: 100% !important;}
+.ui-menu .ui-menu-item {border-bottom: 1px solid #666666;cursor: pointer;margin: 0 !important;padding: 7px 10px !important;width: 100% !important;font-size: 14px;}
 .ui-autocomplete.ui-menu .ui-state-focus{background-color: #a5cd38 !important;}
 .wpresidence_success {background-color: #a5cd38;border-bottom: 3px solid #84aa1d;}
 .wpresidence_success:hover {background-color: #82b005;}
