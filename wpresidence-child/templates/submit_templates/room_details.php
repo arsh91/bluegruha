@@ -105,3 +105,10 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<label class="control-label">Room Description</label>
 	<textarea rows="4" class="form-control" placeholder="Please brief your room details " name="description"></textarea>
 </div>
+<!--
+<div class="form-group col-md-12 highlight room_to_rent_field" style="display:none;">
+	<label class="control-label">Room Tag *</label>
+	<input type="text" class="form-control" placeholder="Tag a university, school, company or other location for easy search ability">
+	<em>Tagging your room will help your ad show up when users search with the particular keywords</em>
+</div>
+-->

@@ -4,10 +4,50 @@ jQuery(document).ready(function() {
 		jQuery('.innerContainer .nav-tabs li').removeClass("col-md-6");
 		var termId= jQuery(this).data('term');
 		jQuery('input[name=term_id]').val(termId);
-		setTimeout(function(){
-			initialize();
-			google.maps.event.trigger(map, "resize");
-        },1000)
+		var contId = '#'+jQuery(this).attr('aria-controls');
+		ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		jQuery.ajax({
+			type: 'POST',
+			url: ajaxurl,
+			data: {
+				'action'            :   'get_location_section',
+			},
+			success: function (data) {  
+				jQuery('.add_property_location').empty();
+				jQuery(contId+' .add_property_location').html(data);				
+				setTimeout(function(){
+					initialize();
+					google.maps.event.trigger(map, "resize");
+					
+					if ( google_map_submit_vars.enable_auto ==='yes' ){      
+						autocomplete = new google.maps.places.Autocomplete(
+						  /** @type {HTMLInputElement} */(document.getElementById('property_address')),
+							{   types: ['geocode'],
+								"partial_match" : true
+							}
+						);
+						var input = document.getElementById('property_address');
+						google.maps.event.addDomListener(input, 'keydown', function(e) { 
+							if (e.keyCode == 13) { 
+								e.stopPropagation(); 
+								e.preventDefault();
+							}
+						});
+						
+						google.maps.event.addListener(autocomplete, 'place_changed', function(event) {
+							var place = autocomplete.getPlace();
+							fillInAddress(place);
+							removeMarkers();
+							codeAddress();  
+						});
+					}						
+					
+				},400);		
+			},
+			error: function (errorThrown) {}
+		});
+		//var mapCont = '<div id="googleMapsubmit"></div>';
+		//jQuery(contId+' .map').html(mapCont);
 	});
 	
 	jQuery(".formContainer .options .radio label input[type='radio']").each(function() {

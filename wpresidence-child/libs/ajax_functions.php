@@ -85,30 +85,6 @@ function estate_property_page_design_detailsoptions(){
 endif;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 add_action( 'wp_ajax_nopriv_wpestate_save_property_page_design', 'wpestate_save_property_page_design' );  
 add_action( 'wp_ajax_wpestate_save_property_page_design', 'wpestate_save_property_page_design' );
 
@@ -4114,5 +4090,14 @@ if( !function_exists('uni_search') ):
     }
 endif;
 
+add_action( 'wp_ajax_nopriv_get_location_section', 'get_location_section' );  
+add_action( 'wp_ajax_get_location_section', 'get_location_section' );
+
+if( !function_exists('get_location_section') ):
+    function get_location_section(){
+		get_template_part('templates/submit_templates/location_section');
+		exit;
+	}
+endif;
 
 ?>

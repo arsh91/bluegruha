@@ -26,7 +26,7 @@ function initialize(){
     var mapOptions = {
              flat:false,
              noClear:false,
-             zoom: 17,
+             zoom: 13,
              scrollwheel: false,
              draggable: true,
              disableDefaultUI:false,
@@ -111,21 +111,6 @@ function codeAddress() {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function placeMarker(location) {
     "use strict";
     removeMarkers();
@@ -143,7 +128,6 @@ function placeMarker(location) {
     document.getElementById("property_latitude").value=location.lat();
     document.getElementById("property_longitude").value=location.lng();
 }
-
 
  ////////////////////////////////////////////////////////////////////
  /// set markers function
@@ -168,8 +152,7 @@ jQuery('#open_google_submit').click(function(){
         },300)
    
   });
-               
-    
+  
 jQuery('#google_capture').click(function(event){
     event.preventDefault();
     removeMarkers();
@@ -177,11 +160,6 @@ jQuery('#google_capture').click(function(event){
 });  
     
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-
 
 jQuery(document).ready(function ($) {
     "use strict";
@@ -205,17 +183,11 @@ jQuery(document).ready(function ($) {
         },
     });
 
-    
-    
-
     var autocomplete,autocomplete2;
     var options = {
         types: ['(cities)'],
         componentRestrictions: {country: 'uk'}
     };
-
-
-
 
     var componentForm = {
         establishment:'long_name',
@@ -229,8 +201,6 @@ jQuery(document).ready(function ($) {
         postal_code_prefix:'short_name',
         neighborhood:'long_name'
     };
-
-
 
     if ( google_map_submit_vars.enable_auto ==='yes' ){
       
@@ -268,13 +238,8 @@ jQuery(document).ready(function ($) {
         });
     }
     
-    
-    
-    
-    
-    
-    
-    function fillInAddress(place) {
+
+   window.fillInAddress =  function fillInAddress(place) {
     
         $('#property_area').val('');
         $('#property_zip').val('');
@@ -286,9 +251,7 @@ jQuery(document).ready(function ($) {
        
             var temp='';
             var val = place.address_components[i][componentForm[addressType]];
-           
-      
-                
+
             if(addressType=== 'street_number' || addressType=== 'route'){
               //  document.getElementById('property_address').value =  document.getElementById('property_address').value +', '+ val;
             }else if(addressType=== 'neighborhood'){
@@ -314,18 +277,13 @@ jQuery(document).ready(function ($) {
           
         }
         
-    }
+    };
     
-    
-  
-   
     jQuery('#google_capture2').click(function(event){
         event.preventDefault();
         codeAddress_child();  
     });  
     
-    
-
     function codeAddress_child() {
         var address   = document.getElementById('property_address').value;
         //var e = document.getElementById("property_city_submit"); 
@@ -347,7 +305,6 @@ jQuery(document).ready(function ($) {
             }
         }   
 
-
         geocoder.geocode( { 'address': full_addr}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
@@ -368,8 +325,6 @@ jQuery(document).ready(function ($) {
             }
         });
     }
-    
-    
     /////////////////////////////////////// search code
  
 });
