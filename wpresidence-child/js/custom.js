@@ -46,6 +46,20 @@ jQuery(document).ready(function() {
 			},
 			error: function (errorThrown) {}
 		});
+		
+		jQuery.ajax({
+			type: 'POST',
+			url: ajaxurl,
+			data: {
+				'action'            :   'get_image_section',
+			},
+			success: function (data) {  
+				jQuery('.image_container').empty();
+				jQuery(contId+' .image_container').html(data);		
+			},
+			error: function (errorThrown) {}
+		});
+		
 		//var mapCont = '<div id="googleMapsubmit"></div>';
 		//jQuery(contId+' .map').html(mapCont);
 	});
@@ -125,11 +139,15 @@ jQuery(document).ready(function() {
 	jQuery("#bedroomCount a").click(function() {
 		jQuery("#bedroomCount a").removeClass('selected');
 		jQuery(this).addClass('selected');
+		var val = jQuery(this).data('val');
+		jQuery(this).parent().find('input[name=bedrooms]').val(val);
 	});
 	
 	jQuery("#bathroomCount a").click(function() {
 		jQuery("#bathroomCount a").removeClass('selected');
 		jQuery(this).addClass('selected');
+		var val = jQuery(this).data('val');
+		jQuery(this).parent().find('input[name=bathrooms]').val(val);
 	});
 	
 	

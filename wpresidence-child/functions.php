@@ -96,13 +96,15 @@ function checkEmailWithDomain($email, $uni_id){
 	return true;
 }
 
-function submit_uni_property(){
+function saveProperty(){
 	$errors = array();
 	if ( !isset($_POST['new_estate']) || !wp_verify_nonce($_POST['new_estate'],'submit_new_estate') ){
 	   exit('Sorry, your not submiting from site'); 
 	}
-	if(!isset($_POST['property_university']) || empty($_POST['property_university'])){
-		$errors['property_university'] = 1;
+	if($_POST['term_id'] == 47){
+		if(!isset($_POST['property_university']) || empty($_POST['property_university'])){
+			$errors['property_university'] = 1;
+		}
 	}
 	
 	if(!isset($_POST['property_address']) || empty($_POST['property_address'])){
@@ -137,16 +139,19 @@ function submit_uni_property(){
 			$post_title                   =   $university ;
 		}
 		$checkVerfiedAd					=	false;
-		$universityId					=	sanitize_text_field($_POST['hdproperty_university']);
-		if(!isset($_POST['hdproperty_university']) || empty($_POST['hdproperty_university'])){
-			$wpdb->insert('wp_universities', 
-				array(
-					'name'          => $property_university
-				)
-			); 
-			$universityId = $wpdb->insert_id;
-		}else{
-			$checkVerfiedAd = checkEmailWithDomain(sanitize_text_field($_POST['agent_email']), $universityId);
+		if($_POST['term_id'] == 47){
+			$universityId					=	sanitize_text_field($_POST['hdproperty_university']);
+			if(!isset($_POST['hdproperty_university']) || empty($_POST['hdproperty_university'])){
+				$wpdb->insert('wp_universities', 
+					array(
+						'name'          => $property_university
+					)
+				); 
+				$universityId = $wpdb->insert_id;
+			}else{
+				$checkVerfiedAd = checkEmailWithDomain(sanitize_text_field($_POST['agent_email']), $universityId);
+			}
+			$university_id                 	=   wp_kses( esc_html($universityId),$allowed_html);
 		}
         $userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
 		if(!$userId){
@@ -268,7 +273,6 @@ function submit_uni_property(){
                     add_option( "taxonomy_$t_id", $term_meta ); 
                 }
             }
-			$university_id                 	=   wp_kses( esc_html($universityId),$allowed_html);
 			$property_price                 =   wp_kses( esc_html($_POST['rent']),$allowed_html);
 			$property_label                 =   wp_kses( esc_html($_POST['title']),$allowed_html);
 			$bathroom_type                 	=   wp_kses( esc_html($_POST['bath_type']),$allowed_html);
@@ -296,7 +300,7 @@ function submit_uni_property(){
             update_post_meta($post_id, 'property_state', $property_state);
             update_post_meta($post_id, 'property_country', $country_selected);
             update_post_meta($post_id, 'property_status', $prop_stat);
-            update_post_meta($post_id, 'university_id', $university_id);
+            
             update_post_meta($post_id, 'property_university', $university);
             update_post_meta($post_id, 'property_price', $property_price);
             update_post_meta($post_id, 'property_latitude', $property_latitude);
@@ -305,9 +309,13 @@ function submit_uni_property(){
             update_post_meta($post_id, 'google_camera_angle', $google_camera_angle);
             update_post_meta($post_id, 'pay_status', 'not paid');
             update_post_meta($post_id, 'page_custom_zoom', 16);
-			if($checkVerfiedAd){
-				update_post_meta($post_id, 'verifiedAd', 1);
+			if($_POST['term_id'] == 47){
+				update_post_meta($post_id, 'university_id', $university_id);
+				if($checkVerfiedAd){
+					update_post_meta($post_id, 'verifiedAd', 1);
+				}
 			}
+			
 		   /* //$sidebar =  get_option( 'wp_estate_blog_sidebar', true); 
             $sidebar = get_option('wp_estate_property_sidebar_name',true);
             update_post_meta($post_id, 'sidebar_option', $sidebar);
@@ -331,6 +339,10 @@ function submit_uni_property(){
             exit;
         }
 	}
+}
+
+function savePropertyToRent(){
+	
 }
 
 ?>

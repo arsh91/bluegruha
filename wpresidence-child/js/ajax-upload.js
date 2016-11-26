@@ -160,7 +160,7 @@
             });
             
             
-            jQuery('#aaiu-uploader').click(function (e) {
+            jQuery('#aaiu-uploader').on('click', function (e) {
                 uploader.splice();
                 uploader.refresh();
             });

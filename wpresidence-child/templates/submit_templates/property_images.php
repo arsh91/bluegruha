@@ -47,75 +47,77 @@ if ($action=='edit'){
 }
 
 ?>
-<div class="col-md-12 headingPanel">
-	<h3>Listing Media</h3>
+<div class="image_container">
+	<div class="col-md-12 headingPanel">
+		<h3>Listing Media</h3>
+	</div>
+	<div class="submit_container col-md-12">
+	<!--<div class="submit_container_header"><?php //_e('Listing Media','wpestate');?></div>-->
+		<div id="upload-container">                 
+			<div id="aaiu-upload-container">                 
+				<div id="aaiu-upload-imagelist">
+					<ul id="aaiu-ul-list" class="aaiu-upload-list"></ul>
+				</div>
+
+				<div id="imagelist">
+				<?php 
+					if($images!=''){
+						print $images;
+					}
+				
+					if ( isset($_POST['attachid']) && $_POST['attachid']!=''){
+						$attchs=explode(',',$_POST['attachid']);
+						$attachid='';
+						foreach($attchs as $att_id){
+							if( $att_id!='' && is_numeric($att_id) ){
+								$attachid .= $att_id.',';
+								$preview =  wp_get_attachment_image_src($att_id, 'user_picture_profile');    
+			
+								if($preview[0]!=''){
+									$images .=  '<div class="uploaded_images" data-imageid="'.$att_id.'"><img src="'.$preview[0].'" alt="thumb" /><i class="fa fa-trash-o"></i>';
+								   
+								}else{
+									$images .=  '<div class="uploaded_images" data-imageid="'.$att_id.'"><img src="'.get_template_directory_uri().'/img/pdf.png" alt="thumb" /><i class="fa fa-trash-o"></i>';
+								   
+								}
+								$images .='</div>';
+							}
+					
+						}
+						print $images;
+					}
+					
+				?>  
+				</div>
+			  
+				<button id="aaiu-uploader"  class="wpresidence_button wpresidence_success">
+					<?php _e('Select Media','wpestate');?>
+				</button>
+				<input type="hidden" name="attachid" id="attachid" value="<?php echo esc_html($attachid);?>">
+				<input type="hidden" name="attachthumb" id="attachthumb" value="<?php echo esc_html($thumbid);?>">
+				<?php 
+				//_e('* At least 1 image is required for a valid submission.Minimum size is 500/500px.','wpestate');
+				$max_images=intval   ( get_option('wp_estate_prop_image_number','') );
+				if($max_images!=0){ ?>
+					<p class="full_form full_form_image">
+				<?php
+					printf( __(' You can upload maximum %s images','wpestate'),$max_images);
+				?>
+				</p>
+				<?php
+				}
+				//_e('** Double click on the image to select featured.','wpestate');print '</br>';
+				//_e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
+				//_e('**** PDF files upload supported as well.','wpestate');?>
+			</div>  
+		</div>
+		<?php
+		if ($action=='edit'){
+		?>
+			<a href="<?php echo esc_url($floor_link);?>" class="wpb_button manage_floor wpb_btn-success wpb_btn-large vc_button" target="_blank"><?php _e('manage floorplans','wpestate');?></a>
+
+		<?php
+		}
+		?>
+	</div>
 </div>
-<div class="submit_container col-md-12">
-<!--<div class="submit_container_header"><?php //_e('Listing Media','wpestate');?></div>-->
-    <div id="upload-container">                 
-        <div id="aaiu-upload-container">                 
-            <div id="aaiu-upload-imagelist">
-                <ul id="aaiu-ul-list" class="aaiu-upload-list"></ul>
-            </div>
-
-            <div id="imagelist">
-            <?php 
-                if($images!=''){
-                    print $images;
-                }
-            
-                if ( isset($_POST['attachid']) && $_POST['attachid']!=''){
-                    $attchs=explode(',',$_POST['attachid']);
-                    $attachid='';
-                    foreach($attchs as $att_id){
-                        if( $att_id!='' && is_numeric($att_id) ){
-                            $attachid .= $att_id.',';
-                            $preview =  wp_get_attachment_image_src($att_id, 'user_picture_profile');    
-        
-                            if($preview[0]!=''){
-                                $images .=  '<div class="uploaded_images" data-imageid="'.$att_id.'"><img src="'.$preview[0].'" alt="thumb" /><i class="fa fa-trash-o"></i>';
-                               
-                            }else{
-                                $images .=  '<div class="uploaded_images" data-imageid="'.$att_id.'"><img src="'.get_template_directory_uri().'/img/pdf.png" alt="thumb" /><i class="fa fa-trash-o"></i>';
-                               
-                            }
-                            $images .='</div>';
-                        }
-                
-                    }
-                    print $images;
-                }
-                
-            ?>  
-            </div>
-          
-            <button id="aaiu-uploader"  class="wpresidence_button wpresidence_success">
-                <?php _e('Select Media','wpestate');?>
-            </button>
-            <input type="hidden" name="attachid" id="attachid" value="<?php echo esc_html($attachid);?>">
-            <input type="hidden" name="attachthumb" id="attachthumb" value="<?php echo esc_html($thumbid);?>">
-			<?php 
-			//_e('* At least 1 image is required for a valid submission.Minimum size is 500/500px.','wpestate');
-			$max_images=intval   ( get_option('wp_estate_prop_image_number','') );
-			if($max_images!=0){ ?>
-				<p class="full_form full_form_image">
-			<?php
-				printf( __(' You can upload maximum %s images','wpestate'),$max_images);
-			?>
-			</p>
-			<?php
-			}
-			//_e('** Double click on the image to select featured.','wpestate');print '</br>';
-			//_e('*** Change images order with Drag & Drop.','wpestate');print '</br>';
-			//_e('**** PDF files upload supported as well.','wpestate');?>
-        </div>  
-    </div>
-    <?php
-    if ($action=='edit'){
-    ?>
-        <a href="<?php echo esc_url($floor_link);?>" class="wpb_button manage_floor wpb_btn-success wpb_btn-large vc_button" target="_blank"><?php _e('manage floorplans','wpestate');?></a>
-
-    <?php
-    }
-    ?>
-</div>  

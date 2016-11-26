@@ -270,9 +270,10 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////// Submit Code
 ///////////////////////////////////////////////////////////////////////////////////////////
-if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['term_id']==47) {
-	
-	
+if( 'POST' == $_SERVER['REQUEST_METHOD'] && ($_POST['term_id']==47 || $_POST['term_id']==48)) {
+	saveProperty();
+}elseif( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['term_id']==49) {
+	savePropertyToRent();
 }
 
 if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {

@@ -4100,4 +4100,14 @@ if( !function_exists('get_location_section') ):
 	}
 endif;
 
+add_action( 'wp_ajax_nopriv_get_image_section', 'get_image_section' );  
+add_action( 'wp_ajax_get_image_section', 'get_image_section' );
+
+if( !function_exists('get_image_section') ):
+    function get_image_section(){
+		include(locate_template('templates/submit_templates/property_images.php'));
+		exit;
+	}
+endif;
+
 ?>
