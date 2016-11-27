@@ -111,9 +111,6 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $plan_bath_array                =   get_post_meta($edit_id, 'plan_bath', true);
     $plan_price_array               =   get_post_meta($edit_id, 'plan_price', true) ;
     
-    
-    
-
     foreach ($video_values as $value) {
         $option_video.='<option value="' . $value . '"';
         if ($value == $video_type) {
@@ -228,10 +225,6 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
         }
     }
     
-
-
-
-
     foreach ($status_values_array as $key=>$value) {
         $value = trim($value);
         $value_wpml=$value;
@@ -260,18 +253,18 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
      }
 }
 
-
-
-
-
-        
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////// Submit Code
 ///////////////////////////////////////////////////////////////////////////////////////////
+
 if( 'POST' == $_SERVER['REQUEST_METHOD'] && ($_POST['term_id']==47 || $_POST['term_id']==48)) {
-	saveProperty();
+	$errors = saveProperty();
+	
+	if($errors){
+		foreach($errors as $key=>$value){
+			$show_err.=$value.'</br>';
+		}
+	}
 }elseif( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['term_id']==49) {
 	savePropertyToRent();
 }

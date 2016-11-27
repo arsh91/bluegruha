@@ -7,6 +7,8 @@ global $property_bedrooms;
 global $property_bathrooms;
 global $custom_fields_array;
 global $owner_notes;
+global $form_no;
+
 $measure_sys            = esc_html ( get_option('wp_estate_measure_sys','') ); 
 
 $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>false,'order'=>'ASC'));
@@ -75,8 +77,8 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Available From</label>
-	<input type="text" class="form-control" name="available_from" id="available_from">
-	<?php echo wpestate_date_picker_translation_return('available_from'); ?>
+	<input type="text" class="form-control" name="available_from" id="available_from<?php echo $form_no; ?>">
+	<?php echo wpestate_date_picker_translation_return('available_from'.$form_no); ?>
 </div>
 
 <div class="form-group col-md-6">

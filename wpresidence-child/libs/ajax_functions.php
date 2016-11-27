@@ -3535,7 +3535,8 @@ function wpestate_ajax_agent_contact_form(){
 		if(!in_array($_POST['email'], $_SESSION['varified_emails'])){
 			if(isset($_SESSION['contact_otp'])){
 				if ( isset($_POST['contact_otp'])) {
-					if($_SESSION['contact_otp'] != $_POST['contact_otp']){
+					$sessionOtp = $_POST['email'].'-'.$_POST['contact_otp'];
+					if($_SESSION['contact_otp'] != $sessionOtp){
 						echo json_encode(array('sent'=>false, 'response'=>__('OTP doesn\'t match, Please check again!','wpestate') ) ); 
 						exit();
 					}else{
@@ -3547,8 +3548,9 @@ function wpestate_ajax_agent_contact_form(){
 					exit();
 				}
 			}else{
-				$_SESSION['contact_otp'] = rand (1000 , 9999);
-				$message .= __('Please use this OTP for Email Varification','wpestate').": " . $_SESSION['contact_otp'] . "\n\n ";
+				$otp = rand (1000 , 9999);
+				$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
+				$message .= __('Please use this OTP for Email Varification','wpestate').": " . $otp . "\n\n ";
 				$message .="\n\n".__('Message sent from ','wpestate').$permalink;
 				$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 				
@@ -3636,8 +3638,9 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		}
 		  
 		unset($_SESSION['contact_otp']);
-		$_SESSION['contact_otp'] = rand (1000 , 9999);
-		$message .= __('Please use this OTP for Email Varification','wpestate').": " . $_SESSION['contact_otp'] . "\n\n ";
+		$otp					=	rand (1000 , 9999);
+		$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
+		$message .= __('Please use this OTP for Email Varification','wpestate').": " . $otp . "\n\n ";
 		$message .="\n\n".__('Message sent from ','wpestate').$permalink;
 		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 		
@@ -3699,7 +3702,8 @@ if( !function_exists('wpestate_ajax_agent_contact_form_check_otp') ):
 	function wpestate_ajax_agent_contact_form_check_otp(){
 		if(isset($_SESSION['contact_otp'])){
 			if ( isset($_POST['otp'])) {
-				if($_SESSION['contact_otp'] != $_POST['otp']){
+				$sessionOtp = $_POST['email'].'-'.$_POST['otp'];
+				if($_SESSION['contact_otp'] != $sessionOtp){
 					echo json_encode(array('sent'=>false, 'response'=>__('OTP doesn\'t match, Please check again!','wpestate') ) ); 	
 				}else{
 					echo json_encode(array('sent'=>true));
@@ -4105,7 +4109,7 @@ add_action( 'wp_ajax_get_image_section', 'get_image_section' );
 
 if( !function_exists('get_image_section') ):
     function get_image_section(){
-		include(locate_template('templates/submit_templates/property_images.php'));
+		include(locate_template('templates/submit_templates/property_images_new.php'));
 		exit;
 	}
 endif;

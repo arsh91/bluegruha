@@ -189,34 +189,172 @@ jQuery(document).ready(function() {
 		checkMandatory(this);
 	});
 	
-	jQuery('form#new_uni_post').submit(function(e){
+	jQuery('form#new_uni_post, form#new_room_post').submit(function(e){
 		var err = 0;
-		if(jQuery('#property_university').val() == ''){
-			err = 1;
-			jQuery('#property_university').addClass('required');
-			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#property_university'));
-			jQuery('html, body').animate({
-				scrollTop: jQuery("#property_university").offset().top-100
-			}, 2000);
+		var obj = jQuery(this);
+		if(obj.attr('id') == 'new_uni_post'){
+			if(jQuery('#property_university').val() == ''){
+				err = 1;
+				jQuery('#property_university').addClass('required');
+				jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#property_university'));
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#property_university").offset().top-100
+				}, 2000);
+			}
 		}
-		if(jQuery('#property_address').val() == ''){
+		if(obj.closest('form').find('#room_rent').val() == ''){
 			
-			jQuery('#property_address').addClass('required');
-			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#property_address'));
+			obj.closest('form').find('#room_rent').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#room_rent'));
 			if(!err){
 				jQuery('html, body').animate({
-					scrollTop: jQuery("#property_address").offset().top-100
+					scrollTop: obj.closest('form').find("#room_rent").offset().top-100
 				}, 2000);
 			}
 			err = 1;
 		}
-		if(jQuery('#agent_user_email').val() == ''){
+		if(obj.closest('form').find('#prop_title').val() == ''){
 			
-			jQuery('#agent_user_email').addClass('required');
-			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(jQuery('#agent_user_email'));
+			obj.closest('form').find('#prop_title').addClass('required');
+			var elem = obj.closest('form').find('#prop_title');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
 			if(!err){
 				jQuery('html, body').animate({
-					scrollTop: jQuery("#agent_user_email").offset().top-100
+					scrollTop: obj.closest('form').find("#prop_title").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		
+		if(obj.closest('form').find('#property_address').val() == ''){
+			
+			obj.closest('form').find('#property_address').addClass('required');
+			var elem = obj.closest('form').find('#property_address');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#property_address").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#agent_name').val() == ''){
+			
+			obj.closest('form').find('#agent_name').addClass('required');
+			var elem = obj.closest('form').find('#agent_name');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#agent_name").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#agent_user_email').val() == ''){
+			
+			obj.closest('form').find('#agent_user_email').addClass('required');
+			var elem = obj.closest('form').find('#agent_user_email');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#agent_user_email").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		
+		if(err){
+			e.preventDefault();
+		}
+		
+		return true;
+	});	
+	
+	jQuery('form#new_property_post').submit(function(e){
+		var err = 0;
+		var obj = jQuery(this);
+		if(obj.closest('form').find('#property_type').val() == ''){
+			
+			obj.closest('form').find('#property_type').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#property_type'));
+			jQuery('html, body').animate({
+				scrollTop: obj.closest('form').find("#property_type").offset().top-100
+			}, 2000);
+			err = 1;
+		}
+		if(obj.closest('form').find('#rent').val() == ''){
+			
+			obj.closest('form').find('#rent').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#rent'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#rent").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#bedrooms').val() == ''){
+			
+			obj.closest('form').find('#bedrooms').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#bedrooms'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#bedrooms").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#bathrooms').val() == ''){
+			
+			obj.closest('form').find('#bathrooms').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#bathrooms'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#bathrooms").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#prop_title').val() == ''){
+			
+			obj.closest('form').find('#prop_title').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#prop_title'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#prop_title").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#property_address').val() == ''){
+			
+			obj.closest('form').find('#property_address').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#property_address'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#property_address").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#agent_name').val() == ''){
+			
+			obj.closest('form').find('#agent_name').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#agent_name'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#agent_name").offset().top-100
+				}, 2000);
+			}
+			err = 1;
+		}
+		if(obj.closest('form').find('#agent_user_email').val() == ''){
+			
+			obj.closest('form').find('#agent_user_email').addClass('required');
+			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#agent_user_email'));
+			if(!err){
+				jQuery('html, body').animate({
+					scrollTop: obj.closest('form').find("#agent_user_email").offset().top-100
 				}, 2000);
 			}
 			err = 1;
@@ -226,10 +364,9 @@ jQuery(document).ready(function() {
 		}
 		
 		return true;
-	});	
+	});
 	
 	var university_list = JSON.parse(jQuery('#uni_list').val());
-	
 	jQuery( "#property_university" ).autocomplete({
 		source: university_list,
 		response:function(event, ui){

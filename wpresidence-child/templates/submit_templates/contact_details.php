@@ -20,7 +20,7 @@
 	</div>
 	<div class="form-group col-md-6">
 		<label class="control-label">One Time Password (OTP)</label>
-		<input type="text" class="form-control" placeholder="Please enter your OTP" name="otp" id="agent_contact_otp">
+		<input type="text" class="form-control otpField" placeholder="Please enter your OTP" name="otp" id="agent_contact_otp">
 	</div>
 </div>
 <div class="col-md-6">

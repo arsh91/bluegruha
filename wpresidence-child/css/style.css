@@ -45,7 +45,7 @@ img{max-width:100%;}
 .formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #265603; float: left; font-size: 16px; font-weight: normal; padding: 10px 20px; width: 100%; margin-bottom:20px; margin-top:0px;}
 .addType #featured + small + span{color:#448701; font-weight:600;}
 input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#a5cd38; box-shadow: 0 4px 0 0 rgba(36, 86, 3, 0.75);}
-span.verification {background: #a5cd38 none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
+span.verification {background: #a5cd38 none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);cursor:pointer;}
 input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
 .addType input{position:relative; opacity:0.01;}
 .addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #a5cd38; border-radius:50%; top:2px; left:-20px; position:relative;}

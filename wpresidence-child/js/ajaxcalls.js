@@ -1639,6 +1639,7 @@ jQuery(document).ready(function ($) {
 	$('#agent_user_email').blur(function(){
 		var uni_id = '';
 		var email = $(this).val();
+		var obj = $(this);
 		uni_id = $('input[name=hdproperty_university]').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
 		if($(this).val()){
@@ -1655,8 +1656,10 @@ jQuery(document).ready(function ($) {
 				success: function (data) {
 					if (data.sent == false) {
 						$('#alert-agent-contact').empty();
-						$('#agent_submit, #postUniAdd').attr('disabled',true);
-						$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+						// $('#agent_submit, #postUniAdd').attr('disabled',true);
+						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+						obj.closest('form').find('input[type=submit]').attr('disabled',true);
+						obj.closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
 						$('#agent_user_email').removeClass('required');
 						if(data.response){
 							$('#alert-agent-contact').empty().append(data.response);
@@ -1666,8 +1669,10 @@ jQuery(document).ready(function ($) {
 							$('#agent_user_email').removeClass('required');
 						}
 					}else{
-						$('#agent_submit, #postUniAdd').attr('disabled',false);
-						$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
+						// $('#agent_submit, #postUniAdd').attr('disabled',false);
+						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
+						obj.closest('form').find('input[type=submit]').attr('disabled',false);
+						obj.closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
 						$('#varify_cont_email').text("Varify Email");
 					}
@@ -1679,10 +1684,11 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$('#varify_cont_email').click(function(){
-		var email = $('#agent_user_email').val();
+	$('#varify_cont_email, .verification').click(function(){
+		var obj = $(this);
+		var email = obj.closest('form').find('#agent_user_email').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		$('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
+		obj.closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
 		if(email != ''){
 			$.ajax({
 				type: 'POST',
@@ -1693,9 +1699,9 @@ jQuery(document).ready(function ($) {
 					'email'		: email
 				},
 				success: function (data) {
-					$('#alert-agent-contact').empty().append(data.response);
+					obj.closest('form').find('#alert-agent-contact').empty().append(data.response);
 					if(data.sent == true)
-						$('#varify_cont_email').text("Resend OTP");
+						obj.closest('form').find('#varify_cont_email').text("Resend OTP");
 				},
 				error: function (errorThrown) {
 					// console.log(errorThrown);
@@ -1703,16 +1709,18 @@ jQuery(document).ready(function ($) {
 				}
 			});
 		}else{
-			$('#alert-agent-contact').empty().append('Please enter Email id.');
+			obj.closest('form').find('#alert-agent-contact').empty().append('Please enter Email id.');
 		}
 
 	});
     
-	$('#agent_contact_otp').blur(function(){
+	$('#agent_contact_otp, .otpField').blur(function(){
 	
 		var otp = $(this).val();
-		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		$('#alert-agent-contact').empty().append(ajaxcalls_vars.checking);
+		var obj = $(this);
+		var ajaxurl        	=   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		var email			=	obj.closest('form').find('#agent_user_email').val();
+		obj.closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.checking);
 		if(otp != ''){
 			$.ajax({
 				type: 'POST',
@@ -1720,21 +1728,26 @@ jQuery(document).ready(function ($) {
 				url: ajaxurl,
 				data: {
 					'action'    :   'wpestate_ajax_agent_contact_form_check_otp',
-					'otp'		: otp
+					'otp'		: 	otp,
+					'email'		:	email
 				},
 				success: function (data) {
 					if(data.sent == false){
-						$('#alert-agent-contact').empty().append(data.response);
-						$('#agent_submit, #postUniAdd').attr('disabled',true);
-						$('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+						obj.closest('form').find('#alert-agent-contact').empty().append(data.response);
+						// $('#agent_submit, #postUniAdd').attr('disabled',true);
+						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
+						obj.closest('form').find('input[type=submit]').attr('disabled',true);
+						obj.closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
 					}else{
-						$('#agent_submit, #postUniAdd').attr('disabled',false);
-						$('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
+						// $('#agent_submit, #postUniAdd').attr('disabled',false);
+						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
+						obj.closest('form').find('input[type=submit]').attr('disabled',false);
+						obj.closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
 					}
 				}
 			});
 		}else{
-			$('#alert-agent-contact').empty().append('Please enter OTP.');
+			obj.closest('form').find('#alert-agent-contact').empty().append('Please enter OTP.');
 		}
 	});
 

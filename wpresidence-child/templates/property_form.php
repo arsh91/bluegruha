@@ -40,6 +40,7 @@ global $prop_featured;
 global $current_user;
 global $custom_fields_array;
 global $option_slider;
+global $form_no;
 
 $universities_list = get_universities();
 $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC'));
@@ -68,10 +69,11 @@ $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>
 			<form class="formContainer row university" method="post" action="" enctype="multipart/form-data" id="new_uni_post" name="new_post">
 				
 				<?php 
+				$form_no = 1;
 				get_template_part('templates/submit_templates/select_university'); 
 				get_template_part('templates/submit_templates/room_details'); ?>
-				<div class="form-group col-md-12 full-width profile-page image-section-add-property">
-					<?php include(locate_template('templates/submit_templates/property_images.php')); ?>
+				<div class="form-group col-md-12 full-width profile-page image-section-add-property image_container">
+					<?php //include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				<?php 
 				get_template_part('templates/submit_templates/location_section');
@@ -83,27 +85,34 @@ $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>
 		</div>
 		<div role="tabpanel" class="tab-pane fade commonForm" id="room-to-rent">
 			<form class="formContainer row mt-0 room" method="post" action="" enctype="multipart/form-data" id="new_room_post" name="new_post">
-				<?php get_template_part('templates/submit_templates/room_details'); ?>
-				<div class="form-group col-md-12 full-width profile-page image-section-add-property">
-					<?php include(locate_template('templates/submit_templates/property_images.php')); ?>
+				<?php
+					$form_no = 2;
+					get_template_part('templates/submit_templates/room_details'); 
+				?>
+				<div class="form-group col-md-12 full-width profile-page image-section-add-property image_container">
+					<?php //include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				<?php 
 				get_template_part('templates/submit_templates/location_section');
 				get_template_part('templates/submit_templates/contact_details');				
 				get_template_part('templates/submit_templates/post_ad_type'); ?>
+				<input name="term_id" value="" type="hidden" />
 			</form>
 		</div>
 		<div role="tabpanel" class="tab-pane fade commonForm" id="property-to-rent">
 			<form class="formContainer row property mt-0" method="post" action="" enctype="multipart/form-data" id="new_property_post" name="new_post">
 							
-				<?php get_template_part('templates/submit_templates/property_to_rent_detail'); ?>
-				<div class="form-group col-md-12 full-width profile-page image-section-add-property">
-					<?php include(locate_template('templates/submit_templates/property_images.php')); ?>
+				<?php 
+				$form_no = 3;
+				get_template_part('templates/submit_templates/property_to_rent_detail'); ?>
+				<div class="form-group col-md-12 full-width profile-page image-section-add-property image_container">
+					<?php //include(locate_template('templates/submit_templates/property_images.php')); ?>
 				</div>
 				<?php 
 				get_template_part('templates/submit_templates/location_section');
 				get_template_part('templates/submit_templates/contact_details');				
 				get_template_part('templates/submit_templates/post_ad_type'); ?>
+				<input name="term_id" value="" type="hidden" />
 			</form>
 		</div>
 	</div>
