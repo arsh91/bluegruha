@@ -14,18 +14,22 @@ jQuery(document).ready(function() {
 			},
 			success: function (data) {  
 				jQuery('.add_property_location').empty();
-				jQuery(contId+' .add_property_location').html(data);				
+				jQuery(contId+' .add_property_location').html(data);
+				jQuery('.property_address').unbind('blur').bind('blur', function(){
+					checkMandatory(this);
+				});
 				setTimeout(function(){
 					initialize();
 					google.maps.event.trigger(map, "resize");
 					
-					if ( google_map_submit_vars.enable_auto ==='yes' ){      
+					if ( google_map_submit_vars.enable_auto ==='yes' ){  
 						autocomplete = new google.maps.places.Autocomplete(
 						  /** @type {HTMLInputElement} */(document.getElementById('property_address')),
 							{   types: ['geocode'],
 								"partial_match" : true
 							}
 						);
+						
 						var input = document.getElementById('property_address');
 						google.maps.event.addDomListener(input, 'keydown', function(e) { 
 							if (e.keyCode == 13) { 
@@ -59,7 +63,6 @@ jQuery(document).ready(function() {
 			},
 			error: function (errorThrown) {}
 		});
-		
 		//var mapCont = '<div id="googleMapsubmit"></div>';
 		//jQuery(contId+' .map').html(mapCont);
 	});
@@ -166,26 +169,7 @@ jQuery(document).ready(function() {
 		}
 		return true;
 	}
-	jQuery('#property_university').blur(function(){
-		checkMandatory(this);
-	});
-	
-	jQuery('#room_rent').blur(function(){
-		checkMandatory(this);
-	});
-	
-	jQuery('#prop_title').blur(function(){
-		checkMandatory(this);
-	});
-	
-	jQuery('#property_address').blur(function(){
-		checkMandatory(this);
-	});
-	
-	jQuery('#agent_user_email').blur(function(){
-		checkMandatory(this);
-	});
-	jQuery('#agent_name').blur(function(){
+	jQuery('#property_university, .room_rent, .prop_title, .property_address, .agent_name, .agent_user_email').blur(function(){
 		checkMandatory(this);
 	});
 	

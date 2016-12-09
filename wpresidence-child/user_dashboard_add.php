@@ -1058,7 +1058,12 @@ $options=wpestate_page_details($post->ID);
     <?php //get_template_part('templates/breadcrumbs'); ?>
 
     <div class="col-md-3">
-       <?php  get_template_part('templates/user_menu');  ?>
+       <?php  
+			if(!wp_is_mobile()){
+				get_template_part('templates/user_menu');
+			}
+		
+		?>
     </div>  
 	<div class="col-md-9">
 		<?php get_template_part('templates/ajax_container'); ?>

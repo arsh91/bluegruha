@@ -48,7 +48,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Room Rent *</label>
-	<input type="text" class="form-control" placeholder="Per Month" name = "rent" id = "room_rent">
+	<input type="text" class="form-control room_rent" placeholder="Per Month" name = "rent" id = "room_rent" />
 
 </div>
 <div class="form-group col-md-6">
@@ -71,10 +71,13 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 		<?php } ?>
 	</div>
 </div>
-<div class="form-group col-md-6">
-	<label class="control-label">Security Deposit</label>
-	<input type="text" class="form-control" name = "security_amount">
-</div>
+<?php
+	if (!wp_is_mobile()) { ?>
+		<div class="form-group col-md-6">
+			<label class="control-label">Security Deposit</label>
+			<input type="text" class="form-control" name = "security_amount">
+		</div>
+<?php } ?>
 <div class="form-group col-md-6">
 	<label class="control-label">Available From</label>
 	<input type="text" class="form-control" name="available_from" id="available_from<?php echo $form_no; ?>">
@@ -90,10 +93,13 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 		<option value="Gym/Fitness center">Gym/Fitness center</option>
 	</select>
 </div>
-<div class="form-group col-md-6">
-	<label class="control-label">Language Preference</label>
-	<input type="text" class="form-control" name="language">
-</div>
+<?php
+	if (!wp_is_mobile()) { ?>
+		<div class="form-group col-md-6">
+			<label class="control-label">Language Preference</label>
+			<input type="text" class="form-control" name="language">
+		</div>
+	<?php } ?>
 
 <div class="col-md-12 headingPanel">
 	<h3>Other details</h3>
@@ -101,7 +107,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 
 <div class="form-group col-md-12 title-field">
 	<label class="control-label">Title *</label>
-	<input type="text" class="form-control" name="title" id="prop_title"/>
+	<input type="text" class="form-control prop_title" name="title" id="prop_title" />
 </div>
 <div class="form-group col-md-12 full-width">
 	<label class="control-label">Room Description</label>

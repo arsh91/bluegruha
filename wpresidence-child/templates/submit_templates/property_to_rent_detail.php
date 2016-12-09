@@ -14,7 +14,7 @@ global $form_no;
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Property Rent *</label>
-	<input type="text" class="form-control" placeholder="Per Month" name="rent" id="rent">
+	<input type="text" class="form-control room_rent" placeholder="Per Month" name="rent" id="rent">
 </div>
 
 <div class="form-group col-md-6">
@@ -68,7 +68,7 @@ global $form_no;
 
 <div class="form-group col-md-12 title-field">
 	<label class="control-label">Title *</label>
-	<input type="text" class="form-control" name="title" id="prop_title"/>
+	<input type="text" class="form-control prop_title" name="title" id="prop_title"/>
 </div>
 <div class="form-group col-md-12 full-width">
 	<label class="control-label">Property Description (optional)</label>

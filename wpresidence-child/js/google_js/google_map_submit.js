@@ -26,7 +26,7 @@ function initialize(){
     var mapOptions = {
              flat:false,
              noClear:false,
-             zoom: 13,
+             zoom: 11,
              scrollwheel: false,
              draggable: true,
              disableDefaultUI:false,

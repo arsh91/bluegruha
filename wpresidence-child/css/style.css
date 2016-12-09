@@ -64,8 +64,8 @@ ul#featuredAd{display:none;}
 .tooltipCustom ul {padding:0;}
 .tooltipCustom li {list-style:none; margin:5px 0;}
 .formContainer .options.roomCount{border:none;}
-.roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#003f61; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
-.formContainer .options.roomCount a:hover, .formContainer .options.roomCount a.selected{color:#fff; background:#003f61; border-color:#003f61;}
+.roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#666; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
+.formContainer .options.roomCount a:hover, .formContainer .options.roomCount a.selected{color:#fff; background:#a5cd38; border-color:#a5cd38;}
 .roomCount a:last-child{margin-right:0;}
 .rightSidebar h4{font-weight:300; background: #e4e4e4;padding:10px 15px;font-size: 16px;border-bottom: 1px solid #cfcfcf; height:36px; border-radius: 5px 5px 0px 0px;color:#003f61; float:left; width:100%;}
 .ownerInfo{padding:0 15px 10px 15px; float:left; width:100%;}
@@ -202,3 +202,7 @@ ul.uni_result {
 .ui-autocomplete.ui-menu .ui-state-focus{background-color: #a5cd38 !important;}
 .wpresidence_success {background-color: #a5cd38;border-bottom: 3px solid #84aa1d;}
 .wpresidence_success:hover {background-color: #82b005;}
+
+.user_dashboard_links{background-color: #666;}
+.user_dashboard_links .user_tab_active{background-color: #a5cd38;}
+.user_dashboard_links a:hover{background-color: #a5cd38;color:#fff;}

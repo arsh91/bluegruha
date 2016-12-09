@@ -4,7 +4,7 @@
 
 <div class="form-group col-md-6">
 	<label class="control-label">Name *</label>
-	<input type="text" class="form-control" placeholder="John Doe" name="agent_name" id = "agent_name">
+	<input type="text" class="form-control agent_name" placeholder="John Doe" name="agent_name" id = "agent_name">
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Phone Number</label>
@@ -12,7 +12,7 @@
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Email *</label>
-	<input type="email" class="form-control" name="agent_email" id="agent_user_email" style="float:right;margin:0;">
+	<input type="email" class="form-control agent_user_email" name="agent_email" id="agent_user_email" style="float:right;margin:0;">
 </div>
 <div>
 	<div class="form-group col-md-6">

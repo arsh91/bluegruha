@@ -23,19 +23,25 @@ global $property_county_state;
 		<div class="locationContainer">
 			<div class="form-group full-width">
 				<label class="control-label"><?php _e('Location Address *','wpestate');?></label>
-				<input type="text" placeholder="Enter home or street address" class="form-control" id="property_address" size="40" name="property_address" rows="3" cols="42" value ="<?php print $property_address; ?>">
+				<input type="text" placeholder="Enter home or street address" class="form-control property_address" id="property_address" size="40" name="property_address" rows="3" cols="42" value ="<?php print $property_address; ?>">
 			</div>
-			<div class="form-group full-width">
-				<label class="control-label">Apartment name</label>
-				<input type="text" placeholder="Enter your Apartment name" class="form-control" name="apartment_name">
-			</div>
-			<!--
-			<div class="form-group full-width">
-				<button id="google_capture"  class="wpresidence_button wpresidence_success"><?php //_e('Place Pin with Property Address','wpestate');?></button>
-			</div>-->
-			<div class="map">
+			<?php
+				$style = 'display:none;';
+				if (!wp_is_mobile()) { ?>
+					<div class="form-group full-width">
+						<label class="control-label">Apartment name</label>
+						<input type="text" placeholder="Enter your Apartment name" class="form-control" name="apartment_name">
+					</div>
+					<!--
+					<div class="form-group full-width">
+						<button id="google_capture"  class="wpresidence_button wpresidence_success"><?php //_e('Place Pin with Property Address','wpestate');?></button>
+					</div>-->
+			<?php 
+				$style = 'display:block;';
+				} ?> 
+			<div class="map" style="<?php echo $style; ?>" >
 				<div id="googleMapsubmit" ></div>   
-			</div>  
+			</div> 
 			<div class = "hide" style="display:none;">
 				<div class="advanced_city_div half_form">
 				<label for="property_city"><?php  _e('City','wpestate');?></label>
