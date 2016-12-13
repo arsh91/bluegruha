@@ -1,3 +1,9 @@
+<?php
+global $current_user;
+echo '<pre>';
+print_r($current_user);
+echo '</pre>';
+?>
 <div class="col-md-12 headingPanel">
 	<h3>Please Enter Your Contact Details</h3>
 </div>

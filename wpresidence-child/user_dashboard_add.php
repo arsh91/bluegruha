@@ -2,9 +2,9 @@
 // Template Name: User Dashboard Submit
 // Wp Estate Pack
 
-if ( !is_user_logged_in() ) {   
-     wp_redirect( home_url() );exit;
-} 
+// if ( !is_user_logged_in() ) {   
+     // wp_redirect( home_url() );exit;
+// } 
 set_time_limit (600);
 
 global $post;
@@ -1045,7 +1045,7 @@ $options=wpestate_page_details($post->ID);
 ?> 
 
 <?php
-	if($post->post_name == 'add-property-beta'){
+	if($post->ID == 82){
 
 		wp_enqueue_style( 'bootstrap-css',  get_template_directory_uri() . '/css/bootstrap.min.css' );  
 		wp_enqueue_style( 'bootstrap-multiselect-css',  get_template_directory_uri() . '/css/bootstrap-multiselect.css' );  
@@ -1056,15 +1056,12 @@ $options=wpestate_page_details($post->ID);
 <div id="cover"></div>
 <div class="row">
     <?php //get_template_part('templates/breadcrumbs'); ?>
-
-    <div class="col-md-3">
-       <?php  
-			if(!wp_is_mobile()){
-				get_template_part('templates/user_menu');
-			}
-		
-		?>
-    </div>  
+	<?php
+	if(!wp_is_mobile() && is_user_logged_in()){ ?>
+		<div class="col-md-3">
+		   <?php get_template_part('templates/user_menu'); ?>
+		</div>
+	<?php } ?>
 	<div class="col-md-9">
 		<?php get_template_part('templates/ajax_container'); ?>
 
@@ -1072,11 +1069,12 @@ $options=wpestate_page_details($post->ID);
 
     </div>
      
-<?php
-	 wp_enqueue_script('bootstrap-select',  get_template_directory_uri() .'/js/bootstrap-select.min.js',array('jquery'), '1.0', true); 
-	 wp_enqueue_script('bootstrap-multiselect',  get_template_directory_uri() .'/js/bootstrap-multiselect.js',array('jquery'), '1.0', true); 
-	 wp_enqueue_script('custom-js',  get_template_directory_uri() .'/js/custom.js',array('jquery'), '1.0', true); 
-?>
+	<?php
+		 wp_enqueue_script('bootstrap-select',  get_template_directory_uri() .'/js/bootstrap-select.min.js',array('jquery'), '1.0', true); 
+		 wp_enqueue_script('bootstrap-multiselect',  get_template_directory_uri() .'/js/bootstrap-multiselect.js',array('jquery'), '1.0', true); 
+		 wp_enqueue_script('custom-js',  get_template_directory_uri() .'/js/custom.js',array('jquery'), '1.0', true); 
+	?>
+</div>
 <?php get_footer();?>
 
 <?php }else{ ?>
