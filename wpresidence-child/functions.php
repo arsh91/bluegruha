@@ -37,9 +37,9 @@ function mapfunctionsChanges(){
 	wp_deregister_script('google_map_submit');
 	wp_register_script('google_map_submit', get_stylesheet_directory_uri().'/js/google_js/google_map_submit'.$mimify_prefix .'.js');
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////file upload ajax - profile and user dashboard
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     if( is_page_template('user_dashboard_profile.php') || is_page_template('user_dashboard_add.php')   ){
 		$max_file_size  = 100 * 1000 * 1000;
@@ -111,21 +111,23 @@ function saveProperty(){
 	if(!isset($_POST['property_address']) || empty($_POST['property_address'])){
 		$errors['property_address'] = 1;
 	}
-	if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
-		$errors['agent_email'] = 1;
-	}else{
-		if(!in_array($_POST['agent_email'], $_SESSION['varified_emails'])){
-			if(isset($_SESSION['contact_otp'])){
-				if ( isset($_POST['otp'])) {
-					$sessionOtp = $_POST['agent_email'].'-'.$_POST['otp'];
-					if($_SESSION['contact_otp'] != $sessionOtp){
-						$errors['otp'] = 1;
+	if(empty($current_user->ID)){
+		if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
+			$errors['agent_email'] = 1;
+		}else{
+			if(!in_array($_POST['agent_email'], $_SESSION['varified_emails'])){
+				if(isset($_SESSION['contact_otp'])){
+					if ( isset($_POST['otp'])) {
+						$sessionOtp = $_POST['agent_email'].'-'.$_POST['otp'];
+						if($_SESSION['contact_otp'] != $sessionOtp){
+							$errors['otp'] = 1;
+						}else{
+							unset($_SESSION['contact_otp']);
+							$_SESSION['varified_emails'][] = $_POST['agent_email'];
+						}
 					}else{
-						unset($_SESSION['contact_otp']);
-						$_SESSION['varified_emails'][] = $_POST['agent_email'];
+						$errors['otp'] = 2;
 					}
-				}else{
-					$errors['otp'] = 2;
 				}
 			}
 		}
@@ -159,26 +161,36 @@ function saveProperty(){
 			}
 			$university_id                 	=   wp_kses( esc_html($universityId),$allowed_html);
 		}
-        $userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
-		if(!$userId){
-			$user_name 					=  $user_email = wp_filter_nohtml_kses( $_POST['agent_email']);
-			$user_password 				= wp_generate_password( $length=12, $include_standard_special_chars=false );
-			$userId         			= wp_create_user( $user_name, $user_password, $user_email );
-			wp_update_user(
-				array(
-					'ID'          =>    $userId,
-					'nickname'    =>    $user_email,
-					'display_name'=>	 wp_filter_nohtml_kses( $_POST['agent_name']),
-					'description'=>		wp_filter_nohtml_kses( $_POST['agent_phone'])
-				)
-			);
-			wp_send_new_user_notifications($userId);
+		if(empty($current_user->ID)){
+			$userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
+			if(!$userId){
+				$user_name 					=  $user_email = wp_filter_nohtml_kses( $_POST['agent_email']);
+				$user_password 				= wp_generate_password( $length=12, $include_standard_special_chars=false );
+				$userId         			= wp_create_user( $user_name, $user_password, $user_email );
+				wp_update_user(
+					array(
+						'ID'          	=>    $userId,
+						'nickname'    	=>    $user_email,
+						'display_name'	=>	wp_filter_nohtml_kses( $_POST['agent_name']),
+						'description'	=>		wp_filter_nohtml_kses( $_POST['agent_phone'])
+					)
+				);
+				wp_send_new_user_notifications($userId);
+				update_user_meta($userId, 'user_email', $_POST['agent_email']);
+				update_user_meta($userId, 'first_name', $_POST['agent_name']);
+				update_user_meta($userId, 'mobile', $_POST['agent_phone']);
+			}
+		}else{
+			$userId = $current_user->ID;
+			if(isset($_POST['agent_phone']) && !empty($_POST['agent_phone'])){
+				update_user_meta($userId, 'mobile', $_POST['agent_phone']);
+			}
 		}
 		$post_author					= $userId;
 		$post_content 	            	=   wp_filter_nohtml_kses( $_POST['description']);
         $property_address               =   wp_kses( $_POST['property_address'],$allowed_html);
         $property_county                =   wp_kses( $_POST['property_county'],$allowed_html);
-    //    $property_state                 =   wp_kses( $_POST['property_state'],$allowed_html);
+    //    $property_state               =   wp_kses( $_POST['property_state'],$allowed_html);
         $property_zip                   =   wp_kses( $_POST['property_zip'],$allowed_html);
         $country_selected               =   wp_kses( $_POST['property_country'],$allowed_html);     
         $prop_stat                      =   wp_kses( $_POST['property_status'],$allowed_html);
@@ -196,7 +208,7 @@ function saveProperty(){
 			'post_type'     => 'estate_property' ,
 			'post_author'   => $post_author
 		);
-		$post_id =  wp_insert_post($post );  
+		$post_id =  wp_insert_post($post        );  
 		if( $paid_submission_status == 'membership'){ // update pack status
 			wpestate_update_listing_no($current_user->ID);                
 			//if($prop_featured==1){
@@ -205,7 +217,7 @@ function saveProperty(){
 		}
 		if($post_id) {
 			// uploaded images
-			if ($_POST['attachid']==''){
+			if ($_POST['attachid'] !=''){
 				$order=0;
 				$attchs=explode(',',$_POST['attachid']);
 				$last_id='';
@@ -368,21 +380,23 @@ function savePropertyToRent(){
 	if(!isset($_POST['property_address']) || empty($_POST['property_address'])){
 		$errors['property_address'] = 1;
 	}
-	if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
-		$errors['agent_email'] = 1;
-	}else{
-		if(!in_array($_POST['agent_email'], $_SESSION['varified_emails'])){
-			if(isset($_SESSION['contact_otp'])){
-				if ( isset($_POST['otp'])) {
-					$sessionOtp = $_POST['agent_email'].'-'.$_POST['otp'];
-					if($_SESSION['contact_otp'] != $sessionOtp){
-						$errors['otp'] = 1;
+	if(empty($current_user->ID)){
+		if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
+			$errors['agent_email'] = 1;
+		}else{
+			if(!in_array($_POST['agent_email'], $_SESSION['varified_emails'])){
+				if(isset($_SESSION['contact_otp'])){
+					if ( isset($_POST['otp'])) {
+						$sessionOtp = $_POST['agent_email'].'-'.$_POST['otp'];
+						if($_SESSION['contact_otp'] != $sessionOtp){
+							$errors['otp'] = 1;
+						}else{
+							unset($_SESSION['contact_otp']);
+							$_SESSION['varified_emails'][] = $_POST['agent_email'];
+						}
 					}else{
-						unset($_SESSION['contact_otp']);
-						$_SESSION['varified_emails'][] = $_POST['agent_email'];
+						$errors['otp'] = 2;
 					}
-				}else{
-					$errors['otp'] = 2;
 				}
 			}
 		}
@@ -394,20 +408,30 @@ function savePropertyToRent(){
 		$post_title 				=	wp_kses( $_POST['title'],$allowed_html);
 		
 		$checkVerfiedAd					=	false;
-        $userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
-		if(!$userId){
-			$user_name 					=  $user_email = wp_filter_nohtml_kses( $_POST['agent_email']);
-			$user_password 				= wp_generate_password( $length=12, $include_standard_special_chars=false );
-			$userId         			= wp_create_user( $user_name, $user_password, $user_email );
-			wp_update_user(
-				array(
-					'ID'          =>    $userId,
-					'nickname'    =>    $user_email,
-					'display_name'=>	 wp_filter_nohtml_kses( $_POST['agent_name']),
-					'description'=>		wp_filter_nohtml_kses( $_POST['agent_phone'])
-				)
-			);
-			wp_send_new_user_notifications($userId);
+		if(empty($current_user->ID)){
+			$userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
+			if(!$userId){
+				$user_name 					=  $user_email = wp_filter_nohtml_kses( $_POST['agent_email']);
+				$user_password 				= wp_generate_password( $length=12, $include_standard_special_chars=false );
+				$userId         			= wp_create_user( $user_name, $user_password, $user_email );
+				wp_update_user(
+					array(
+						'ID'          =>    $userId,
+						'nickname'    =>    $user_email,
+						'display_name'=>	 wp_filter_nohtml_kses( $_POST['agent_name']),
+						'description'=>		wp_filter_nohtml_kses( $_POST['agent_phone'])
+					)
+				);
+				wp_send_new_user_notifications($userId);
+				update_user_meta($userId, 'user_email', $_POST['agent_email']);
+				update_user_meta($userId, 'first_name', $_POST['agent_name']);
+				update_user_meta($userId, 'mobile', $_POST['agent_phone']);
+			}
+		}else{
+			$userId		=	$current_user->ID;
+			if(isset($_POST['agent_phone']) && !empty($_POST['agent_phone'])){
+				update_user_meta($userId, 'mobile', $_POST['agent_phone']);
+			}
 		}
 		$post_author					= $userId;
 		$post_content 	            	=   wp_filter_nohtml_kses( $_POST['description']);
@@ -440,7 +464,7 @@ function savePropertyToRent(){
 		}
 		if($post_id) {
 			// uploaded images
-			if ($_POST['attachid']==''){
+			if ($_POST['attachid']!=''){
 				$order=0;
 				$attchs=explode(',',$_POST['attachid']);
 				$last_id='';

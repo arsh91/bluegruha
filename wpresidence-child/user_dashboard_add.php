@@ -34,9 +34,7 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $action                         =   'edit';
     $submit_title                   =   get_the_title($edit_id);
     $submit_description             =   get_post_field('post_content', $edit_id);
-    
-   
-  
+
     $prop_category_array            =   get_the_terms($edit_id, 'property_category');
     if(isset($prop_category_array[0])){
          $prop_category_selected   =   $prop_category_array[0]->term_id;
@@ -67,7 +65,7 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $property_county                =   esc_html( get_post_meta($edit_id, 'property_county', true) );
    // $property_state                 =   esc_html( get_post_meta($edit_id, 'property_state', true) );
     $property_zip                   =   esc_html( get_post_meta($edit_id, 'property_zip', true) );
-     $country_selected               =   esc_html( get_post_meta($edit_id, 'property_country', true) );
+    $country_selected               =   esc_html( get_post_meta($edit_id, 'property_country', true) );
     $prop_stat                      =   esc_html( get_post_meta($edit_id, 'property_status', true) );
     $university                      =   esc_html( get_post_meta($edit_id, 'property_university', true) );
     $property_status                =   '';
@@ -142,10 +140,7 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
          $google_view_check =' ';
     }
     
-    
-  
-    
-    $google_camera_angle            =   intval( get_post_meta($edit_id, 'google_camera_angle', true) );; 
+    $google_camera_angle            =   intval( get_post_meta($edit_id, 'google_camera_angle', true) );
    
     //  custom fields
     $custom_fields = get_option( 'wp_estate_custom_fields', true);  
@@ -164,7 +159,6 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
         }
     }
 
-            
 
 }else{    
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -208,7 +202,6 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     $plan_bath_array                =   '';
     $plan_price_array               =   '';
     $university						=   '';
-    
     
     $custom_fields = get_option( 'wp_estate_custom_fields', true);    
     $custom_fields_array=array();
@@ -309,11 +302,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
         }else{
             $property_county_state  =   wp_kses(esc_html($_POST['property_county']),$allowed_html);
         }
-       
-        
-        
-        
-                
+           
         $show_err                       =   '';
         $post_id                        =   '';
         $submit_title                   =   wp_kses( $_POST['wpestate_title'],$allowed_html ); 
@@ -657,9 +646,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
             exit;
         }
         
-        }//end if user can submit  
-    
-    
+    }//end if user can submit  
     
 } // end post
 

@@ -1,3 +1,13 @@
+<?php
+global $edit_id;
+global $current_user;
+$disabled = '';
+$class = 'postUniAdd';
+if(!isset($current_user->data->ID)){
+		$disabled = 'disabled';
+		$class = 'postUniAdd disabled_contact_btn';
+}
+?>
 <div class="form-group col-md-12 addTypeCon">
 	<label class="control-label">Add Type</label>
 	<div id="addType" class="addType">
@@ -14,7 +24,7 @@
 	</div>
 </div>
 <div class="col-md-12 buttonContainer">
-	<input type="submit" id="postUniAdd" class="postUniAdd disabled_contact_btn" value="Post your free add" name="add_property" disabled="disabled" />
+	<input type="submit" id="postUniAdd" class="<?php echo $class; ?>" value="Post your free add" name="add_property" <?php echo $disabled; ?> />
 	<div class="tooltipCustom">
 		<ul id="freeAd">
 			<li>Valid upto 7 days</li>

@@ -98,6 +98,7 @@ ul#featuredAd{display:none;}
 .specifications span.price{float:right; font-size:14px; color:#4d9a01; font-weight:600; top:-2px; position:relative;}
 @media only screen and (max-width: 360px){
 .innerContainer .nav.nav-tabs li a{height:145px !important;}
+#university_fld_cont{top:0px !important;width:100%;}
 }
 @media only screen and (max-width: 640px) and (min-width: 361px){
 .innerContainer .nav.nav-tabs li a{height:120px !important;}
@@ -118,6 +119,8 @@ input.postUniAdd{width:100%; font-size:16px;}
 .tooltipCustom::after{top:-15px; left:calc(50% - 15px); transform: rotate(90deg);}
 }
 @media only screen and (max-width: 991px){
+.ui-autocomplete{left:0 !important;}
+#university_fld_cont {float: none !important; top: 78px !important; left: 0 !important;}
 span.verification{float:left; width:100%;}
 .commonForm .form-group.highlight{width:100%;}
 .highlight em{width:100%;}
@@ -131,6 +134,8 @@ span.verification{float:left; width:100%;}
 .innerContainer .tab-content{float:left; width:100%;}
 .addType{float:left; width:100%;}
 .formContainer h3{margin-bottom:20px;}
+}
+@media only screen and (max-width: 640px){
 }
 @media only screen and (min-width: 641px) and (max-width: 991px){
 .commonForm .addTypeCon.form-group {width: 100%;}
@@ -188,6 +193,7 @@ ul.uni_result {
 * we use height instead, but this forces the menu to always be this tall
 */
 * html .ui-autocomplete {height: 100px;}
+#university_fld_cont{position:relative;float:left;top: 36px;left:3px;}
 .commonForm .form-control {margin-bottom:0px}
 .form-group.col-md-12.title-field {margin-bottom: 15px;}
 .form-group{position:relative;}
@@ -206,3 +212,6 @@ ul.uni_result {
 .user_dashboard_links{background-color: #666;}
 .user_dashboard_links .user_tab_active{background-color: #a5cd38;}
 .user_dashboard_links a:hover{background-color: #a5cd38;color:#fff;}
+@media only screen and (min-width: 992px){
+.commonForm label.control-label{margin-right:10px;}
+}

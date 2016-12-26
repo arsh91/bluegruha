@@ -222,8 +222,8 @@ jQuery(document).ready(function() {
 			}
 			err = 1;
 		}
+		
 		if(obj.closest('form').find('#agent_name').val() == ''){
-			
 			obj.closest('form').find('#agent_name').addClass('required');
 			var elem = obj.closest('form').find('#agent_name');
 			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
@@ -235,7 +235,6 @@ jQuery(document).ready(function() {
 			err = 1;
 		}
 		if(obj.closest('form').find('#agent_user_email').val() == ''){
-			
 			obj.closest('form').find('#agent_user_email').addClass('required');
 			var elem = obj.closest('form').find('#agent_user_email');
 			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(elem);
@@ -321,8 +320,8 @@ jQuery(document).ready(function() {
 			}
 			err = 1;
 		}
+		
 		if(obj.closest('form').find('#agent_name').val() == ''){
-			
 			obj.closest('form').find('#agent_name').addClass('required');
 			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#agent_name'));
 			if(!err){
@@ -333,7 +332,6 @@ jQuery(document).ready(function() {
 			err = 1;
 		}
 		if(obj.closest('form').find('#agent_user_email').val() == ''){
-			
 			obj.closest('form').find('#agent_user_email').addClass('required');
 			jQuery('<i class="validation_msg">is Required.</i>').insertAfter(obj.closest('form').find('#agent_user_email'));
 			if(!err){
@@ -343,6 +341,7 @@ jQuery(document).ready(function() {
 			}
 			err = 1;
 		}
+		
 		if(err){
 			e.preventDefault();
 		}
@@ -353,6 +352,7 @@ jQuery(document).ready(function() {
 	var university_list = JSON.parse(jQuery('#uni_list').val());
 	jQuery( "#property_university" ).autocomplete({
 		source: university_list,
+		appendTo: "#university_fld_cont",
 		response:function(event, ui){
 			if (ui.content.length === 0) {
 				jQuery('.uni_not_found_msg').show();
