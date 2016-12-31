@@ -19,12 +19,12 @@ if( !function_exists('wpestate_delete_file') ):
         $current_user = wp_get_current_user();
         $userID =   $current_user->ID;
       
-        if ( !is_user_logged_in() ) {   
-            exit('ko');
-        }
-        if($userID === 0 ){
-            exit('out pls');
-        }
+        //if ( !is_user_logged_in() ) {   
+        //    exit('ko');
+        //}
+       // if($userID === 0 ){
+       //     exit('out pls');
+       // }
      
         
         $attach_id = intval($_POST['attach_id']);
@@ -100,12 +100,12 @@ if( !function_exists('me_upload') ):
         $current_user = wp_get_current_user();
         $userID =   $current_user->ID;
     
-        if ( !is_user_logged_in() ) {   
-            exit('ko');
-        }
-        if($userID === 0 ){
-            exit('out pls');
-        }
+       // if ( !is_user_logged_in() ) {   
+       //     exit('ko');
+      //  }
+     //   if($userID === 0 ){
+      //      exit('out pls');
+      //  }
 
         $filename = convertAccentsAndSpecialToNormal($_FILES['aaiu_upload_file']['tmp_name']);
         $base='';

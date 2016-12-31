@@ -2,6 +2,26 @@
 // Template Name: User Dashboard Submit
 // Wp Estate Pack
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// 3rd party login code
+//////////////////////////////////////////////////////////////////////////////////////////
+
+if( ( isset($_GET['code']) && isset($_GET['state']) ) ){
+    $vsessionid = session_id();
+    if (empty($vsessionid)) {session_name('PHPSESSID'); session_start();}
+    estate_facebook_login($_GET);
+}else if(isset($_GET['openid_mode']) && $_GET['openid_mode']=='id_res' ){   
+    estate_open_id_login($_GET);
+  
+}else if (isset($_GET['code'])){
+    estate_google_oauth_login($_GET);
+}else{
+    // if ( !is_user_logged_in() ) {   
+      // wp_redirect(  home_url() );exit;
+    // }
+
+}
+
 // if ( !is_user_logged_in() ) {   
      // wp_redirect( home_url() );exit;
 // } 

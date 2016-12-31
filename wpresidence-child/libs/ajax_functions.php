@@ -3195,7 +3195,8 @@ if( !function_exists('wpestate_ajax_facebook_login') ):
   
         $permissions = ['email']; // optional
       
-        print    $loginUrl = $helper->getLoginUrl(get_dashboard_profile_link(), $permissions);
+        //print    $loginUrl = $helper->getLoginUrl(get_dashboard_profile_link(), $permissions);
+        print    $loginUrl = $helper->getLoginUrl(get_dasboard_add_listing(), $permissions);
     
          
         die();

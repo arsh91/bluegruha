@@ -355,7 +355,8 @@ function saveProperty(){
                 update_post_meta($post_id, 'property_agent', $user_id_agent);
             }
             // get user dashboard link
-            $redirect = get_dashboard_link();
+            //$redirect = get_dashboard_link();
+            $redirect = get_permalink($post_id);
             $arguments=array(
                 'new_listing_url'   => get_permalink($post_id),
                 'new_listing_title' => $submit_title
@@ -586,7 +587,8 @@ function savePropertyToRent(){
                 update_post_meta($post_id, 'property_agent', $user_id_agent);
             }
             // get user dashboard link
-            $redirect = get_dashboard_link();
+            //$redirect = get_dashboard_link();
+			$redirect = get_permalink($post_id);
             $arguments=array(
                 'new_listing_url'   => get_permalink($post_id),
                 'new_listing_title' => $submit_title

@@ -139,7 +139,8 @@ function estate_facebook_login($get_vars){
         wp_redirect( esc_url(home_url() ) ); exit(); 
     }else{
         wpestate_update_old_users($user_signon->ID);
-        wp_redirect(get_dashboard_profile_link());exit();
+        //wp_redirect(get_dashboard_profile_link());exit();
+        wp_redirect(get_dasboard_add_listing());exit();
     }
                
     
