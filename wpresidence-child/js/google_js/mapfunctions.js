@@ -653,7 +653,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 	
     gmarkers.push(marker);
  
-    google.maps.event.addListener(marker, 'click', function(event) {
+    google.maps.event.addListener(marker, 'mouseover', function(event) {
           //  new_open_close_map(1);
 
             map_callback( new_open_close_map );
@@ -726,7 +726,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 			}
 
             infoBox.open(map, this);
-			map.panTo(infoBox.getPosition());
+			//map.panTo(infoBox.getPosition());
             //map.setCenter(this.position);   
 
 

@@ -127,25 +127,34 @@ function estate_facebook_login($get_vars){
 	$fb_flag = 2;
     $identity_code=$secret.$user['id'];  
     wpestate_register_user_via_google($email,$full_name,$identity_code,$fb_flag,$user['first_name'],$user['last_name'],$gender,$locale,$timezone); 
-    $info                   = array();
-    $info['user_login']     = $full_name;
-    $info['user_password']  = $identity_code;
-    $info['remember']       = true;
+	
+	$user = get_user_by('email', $email);
 
-    $user_signon            = wp_signon( $info, true );
+    // $info                   = array();
+    // $info['user_login']     = $email;
+    // $info['user_password']  = $identity_code;
+    // $info['remember']       = true;
+
+    // $user_signon            = wp_signon( $info, true );
         
-        
-    if ( is_wp_error($user_signon) ){ 
-        wp_redirect( esc_url(home_url() ) ); exit(); 
-    }else{
-        wpestate_update_old_users($user_signon->ID);
-        //wp_redirect(get_dashboard_profile_link());exit();
-        wp_redirect(get_dasboard_add_listing());exit();
-    }
-               
-    
-    
-    
+	if ( !is_wp_error( $user ) ) {
+		wp_clear_auth_cookie();
+		wp_set_current_user ( $user->ID );
+		wp_set_auth_cookie  ( $user->ID );
+
+		wp_safe_redirect( get_dasboard_add_listing() );
+		exit();
+	}else{
+		wp_redirect( esc_url(home_url() ) ); exit(); 
+	}
+    // if ( is_wp_error($user_signon) ){ 
+        // wp_redirect( esc_url(home_url() ) ); exit(); 
+    // }else{
+        // wpestate_update_old_users($user_signon->ID);
+        wp_redirect(get_dashboard_profile_link());exit();
+        // wp_redirect(get_dasboard_add_listing());exit();
+    // }
+       
   
 }
 /*
@@ -256,6 +265,8 @@ function estate_google_oauth_login($get_vars){
         $allowed_html      =   array();
         $dashboard_url     =   get_dashboard_profile_link();
         $user              =   $google_oauthV2->userinfo->get();
+		echo '<pre>';
+		print_r($user); die;
         $user_id           =   $user['id'];
         $full_name         =   wp_kses($user['name'], $allowed_html);
         $email             =   wp_kses($user['email'], $allowed_html);
@@ -447,17 +458,18 @@ if( !function_exists('wpestate_register_user_via_google') ):
     
 function wpestate_register_user_via_google($email,$full_name,$openid_identity_code,$flag = 1,$firsname='',$lastname='',$gender='',$locale='',$timezone=''){
   
-   if ( email_exists( $email ) ){ 
+	$user_id = email_exists( $email );
+   if ($user_id){ 
    
-           if(username_exists($full_name) ){
-               return;
-           }else{
-                $user_id  = wp_create_user( $full_name, $openid_identity_code,' ' );  
+           //if(username_exists($full_name) ){
+           //    return;
+           //}else{
+            //    $user_id  = wp_create_user( $full_name, $openid_identity_code,' ' );  
                 wpestate_update_profile($user_id); 
                 if('yes' ==  esc_html ( get_option('wp_estate_user_agent','') )){
                     wpestate_register_as_user($full_name,$user_id,$firsname,$lastname,$flag,$gender,$locale,$timezone);
-                }
-           }
+				}
+          // }
           
     }else{
       
@@ -487,7 +499,7 @@ if( !function_exists('wpestate_get_domain_openid') ):
 function wpestate_get_domain_openid(){
     $realm_url = get_home_url();
     $realm_url= str_replace('http://','',$realm_url);
-    $realm_url= str_replace('https://','',$realm_url);  
+    $realm_url= str_replace('https://','',$realm_url);
     return $realm_url;
 }
 
