@@ -265,8 +265,6 @@ function estate_google_oauth_login($get_vars){
         $allowed_html      =   array();
         $dashboard_url     =   get_dashboard_profile_link();
         $user              =   $google_oauthV2->userinfo->get();
-		echo '<pre>';
-		print_r($user); die;
         $user_id           =   $user['id'];
         $full_name         =   wp_kses($user['name'], $allowed_html);
         $email             =   wp_kses($user['email'], $allowed_html);
@@ -282,20 +280,32 @@ function estate_google_oauth_login($get_vars){
         $wordpress_user_id=username_exists($full_name);
         wp_set_password( $code, $wordpress_user_id ) ;
         
-        $info                   = array();
-        $info['user_login']     = $full_name;
-        $info['user_password']  = $code;
-        $info['remember']       = true;
-        $user_signon            = wp_signon( $info, true );
+//        $info                   = array();
+//        $info['user_login']     = $full_name;
+//        $info['user_password']  = $code;
+//        $info['remember']       = true;
+//        $user_signon            = wp_signon( $info, true );
         
+		$user = get_user_by('email', $email);
+			
+		if ( !is_wp_error( $user ) ) {
+			wp_clear_auth_cookie();
+			wp_set_current_user ( $user->ID );
+			wp_set_auth_cookie  ( $user->ID );
+
+			wp_safe_redirect( get_dasboard_add_listing() );
+			exit();
+		}else{
+			wp_redirect( esc_url(home_url() ) ); exit(); 
+		}
  
         
-        if ( is_wp_error($user_signon) ){ 
-            wp_redirect( home_url() );  exit;
-        }else{
-            wpestate_update_old_users($user_signon->ID);
-            wp_redirect($dashboard_url);exit;
-        }
+//        if ( is_wp_error($user_signon) ){ 
+//            wp_redirect( home_url() );  exit;
+//        }else{
+//            wpestate_update_old_users($user_signon->ID);
+//            wp_redirect($dashboard_url);exit;
+//        }
     }
     
     
@@ -464,7 +474,7 @@ function wpestate_register_user_via_google($email,$full_name,$openid_identity_co
            //if(username_exists($full_name) ){
            //    return;
            //}else{
-            //    $user_id  = wp_create_user( $full_name, $openid_identity_code,' ' );  
+            //   $user_id  = wp_create_user( $full_name, $openid_identity_code,' ' );  
                 wpestate_update_profile($user_id); 
                 if('yes' ==  esc_html ( get_option('wp_estate_user_agent','') )){
                     wpestate_register_as_user($full_name,$user_id,$firsname,$lastname,$flag,$gender,$locale,$timezone);

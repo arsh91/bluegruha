@@ -654,80 +654,80 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
     gmarkers.push(marker);
  
     google.maps.event.addListener(marker, 'mouseover', function(event) {
-          //  new_open_close_map(1);
+	  //  new_open_close_map(1);
 
-            map_callback( new_open_close_map );
-            google.maps.event.trigger(map, 'resize');
+		map_callback( new_open_close_map );
+		google.maps.event.trigger(map, 'resize');
 
-            if(this.image===''){
+		if(this.image===''){
 
-                 //info_image='<img src="' + mapfunctions_vars.path + '/idxdefault.jpg" alt="image" />';
-				  info_image =''; // removed image, when property have no image. Arsh Sharma
-             }else{
-                 info_image=this.image;
-             }
-            
-            var category         =   decodeURIComponent ( this.category.replace(/-/g,' ') );
-            var action           =   decodeURIComponent ( this.action.replace(/-/g,' ') );
-            var category_name    =   decodeURIComponent ( this.category_name.replace(/-/g,' ') );
-            var action_name      =   decodeURIComponent ( this.action_name.replace(/-/g,' ') );
-            var in_type          =   mapfunctions_vars.in_text;
-            if(category==='' || action===''){
-                in_type=" ";
-            }
-            
-           var infobaths; 
-           if(this.baths!=''){
-               infobaths ='<span id="infobath">'+this.baths+'</span>';
-           }else{
-               infobaths =''; 
-           }
-           
-           var inforooms;
-           if(this.rooms!=''){
-               inforooms='<span id="inforoom">'+this.rooms+'</span>';
-           }else{
-               inforooms=''; 
-           }
-           
-           var infosize;
-           if(this.size!=''){
-               infosize ='<span id="infosize">'+this.size;
-               if(mapfunctions_vars.measure_sys==='ft'){
-                   infosize = infosize+ ' ft<sup>2</sup>';
-               }else{
-                   infosize = infosize+' m<sup>2</sup>';
-               }
-               infosize =infosize+'</span>';
-           }else{
-               infosize=''; 
-           }
+			 //info_image='<img src="' + mapfunctions_vars.path + '/idxdefault.jpg" alt="image" />';
+			  info_image =''; // removed image, when property have no image. Arsh Sharma
+		}else{
+			 info_image=this.image;
+		}
+		
+		var category         =   decodeURIComponent ( this.category.replace(/-/g,' ') );
+		var action           =   decodeURIComponent ( this.action.replace(/-/g,' ') );
+		var category_name    =   decodeURIComponent ( this.category_name.replace(/-/g,' ') );
+		var action_name      =   decodeURIComponent ( this.action_name.replace(/-/g,' ') );
+		var in_type          =   mapfunctions_vars.in_text;
+		if(category==='' || action===''){
+			in_type=" ";
+		}
+		
+	   var infobaths; 
+	   if(this.baths!=''){
+		   infobaths ='<span id="infobath">'+this.baths+'</span>';
+	   }else{
+		   infobaths =''; 
+	   }
+	   
+	   var inforooms;
+	   if(this.rooms!=''){
+		   inforooms='<span id="inforoom">'+this.rooms+'</span>';
+	   }else{
+		   inforooms=''; 
+	   }
+	   
+	   var infosize;
+	   if(this.size!=''){
+		   infosize ='<span id="infosize">'+this.size;
+		   if(mapfunctions_vars.measure_sys==='ft'){
+			   infosize = infosize+ ' ft<sup>2</sup>';
+		   }else{
+			   infosize = infosize+' m<sup>2</sup>';
+		   }
+		   infosize =infosize+'</span>';
+		}else{
+		   infosize=''; 
+		}
 		/************************** Code Changes : Arsh Sharma ******************/
 		// to show phone number on the map : Arsh Sharma
-		   var infophone;
-           if(typeof this.phone!='undefined'){
-               infophone='<span id="inforoom">'+this.phone+'</span>';
-           }else{
-               infophone=''; 
-           }
+	   var infophone;
+	   if(typeof this.phone!='undefined'){
+		   infophone='<span id="inforoom">'+this.phone+'</span>';
+		}else{
+		   infophone=''; 
+		}
 
-           var title=  this.title.substr(0, 45)
-           if(this.title.length > 45){
-               title=title+"...";
-           }
+		var title=  this.title.substr(0, 45)
+		if(this.title.length > 45){
+		   title=title+"...";
+		}
 
-            infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="'+this.link+'">'+info_image+'</a><a href="'+this.link+'" id="infobox_title">'+title+'</a><div class="prop_detailsx">'+category_name+" "+in_type+" "+action_name+'</div><div class="prop_pricex">'+this.price+infophone+infosize+infobaths+inforooms+'</div></div>' );
+		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="'+this.link+'">'+info_image+'</a><a href="javascript:void(0);" id="infobox_title" onClick=\'javascript:openModal();\'>'+title+'</a><div class="prop_detailsx">'+category_name+" "+in_type+" "+action_name+'</div><div class="prop_pricex">'+this.price+infophone+infosize+infobaths+inforooms+'</div></div>' );
 
-			
-			if(this.image===''){
-				infoBox.setOptions({'pixelOffset':new google.maps.Size(0, 180)}); 
-			}else{
-				infoBox.setOptions({'pixelOffset':new google.maps.Size(0, 20)}); 
-			}
+		
+		if(this.image===''){
+			infoBox.setOptions({'pixelOffset':new google.maps.Size(0, 180)}); 
+		}else{
+			infoBox.setOptions({'pixelOffset':new google.maps.Size(0, 20)}); 
+		}
 
-            infoBox.open(map, this);
-			//map.panTo(infoBox.getPosition());
-            //map.setCenter(this.position);   
+		infoBox.open(map, this);
+		//map.panTo(infoBox.getPosition());
+		//map.setCenter(this.position);   
 
 
 //            switch (infobox_width){
@@ -758,19 +758,21 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 //             }
 /************************** Code Changes : Arsh Sharma ******************/
 
-            if (control_vars.show_adv_search_map_close === 'no') {
-                $('.search_wrapper').addClass('adv1_close');
-                adv_search_click();
-            }
+		if (control_vars.show_adv_search_map_close === 'no') {
+			$('.search_wrapper').addClass('adv1_close');
+			adv_search_click();
+		}
+		
+		close_adv_search();
+	});/////////////////////////////////// end event listener
             
-             close_adv_search();
-            });/////////////////////////////////// end event listener
-            
-        if(mapfunctions_vars.generated_pins!=='0'){
-            pan_to_last_pin(myLatLng);
-        }    
-            
-        
+	if(mapfunctions_vars.generated_pins!=='0'){
+		pan_to_last_pin(myLatLng);
+	}
+}
+
+function openModal(){
+	jQuery('#demoModal').modal({'show':true});
 }
 
 function  pan_to_last_pin(myLatLng){
