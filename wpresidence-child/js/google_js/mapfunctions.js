@@ -715,8 +715,8 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		if(this.title.length > 45){
 		   title=title+"...";
 		}
-
-		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="'+this.link+'">'+info_image+'</a><a href="javascript:void(0);" id="infobox_title" onClick=\'javascript:openModal();\'>'+title+'</a><div class="prop_detailsx">'+category_name+" "+in_type+" "+action_name+'</div><div class="prop_pricex">'+this.price+infophone+infosize+infobaths+inforooms+'</div></div>' );
+		
+		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="'+this.link+'">'+info_image+'</a><a href="javascript:void(0);" id="infobox_title" onClick=\'javascript:openModal('+this.idul+');\'>'+title+'</a><div class="prop_detailsx">'+category_name+" "+in_type+" "+action_name+'</div><div class="prop_pricex">'+this.price+infophone+infosize+infobaths+inforooms+'</div></div>' );
 
 		
 		if(this.image===''){
@@ -771,8 +771,23 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 	}
 }
 
-function openModal(){
-	jQuery('#demoModal').modal({'show':true});
+function openModal(id = null){
+	ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+	jQuery.ajax({
+		type: 'POST',
+		url: ajaxurl,
+		data: {
+			'action'            :   'get_propdetail_modal',
+			'propId'			:	id
+		},
+		success: function (data) {
+			jQuery('#demoModal').modal('show');
+			jQuery('#demoModal').on('shown.bs.modal', function() {
+				jQuery('#demoModal').find('.modal-content').html(data);
+			});
+		},
+		error: function (errorThrown) {}
+	});
 }
 
 function  pan_to_last_pin(myLatLng){

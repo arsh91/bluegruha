@@ -54,7 +54,7 @@ global $form_no;
 </div>
 <div class="form-group col-md-6">
 	<label class="control-label">Amenities</label>
-	<select id="amenities" multiple="multiple" name ="amenities">
+	<select id="amenities" multiple="multiple" name ="amenities[]">
 		<option value="Washer/Dryer">Washer/Dryer</option>
 		<option value="Garage">Garage</option>
 		<option value="Swimming pool">Swimming pool</option>

@@ -26,7 +26,7 @@ if( !wpestate_half_map_conditions ($post->ID) ){
 
 //if (!is_page_template('property_list_half.php') ){
 ?>    
-    <footer id="colophon" role="contentinfo" <?php echo ($footer_style); ?> class=" <?php echo ($footer_back_class);?> ">    
+    <footer id="colophon" role="contentinfo" <?php echo ($footer_style); ?> class=" <?php echo ($footer_back_class);?> footerMain">    
         <div id="footer-widget-area" class="row">
            <?php get_sidebar('footer');?>
         </div><!-- #footer-widget-area -->
@@ -48,9 +48,9 @@ if( !wpestate_half_map_conditions ($post->ID) ){
                 <div class="subfooter_menu">
                     <?php      
                         wp_nav_menu( array(
-                           // 'menu'              => 'footer_menu',
+                            'menu'              => 'footer_menu',
                             'theme_location'    => 'footer_menu',
-                          //  'depth'             => 1                           
+							'depth'             => 1                           
                         ));  
                     ?>
                 </div>  

@@ -120,8 +120,13 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
    
 
 <?php   get_template_part('templates/mobile_menu' ); ?> 
-    
-<div class="website-wrapper" id="all_wrapper" >
+
+<?php
+	if(is_home()){
+?>
+<div class="mainWrapper">
+<?php } ?>
+<div class="website-wrapper <?php echo (is_home()) ? 'home_page_wrapper' : ''; ?>" id="all_wrapper" >
 <div class="<?php echo (isset($post->ID) && $post->ID == 82) ? 'container-fluid' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
 
     <div class="master_header <?php print esc_html($wide_class.' '.$header_transparent_class); ?>">
@@ -174,5 +179,7 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
      </div> 
     
     <?php get_template_part( 'header_media' ); ?>   
-    
-  <div class="container content_wrapper">
+    <?php
+	if(!is_home()){ ?>
+		<div class="container content_wrapper">
+	<?php } ?>

@@ -297,7 +297,7 @@ function saveProperty(){
 			$bedroom_type                 	=   wp_kses( esc_html($_POST['bedroom_type']),$allowed_html);
 			$security_amount                =   wp_kses( esc_html($_POST['security_amount']),$allowed_html);
 			$available_from                	=   wp_kses( esc_html($_POST['available_from']),$allowed_html);
-			$amenities                		=   wp_kses( esc_html($_POST['amenities']),$allowed_html);
+			$amenities						= 	json_encode($_POST['amenities']);
 			$language                		=   wp_kses( esc_html($_POST['language']),$allowed_html);
 			$property_latitude              =   floatval( $_POST['property_latitude']); 
 			$property_longitude             =   floatval( $_POST['property_longitude']); 
@@ -534,7 +534,7 @@ function savePropertyToRent(){
 			$bathrooms                 		=   wp_kses( esc_html($_POST['bathrooms']),$allowed_html);
 			$property_price                 =   wp_kses( esc_html($_POST['rent']),$allowed_html);
 			$security_amount                =   wp_kses( esc_html($_POST['security_amount']),$allowed_html);
-			$amenities                		=   wp_kses( esc_html($_POST['amenities']),$allowed_html);
+			$amenities						= 	json_encode($_POST['amenities']);
 			$property_label                 =   wp_kses( esc_html($_POST['title']),$allowed_html);
 			$available_from                	=   wp_kses( esc_html($_POST['available_from']),$allowed_html);
 			$property_latitude              =   floatval( $_POST['property_latitude']); 

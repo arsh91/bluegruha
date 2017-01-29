@@ -22,10 +22,10 @@ if( $user_small_picture_id == '' ){
 <?php }else{ ?>
     <div class="user_menu" id="user_menu_u">   
         <a class="menu_user_tools dropdown" id="user_menu_trigger" data-toggle="dropdown">  
-            <a class="navicon-button x">
+            <!--<a class="navicon-button x">
                 <div class="navicon"></div>
-            </a>
-        <div class="submit_action"><?php _e('Submit Property','wpestate');?></div>
+            </a>-->
+        <div class="submit_action"><a class="headerBtn submitProperty" href="javascript:void(0);"><i class="fa fa-building" aria-hidden="true"></i> <?php _e('Submit Property','wpestate');?></a></div>
 <?php } ?>   
                   
     </div> 
@@ -102,12 +102,12 @@ if ( 0 != $current_user->ID  && is_user_logged_in() ) {
         
 <div id="user_menu_open" class="dropdown-menu topmenux" >
     <div class="login_sidebar">
-        <h3   id="login-div-title-topbar"><?php _e('Login','wpestate');?></h3>
+        <!--<h3 id="login-div-title-topbar"><?php _e('Login','wpestate');?></h3>-->
         <div class="login_form" id="login-div_topbar">
             <div class="loginalert" id="login_message_area_topbar" > </div>
 			<div class="login-links">
                 <?php 
-				print '<div id="guestloginsidebar_topbar" data-social="guest"><a href='.get_page_link(82).'>'.__('Guest Login','wpestate').'</a></div>';
+				print '<div id="guestloginsidebar_topbar" data-social="guest"><a href='.get_page_link(82).'>'.__('Login as Guest','wpestate').'</a></div>';
                 if($facebook_status=='yes'){ 
 					print '<div id="facebookloginsidebar_topbar" data-social="facebook">'.__('Login with Facebook','wpestate').'</div>';
                 }

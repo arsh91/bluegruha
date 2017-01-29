@@ -17,7 +17,7 @@ if (function_exists('icl_translate') ){
 }
 ?>
   
-<div class="agent_contanct_form">
+<div class="agent_contanct_form form-group">
     <?php    
      if ( basename(get_page_template())!='contact_page.php') { ?>
              <h4 id="show_contact"><?php _e('Contact Me', 'wpestate'); ?></h4>
@@ -35,7 +35,7 @@ if (function_exists('icl_translate') ){
         </div> 
 
 
-        <input name="contact_name" id="agent_contact_name" type="text"  placeholder="<?php _e('Your Name', 'wpestate'); ?>" 
+        <input name="contact_name" class="form-control" id="agent_contact_name" type="text"  placeholder="<?php _e('Your Name', 'wpestate'); ?>" 
                aria-required="true" class="form-control">
         <input type="text" name="email" class="form-control" id="agent_user_email" aria-required="true" placeholder="<?php _e('Your Email', 'wpestate'); ?>" >
 		<!-- Arsh sharma code changes for adding OTP on contact me section-->

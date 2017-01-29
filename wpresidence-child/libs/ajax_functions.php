@@ -4115,4 +4115,14 @@ if( !function_exists('get_image_section') ):
 	}
 endif;
 
+
+add_action( 'wp_ajax_nopriv_get_propdetail_modal', 'get_propdetail_modal' );
+add_action( 'wp_ajax_get_propdetail_modal', 'get_propdetail_modal' );
+if( !function_exists('get_propdetail_modal') ):
+    function get_propdetail_modal(){
+		include(locate_template('templates/property_detail_modal.php'));
+		exit;
+	}
+endif;
+
 ?>
