@@ -781,9 +781,20 @@ function openModal(id = null){
 			'propId'			:	id
 		},
 		success: function (data) {
+			jQuery('#demoModal').find('.modal-content').html(data);
 			jQuery('#demoModal').modal('show');
-			jQuery('#demoModal').on('shown.bs.modal', function() {
-				jQuery('#demoModal').find('.modal-content').html(data);
+			
+			jQuery('#agent_user_email').unbind('blur').bind('blur', function(){
+				checkEmailOnBlur(this);
+			});
+			jQuery('#agent_submit').unbind('click').bind('click', function(){
+				agent_submit(this);
+			});
+			jQuery('#varify_cont_email').unbind('click').bind('click', function(){
+				varifyContEmail(this);
+			});
+			jQuery('#agent_contact_otp').unbind('blur').bind('blur', function(){
+				otpCheckOnBlur(this);
 			});
 		},
 		error: function (errorThrown) {}

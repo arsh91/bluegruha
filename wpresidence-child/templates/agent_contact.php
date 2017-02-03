@@ -7,8 +7,6 @@ if(is_singular('estate_agent')){
     $agent_id = get_the_ID();
 }
 
-
-
 $contact_form_7_agent   =   stripslashes( ( get_option('wp_estate_contact_form_7_agent','') ) );
 $contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) );
 if (function_exists('icl_translate') ){
@@ -29,7 +27,7 @@ if (function_exists('icl_translate') ){
                 
     <?php if ( ($contact_form_7_agent =='' && basename(get_page_template())!='contact_page.php') || ( $contact_form_7_contact=='' && basename(get_page_template())=='contact_page.php')  ){ ?>
 
-
+		<form>
         <div class="alert-box error">
           <div class="alert-message" id="alert-agent-contact"></div>
         </div> 
@@ -54,7 +52,7 @@ if (function_exists('icl_translate') ){
         <input name="prop_id" type="hidden"  id="agent_property_id" value="<?php echo intval($propid);?>">
         <input name="prop_id" type="hidden"  id="agent_id" value="<?php echo intval($agent_id);?>">
         <input type="hidden" name="contact_ajax_nonce" id="agent_property_ajax_nonce"  value="<?php echo wp_create_nonce( 'ajax-property-contact' );?>" />
-
+		</form>
        
 
     <?php 

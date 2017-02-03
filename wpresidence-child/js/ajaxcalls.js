@@ -1585,8 +1585,8 @@ jQuery(document).ready(function ($) {
 
 	// Arsh sharma code changes for adding OTP on contact me section
 
-    $('#agent_submit').click(function () {
-        var contact_name, contact_email, contact_phone, contact_coment, agent_id, property_id, nonce, ajaxurl, contact_otp;
+	window.agent_submit = function agent_submit(obj){
+		var contact_name, contact_email, contact_phone, contact_coment, agent_id, property_id, nonce, ajaxurl, contact_otp;
         contact_name    =   $('#agent_contact_name').val();
         contact_email   =   $('#agent_user_email').val();
         contact_phone   =   $('#agent_phone').val();
@@ -1633,16 +1633,15 @@ jQuery(document).ready(function ($) {
    
 			}
 		});
-    });
+	}
 
-
-	$('#agent_user_email').blur(function(){
+	
+	window.checkEmailOnBlur = function checkEmailOnBlur(obj){
 		var uni_id = '';
-		var email = $(this).val();
-		var obj = $(this);
+		var email = $(obj).val();
 		uni_id = $('input[name=hdproperty_university]').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		if($(this).val()){
+		if($(obj).val()){
 			
 			$.ajax({
 				type: 'POST',
@@ -1658,8 +1657,8 @@ jQuery(document).ready(function ($) {
 						$('#alert-agent-contact').empty();
 						// $('#agent_submit, #postUniAdd').attr('disabled',true);
 						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
-						obj.closest('form').find('input[type=submit]').attr('disabled',true);
-						obj.closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
+						$(obj).closest('form').find('input[type=submit]').attr('disabled',true);
+						$(obj).closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
 						$('#agent_user_email').removeClass('required');
 						if(data.response){
 							$('#alert-agent-contact').empty().append(data.response);
@@ -1671,8 +1670,8 @@ jQuery(document).ready(function ($) {
 					}else{
 						// $('#agent_submit, #postUniAdd').attr('disabled',false);
 						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
-						obj.closest('form').find('input[type=submit]').attr('disabled',false);
-						obj.closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
+						$(obj).closest('form').find('input[type=submit]').attr('disabled',false);
+						$(obj).closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
 						$('#varify_cont_email').text("Varify Email");
 					}
@@ -1682,13 +1681,14 @@ jQuery(document).ready(function ($) {
 		}else{
 			$('#alert-agent-contact').empty().append('Please enter Email id.');
 		}
-	});
+	}
+	
 
-	$('#varify_cont_email, .verification').click(function(){
-		var obj = $(this);
-		var email = obj.closest('form').find('#agent_user_email').val();
+	window.varifyContEmail = function varifyContEmail(obj){
+		//var obj = $(this);
+		var email = $(obj).closest('form').find('#agent_user_email').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		obj.closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
+		$(obj).closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
 		if(email != ''){
 			$.ajax({
 				type: 'POST',
@@ -1699,9 +1699,9 @@ jQuery(document).ready(function ($) {
 					'email'		: email
 				},
 				success: function (data) {
-					obj.closest('form').find('#alert-agent-contact').empty().append(data.response);
+					$(obj).closest('form').find('#alert-agent-contact').empty().append(data.response);
 					if(data.sent == true)
-						obj.closest('form').find('#varify_cont_email').text("Resend OTP");
+						$(obj).closest('form').find('#varify_cont_email').text("Resend OTP");
 				},
 				error: function (errorThrown) {
 					// console.log(errorThrown);
@@ -1709,18 +1709,16 @@ jQuery(document).ready(function ($) {
 				}
 			});
 		}else{
-			obj.closest('form').find('#alert-agent-contact').empty().append('Please enter Email id.');
+			$(obj).closest('form').find('#alert-agent-contact').empty().append('Please enter Email id.');
 		}
-
-	});
-    
-	$('#agent_contact_otp, .otpField').blur(function(){
+	}
 	
-		var otp = $(this).val();
-		var obj = $(this);
+    
+	window.otpCheckOnBlur = function otpCheckOnBlur(obj){
+		var otp = $(obj).val();
 		var ajaxurl        	=   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-		var email			=	obj.closest('form').find('#agent_user_email').val();
-		obj.closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.checking);
+		var email			=	$(obj).closest('form').find('#agent_user_email').val();
+		$(obj).closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.checking);
 		if(otp != ''){
 			$.ajax({
 				type: 'POST',
@@ -1733,22 +1731,35 @@ jQuery(document).ready(function ($) {
 				},
 				success: function (data) {
 					if(data.sent == false){
-						obj.closest('form').find('#alert-agent-contact').empty().append(data.response);
+						$(obj).closest('form').find('#alert-agent-contact').empty().append(data.response);
 						// $('#agent_submit, #postUniAdd').attr('disabled',true);
 						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
-						obj.closest('form').find('input[type=submit]').attr('disabled',true);
-						obj.closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
+						$(obj).closest('form').find('input[type=submit]').attr('disabled',true);
+						$(obj).closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
 					}else{
 						// $('#agent_submit, #postUniAdd').attr('disabled',false);
 						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
-						obj.closest('form').find('input[type=submit]').attr('disabled',false);
-						obj.closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
+						$(obj).closest('form').find('input[type=submit]').attr('disabled',false);
+						$(obj).closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
 					}
 				}
 			});
 		}else{
-			obj.closest('form').find('#alert-agent-contact').empty().append('Please enter OTP.');
+			$(obj).closest('form').find('#alert-agent-contact').empty().append('Please enter OTP.');
 		}
+	}
+	
+	$('#agent_user_email').bind('blur', function(){
+		checkEmailOnBlur(this);
+	});
+    $('#agent_submit').bind('click', function(){
+		agent_submit(this);
+	});
+	$('#varify_cont_email, .verification').bind('click', function(){
+		varifyContEmail(this);
+	});
+	$('#agent_contact_otp, .otpField').bind('blur', function(){
+		otpCheckOnBlur(this);
 	});
 
 // Arsh sharma code changes for adding OTP on contact me section
@@ -1792,37 +1803,36 @@ jQuery(document).ready(function ($) {
         $('#listing_loader').show();
         
         $.ajax({
-                type: 'POST',
-                url: ajaxurl,
-              
-                data: {
-                    'action'    :   'wpestate_advanced_search_filters',
-                    'args'      :   args,
-                    'value'     :   value,
-                    'page_id'   :   page_id
-                },
-                success: function (data) {
-               
-                    $('#listing_loader').hide();
-                    $('#listing_ajax_container').append(data);
-                    restart_js_after_ajax();
-                    add_pagination_orderby();
-                },
-                error: function (errorThrown) {
-                }
-            }); //end ajax
+			type: 'POST',
+			url: ajaxurl,
+		  
+			data: {
+				'action'    :   'wpestate_advanced_search_filters',
+				'args'      :   args,
+				'value'     :   value,
+				'page_id'   :   page_id
+			},
+			success: function (data) {
+		   
+				$('#listing_loader').hide();
+				$('#listing_ajax_container').append(data);
+				restart_js_after_ajax();
+				add_pagination_orderby();
+			},
+			error: function (errorThrown) {
+			}
+        }); //end ajax
     });
 
    
     function add_pagination_orderby(){
          
-        var   order = $('#a_filter_order').attr('data-value');
+        var order = $('#a_filter_order').attr('data-value');
         
         jQuery('.pagination a').each(function(){
             var href = $(this).attr('href');
             href=href+"&order_search="+order;
             $(this).attr('href',href);
-
         });
 
      
@@ -1842,7 +1852,6 @@ jQuery(document).ready(function ($) {
     $('.icon-fav-on-remove').click(function (event) {
         event.stopPropagation();
         $(this).parent().parent().remove();
-        
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////  

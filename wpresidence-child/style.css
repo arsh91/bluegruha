@@ -17,7 +17,7 @@
 .child-adv-search  .adv1-holder .adv_search_slider{width: 25%;}
 .child_theme.info_details{height:auto;max-height:266px;min-height:80px;}
 .child_theme.info_details .prop_pricex{position:relative;float:left;}
-.email_varify_cont{display:none;float:left;}
+.email_varify_cont{float:left;}
 .disabled_contact_btn{opacity:0.5;}
 
 /* Home Page css*/
@@ -265,3 +265,12 @@ button.featuredAdd{float:left;}
 }
 
 /* Property detail Modal Css END*/
+
+.footerMain p {
+color: #fff;
+font-size: 11px;
+padding: 4px 0;
+}
+.footerMain p a {
+color: #92bb21 !important;
+}
