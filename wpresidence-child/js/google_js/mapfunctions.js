@@ -796,6 +796,10 @@ function openModal(id = null){
 			jQuery('#agent_contact_otp').unbind('blur').bind('blur', function(){
 				otpCheckOnBlur(this);
 			});
+			
+			jQuery('#print_page').unbind('click').bind('click', function(){
+				print_prop_page(this);
+			});
 		},
 		error: function (errorThrown) {}
 	});

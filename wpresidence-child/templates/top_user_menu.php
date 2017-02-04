@@ -107,7 +107,7 @@ if ( 0 != $current_user->ID  && is_user_logged_in() ) {
             <div class="loginalert" id="login_message_area_topbar" > </div>
 			<div class="login-links">
                 <?php 
-				print '<div id="guestloginsidebar_topbar" data-social="guest"><a href='.get_page_link(82).'>'.__('Login as Guest','wpestate').'</a></div>';
+				print '<a href='.get_page_link(82).' class="guest_login"><div id="guestloginsidebar_topbar" data-social="guest">'.__('Login as Guest','wpestate').'</div></a>';
                 if($facebook_status=='yes'){ 
 					print '<div id="facebookloginsidebar_topbar" data-social="facebook">'.__('Login with Facebook','wpestate').'</div>';
                 }

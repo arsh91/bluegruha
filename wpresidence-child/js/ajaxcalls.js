@@ -1623,8 +1623,9 @@ jQuery(document).ready(function ($) {
 					$('#agent_phone').val('');
 					$('#agent_comment').val('');
 					$('#agent_contact_otp').val('');
-					$('.email_varify_cont').hide();
+					//$('.email_varify_cont').hide();
 					$('#varify_cont_email').text("Varify Email");
+					$(obj).closest('form').find('input[type=submit]').attr('disabled',true).addClass('disabled_contact_btn');
 				}
 				$('#alert-agent-contact').empty().append(data.response);
 			},
@@ -1633,6 +1634,7 @@ jQuery(document).ready(function ($) {
    
 			}
 		});
+		return false;
 	}
 
 	
@@ -1763,6 +1765,37 @@ jQuery(document).ready(function ($) {
 	});
 
 // Arsh sharma code changes for adding OTP on contact me section
+
+
+	window.print_prop_page = function print_prop_page(obj){
+		var prop_id, myWindow, ajaxurl;
+		ajaxurl      =   control_vars.admin_url+'admin-ajax.php'; 
+		//event.preventDefault();
+
+		prop_id=$(obj).attr('data-propid');
+	 
+		myWindow=window.open('','Print Me','width=595 ,height=842');
+		$.ajax({    
+				type: 'POST',
+				url: ajaxurl, 
+			data: {
+				'action'        :   'ajax_create_print',
+				'propid'        :   prop_id, 
+			},
+			success:function(data) {  
+			   myWindow.document.write(data); 
+				myWindow.document.close();
+				myWindow.focus();
+			   // setTimeout(function(){
+				  //myWindow.print();
+			   // }, 3000);
+			//     myWindow.close();
+			},
+			error: function(errorThrown){
+			}
+
+		});//end ajax  var ajaxurl      =   control_vars.admin_url+'admin-ajax.php';     
+	};
 
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  property listing listing
@@ -2276,6 +2309,8 @@ jQuery(document).ready(function ($) {
 		// $('#agent_user_email').val(uniDomain);
 		// $(this).parents('.uni_result').hide();
 	// }
-	
 }); // end ready jquery
 //End ready ********************************************************************
+function thefunction(){
+	return false;
+}

@@ -37,7 +37,7 @@
 #guestloginsidebar_topbar {width: 100%;height: 40px;border-radius: 4px;background-color: #a6cd39;border-bottom: 4px solid #80a617;cursor: pointer;margin: 10px 0px -6px 0px;position: relative;color: #fff;padding: 1px 15px;font-size: 13px;display: inline-block;line-height: 40px;}
 div#guestloginsidebar_topbar a {color: #fff;padding-left: 0;padding-right: 0;}
 #guestloginsidebar_topbar:before {content: "\f10c";font-family: FontAwesome;float: right;line-height: 40px;margin-top -1px;padding-left: 18px;height: 39px;font-size: 15px;background-color: #80a617;width: 45px;margin-right: -15px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
-
+a.guest_login{padding-left:0 !important;}
 /* Property detail Modal Css start*/
 
 .mb-0{margin-bottom:0 !important;}
@@ -105,7 +105,7 @@ ul#featuredAd{display:none;}
 .roomCount a:last-child{margin-right:0;}
 .rightSidebar h4{font-weight:300; background: #e4e4e4;padding:10px 15px;font-size: 16px;border-bottom: 1px solid #cfcfcf; height:36px; border-radius: 5px 5px 0px 0px;color:#003f61; float:left; width:100%;}
 .ownerInfo{padding:0 15px 10px 15px; float:left; width:100%;}
-.ownerInfo h5{color: #3c90be; float: left; font-size: 22px; font-weight: 300; margin-bottom: 20px; width: 100%;}
+.ownerInfo h5{color: #3c90be; float: left; font-size: 22px; font-weight: 300; margin-bottom: 20px; width: 100%;text-transform: capitalize;}
 .ownerInfo span{display:block;margin:10px 0;color:#333333;font-size:13px;}
 .ownerInfo span i{color:#3c90be; width:12px; margin-right:10px; font-size:12px;}
 .rightSidebar input.form-control, .rightSidebar textarea.form-control {float: left; margin: 10px 0; box-shadow:none;}
@@ -263,7 +263,16 @@ button.featuredAdd{float:left;}
 .roomCount a{width:30px;}
 .addType{width: calc(100% - 149px);}
 }
-
+.agent_contact_form_modal h4#show_contact {
+    display: none;
+}
+.agent_contact_form_modal #agent_contact_name, .agent_contact_form_modal #agent_user_email, .agent_contact_form_modal #agent_phone{width:100%}
+.agent_contact_form_modal #varify_cont_email{background: #a5cd38 none repeat scroll 0 0;border: medium none;border-radius: 5px;color: #ffffff;float: left;font-size: 16px;height: 36px;outline: medium none;padding: 10px 30px 0px 30px;text-align: center;width:100%;cursor: pointer;}
+.propertDetailContainer p.description {
+    width: 100%;
+    margin-bottom: 15px;
+}
+button.close{font-size:28px;}
 /* Property detail Modal Css END*/
 
 .footerMain p {
@@ -273,4 +282,10 @@ padding: 4px 0;
 }
 .footerMain p a {
 color: #92bb21 !important;
+}
+.logo:after {content: "";position: absolute;left: 250px;top: 33px;background: url("img/tagline.png");width: 279px;height: 22px;}
+@media only screen and (max-width: 767px){
+.logo:after {
+    display:none;
+}
 }

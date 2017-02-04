@@ -18,7 +18,7 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 </div>
 <div class="modal-body">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-8">
 			<div class="innerContainer propertDetailContainer">
 				<?php get_template_part('templates/listingslider'); ?>
 				<!--<h2>4 BHK 4 bath house for sub lease</h2>-->
@@ -50,7 +50,7 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 				</div>
 				<div class="actionItems">
 					<span class="no_views dashboad-tooltip" data-original-title="<?php _e('Number of Page Views','wpestate');?>"><i class="fa fa-eye" aria-hidden="true"></i><?php echo intval( get_post_meta($propid, 'wpestate_total_views', true) );?></span>
-					<span><i class="fa fa-print" id="print_page" data-propid="<?php print $propid;?>"></i> Print</span>
+					<span id="print_page" data-propid="<?php print $propid;?>"><i class="fa fa-print"></i> Print</span>
 					<?php
 						$secDeposit = get_post_meta($propid, 'security_amount', true);
 						if($secDeposit){
@@ -75,7 +75,7 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 					<?php } ?>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="rightSidebar">
 				<h4>Owner Information</h4>
 				<div class="ownerInfo">
@@ -94,7 +94,10 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 					<?php } ?>
 					<span><i class="fa fa-envelope" aria-hidden="true"></i><?php echo get_the_author_meta('user_email',$propertyDetail->post_author); ?></span>
 				</div>
-				<?php get_template_part('templates/agent_contact'); ?>
+				<div class = 'agent_contact_form_modal'>
+					<h4><?php _e('Contact Me', 'wpestate'); ?></h4>
+					<?php get_template_part('templates/agent_contact'); ?>
+				</div>
 				<!--<form>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Your Name">
