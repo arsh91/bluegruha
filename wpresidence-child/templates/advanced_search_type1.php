@@ -46,12 +46,16 @@ if ( $extended_search =='yes' ){
         ?>   
         
         
-        <div class="adv1-holder">
+        <div class="adv1-holder filterContainer">
             <?php
             $custom_advanced_search= get_option('wp_estate_custom_advanced_search','');
             if ( $custom_advanced_search == 'yes'){
                 foreach($adv_search_what as $key=>$search_field){
-                    wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
+					if($search_field != 'none'){
+						echo '<div class="inputContainer">';
+							wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
+						echo '</div>';
+					}
                 }
             }else{
                 $search_form = wpestate_show_search_field_classic_form('main',$action_select_list,$categ_select_list ,$select_city_list,$select_area_list);

@@ -342,6 +342,9 @@ function saveProperty(){
 					update_post_meta($post_id, 'verifiedAd', 1);
 				}
 			}
+			if($apartment_name != ''){
+				update_post_meta($post_id, 'apartment_name', $apartment_name);
+			}
 			
 		   /* //$sidebar =  get_option( 'wp_estate_blog_sidebar', true); 
             $sidebar = get_option('wp_estate_property_sidebar_name',true);
@@ -573,7 +576,9 @@ function savePropertyToRent(){
             update_post_meta($post_id, 'google_camera_angle', $google_camera_angle);
             update_post_meta($post_id, 'pay_status', 'not paid');
             update_post_meta($post_id, 'page_custom_zoom', 16);
-
+			if($apartment_name != ''){
+				update_post_meta($post_id, 'apartment_name', $apartment_name);
+			}
 			
 		   /* //$sidebar =  get_option( 'wp_estate_blog_sidebar', true); 
             $sidebar = get_option('wp_estate_property_sidebar_name',true);

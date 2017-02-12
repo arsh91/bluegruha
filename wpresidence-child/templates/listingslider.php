@@ -35,7 +35,7 @@ if (function_exists('icl_translate') ){
 $ribbon_class       = str_replace(' ', '-', $prop_stat);    
         
         
-if ($post_attachments || has_post_thumbnail() || get_post_meta($propid, 'embed_video_id', true)) {  ?>   
+if ($post_attachments || has_post_thumbnail() || get_post_meta($propid, 'embed_video_id', true)) {  ?>  
     <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
         <?php 
         if($prop_stat!='normal'){

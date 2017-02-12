@@ -10,34 +10,50 @@ $propid = $_POST['propId'];
 
 $propertyDetail = get_post($propid);
 $catDetail = get_the_terms($propid, 'property_action_category');
-
+$genderCatDetail = get_the_terms($propid, 'property_category');
 ?>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	<h1 class="modal-title"><i class="fa fa-building" aria-hidden="true"></i> <?php echo $propertyDetail->post_title; ?></h1>
+	<h1 class="modal-title"><i class="fa fa-building" aria-hidden="true"></i> <?php echo get_post_meta($propid, 'property_label', true); ?></h1>
 </div>
 <div class="modal-body">
 	<div class="row">
 		<div class="col-md-8">
 			<div class="innerContainer propertDetailContainer">
-				<?php get_template_part('templates/listingslider'); ?>
-				<!--<h2>4 BHK 4 bath house for sub lease</h2>-->
+			
+				<h2>
+					<?php echo get_post_meta($propid, 'apartment_name', true);
+						$universityName = get_post_meta($propid, 'property_university', true);
+						if($universityName != ''){ ?> - 
+							<span>
+								<?php 
+									echo  $universityName;
+								?>
+							</span>
+						<?php } ?>
+				</h2>
 				<div class="propertySpecs">
 					<div class="specsProperty">
 						<?php 
 							if($catDetail[0]->term_id == 47 || $catDetail[0]->term_id == 48){ ?>
 								<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedroom_type', true); ?> Bedroom</span>
 								<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathroom_type', true); ?> Bathroom</span>
+								<span><i class="fa <?php echo $genderCatDetail[0]->description; ?>" aria-hidden="true"></i> <?php echo $genderCatDetail[0]->name; ?> Roomie</span>
 						<?php }else{ ?>
 								<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedrooms', true); ?> Bedroom(s)</span>
 								<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathrooms', true); ?> Bathroom(s)</span>
 								<span><i class="fa fa-area-chart" aria-hidden="true"></i><?php echo get_post_meta($propid, 'area', true); ?> Sq Ft</span>
 						<?php } ?>
 					</div>
-					<div class="propertyPrice">
-						<div class="amount">$ <?php echo get_post_meta($propid, 'property_price', true); ?> / m</div> 
-						<span>Available From: <strong><?php echo get_post_meta($propid, 'available_from', true); ?></strong></span>
-					</div>
+				</div>
+				
+				<div class="propertyPrice priceModal">
+					<div class="amount">$<?php echo get_post_meta($propid, 'property_price', true); ?><div class='permonth'>per month</div></div> 
+					<span>Available From: <strong><?php echo get_post_meta($propid, 'available_from', true); ?></strong></span>
+				</div>
+				
+				<div class="locationAddress"><i class="fa fa-map-marker" aria-hidden="true"></i>
+				<?php echo get_post_meta($propid, 'property_address', true); ?>, <?php echo get_post_meta($propid, 'property_zip', true); ?>
 				</div>
 				<div class="shareWidget">
 					<span>Share at :</span>
@@ -50,7 +66,7 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 				</div>
 				<div class="actionItems">
 					<span class="no_views dashboad-tooltip" data-original-title="<?php _e('Number of Page Views','wpestate');?>"><i class="fa fa-eye" aria-hidden="true"></i><?php echo intval( get_post_meta($propid, 'wpestate_total_views', true) );?></span>
-					<span id="print_page" data-propid="<?php print $propid;?>"><i class="fa fa-print"></i> Print</span>
+					<span id="print_page" data-propid="<?php print $propid;?>" class = "print_btn"><i class="fa fa-print"></i> Print</span>
 					<?php
 						$secDeposit = get_post_meta($propid, 'security_amount', true);
 						if($secDeposit){
@@ -59,25 +75,26 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 					<?php } ?>
 				</div>
 				<p class="description"><?php echo $propertyDetail->post_content; ?></p>
-				<div class="locationAddress"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_address', true); ?>, <?php echo get_post_meta($propid, 'property_county', true); ?>, <?php echo get_post_meta($propid, 'property_zip', true); ?>, <?php echo get_post_meta($propid, 'property_state', true); ?>, <?php echo get_post_meta($propid, 'property_country', true); ?></div>
+				
 				<?php 
 					$amenities = json_decode(get_post_meta($propid, 'amenities', true));
 					if(is_array($amenities)){
 					
 				?>
-						<h6>Amenities</h6>
+						<h6>Amenities:</h6>
 						<div class="amenitiesDetails">
-							<?php 
-								foreach($amenities as $val){ ?>
-									<span><?php echo $val; ?></span>
-								<?php } ?>
+							<span>
+								<?php echo implode(', ', $amenities);	?>
+							</span>
 						</div>
 					<?php } ?>
+				<?php get_template_part('templates/listingslider'); ?>			
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="rightSidebar">
-				<h4>Owner Information</h4>
+				
+				<h4>Advertiser Information</h4>
 				<div class="ownerInfo">
 					<?php 
 						$name = get_the_author_meta('display_name',$propertyDetail->post_author);
@@ -94,8 +111,9 @@ $catDetail = get_the_terms($propid, 'property_action_category');
 					<?php } ?>
 					<span><i class="fa fa-envelope" aria-hidden="true"></i><?php echo get_the_author_meta('user_email',$propertyDetail->post_author); ?></span>
 				</div>
+			
 				<div class = 'agent_contact_form_modal'>
-					<h4><?php _e('Contact Me', 'wpestate'); ?></h4>
+					<h4><?php _e('Contact Advertiser', 'wpestate'); ?></h4>
 					<?php get_template_part('templates/agent_contact'); ?>
 				</div>
 				<!--<form>

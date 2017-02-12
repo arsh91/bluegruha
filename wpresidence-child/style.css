@@ -11,7 +11,7 @@
 @import url("../wpresidence/style.css");
 
 .child-adv-search .wpresidence_button {display: none;}
-.child-adv-search {background: #fdfdfd none repeat scroll 0 0;height: auto;width: auto;}
+/*.child-adv-search {background: #fdfdfd none repeat scroll 0 0;height: auto;width: auto;} */
 .child-adv-search .adv1-holder {height: auto;}
 .child-adv-search #adv-search-header-1{display:none;}
 .child-adv-search  .adv1-holder .adv_search_slider{width: 25%;}
@@ -57,7 +57,7 @@ a.guest_login{padding-left:0 !important;}
 .innerContainer .nav-tabs li a:hover,.innerContainer .nav-tabs li.active a,.innerContainer .nav-tabs li a.active,.innerContainer .nav-tabs li a:focus{background:#a5cd38; border:none; color:#fff; cursor:pointer;}
 .innerContainer .nav-tabs li a i {display: block; max-height:36px; font-size: 36px; margin-bottom: 15px;}
 .innerContainer .nav-tabs li a i.fa-home {font-size: 44px;}
-.modal-body h6 {color: #666; font-size: 24px; display:inline-block;}
+.modal-body h6 {color: #666; font-size: 24px; display:inline-block;width:100%;}
 .formContainer{float:left;}
 .commonForm input.form-control,.commonForm .formContainer .bootstrap-select,.commonForm .formContainer .btn-group{box-shadow:none; border-color:#c4c4c4; max-width:calc(100% - 185px); min-width:calc(100% - 183px); float:right; height:36px; font-weight:300; font-size:13px;}
 .commonForm .formContainer .multiselect{max-width:225px; min-width:225px; text-align:left;}
@@ -103,15 +103,15 @@ ul#featuredAd{display:none;}
 .roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#003f61; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
 .formContainer .options.roomCount a:hover, .formContainer .options.roomCount a.selected{color:#fff; background:#003f61; border-color:#003f61;}
 .roomCount a:last-child{margin-right:0;}
-.rightSidebar h4{font-weight:300; background: #e4e4e4;padding:10px 15px;font-size: 16px;border-bottom: 1px solid #cfcfcf; height:36px; border-radius: 5px 5px 0px 0px;color:#003f61; float:left; width:100%;}
+.rightSidebar h4{font-weight:300; background: #e4e4e4;padding:10px 15px;font-size: 16px;border-bottom: 1px solid #cfcfcf; height:36px; border-radius: 5px 5px 0px 0px;color:#003f61; float:left; width:100%;margin-bottom: 0px;}
 .ownerInfo{padding:0 15px 10px 15px; float:left; width:100%;}
-.ownerInfo h5{color: #3c90be; float: left; font-size: 22px; font-weight: 300; margin-bottom: 20px; width: 100%;text-transform: capitalize;}
+.ownerInfo h5{color: #3c90be; float: left; font-size: 18px; font-weight: 300; margin-bottom: 10px; width: 100%;text-transform: capitalize;margin-top:10px;}
 .ownerInfo span{display:block;margin:10px 0;color:#333333;font-size:13px;}
 .ownerInfo span i{color:#3c90be; width:12px; margin-right:10px; font-size:12px;}
-.rightSidebar input.form-control, .rightSidebar textarea.form-control {float: left; margin: 10px 0; box-shadow:none;}
+.rightSidebar input.form-control, .rightSidebar textarea.form-control {float: left; margin: 5px 0; box-shadow:none;}
 .rightSidebar input.form-control[type="submit"]{background:#4d9a01; font-size:16px; height:46px;}
-.amenitiesDetails{float:left; width:100%; margin-top:15px;}
-.amenitiesDetails span{float:left; width:25%; margin-bottom:15px;}
+.amenitiesDetails{float:left; width:100%; margin-top:5px;}
+.amenitiesDetails span{float:left; width:25%; margin-bottom:5px;}
 .customNavigation{text-align: center;}
 #propertySimilar{margin-bottom:50px; margin-top:30px;}
 #propertySimilar .owl-wrapper-outer{padding:0 55px;}
@@ -267,12 +267,70 @@ button.featuredAdd{float:left;}
     display: none;
 }
 .agent_contact_form_modal #agent_contact_name, .agent_contact_form_modal #agent_user_email, .agent_contact_form_modal #agent_phone{width:100%}
-.agent_contact_form_modal #varify_cont_email{background: #a5cd38 none repeat scroll 0 0;border: medium none;border-radius: 5px;color: #ffffff;float: left;font-size: 16px;height: 36px;outline: medium none;padding: 10px 30px 0px 30px;text-align: center;width:100%;cursor: pointer;}
+.agent_contact_form_modal #varify_cont_email{background: #a5cd38 none repeat scroll 0 0;border: medium none;border-radius: 5px;color: #ffffff;float: left;font-size: 16px;height: 36px;outline: medium none;padding: 10px 30px 0px 30px;text-align: center;width:100%;cursor: pointer;margin:5px 0;}
 .propertDetailContainer p.description {
-    width: 100%;
-    margin-bottom: 15px;
+width: 100%;
+margin-bottom: 15px;
+padding-top: 8px;
+padding-bottom: 8px;
 }
 button.close{font-size:28px;}
+.propertDetailContainer .propertyPrice {float: left;max-width: none;display: block;width: 100%;margin-top: 20px;}
+.propertDetailContainer .propertyPrice > span, .propertDetailContainer .propertyPrice .amount{text-align:left}
+
+.rightSidebar.ownerInformation {
+float: left;
+width: 100%;
+}
+.ownerInformation .ownerInfo h5 {
+float: left;
+width: auto;
+margin-right: 15px;
+}
+.ownerInformation .ownerInfo span {
+float: left;
+margin-right: 15px;
+margin-top: 14px;
+}
+.agent_contact_form_modal .form-control:not(textarea) {
+height: 35px;
+}
+.propertDetailContainer .specsProperty > span i{font-size:16px}
+.propertyPrice.priceModal{
+float: left;
+width: 100%;
+}
+div#demoModal .modal-header {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+div#demoModal .modal-header h1.modal-title {
+font-size: 26px;
+}
+.propertDetailContainer .amenitiesDetails {
+margin-bottom: 15px;
+}
+.propertDetailContainer .locationAddress {
+margin-top: 15px;
+margin-bottom: 0;
+}
+.propertDetailContainer .shareWidget{
+margin-top: 25px;
+}
+.propertDetailContainer .specsProperty span{padding-left:5px; padding-right:5px;}
+.propertDetailContainer .actionItems .print_btn{margin-left:0px !important;margin-top:0px !important;}
+.priceModal .amount {float: left;width: auto;margin-right: 15px;}
+.priceModal span {float: right;width: auto;margin-top: 10px;}
+.permonth {font-size: 12px;letter-spacing: 0;margin-left: 5px;color: #666666;position: relative;top: -5px;display:inline;}
+.propertDetailContainer .amenitiesDetails span {width: 100%;font-size: 13px;}
+.propertDetailContainer h6 {font-size: 20px;margin-bottom: 5px;}
+.innerContainer.propertDetailContainer h2 {
+font-size: 20px;
+margin-bottom: 15px;
+}
+.innerContainer.propertDetailContainer h2 span {
+color: #4d9a01;
+}
 /* Property detail Modal Css END*/
 
 .footerMain p {
@@ -289,3 +347,27 @@ color: #92bb21 !important;
     display:none;
 }
 }
+/* Filters css Start */
+.filterContainer{background:rgba(0,0,0,0.6); float:left;width:100%;}
+.inputContainer{float:left; padding:16px 30px; width:23%; border-right:1px solid #fff; height:70px;}
+.inputContainer:last-child{border:none;width:30%;}
+.inputContainer input{height:38px; border:1px solid #c4c4c4;}
+.bedroomCount i{float:left; color:#fff; font-size:24px; margin-right:20px; margin-top:5px; cursor:pointer;}
+.numberCount{float:left; border:1px solid #c3c5c4; border-radius:3px; width:calc(100% - 50px);}
+.decrement,.increment{float:left; background:#a5cd38; color:#fff; font-size:22px; padding:2px 0; height:36px; width:33.33%; text-align:center;}
+.decrement:hover,.increment:hover, .decrement:focus,.increment:focus{text-decoration:none; color:#fff;}
+.numberCount input{float:left; width:33.33%; height:36px; border:none; outline:none; text-align:center;}
+.genderSelect{float:left; width:100%;}
+.genderSelect input[type="checkbox"]{float:left; margin:0 25px; position:relative; width:25px; height:1px; cursor:pointer;}
+.genderSelect input[type="checkbox"]:checked:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;}
+.genderSelect input[type="checkbox"]:before{position:absolute; left:0; top:0; width:25px; height:41px;}
+.genderSelect input.male[type="checkbox"]:before{background:url('male.png'); content:"";}
+.genderSelect input.female[type="checkbox"]:before{background:url('female.png'); content:"";}
+.genderSelect input.any[type="checkbox"]:before{background:url('any.png'); content:""; background-repeat:no-repeat; top:2px;}
+@media (max-width:640px){
+	.inputContainer{width:100%; border-right:none; border-bottom:1px solid #fff;}
+	.inputContainer:last-child{border:none;}
+}
+.adv-search-1{background:none;height:auto;border:none;}
+.filterContainer .inputContainer .form-control, .filterContainer .inputContainer .adv_search_slider{width:100%;}
+/* Filters css END */

@@ -45,7 +45,7 @@ if (function_exists('icl_translate') ){
 		</div>
         <input type="text" name="phone"  class="form-control" id="agent_phone" placeholder="<?php _e('Your Phone', 'wpestate'); ?>" >
 
-        <textarea id="agent_comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="<?php _e('Your Message', 'wpestate'); ?>" >I am interested in your property!</textarea>
+        <textarea id="agent_comment" name="comment" class="form-control" cols="45" rows="4" aria-required="true" placeholder="<?php _e('Your Message', 'wpestate'); ?>" >I am interested in your property!</textarea>
 
         <input type="submit" class="wpresidence_button disabled_contact_btn"  id="agent_submit" value="<?php _e('Send Message', 'wpestate');?>" disabled="true">
 		<!-- Arsh sharma code changes for adding OTP on contact me section-->

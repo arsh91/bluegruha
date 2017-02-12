@@ -6,11 +6,16 @@ $video_id       =   '';
 $video_thumb    =   '';
 $video_alone    =   0;
 $full_img       =   '';
+if($_POST['propId']){
+	$propid = $_POST['propId'];
+}else{
+	$propid = $post->ID;
+}
 $arguments      = array(
                     'numberposts' => -1,
                     'post_type' => 'attachment',
                     'post_mime_type' => 'image',
-                    'post_parent' => $post->ID,
+                    'post_parent' => $propid,
                     'post_status' => null,
                     'exclude' => get_post_thumbnail_id(),
                     'orderby' => 'menu_order',
@@ -18,17 +23,17 @@ $arguments      = array(
                 );
 
 $post_attachments   = get_posts($arguments);
-$video_id           = esc_html( get_post_meta($post->ID, 'embed_video_id', true) );
-$video_type         = esc_html( get_post_meta($post->ID, 'embed_video_type', true) );
+$video_id           = esc_html( get_post_meta($propid, 'embed_video_id', true) );
+$video_type         = esc_html( get_post_meta($propid, 'embed_video_type', true) );
       
-$prop_stat = esc_html( get_post_meta($post->ID, 'property_status', true) );    
+$prop_stat = esc_html( get_post_meta($propid, 'property_status', true) );    
 if (function_exists('icl_translate') ){
     $prop_stat     =   icl_translate('wpestate','wp_estate_property_status_'.$prop_stat, $prop_stat ) ;                                      
 }
 $ribbon_class       = str_replace(' ', '-', $prop_stat);    
         
         
-if ($post_attachments || has_post_thumbnail() || get_post_meta($post->ID, 'embed_video_id', true)) {  ?>   
+if ($post_attachments || has_post_thumbnail() || get_post_meta($propid, 'embed_video_id', true)) {  ?>   
     <div id="carousel-listing" class="carousel slide post-carusel carouselvertical" data-ride="carousel" data-interval="false">
         <?php 
         if($prop_stat!='normal'){
@@ -53,7 +58,7 @@ if ($post_attachments || has_post_thumbnail() || get_post_meta($post->ID, 'embed
           
             
             $indicators.='<li data-target="#carousel-listing"  data-video_data="'.$video_type.'" data-video_id="'.$video_id.'"  data-slide-to="0" class="active video_thumb_force">
-                         <img src= "'.get_video_thumb($post->ID).'" alt="video_thumb" class="img-responsive"/>
+                         <img src= "'.get_video_thumb($propid).'" alt="video_thumb" class="img-responsive"/>
                          <span class="estate_video_control"><i class="fa fa-play"></i> </span>
                          </li>'; 
 
@@ -80,7 +85,7 @@ if ($post_attachments || has_post_thumbnail() || get_post_meta($post->ID, 'embed
                 $active=" ";
             }
 
-            $post_thumbnail_id  = get_post_thumbnail_id( $post->ID );
+            $post_thumbnail_id  = get_post_thumbnail_id( $propid );
             $preview            = wp_get_attachment_image_src($post_thumbnail_id, 'slider_thumb');
             
             if ($slider_size=='full'){
@@ -143,21 +148,21 @@ if ($post_attachments || has_post_thumbnail() || get_post_meta($post->ID, 'embed
         ?>
 
     <?php 
-    $header_type                =   get_post_meta ( $post->ID, 'header_type', true);
+    $header_type                =   get_post_meta ( $propid, 'header_type', true);
     $global_header_type         =   get_option('wp_estate_header_type','');
 
   
   
     if ( $header_type == 0 ){ // global
         if ($global_header_type != 4){
-                $gmap_lat                   =   esc_html( get_post_meta($post->ID, 'property_latitude', true));
-                $gmap_long                  =   esc_html( get_post_meta($post->ID, 'property_longitude', true));
-                $property_add_on            =   ' data-post_id="'.$post->ID.'" data-cur_lat="'.$gmap_lat.'" data-cur_long="'.$gmap_long.'" ';
+                $gmap_lat                   =   esc_html( get_post_meta($propid, 'property_latitude', true));
+                $gmap_long                  =   esc_html( get_post_meta($propid, 'property_longitude', true));
+                $property_add_on            =   ' data-post_id="'.$propid.'" data-cur_lat="'.$gmap_lat.'" data-cur_long="'.$gmap_long.'" ';
                 ?>
                 <div id="slider_enable_map" data-placement="bottom" data-original-title="<?php _e('Map','wpestate');?>">    <i class="fa fa-map-marker"></i>        </div>
                 <?php 
                 $no_street=' no_stret ';
-                if ( get_post_meta($post->ID, 'property_google_view', true) ==1){
+                if ( get_post_meta($propid, 'property_google_view', true) ==1){
                     print '  <div id="slider_enable_street" data-placement="bottom" data-original-title="'.__('Street View','wpestate').'"> <i class="fa fa-location-arrow"></i>    </div>';
                       $no_street='';
                 }
@@ -174,14 +179,14 @@ if ($post_attachments || has_post_thumbnail() || get_post_meta($post->ID, 'embed
         }
     }else{
         if($header_type!=5){
-                $gmap_lat                   =   esc_html( get_post_meta($post->ID, 'property_latitude', true));
-                $gmap_long                  =   esc_html( get_post_meta($post->ID, 'property_longitude', true));
-                $property_add_on            =   ' data-post_id="'.$post->ID.'" data-cur_lat="'.$gmap_lat.'" data-cur_long="'.$gmap_long.'" ';
+                $gmap_lat                   =   esc_html( get_post_meta($propid, 'property_latitude', true));
+                $gmap_long                  =   esc_html( get_post_meta($propid, 'property_longitude', true));
+                $property_add_on            =   ' data-post_id="'.$propid.'" data-cur_lat="'.$gmap_lat.'" data-cur_long="'.$gmap_long.'" ';
                 ?>
                 <div id="slider_enable_map" data-placement="bottom" data-original-title="<?php _e('Map','wpestate');?>">    <i class="fa fa-map-marker"></i>        </div>
                 <?php 
                 $no_street=' no_stret ';
-                if ( get_post_meta($post->ID, 'property_google_view', true) ==1){
+                if ( get_post_meta($propid, 'property_google_view', true) ==1){
                     print '  <div id="slider_enable_street" data-placement="bottom" data-original-title="'.__('Street View','wpestate').'" > <i class="fa fa-location-arrow"></i>    </div>';
                       $no_street='';
                 }
