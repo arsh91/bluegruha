@@ -348,26 +348,59 @@ color: #92bb21 !important;
 }
 }
 /* Filters css Start */
-.filterContainer{background:rgba(0,0,0,0.6); float:left;width:100%;}
+.filterContainer{background:rgba(0,0,0,0.6); float:left;width:100%;padding:0;}
 .inputContainer{float:left; padding:16px 30px; width:23%; border-right:1px solid #fff; height:70px;}
 .inputContainer:last-child{border:none;width:30%;}
 .inputContainer input{height:38px; border:1px solid #c4c4c4;}
 .bedroomCount i{float:left; color:#fff; font-size:24px; margin-right:20px; margin-top:5px; cursor:pointer;}
 .numberCount{float:left; border:1px solid #c3c5c4; border-radius:3px; width:calc(100% - 50px);}
-.decrement,.increment{float:left; background:#a5cd38; color:#fff; font-size:22px; padding:2px 0; height:36px; width:33.33%; text-align:center;}
+.decrement,.increment{float:left; background:#a5cd38; color:#fff; font-size:22px; padding:2px 0; height:36px; width:33.33%; text-align:center;line-height:normal;}
 .decrement:hover,.increment:hover, .decrement:focus,.increment:focus{text-decoration:none; color:#fff;}
-.numberCount input{float:left; width:33.33%; height:36px; border:none; outline:none; text-align:center;}
+.numberCount input {float: left;width: 33.33% !important;height: 36px;border: none;border-radius: 0 !important;outline none;padding: 0 !important;text-align: center;margin: 0 !important;}
+
 .genderSelect{float:left; width:100%;}
 .genderSelect input[type="checkbox"]{float:left; margin:0 25px; position:relative; width:25px; height:1px; cursor:pointer;}
 .genderSelect input[type="checkbox"]:checked:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;}
 .genderSelect input[type="checkbox"]:before{position:absolute; left:0; top:0; width:25px; height:41px;}
-.genderSelect input.male[type="checkbox"]:before{background:url('male.png'); content:"";}
-.genderSelect input.female[type="checkbox"]:before{background:url('female.png'); content:"";}
-.genderSelect input.any[type="checkbox"]:before{background:url('any.png'); content:""; background-repeat:no-repeat; top:2px;}
+.genderSelect input.male[type="checkbox"]:before{background:url('img/male.png'); content:"";}
+.genderSelect input.female[type="checkbox"]:before{background:url('img/female.png'); content:"";}
+.genderSelect input.any[type="checkbox"]:before{background:url('img/any.png'); content:""; background-repeat:no-repeat; top:2px;}
 @media (max-width:640px){
 	.inputContainer{width:100%; border-right:none; border-bottom:1px solid #fff;}
 	.inputContainer:last-child{border:none;}
 }
 .adv-search-1{background:none;height:auto;border:none;}
 .filterContainer .inputContainer .form-control, .filterContainer .inputContainer .adv_search_slider{width:100%;}
+.filterContainer .inputContainer .dropdown-menu{top:auto;bottom:100%;overflow-y:hidden;}
+.adv_search_slider .ui-widget-header {
+background: #a5cd38!important;
+border: none !important;
+}
+.adv_search_slider p {
+color: #fff;
+text-align: center;
+}
+.adv_search_slider p label, .adv_search_slider p span#amount {
+color: #fff !important;
+}
 /* Filters css END */
+
+.master_header.wide {
+border:none; 
+background: rgba(0,0,0,0.6);
+}
+.header_wrapper {
+background: none !important;
+}
+.header_media.with_search_1 {
+padding-top: 0 !important;
+}
+div#gmapzoomplus {
+top: 90px;
+}
+div#gmapzoomminus {
+top: 122px;
+}
+#google-default-search {
+top: 88px;
+}

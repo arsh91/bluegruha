@@ -2,6 +2,7 @@
 if (!session_id()) {
     session_start();
 }
+require_once 'libs/help_functions.php';
 require_once 'libs/pin_management.php';
 require_once 'libs/ajax_functions.php';
 require_once 'libs/ajax_upload.php';
@@ -36,6 +37,9 @@ function mapfunctionsChanges(){
 	
 	wp_deregister_script('google_map_submit');
 	wp_register_script('google_map_submit', get_stylesheet_directory_uri().'/js/google_js/google_map_submit'.$mimify_prefix .'.js');
+	
+	wp_deregister_script('control');
+	wp_register_script('control', get_stylesheet_directory_uri().'/js/control'.$mimify_prefix .'.js');
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////file upload ajax - profile and user dashboard
@@ -208,7 +212,7 @@ function saveProperty(){
 			'post_type'     => 'estate_property' ,
 			'post_author'   => $post_author
 		);
-		$post_id =  wp_insert_post($post        );  
+		$post_id =  wp_insert_post($post);  
 		if( $paid_submission_status == 'membership'){ // update pack status
 			wpestate_update_listing_no($current_user->ID);                
 			//if($prop_featured==1){

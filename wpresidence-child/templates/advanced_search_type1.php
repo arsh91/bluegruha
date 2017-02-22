@@ -79,4 +79,26 @@ if ( $extended_search =='yes' ){
 		<input type = 'hidden' name = 'google_county' value = '' id = 'google_srch_county' />
     </form>   
        <div style="clear:both;"></div>
-</div>  
+</div>
+<script>
+	jQuery(function () {
+	  jQuery('[data-toggle="tooltip"]').tooltip()
+	})
+	
+	jQuery('.increment').click(function() {
+		jQuery('#counter').val(function(i, val) { 
+			if(val > 5)
+				val = 5;
+			return parseInt(val) + 1;
+		});
+	});
+	
+	jQuery('.decrement').click(function() {
+		jQuery('#counter').val(function(i, val) { 
+			if(val < 2)
+				val = 2;
+			return parseInt(val) - 1;
+		});
+	});
+	
+</script>
