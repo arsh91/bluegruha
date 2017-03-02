@@ -82,7 +82,7 @@ function change_graphic_lib($array) {
 
 function get_universities(){
 	global $wpdb;
-	$result = $wpdb->get_results("SELECT name as value, domain as domain, id FROM wp_universities");
+	$result = $wpdb->get_results("SELECT name as value, domain as domain, id FROM wp_universities limit 0,300");
 	return $result;
 }
 
@@ -567,8 +567,8 @@ function savePropertyToRent(){
             
 			update_post_meta($post_id, 'property_type', $property_type);
 			update_post_meta($post_id, 'area', $area);
-			update_post_meta($post_id, 'bedrooms', $bedrooms);
-			update_post_meta($post_id, 'bathrooms', $bathrooms);
+			update_post_meta($post_id, 'property_bedrooms', $bedrooms);
+			update_post_meta($post_id, 'property_bathrooms', $bathrooms);
 			update_post_meta($post_id, 'property_price', $property_price);
 			update_post_meta($post_id, 'security_amount', $security_amount);
 			update_post_meta($post_id, 'amenities', $amenities);

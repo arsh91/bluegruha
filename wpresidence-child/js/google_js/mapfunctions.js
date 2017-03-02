@@ -1407,7 +1407,7 @@ function getCookieMap(cname) {
   
 function visible_or_not(how, slug, value, read){
   
-    //console.log("how "+how+" slug "+slug+" value "+value+" read "+read);
+    console.log("how "+how+" slug "+slug+" value "+value+" read "+read);
     if(value!=='' && typeof(value)!=='undefined' ){
         // value = value.replace('%',''); 
         //  console.log("value "+value);   
@@ -1548,17 +1548,22 @@ function get_custom_value(slug){
     var is_drop=0;
     if(slug === 'adv_categ' || slug === 'adv_actions' ||  slug === 'advanced_city' ||  slug === 'advanced_area'  ||  slug === 'county-state'){     
         value = jQuery('#'+slug).attr('data-value');
+		
+		if(slug === 'adv_categ' && typeof value =='undefined'){
+			value = jQuery('input[name=adv_categ]:checked').val();
+		}
 		if(slug === 'advanced_city' && value == ''){
 			value = jQuery('#google_srch_city').val();
 		}
 		if(slug === 'county-state' && value == ''){
 			value = jQuery('#google_srch_county').val();
 		}
+		
     } else if(slug === 'property_price' && mapfunctions_vars.slider_price==='yes'){
         value = jQuery('#price_low').val();
     }else if(slug === 'property-country'){
         value = jQuery('#advanced_country').attr('data-value');
-    }else{
+	}else{
       
         if( jQuery('#'+slug).hasClass('filter_menu_trigger') ){ 
             //console.log('triger slug '+slug);
@@ -1566,17 +1571,18 @@ function get_custom_value(slug){
             //console.log ('trigger find value '+value);
             is_drop=1;
         }else{
-            // console.log('simple slug '+slug);
-            value = jQuery('#'+slug).val() ;
-            
+			if(slug === 'property-bedrooms' && 0){
+				value = jQuery('input[name=adv_rooms]').val();
+			}else{
+				// console.log('simple slug '+slug);
+				value = jQuery('#'+slug).val();
+            }
         }
     }
     
-  
     if (typeof(value)!=='undefined'&& is_drop===0){
       //  value=  value .replace(" ","-");
     }
-    
     return value;
  
 }
@@ -1638,6 +1644,7 @@ function get_custom_value_onthelist(slug){
   
 function show_pins_custom_search(){
     console.log ('show_pins_custom_search1');
+    console.log (mapfunctions_vars);
     var val1, val2, val3, val4, val5, val6, val7, val8, position;
     
     val1 =  get_custom_value (mapfunctions_vars.slugs[0]);
@@ -1699,13 +1706,13 @@ function show_pins_custom_search(){
     
 
     if(  typeof gmarkers!=='undefined'){
-        for (var i=0; i<gmarkers.length; i++) {    
+		for (var i=0; i<gmarkers.length; i++) {
             //console.log("xxxxxxxxxxxxxx      "+mapfunctions_vars.slugs[4] +' / '+ val5+' / '+ gmarkers[i].val5);
-                if ( !visible_or_not(mapfunctions_vars.hows[0], gmarkers[i].val1, val1, mapfunctions_vars.slugs[0]) ){
+				if ( !visible_or_not(mapfunctions_vars.hows[0], gmarkers[i].val1, val1, mapfunctions_vars.slugs[0]) ){
                     gmarkers[i].setVisible(false);
-                } else if ( !visible_or_not(mapfunctions_vars.hows[1],gmarkers[i].val2, val2, mapfunctions_vars.slugs[1]) ){
+                } else if (gmarkers[i].action == 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[1],gmarkers[i].val2, val2, mapfunctions_vars.slugs[1]) ){
                     gmarkers[i].setVisible(false);
-                } else if ( !visible_or_not(mapfunctions_vars.hows[2],gmarkers[i].val3, val3, mapfunctions_vars.slugs[2]) ){
+                } else if (gmarkers[i].action != 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[2],gmarkers[i].val3, val3, mapfunctions_vars.slugs[2]) ){
                     gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[3],gmarkers[i].val4, val4, mapfunctions_vars.slugs[3]) ){
                     gmarkers[i].setVisible(false);

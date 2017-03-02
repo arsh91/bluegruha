@@ -1205,17 +1205,33 @@ jQuery(document).ready(function ($) {
     jQuery('#adv-search-1 li, #adv-search-3 li, .halfsearch input[type="checkbox"]').click(function () {
          if (typeof (show_pins) !== "undefined") {    
             first_time_wpestate_show_inpage_ajax_half=1
+			var selectedVal = jQuery(this).data('value');
+			if(selectedVal == 'property-to-rent'){
+				jQuery('.categories').hide();
+				jQuery('.bedrooms, .rooms').show();
+			}else{
+				jQuery('.bedrooms, .rooms').hide();
+				jQuery('.categories').show();
+			}
             show_pins(); 
         }
     });
 
-    jQuery('#adv_rooms, #adv_bath, #price_low, #price_max, #adv-search-1 input[type=text], #adv-search-3 input[type=text]').change(function () {        
+    jQuery('#adv_rooms, #adv_bath, #price_low, #price_max, #adv-search-1 input[type=text], #adv-search-3 input[type=text], #adv-search-1 input[name=adv_categ]').change(function () {
+	
         if (typeof (show_pins) !== "undefined") {   
             first_time_wpestate_show_inpage_ajax_half=1
             show_pins(); 
         }
        
     });
+	
+	jQuery('input#property-bedrooms').on("input", function(){
+		 if (typeof (show_pins) !== "undefined") {   
+            first_time_wpestate_show_inpage_ajax_half=1
+            show_pins(); 
+        }
+	});
 
     function isFunction(possibleFunction) {
          return typeof(possibleFunction) === typeof(Function);

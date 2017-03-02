@@ -52,7 +52,8 @@ if ( $extended_search =='yes' ){
             if ( $custom_advanced_search == 'yes'){
                 foreach($adv_search_what as $key=>$search_field){
 					if($search_field != 'none'){
-						echo '<div class="inputContainer">';
+						$style = ($search_field=='categories') ?'display:none;':'';
+						echo "<div class='inputContainer $search_field' style='$style'>";
 							wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
 						echo '</div>';
 					}
@@ -86,19 +87,25 @@ if ( $extended_search =='yes' ){
 	})
 	
 	jQuery('.increment').click(function() {
-		jQuery('#counter').val(function(i, val) { 
+		var val;
+		jQuery('#counter, #property-bedrooms').val(function(i, val) { 
 			if(val > 5)
 				val = 5;
 			return parseInt(val) + 1;
 		});
+		jQuery('#property-bedrooms').trigger("input");
+		jQuery('#property-bedrooms').data('value', val);
 	});
 	
 	jQuery('.decrement').click(function() {
-		jQuery('#counter').val(function(i, val) { 
+		var val;
+		jQuery('#counter, #property-bedrooms').val(function(i, val) { 
 			if(val < 2)
 				val = 2;
 			return parseInt(val) - 1;
 		});
+		jQuery('#property-bedrooms').trigger("input");
+		jQuery('#property-bedrooms').data('value', val);
 	});
 	
 </script>

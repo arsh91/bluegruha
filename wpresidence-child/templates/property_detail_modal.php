@@ -40,8 +40,8 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 								<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathroom_type', true); ?> Bathroom</span>
 								<span><i class="fa <?php echo $genderCatDetail[0]->description; ?>" aria-hidden="true"></i> <?php echo $genderCatDetail[0]->name; ?> Roomie</span>
 						<?php }else{ ?>
-								<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedrooms', true); ?> Bedroom(s)</span>
-								<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathrooms', true); ?> Bathroom(s)</span>
+								<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bedrooms', true); ?> Bedroom(s)</span>
+								<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bathrooms', true); ?> Bathroom(s)</span>
 								<span><i class="fa fa-area-chart" aria-hidden="true"></i><?php echo get_post_meta($propid, 'area', true); ?> Sq Ft</span>
 						<?php } ?>
 					</div>

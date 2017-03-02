@@ -1592,9 +1592,13 @@ if( !function_exists('wpestate_show_search_field') ):
                 $adv_categ_value    =   __('All Types','wpestate');
                 $adv_categ_value1   =   'all';
             }
-            $return_string=wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
-
-
+			if($adv_search_label[$key] == 'Gender'){
+				
+				$return_string='<div class="genderSelect"><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Male"  type="radio" id="male" class="male gender" name="adv_categ" value="male"/><label>Male</label></span><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Female" type="radio" id="female" class="female gender" name="adv_categ" value="female"/><label>Female</label></span><span class="checkboxContainer"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Any" type="radio" id="any" class="any gender" name="adv_categ" value="any" checked/><label>Any</label></span></div>';
+			}else{
+				$return_string=wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
+			}
+			
         }  else if($search_field=='cities'){
             
             if(isset($_GET['advanced_city']) && $_GET['advanced_city']!='' && $_GET['advanced_city']!='all'){
@@ -1659,10 +1663,9 @@ if( !function_exists('wpestate_show_search_field') ):
                     }
 					
 					/*changes done by Arsh start*/
-					if($label == 'bedroomNew'){
-						$return_string = '<div class="bedroomCount"><i class="fa fa-bed" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Number of bedrooms"></i><div class="numberCount"><a class="decrement" href="javascript:void(0)">-</a><input type="text" value="1" id="counter" name="'.$label.'" readonly><a class="increment" href="javascript:void(0)">+</a></div></div>';
-						//$return_string ='<div class="genderSelect"><input type="checkbox" data-toggle="tooltip" data-placement="top" title="Male" class="male"><input type="checkbox" data-toggle="tooltip" data-placement="top" title="Female" class="female"><input type="checkbox" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Any" class="any"></div>';
-					
+					if($label == 'Property Bedrooms'){
+						$return_string = '<div class="bedroomCount"><i class="fa fa-bed" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Number of bedrooms"></i><div class="numberCount"><a class="decrement" href="javascript:void(0)">-</a><input type="text" value="1" id="counter" name="rooms" readonly /><input type="hidden" id="property-bedrooms" value="1" name="property-bedrooms" data-value="1"/><a class="increment" href="javascript:void(0)">+</a></div></div>';
+						
 					}else{
 					
 					/*changes done by Arsh end*/

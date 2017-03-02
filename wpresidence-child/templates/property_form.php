@@ -79,7 +79,7 @@ $actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>
 				get_template_part('templates/submit_templates/location_section');
 				get_template_part('templates/submit_templates/contact_details');
 				get_template_part('templates/submit_templates/post_ad_type'); ?>
-				<input id="uni_list" value='<?php echo json_encode($universities_list); ?>' type="hidden" />
+				<input id="uni_list" value='<?php echo json_encode($universities_list, JSON_PARTIAL_OUTPUT_ON_ERROR); ?>' type="hidden" />
 				<input name="term_id" value="" type="hidden" />
 			</form>
 		</div>
