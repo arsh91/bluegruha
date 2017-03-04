@@ -1407,7 +1407,7 @@ function getCookieMap(cname) {
   
 function visible_or_not(how, slug, value, read){
   
-    console.log("how "+how+" slug "+slug+" value "+value+" read "+read);
+    //console.log("how "+how+" slug "+slug+" value "+value+" read "+read);
     if(value!=='' && typeof(value)!=='undefined' ){
         // value = value.replace('%',''); 
         //  console.log("value "+value);   
@@ -1474,12 +1474,25 @@ function visible_or_not(how, slug, value, read){
             } else{
                 return false;
             }
-        } else if( how === 'equal' ){            
-            if(  String(slug) === value || value == 'all' ){
-                return true;
-            } else{
-                return false;
-            }
+        } else if( how === 'equal' ){
+			/* this code is added by Arsh Sharma, for Gender icons multi select filters start*/
+			var values = value.split("|");
+			for(i in values){
+				value = values[i];
+				if(  String(slug) === value || value == 'all' ){
+					return true;
+				}
+			}
+			return false;
+			/* this code is added by Arsh Sharma, for Gender icons multi select filters end*/
+		
+			/* Original code **/
+			// if(  String(slug) === value || value == 'all' ){
+                // return true;
+            // } else{
+                // return false;
+            // }
+			
         } else if( how === 'like' ){
           
             
@@ -1550,7 +1563,7 @@ function get_custom_value(slug){
         value = jQuery('#'+slug).attr('data-value');
 		
 		if(slug === 'adv_categ' && typeof value =='undefined'){
-			value = jQuery('input[name=adv_categ]:checked').val();
+			value = jQuery('input[name=selGender]').val();
 		}
 		if(slug === 'advanced_city' && value == ''){
 			value = jQuery('#google_srch_city').val();
@@ -1644,7 +1657,7 @@ function get_custom_value_onthelist(slug){
   
 function show_pins_custom_search(){
     console.log ('show_pins_custom_search1');
-    console.log (mapfunctions_vars);
+    //console.log (mapfunctions_vars);
     var val1, val2, val3, val4, val5, val6, val7, val8, position;
     
     val1 =  get_custom_value (mapfunctions_vars.slugs[0]);

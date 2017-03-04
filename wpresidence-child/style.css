@@ -360,14 +360,14 @@ color: #92bb21 !important;
 
 .genderSelect{float:left; width:100%;}
 
-.genderSelect input[type="radio"]{float:left; margin:0 18px; position:relative; width:25px; height:41px; opacity:0.01; cursor:pointer; z-index:9;}
-.genderSelect input[type="radio"]:checked ~ label:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;  visibility:visible;}
+.genderSelect input[type="checkbox"]{float:left; margin:0 18px; position:relative; width:25px; height:41px; opacity:0.01; cursor:pointer; z-index:9;}
+.genderSelect input[type="checkbox"]:checked ~ label:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;  visibility:visible;}
 .checkboxContainer{float: left; text-align:center; position:relative;}
 .checkboxContainer label{height:41px; width:25px; visibility:hidden; position:absolute; left:20px;}
 .checkboxContainer label:before{position:absolute; left:0; top:-2px; content:""; width:25px; height:41px; visibility:visible; cursor:pointer;}
-.checkboxContainer input.male[type="radio"] ~ label:before{background-image:url('img/male.png');}
-.checkboxContainer input.female[type="radio"] ~ label:before{background-image:url('img/female.png');}
-.checkboxContainer input.any[type="radio"] ~ label:before{background-image:url('img/any.png'); background-repeat:no-repeat; top:1px;}
+.checkboxContainer input.male[type="checkbox"] ~ label:before{background-image:url('img/male.png');}
+.checkboxContainer input.female[type="checkbox"] ~ label:before{background-image:url('img/female.png');}
+.checkboxContainer input.any[type="checkbox"] ~ label:before{background-image:url('img/any.png'); background-repeat:no-repeat; top:1px;}
 
 /*
 .genderSelect input[type="checkbox"]{float:left; margin:0 25px; position:relative; width:25px; height:1px; cursor:pointer;}

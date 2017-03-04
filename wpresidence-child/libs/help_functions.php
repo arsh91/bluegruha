@@ -1594,7 +1594,7 @@ if( !function_exists('wpestate_show_search_field') ):
             }
 			if($adv_search_label[$key] == 'Gender'){
 				
-				$return_string='<div class="genderSelect"><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Male"  type="radio" id="male" class="male gender" name="adv_categ" value="male"/><label>Male</label></span><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Female" type="radio" id="female" class="female gender" name="adv_categ" value="female"/><label>Female</label></span><span class="checkboxContainer"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Any" type="radio" id="any" class="any gender" name="adv_categ" value="any" checked/><label>Any</label></span></div>';
+				$return_string='<div class="genderSelect"><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Male"  type="checkbox" id="male" class="male gender" name="adv_categ_male" value="male"/><label>Male</label></span><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Female" type="checkbox" id="female" class="female gender" name="adv_categ_female" value="female"/><label>Female</label></span><span class="checkboxContainer"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Any" type="checkbox" id="any" class="any gender" name="adv_categ_neutral" value="any" /><label>Any</label></span><input type="hidden" name="selGender" value="All" /></div>';
 			}else{
 				$return_string=wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
 			}

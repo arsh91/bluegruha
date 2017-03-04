@@ -84,13 +84,34 @@ if ( $extended_search =='yes' ){
 <script>
 	jQuery(function () {
 	  jQuery('[data-toggle="tooltip"]').tooltip()
-	})
+	});
 	
+	jQuery('.checkboxContainer input[type=checkbox]').click(function(){
+		var selGender = '';
+		if(jQuery('input[name=adv_categ_male]').is(':checked')){
+			selGender +='male';
+		}
+		if(jQuery('input[name=adv_categ_female]').is(':checked')){
+			selGender +='|female';
+		}
+		if(jQuery('input[name=adv_categ_neutral]').is(':checked')){
+			selGender +='|any';
+		}
+		selGender = selGender.replace(/^\||\|$/g,'');
+		if(selGender == ''){
+			selGender = 'All';
+		}
+		jQuery('input[name=selGender]').val(selGender);
+	});
 	jQuery('.increment').click(function() {
 		var val;
 		jQuery('#counter, #property-bedrooms').val(function(i, val) { 
-			if(val > 5)
-				val = 5;
+			if(val > 4){
+				return 'All';
+			}
+			if(val == 'All'){
+				val = 0;
+			}
 			return parseInt(val) + 1;
 		});
 		jQuery('#property-bedrooms').trigger("input");
@@ -100,8 +121,12 @@ if ( $extended_search =='yes' ){
 	jQuery('.decrement').click(function() {
 		var val;
 		jQuery('#counter, #property-bedrooms').val(function(i, val) { 
-			if(val < 2)
-				val = 2;
+			if(val < 2){
+				return 'All';
+			}
+			if(val == 'All'){
+				val = 6;
+			}
 			return parseInt(val) - 1;
 		});
 		jQuery('#property-bedrooms').trigger("input");

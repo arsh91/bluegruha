@@ -793,6 +793,31 @@ jQuery(document).ready(function ($) {
                         jQuery("#" + amount).text(ui.values[0].format() + " " + replace_plus ( decodeURIComponent ( control_vars.curency ) ) + " " + control_vars.to + " " + ui.values[1].format() + " " + replace_plus ( decodeURIComponent ( control_vars.curency ) ) );
                     }
                 }
+            },
+			change: function (event, ui) {
+
+                if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
+                    jQuery("#" + price_low).val(ui.values[0]);
+                    jQuery("#" + price_max).val(ui.values[1]);
+
+                    temp_min= ui.values[0] ;
+                    temp_max= ui.values[1];
+
+                    if (my_custom_curr_cur_post === 'before') {
+                        jQuery("#" + amount).text( replace_plus( decodeURIComponent ( my_custom_curr_symbol ) ) + " " + temp_min.format() + " " + control_vars.to + " " + replace_plus ( decodeURIComponent ( my_custom_curr_symbol ) )+ " " + temp_max.format());
+                    } else {
+                        jQuery("#" + amount).text(temp_min.format() + " " + replace_plus ( decodeURIComponent ( my_custom_curr_symbol ) )+ " " + control_vars.to + " " + temp_max.format() + " " + replace_plus ( decodeURIComponent ( my_custom_curr_symbol ) ) );
+                    }
+                } else {
+                    jQuery("#" + price_low).val(ui.values[0]);
+                    jQuery("#" + price_max).val(ui.values[1]);
+
+                    if (control_vars.where_curency === 'before') {
+                        jQuery("#" + amount).text( replace_plus ( decodeURIComponent ( control_vars.curency ) ) + " " + ui.values[0].format() + " " + control_vars.to + " " +  replace_plus ( decodeURIComponent ( control_vars.curency ) ) + " " + ui.values[1].format());
+                    } else {
+                        jQuery("#" + amount).text(ui.values[0].format() + " " + replace_plus ( decodeURIComponent ( control_vars.curency ) ) + " " + control_vars.to + " " + ui.values[1].format() + " " + replace_plus ( decodeURIComponent ( control_vars.curency ) ) );
+                    }
+                }
             }
         });
     }
@@ -1202,7 +1227,7 @@ jQuery(document).ready(function ($) {
     
  
  
-    jQuery('#adv-search-1 li, #adv-search-3 li, .halfsearch input[type="checkbox"]').click(function () {
+    jQuery('#adv-search-1 li, #adv-search-3 li, .halfsearch input[type="checkbox"], #adv-search-1 .checkboxContainer input[type=checkbox]').click(function () {
          if (typeof (show_pins) !== "undefined") {    
             first_time_wpestate_show_inpage_ajax_half=1
 			var selectedVal = jQuery(this).data('value');
@@ -1212,6 +1237,12 @@ jQuery(document).ready(function ($) {
 			}else{
 				jQuery('.bedrooms, .rooms').hide();
 				jQuery('.categories').show();
+			}
+			if(selectedVal == 'property-to-rent' || selectedVal == 'room-to-rent' || selectedVal == 'university-housing' || selectedVal == 'all'){
+				jQuery("#slider_price").slider("option", "values", [0, 10000]);
+				jQuery("#counter, #property-bedrooms, .genderSelect input[name=selGender]").val('All');
+				jQuery("#available-from").val('');
+				jQuery('input[name=adv_categ_male], input[name=adv_categ_female], input[name=adv_categ_neutral]').prop('checked', false); 
 			}
             show_pins(); 
         }
