@@ -385,9 +385,31 @@ function wpestate_listing_pins($args='',$jump=0){
                         }                        
                     }
 					// This is for adding phone number to markers array (Arsh Sharma)
-                     if($phone){
+                    if($phone){
 						$place_markers[] = $phone;
-					 }
+					}
+					$apartment_name       =   get_post_meta($the_id, 'apartment_name', true);
+					if($apartment_name){
+						$place_markers['apartment'] = rawurlencode ($apartment_name);
+					}
+					$university       =   get_post_meta($the_id, 'property_university', true);
+					if($university){
+						$place_markers['university'] = rawurlencode($university);
+					}
+					$available_from       =   get_post_meta($the_id, 'available_from', true);
+					if($available_from){
+						$place_markers['available_from'] = rawurlencode (date ('j M Y', strtotime($available_from)));
+					}
+					$bathroom_type       =   get_post_meta($the_id, 'bathroom_type', true);
+					if($bathroom_type){
+						$place_markers['bathroom_type'] = rawurlencode ($bathroom_type);
+					}
+					$bedroom_type       =   get_post_meta($the_id, 'bedroom_type', true);
+					if($bedroom_type){
+						$place_markers['bedroom_type'] = rawurlencode ($bedroom_type);
+					}
+					//echo '<pre>';
+					//print_r($place_markers);
          
                     $markers[]=$place_markers;
 

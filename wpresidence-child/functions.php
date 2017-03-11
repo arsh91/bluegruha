@@ -566,7 +566,7 @@ function savePropertyToRent(){
             
             
 			update_post_meta($post_id, 'property_type', $property_type);
-			update_post_meta($post_id, 'area', $area);
+			update_post_meta($post_id, 'property_size', $area);
 			update_post_meta($post_id, 'property_bedrooms', $bedrooms);
 			update_post_meta($post_id, 'property_bathrooms', $bathrooms);
 			update_post_meta($post_id, 'property_price', $property_price);

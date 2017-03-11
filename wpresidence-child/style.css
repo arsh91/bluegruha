@@ -15,7 +15,7 @@
 .child-adv-search .adv1-holder {height: auto;}
 .child-adv-search #adv-search-header-1{display:none;}
 .child-adv-search  .adv1-holder .adv_search_slider{width: 25%;}
-.child_theme.info_details{height:auto;max-height:266px;min-height:80px;}
+.child_theme.info_details{height:auto;max-height:297px;min-height:80px;}
 .child_theme.info_details .prop_pricex{position:relative;float:left;}
 .email_varify_cont{float:left;}
 .disabled_contact_btn{opacity:0.5;}
@@ -417,3 +417,33 @@ top: 122px;
 #google-default-search {
 top: 88px;
 }
+
+/*@media (max-width:1200px){*/
+/*@media (min-width:1370px) { */
+@media only screen and (max-width: 1370px) and (min-width: 801px){
+	.header_wrapper {height: 55px !important;}
+	#logo_image{max-height:100%;}
+	.logo:after{left: 220px; top: 23px;}
+	.headerBtn {height: 32px; padding: 7px 25px;}
+	#google-default-search {top: 73px;}
+	div#gmapzoomplus {top: 75px;}
+	div#gmapzoomminus {top: 107px;}
+	.inputContainer{padding: 11px 30px; height: 60px;}
+}
+
+/*css for small popup on map home page*/
+.propertyPopup{width:400px; border:1px solid #b4b4b4; float:left;background:#fff;}
+.propertyPopup h2{color:#666666; font-size:16px; float:left; width:100%; padding:0 15px; margin:10px 0;}
+.propertyPopup h2 i{font-size:18px; margin-right:10px;}
+.propertyPopup h2 i.fa-male{color:#33bcdc;}
+.propertyPopup h2 i.fa-female{color:#f06ad6;}
+.propertyArea{font-size:14px; float:left; width:100%; color:#92bb21; padding:0 15px;text-transform:capitalize;}
+.propertyArea i{margin-right:10px;}
+.propertyDetails{font-size:14px; color:#666666; float:left; width:100%; padding:0 15px; margin-top:10px;}
+.propertyDetails span{margin-right:25px;}
+.propertyDetails span i{margin-right:0px; font-sie:16px;}
+.otherDetails{font-size:14px; float:left; width:100%; border-top:1px solid #b4b4b4; margin-top:10px; padding:10px 15px;}
+.otherDetails span{font-size:16px; color:#00abd3; font-weight:600;}
+span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal;}
+span.availiblity strong{color:#92bb21; font-weight:normal;}
+.propertyPopup #infobox_title{width: 100%;margin: 0;padding: 0;}
