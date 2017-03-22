@@ -408,6 +408,10 @@ function wpestate_listing_pins($args='',$jump=0){
 					if($bedroom_type){
 						$place_markers['bedroom_type'] = rawurlencode ($bedroom_type);
 					}
+					$property_label       =   get_post_meta($the_id, 'property_label', true);
+					if($bedroom_type){
+						$place_markers['property_label'] = rawurlencode ($property_label);
+					}
 					//echo '<pre>';
 					//print_r($place_markers);
          

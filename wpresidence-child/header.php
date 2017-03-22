@@ -116,7 +116,7 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
 
 
 
-<body <?php body_class($halfmap_body_class); ?>>  
+<body <?php body_class($halfmap_body_class); ?> data-infoBoxStatus="CLOSE">  
    
 
 <?php   get_template_part('templates/mobile_menu' ); ?> 
@@ -154,6 +154,11 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
                     </a>
                 </div>   
 
+				<div class="headerSocial">
+					<a href="javascript:void(0)"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+					<a href="javascript:void(0)"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+					<a href="javascript:void(0)"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+				</div>
               
                 <?php 
                 if(esc_html ( get_option('wp_estate_show_top_bar_user_login','') )=="yes"){

@@ -48,8 +48,8 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 				</div>
 				
 				<div class="propertyPrice priceModal">
-					<div class="amount">$<?php echo get_post_meta($propid, 'property_price', true); ?><div class='permonth'>per month</div></div> 
-					<span>Available From: <strong><?php echo get_post_meta($propid, 'available_from', true); ?></strong></span>
+					<div class="amount">$<?php echo get_post_meta($propid, 'property_price', true); ?><div class='permonth'>per month</div></div>
+					<span>Available From: <strong><?php echo date ('j M Y', strtotime(get_post_meta($propid, 'available_from', true))); ?></strong></span>
 				</div>
 				
 				<div class="locationAddress"><i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -67,6 +67,13 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 				<div class="actionItems">
 					<span class="no_views dashboad-tooltip" data-original-title="<?php _e('Number of Page Views','wpestate');?>"><i class="fa fa-eye" aria-hidden="true"></i><?php echo intval( get_post_meta($propid, 'wpestate_total_views', true) );?></span>
 					<span id="print_page" data-propid="<?php print $propid;?>" class = "print_btn"><i class="fa fa-print"></i> Print</span>
+					<?php
+						$language = get_post_meta($propid, 'language', true);
+						if($language){
+					?>
+						<span class="language">Language: <strong><?php echo $language; ?></strong></span>
+					<?php } ?>
+					
 					<?php
 						$secDeposit = get_post_meta($propid, 'security_amount', true);
 						if($secDeposit){

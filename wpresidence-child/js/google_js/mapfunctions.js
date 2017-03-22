@@ -403,7 +403,11 @@ function setMarkers(map, locations) {
         var id                    = beach[10];
         var lat                   = beach[1];
         var lng                   = beach[2];
-        var title                 = decodeURIComponent ( beach[0] );
+		if(typeof(beach['property_label']) != 'undefined'){
+			var title                 = decodeURIComponent ( '$'+beach[13] +' - '+beach['property_label'] );
+		}else{
+			var title                 = decodeURIComponent ( '$'+beach[13] +' - '+beach[0] );
+		}
         var pin                   = beach[8];
         var counter               = beach[3];
         var image                 = decodeURIComponent ( beach[4] );
@@ -449,7 +453,10 @@ function setMarkers(map, locations) {
         if(typeof (beach['bedroom_type']) != 'undefined'){
 			bedroom_type                =   decodeURIComponent ( beach['bedroom_type'] );
 		}
-		
+		var property_label                =   '';   
+        if(typeof (beach['property_label']) != 'undefined'){
+			property_label                =   decodeURIComponent ( beach['property_label'] );
+		}
 		
 		
         if(mapfunctions_vars.custom_search==='yes'){
@@ -527,36 +534,36 @@ function setMarkers(map, locations) {
      
             if(googlecode_regular_vars2.taxonomy === 'property_city'){
                 if( googlecode_regular_vars2.term === city){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
                 }
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_area'){
                 if( googlecode_regular_vars2.term === area){
-                    createMarker (county_state ,size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type);
+                    createMarker (county_state ,size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
                 }    
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_category'){
                 if( googlecode_regular_vars2.term === single_first_type){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
                 }  
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_action_category'){
                 if( googlecode_regular_vars2.term === single_first_action){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phonev, apartment, university, available_from, bathroom_type, bedroom_type);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phonev, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
                 }  
             }
             
         }else if( typeof( googlecode_regular_vars2) !== 'undefined' && typeof( googlecode_regular_vars2.markers2 )!=='undefined' && googlecode_regular_vars2.markers2.length > 2 &&  typeof (googlecode_regular_vars2.agent_id )!=='undefined'){    
                 if( parseInt( googlecode_regular_vars2.agent_id,10) === parseInt( agent_id,10) ){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
                 }
                             
         }else{
 			
-            createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type);
+            createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
         }
         // found the property
         if(selected_id===id){
@@ -587,7 +594,7 @@ function setMarkers(map, locations) {
 //  create marker
 /////////////////////////////////////////////////////////////////////////////////////////////////  
 
-function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4,slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8, single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type ){
+function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4,slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8, single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label ){
 
     var new_title='';
     var myLatLng = new google.maps.LatLng(lat,lng);
@@ -652,7 +659,8 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 			university:university,
 			available_from:available_from,
 			bathroom_type:bathroom_type,
-			bedroom_type:bedroom_type
+			bedroom_type:bedroom_type,
+			property_label:property_label
             });
             
     }else{
@@ -684,7 +692,8 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 				university:university,
 				available_from:available_from,
 				bathroom_type:bathroom_type,
-				bedroom_type:bedroom_type				
+				bedroom_type:bedroom_type,				
+				property_label:property_label				
                });
               
                   
@@ -692,16 +701,19 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 	
     gmarkers.push(marker);
  
-    google.maps.event.addListener(marker, 'mouseover', function(event) {
+    google.maps.event.addListener(marker, 'click', function(event) {
 	  //  new_open_close_map(1);
-
+		//if(jQuery('body').data('infoBoxStatus') == 'OPEN'){
+		//	return false;
+		//}
+		//jQuery('body').data('infoBoxStatus', 'OPEN');
 		map_callback( new_open_close_map );
 		google.maps.event.trigger(map, 'resize');
 
 		if(this.image===''){
 
-			 //info_image='<img src="' + mapfunctions_vars.path + '/idxdefault.jpg" alt="image" />';
-			  info_image =''; // removed image, when property have no image. Arsh Sharma
+			//info_image='<img src="' + mapfunctions_vars.path + '/idxdefault.jpg" alt="image" />';
+			info_image =''; // removed image, when property have no image. Arsh Sharma
 		}else{
 			 info_image=this.image;
 		}
@@ -754,6 +766,10 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		if(this.title.length > 40){
 		   title=title+"...";
 		}
+		var property_label=  this.property_label.substr(0, 40)
+		if(this.property_label.length > 40){
+		   property_label=property_label+"...";
+		}
 		
 		var genderIcon = '';
 		if(category_name == 'Male'){
@@ -776,33 +792,42 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 			if(this.bedroom_type != ''){
 					var bedType = '(' +this.bedroom_type +')';
 			}
-			infoline2 +='<span><i class="fa fa-bed" aria-hidden="true"></i> '+this.rooms+' '+bedType+'</span>';
+			infoline2 +='<span title="Bedroom(s)"><i class="fa fa-bed" aria-hidden="true"></i> '+this.rooms+' '+bedType+'</span>';
 		}else if(this.bedroom_type != ''){
-			infoline2 +='<span><i class="fa fa-bed" aria-hidden="true"></i> '+this.bedroom_type+'</span>';
+			infoline2 +='<span title="Bedroom(s)"><i class="fa fa-bed" aria-hidden="true"></i> '+this.bedroom_type+'</span>';
 		}
 		if(this.baths!=''){
 			var bathType = '';
 			if(this.bathroom_type != ''){
 					var bathType = '(' +this.bathroom_type +')';
 			}
-			infoline2 +='<span><i class="fa fa-bath" aria-hidden="true"></i> '+this.baths+' '+bathType+'</span>';
+			infoline2 +='<span title="Bathroom(s)"><i class="fa fa-bath" aria-hidden="true"></i> '+this.baths+' '+bathType+'</span>';
 		}else if(this.bathroom_type != ''){
-			infoline2 +='<span><i class="fa fa-bath" aria-hidden="true"></i> '+this.bathroom_type+'</span>';
+			infoline2 +='<span title="Bathroom(s)"><i class="fa fa-bath" aria-hidden="true"></i> '+this.bathroom_type+'</span>';
 		}
 		if(this.size != ''){
-			infoline2 +='<span><i class="fa fa-area-chart" aria-hidden="true"></i> '+this.size+' sqft</span>';
+			infoline2 +='<span title="Area"><i class="fa fa-area-chart" aria-hidden="true"></i> '+this.size+' sqft</span>';
 		}
+		if(category_name == 'Male'){
+			infoline2 +='<span title="Male Roomie"><i class="fa fa-male" aria-hidden="true"></i> Male Roomie</span>';
+		}else if(category_name == 'Female'){
+			infoline2 +='<span title="Female Roomie"><i class="fa fa-female" aria-hidden="true"></i> Female Roomie</span>';
+		}else if(category_name == 'Any'){
+			infoline2 +='<span title="Any Roomie"><i class="fa fa-globe" aria-hidden="true"></i> Any Roomie</span>';
+		}
+		
 		infoline2 +='</div>';
 		
 		var infoline3 = '<div class="otherDetails"><span>$ '+this.cleanprice+'</span>';
 		if(this.available_from != ''){
-			infoline3 += '<span class="availiblity">Available from : <strong>'+this.available_from+'</strong></span>';
+			infoline3 += '<span class="availiblity">Avail. From : <strong>'+this.available_from+'</strong> <span class="view_detail_link">View Details <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span></span>';
 		}
 		infoline3 += '</div>';
 		//console.log('poupdata');
 		//console.log(this);
-		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="javascript:void(0);" onClick=\'javascript:openModal('+this.idul+');\'>'+info_image+'</a><div class="propertyPopup"><a href="javascript:void(0);" id="infobox_title" onClick=\'javascript:openModal('+this.idul+');\'><h2>'+genderIcon+title+'</h2></a>'+infoline1+infoline2+infoline3+'</div></div>' );
+		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="javascript:void(0);" onClick=\'javascript:openModal('+this.idul+');\'>'+info_image+'<div class="propertyPopup"><h2>'+genderIcon+property_label+'</h2>'+infoline1+infoline2+infoline3+'</div></a></div>' );
 
+		infoBox.setOptions({'zIndex': null});
 		
 		if(this.image===''){
 			infoBox.setOptions({'pixelOffset':new google.maps.Size(0, 140)}); 
@@ -850,7 +875,11 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		
 		close_adv_search();
 	});/////////////////////////////////// end event listener
-            
+    
+	google.maps.event.addListener(marker, 'mouseout', function(event) {
+
+		jQuery('body').data('infoBoxStatus', 'CLOSE');
+	});
 	if(mapfunctions_vars.generated_pins!=='0'){
 		pan_to_last_pin(myLatLng);
 	}

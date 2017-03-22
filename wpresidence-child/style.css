@@ -29,7 +29,7 @@
 .main_wrapper {height: 100%;}
 .header_media {height: 100%;}
 
-.headerBtn {transition: none;color: #fff;height: 46px;padding: 13px 25px;float: left;font-size: 18px;border-radius: 3px;font-weight: 500;}
+.headerBtn {transition: none;color: #fff;height: 46px;padding: 13px 25px;float: left;border-radius: 3px;font-weight: 500; font-size: 16px;}
 .headerBtn:hover,.headerBtn:focus{text-decoration:none; transition:none; color:#fff;}
 .headerBtn i{margin-right:10px; transition:none;}
 .submitProperty{background:#92bb21;}
@@ -137,6 +137,8 @@ ul#featuredAd{display:none;}
 .actionItems span{margin-right:30px;}
 .actionItems span.price{margin-right:0; float:right; font-size:14px;}
 .actionItems span.price strong{color:#4d9a01; margin-right:5px; font-size:15px;}
+.actionItems span.language{margin-right:0; float:left; font-size:14px;}
+.actionItems span.language strong{color:#4d9a01; margin-right:5px; font-size:15px;}
 .actionItems a{font-size:15px; text-decoration:none; color:#666666;}
 .actionItems i{color:#3c90be; margin-right:10px;}
 p.description {border-bottom: 1px solid #cfcfcf; color: #666666; float: left; font-size: 13px; line-height: 24px; padding: 15px 0;}
@@ -341,7 +343,7 @@ padding: 4px 0;
 .footerMain p a {
 color: #92bb21 !important;
 }
-.logo:after {content: "";position: absolute;left: 250px;top: 33px;background: url("img/tagline.png");width: 279px;height: 22px;}
+.logo:after {content: "";position: absolute;left: 250px;top: 33px;background: url("img/tagline.png");width: 239px;height: 17px;}
 @media only screen and (max-width: 767px){
 .logo:after {
     display:none;
@@ -349,8 +351,8 @@ color: #92bb21 !important;
 }
 /* Filters css Start */
 .filterContainer{background:rgba(0,0,0,0.6); float:left;width:100%;padding:0;}
-.inputContainer{float:left; padding:16px 30px; width:23%; border-right:1px solid #fff; height:70px;}
-.inputContainer:last-child{border:none;width:30%;}
+.inputContainer{float:left; padding:16px 30px; width:25%; border-right:1px solid #fff; height:70px;font-weight: bold;}
+.inputContainer:last-child{border:none;}
 .inputContainer input{height:38px; border:1px solid #c4c4c4;}
 .bedroomCount i{float:left; color:#fff; font-size:24px; margin-right:20px; margin-top:5px; cursor:pointer;}
 .numberCount{float:left; border:1px solid #c3c5c4; border-radius:3px; width:calc(100% - 50px);}
@@ -362,7 +364,7 @@ color: #92bb21 !important;
 
 .genderSelect input[type="checkbox"]{float:left; margin:0 18px; position:relative; width:25px; height:41px; opacity:0.01; cursor:pointer; z-index:9;}
 .genderSelect input[type="checkbox"]:checked ~ label:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;  visibility:visible;}
-.checkboxContainer{float: left; text-align:center; position:relative;}
+.checkboxContainer{float: left; text-align:center; position:relative;width: 33.33%;}
 .checkboxContainer label{height:41px; width:25px; visibility:hidden; position:absolute; left:20px;}
 .checkboxContainer label:before{position:absolute; left:0; top:-2px; content:""; width:25px; height:41px; visibility:visible; cursor:pointer;}
 .checkboxContainer input.male[type="checkbox"] ~ label:before{background-image:url('img/male.png');}
@@ -395,14 +397,17 @@ text-align: center;
 }
 .adv_search_slider p label, .adv_search_slider p span#amount {
 color: #fff !important;
+font-weight:bold
 }
+.ui-widget-header{background:#a5cd38 !important;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{color:#a5cd38 !important;}
 /* Filters css END */
 
 .master_header.wide {
 border:none; 
 background: rgba(0,0,0,0.6);
 }
-.header_wrapper {
+.home .header_wrapper {
 background: none !important;
 }
 .header_media.with_search_1 {
@@ -424,13 +429,12 @@ top: 88px;
 	.header_wrapper {height: 55px !important;}
 	#logo_image{max-height:100%;}
 	.logo:after{left: 220px; top: 23px;}
-	.headerBtn {height: 32px; padding: 7px 25px;}
+	.headerBtn {height: 32px; padding: 7px 15px;}
 	#google-default-search {top: 73px;}
 	div#gmapzoomplus {top: 75px;}
 	div#gmapzoomminus {top: 107px;}
-	.inputContainer{padding: 11px 30px; height: 60px;}
+	.inputContainer{padding: 8px 20px 11px 20px; height: 55px;width:25%;}
 }
-
 /*css for small popup on map home page*/
 .propertyPopup{width:400px; border:1px solid #b4b4b4; float:left;background:#fff;}
 .propertyPopup h2{color:#666666; font-size:16px; float:left; width:100%; padding:0 15px; margin:10px 0;}
@@ -443,7 +447,17 @@ top: 88px;
 .propertyDetails span{margin-right:25px;}
 .propertyDetails span i{margin-right:0px; font-sie:16px;}
 .otherDetails{font-size:14px; float:left; width:100%; border-top:1px solid #b4b4b4; margin-top:10px; padding:10px 15px;}
-.otherDetails span{font-size:16px; color:#00abd3; font-weight:600;}
+.otherDetails span{font-size:16px; color:#a5cd38; font-weight:600;}
 span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal;}
 span.availiblity strong{color:#92bb21; font-weight:normal;}
+span.availiblity span.view_detail_link{margin-left:40px;font-weight:normal;}
+span.availiblity span.view_detail_link i {margin-left:5px;}
 .propertyPopup #infobox_title{width: 100%;margin: 0;padding: 0;}
+.child_theme #infocloser{top:1px;right:1px;}
+
+/*header social icons start*/
+.headerSocial {float: right; position: relative; right: 220px; top: 18px;z-index: 9;}
+.headerSocial a {font-size: 20px; margin: 0 5px; float: left;}
+.headerSocial a i{color:#fff;}
+.headerSocial a:hover i{color:#92bb21;}
+/*header social icons end*/
