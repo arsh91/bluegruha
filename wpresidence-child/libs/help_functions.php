@@ -1664,7 +1664,7 @@ if( !function_exists('wpestate_show_search_field') ):
 					
 					/*changes done by Arsh start*/
 					if($label == 'Property Bedrooms'){
-						$return_string = '<div class="bedroomCount"><i class="fa fa-bed" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Number of bedrooms"></i><div class="numberCount"><a class="decrement" href="javascript:void(0)">-</a><input type="text" value="1" id="counter" name="rooms" readonly /><input type="hidden" id="property-bedrooms" value="1" name="property-bedrooms" data-value="1"/><a class="increment" href="javascript:void(0)">+</a></div></div>';
+						$return_string = '<div class="bedroomCount"><i class="fa fa-bed" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Number of bedrooms"></i><div class="numberCount"><a class="decrement" href="javascript:void(0)">-</a><input type="text" value="1" id="counter" name="rooms" readonly /><input type="hidden" id="property-bedrooms" value="All" name="property-bedrooms" data-value="1"/><a class="increment" href="javascript:void(0)">+</a></div></div>';
 						
 					}else{
 					

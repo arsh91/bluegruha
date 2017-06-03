@@ -32,7 +32,7 @@ function initialize(){
         flat:false,
         noClear:false,
         zoom: parseInt(googlecode_regular_vars.page_custom_zoom),
-        scrollwheel: false,
+        scrollwheel: true,
         draggable: true,
         center: new google.maps.LatLng(googlecode_regular_vars.general_latitude, googlecode_regular_vars.general_longitude),
         mapTypeId: googlecode_regular_vars.type.toLowerCase(),
@@ -64,9 +64,9 @@ function initialize(){
         jQuery('#gmap-loading').remove();
     });
 
-    if (Modernizr.mq('only all and (max-width: 1025px)')) {
-        map.setOptions({'draggable': false});
-    }
+    // if (Modernizr.mq('only all and (max-width: 1025px)')) {
+        // map.setOptions({'draggable': false});
+    // }
 
 
     if(googlecode_regular_vars.generated_pins==='0'){

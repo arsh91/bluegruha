@@ -1624,7 +1624,7 @@ jQuery(document).ready(function ($) {
 					$('#agent_comment').val('');
 					$('#agent_contact_otp').val('');
 					//$('.email_varify_cont').hide();
-					$('#varify_cont_email').text("Varify Email");
+					$('#varify_cont_email').text("Verify Email");
 					$(obj).closest('form').find('input[type=submit]').attr('disabled',true).addClass('disabled_contact_btn');
 				}
 				$('#alert-agent-contact').empty().append(data.response);
@@ -1675,7 +1675,7 @@ jQuery(document).ready(function ($) {
 						$(obj).closest('form').find('input[type=submit]').attr('disabled',false);
 						$(obj).closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
 						$('#agent_contact_otp').val('');
-						$('#varify_cont_email').text("Varify Email");
+						$('#varify_cont_email').text("Verify Email");
 					}
 				}
 			});
@@ -1702,8 +1702,11 @@ jQuery(document).ready(function ($) {
 				},
 				success: function (data) {
 					$(obj).closest('form').find('#alert-agent-contact').empty().append(data.response);
-					if(data.sent == true)
+					if(data.sent == true){
 						$(obj).closest('form').find('#varify_cont_email').text("Resend OTP");
+						$(obj).closest('form').find('#agent_contact_otp').parent('div').removeClass('hide');
+						$(obj).closest('form').find('#agent_contact_otp').removeClass('hide');
+					}
 				},
 				error: function (errorThrown) {
 					// console.log(errorThrown);
@@ -1760,8 +1763,10 @@ jQuery(document).ready(function ($) {
 	$('#varify_cont_email, .verification').bind('click', function(){
 		varifyContEmail(this);
 	});
-	$('#agent_contact_otp, .otpField').bind('blur', function(){
-		otpCheckOnBlur(this);
+	$('#agent_contact_otp, .otpField').bind('keyup', function(){
+		if($(this).val().length > 3){
+			otpCheckOnBlur(this);
+		}
 	});
 
 // Arsh sharma code changes for adding OTP on contact me section
@@ -1794,7 +1799,7 @@ jQuery(document).ready(function ($) {
 			error: function(errorThrown){
 			}
 
-		});//end ajax  var ajaxurl      =   control_vars.admin_url+'admin-ajax.php';     
+		});//end ajax  var ajaxurl      =   control_vars.admin_url+'admin-ajax.php';
 	};
 
     ///////////////////////////////////////////////////////////////////////////////////////////  

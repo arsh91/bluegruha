@@ -2017,3 +2017,8 @@ function filter_invoices(){
         }
     });//end ajax
 }
+
+var searchBox = jQuery('input#google-default-search').length;
+if(searchBox){
+	jQuery('input#google-default-search').focus();
+}

@@ -112,7 +112,7 @@ function wpestate_map_shortcode_function(){
     var slug3                = '';
     var val3                 = '';
     var how3                 = '';
-    var slug4                = '';
+    var slug4                = '';	
     var val4                 = '';
     var how4                 = '';
     var slug5                = '';
@@ -442,8 +442,10 @@ function setMarkers(map, locations) {
 			university                =   decodeURIComponent ( beach['university'] );
 		}
 		var available_from                =   '';   
+		var available_from_date                =   '';   
         if(typeof (beach['available_from']) != 'undefined'){
 			available_from                =  decodeURIComponent ( beach['available_from'] );
+			available_from_date                =  decodeURIComponent ( beach['available_from_date'] );
 		}
 		var bathroom_type                =   '';   
         if(typeof (beach['bathroom_type']) != 'undefined'){
@@ -534,36 +536,36 @@ function setMarkers(map, locations) {
      
             if(googlecode_regular_vars2.taxonomy === 'property_city'){
                 if( googlecode_regular_vars2.term === city){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
                 }
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_area'){
                 if( googlecode_regular_vars2.term === area){
-                    createMarker (county_state ,size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+                    createMarker (county_state ,size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
                 }    
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_category'){
                 if( googlecode_regular_vars2.term === single_first_type){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
                 }  
             }
             
             if(googlecode_regular_vars2.taxonomy === 'property_action_category'){
                 if( googlecode_regular_vars2.term === single_first_action){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phonev, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phonev, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
                 }  
             }
             
         }else if( typeof( googlecode_regular_vars2) !== 'undefined' && typeof( googlecode_regular_vars2.markers2 )!=='undefined' && googlecode_regular_vars2.markers2.length > 2 &&  typeof (googlecode_regular_vars2.agent_id )!=='undefined'){    
                 if( parseInt( googlecode_regular_vars2.agent_id,10) === parseInt( agent_id,10) ){
-                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+                    createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
                 }
                             
         }else{
 			
-            createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label);
+            createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4, slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8,single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date);
         }
         // found the property
         if(selected_id===id){
@@ -594,10 +596,30 @@ function setMarkers(map, locations) {
 //  create marker
 /////////////////////////////////////////////////////////////////////////////////////////////////  
 
-function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4,slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8, single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label ){
+function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,price,single_first_type,single_first_action,link,city,area,rooms,baths,cleanprice,slug1,val1,how1,slug2,val2,how2,slug3,val3,how3,slug4,val4,how4,slug5, val5, how5, slug6, val6, how6 ,slug7 ,val7, how7, slug8, val8, how8, single_first_type_name, single_first_action_name, phone, apartment, university, available_from, bathroom_type, bedroom_type, property_label, available_from_date){
+	
+	//var allMarkers = namespace.mapParams.mapMarkersArray;
+	var myLatLng = new google.maps.LatLng(lat,lng);
+	var finalLatLng = myLatLng;
+	//console.log(finalLatLng.lat()+'-----'+finalLatLng.lng());
+	if (gmarkers.length != 0) {
+		for (i=0; i < gmarkers.length; i++) {
+			var existingMarker = gmarkers[i];
+			var pos = existingMarker.getPosition();
 
+			//if a marker already exists in the same position as this marker
+			if (finalLatLng.equals(pos)) {
+				
+				//update the position of the coincident marker by applying a small multipler to its coordinates
+				var newLat = finalLatLng.lat() + (Math.random() -1) / 1500;// * (Math.random() * (max - min) + min);
+				var newLng = finalLatLng.lng() + (Math.random() -1) / 1500;// * (Math.random() * (max - min) + min);
+				finalLatLng = new google.maps.LatLng(newLat,newLng);
+				//console.log('changed--'+finalLatLng.lat()+'-----'+finalLatLng.lng());
+			}
+		}
+	}
     var new_title='';
-    var myLatLng = new google.maps.LatLng(lat,lng);
+    //var myLatLng = new google.maps.LatLng(lat,lng);
     if(mapfunctions_vars.custom_search==='yes'){
         new_title =  title.replace('%',' ');
         new_title = decodeURIComponent(  new_title.replace(/\+/g,' '));
@@ -607,7 +629,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
         new_title =Encoder.htmlDecode( new_title);
 
         var marker = new google.maps.Marker({
-            position: myLatLng,
+            position: finalLatLng,
             map: map,
             icon: custompin(pin),
             shape: shape,
@@ -658,6 +680,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 			apartment:apartment,
 			university:university,
 			available_from:available_from,
+			available_from_date:available_from_date,
 			bathroom_type:bathroom_type,
 			bedroom_type:bedroom_type,
 			property_label:property_label
@@ -665,7 +688,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
             
     }else{
          var marker = new google.maps.Marker({
-                position: myLatLng,
+                position: finalLatLng,
                 map: map,
                 icon: custompin(pin),
                 shape: shape,
@@ -691,6 +714,7 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 				apartment:apartment,
 				university:university,
 				available_from:available_from,
+				available_from_date:available_from_date,
 				bathroom_type:bathroom_type,
 				bedroom_type:bedroom_type,				
 				property_label:property_label				
@@ -779,11 +803,11 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		}
 		var infoline1  = '';
 		if(this.apartment != '' && this.university != ''){
-			infoline1  = '<span class="propertyArea"><i class="fa fa-building" aria-hidden="true"></i>'+this.apartment+' - <i class="fa fa-university" aria-hidden="true"></i>'+this.university+'</span>';
+			infoline1  = '<span class="propertyArea"><i class="fa fa-building" aria-hidden="true"></i> '+this.apartment+' - <i class="fa fa-university" aria-hidden="true"></i> '+this.university+'</span>';
 		}else if(this.apartment != ''){
-			infoline1  = '<span class="propertyArea"><i class="fa fa-building" aria-hidden="true"></i>'+this.apartment+'</span>';
+			infoline1  = '<span class="propertyArea"><i class="fa fa-building" aria-hidden="true"></i> '+this.apartment+'</span>';
 		}else if(this.university != ''){
-			infoline1  = '<span class="propertyArea"><i class="fa fa-university" aria-hidden="true"></i>'+this.university+'</span>';
+			infoline1  = '<span class="propertyArea"><i class="fa fa-university" aria-hidden="true"></i> '+this.university+'</span>';
 		}
 		
 		var infoline2 = '<div class="propertyDetails">';
@@ -792,40 +816,40 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 			if(this.bedroom_type != ''){
 					var bedType = '(' +this.bedroom_type +')';
 			}
-			infoline2 +='<span title="Bedroom(s)"><i class="fa fa-bed" aria-hidden="true"></i> '+this.rooms+' '+bedType+'</span>';
+			infoline2 +='<span title="Bedroom(s)" class="bedroom_tag"><i class="fa fa-bed" aria-hidden="true"></i> '+this.rooms+' '+bedType+' Bed</span>';
 		}else if(this.bedroom_type != ''){
-			infoline2 +='<span title="Bedroom(s)"><i class="fa fa-bed" aria-hidden="true"></i> '+this.bedroom_type+'</span>';
+			infoline2 +='<span title="Bedroom(s)" class="bedroom_tag"><i class="fa fa-bed" aria-hidden="true"></i> '+this.bedroom_type+' Bed</span>';
 		}
 		if(this.baths!=''){
 			var bathType = '';
 			if(this.bathroom_type != ''){
 					var bathType = '(' +this.bathroom_type +')';
 			}
-			infoline2 +='<span title="Bathroom(s)"><i class="fa fa-bath" aria-hidden="true"></i> '+this.baths+' '+bathType+'</span>';
+			infoline2 +='<span title="Bathroom(s)" class="bathroom_tag"><i class="fa fa-bath" aria-hidden="true"></i> '+this.baths+' '+bathType+' Bath</span>';
 		}else if(this.bathroom_type != ''){
-			infoline2 +='<span title="Bathroom(s)"><i class="fa fa-bath" aria-hidden="true"></i> '+this.bathroom_type+'</span>';
+			infoline2 +='<span title="Bathroom(s)" class="bathroom_tag"><i class="fa fa-bath" aria-hidden="true"></i> '+this.bathroom_type+' Bath</span>';
 		}
 		if(this.size != ''){
-			infoline2 +='<span title="Area"><i class="fa fa-area-chart" aria-hidden="true"></i> '+this.size+' sqft</span>';
+			infoline2 +='<span title="Area" class="area_tag"><i class="fa fa-area-chart" aria-hidden="true"></i> '+this.size+' sqft</span>';
 		}
 		if(category_name == 'Male'){
-			infoline2 +='<span title="Male Roomie"><i class="fa fa-male" aria-hidden="true"></i> Male Roomie</span>';
+			infoline2 +='<span title="Male Roomie"><i class="fa fa-male" aria-hidden="true"></i> Looking for Male Roomie</span>';
 		}else if(category_name == 'Female'){
-			infoline2 +='<span title="Female Roomie"><i class="fa fa-female" aria-hidden="true"></i> Female Roomie</span>';
+			infoline2 +='<span title="Female Roomie"><i class="fa fa-female" aria-hidden="true"></i> Looking for Female Roomie</span>';
 		}else if(category_name == 'Any'){
-			infoline2 +='<span title="Any Roomie"><i class="fa fa-globe" aria-hidden="true"></i> Any Roomie</span>';
+			infoline2 +='<span title="Any Roomie"><i class="fa fa-globe" aria-hidden="true"></i> Looking for Any Roomie</span>';
 		}
 		
 		infoline2 +='</div>';
 		
 		var infoline3 = '<div class="otherDetails"><span>$ '+this.cleanprice+'</span>';
 		if(this.available_from != ''){
-			infoline3 += '<span class="availiblity">Avail. From : <strong>'+this.available_from+'</strong> <span class="view_detail_link">View Details <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span></span>';
+			infoline3 += '<span class="availiblity"><small class="desktop">Avail. From : <strong>'+this.available_from+'</strong></small> <small class="mobile"><i class="fa fa-calendar" aria-hidden="true"></i> : <strong>'+this.available_from+'</strong></small><span class="view_detail_link">View Details <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span></span>';
 		}
 		infoline3 += '</div>';
 		//console.log('poupdata');
 		//console.log(this);
-		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a href="javascript:void(0);" onClick=\'javascript:openModal('+this.idul+');\'>'+info_image+'<div class="propertyPopup"><h2>'+genderIcon+property_label+'</h2>'+infoline1+infoline2+infoline3+'</div></a></div>' );
+		infoBox.setContent('<div class="info_details child_theme"><span id="infocloser" onClick=\'javascript:infoBox.close();\' ></span><a class="openDetailPage" href="javascript:void(0);" onClick=\'javascript:openModal('+this.idul+',"'+this.link+'");\'>'+info_image+'<div class="propertyPopup"><h2>'+genderIcon+property_label+'</h2>'+infoline1+infoline2+infoline3+'</div></a></div>' );
 
 		infoBox.setOptions({'zIndex': null});
 		
@@ -881,41 +905,53 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		jQuery('body').data('infoBoxStatus', 'CLOSE');
 	});
 	if(mapfunctions_vars.generated_pins!=='0'){
-		pan_to_last_pin(myLatLng);
+		pan_to_last_pin(finalLatLng);
 	}
 }
 
-function openModal(id = null){
-	ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-	jQuery.ajax({
-		type: 'POST',
-		url: ajaxurl,
-		data: {
-			'action'            :   'get_propdetail_modal',
-			'propId'			:	id
-		},
-		success: function (data) {
-			jQuery('#demoModal').find('.modal-content').html(data);
-			jQuery('#demoModal').modal('show');
-			
-			jQuery('#agent_user_email').unbind('blur').bind('blur', function(){
-				checkEmailOnBlur(this);
-			});
-			jQuery('#agent_submit').unbind('click').bind('click', function(){
-				agent_submit(this);
-			});
-			jQuery('#varify_cont_email').unbind('click').bind('click', function(){
-				varifyContEmail(this);
-			});
-			jQuery('#agent_contact_otp').unbind('blur').bind('blur', function(){
-				otpCheckOnBlur(this);
-			});
-			jQuery('#print_page').unbind('click').bind('click', function(){
-				print_prop_page(this);
-			});
-		},
-		error: function (errorThrown) {}
-	});
+function openModal(id = null, pageLink=null){
+	var isMobile = checkMobileDevice();
+	//if it's mobile device then a new page will be open
+	if(isMobile)
+	{
+		window.location = pageLink;
+	}
+	else
+	{
+		//window.location = pageLink;
+		ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+		jQuery.ajax({
+			type: 'POST',
+			url: ajaxurl,
+			data: {
+				'action'            :   'get_propdetail_modal',
+				'propId'			:	id
+			},
+			success: function (data) {
+				jQuery('#demoModal').find('.modal-content').html(data);
+				jQuery('#demoModal').modal('show');
+				
+				jQuery('#agent_user_email').unbind('blur').bind('blur', function(){
+					checkEmailOnBlur(this);
+				});
+				jQuery('#agent_submit').unbind('click').bind('click', function(){
+					agent_submit(this);
+				});
+				jQuery('#varify_cont_email').unbind('click').bind('click', function(){
+					varifyContEmail(this);
+				});
+				jQuery('#agent_contact_otp').unbind('keyup').bind('keyup', function(){
+					if(jQuery(this).val().length > 3){
+						otpCheckOnBlur(this);
+					}
+				});
+				jQuery('#print_page').unbind('click').bind('click', function(){
+					print_prop_page(this);
+				});
+			},
+			error: function (errorThrown) {}
+		});
+	}
 }
 
 function  pan_to_last_pin(myLatLng){
@@ -1087,6 +1123,7 @@ function new_open_close_map(type){
 //  build map cluter
 /////////////////////////////////////////////////////////////////////////////////////////////////   
   function map_cluster(){
+		console.log(mapfunctions_vars);
        if(mapfunctions_vars.user_cluster==='yes'){
         clusterStyles = [
             {
@@ -1099,9 +1136,9 @@ function new_open_close_map(type){
            
             }
         ];
-        mcOptions = {gridSize: 50,
+        mcOptions = {gridSize: 20,
                     ignoreHidden:true, 
-                    maxZoom: parseInt( mapfunctions_vars.zoom_cluster,10), 
+                    maxZoom: parseInt( mapfunctions_vars.zoom_cluster,8), 
                     styles: clusterStyles
                 };
         mcluster = new MarkerClusterer(map, gmarkers, mcOptions);
@@ -1307,7 +1344,7 @@ function custompinchild(){
     var custom_img;
     var extension='';
     var ratio = jQuery(window).dense('devicePixelRatio');
-    
+    ratio = 1; // this is to show icons on mobile site as well : Arsh Sharma
     if(ratio>1){
         extension='_2x';
     }
@@ -1371,13 +1408,13 @@ jQuery('#googleMap').click(function(event){
         jQuery('.tooltip').fadeOut("fast"); 
 
 
-        if (Modernizr.mq('only all and (max-width: 1025px)')) {    
-           if(map.draggable === false){
-                 map.setOptions({'draggable': true});
-            }else{
-                 map.setOptions({'draggable': false});
-            }    
-         }
+        // if (Modernizr.mq('only all and (max-width: 1025px)')) {    
+           // if(map.draggable === false){
+                 // map.setOptions({'draggable': true});
+            // }else{
+                 // map.setOptions({'draggable': false});
+            // }    
+         // }
          
      }     
 });
@@ -1543,6 +1580,12 @@ function visible_or_not(how, slug, value, read){
       
        if( document.cookie.indexOf('my_custom_curr_coef') >= 0) {
            
+		   
+		   
+		   
+		   
+		   
+		   
             var my_custom_curr_coef    =   parseFloat( getCookieMap('my_custom_curr_coef'));
             if(my_custom_curr_coef!=0){
             
@@ -1771,7 +1814,7 @@ function get_custom_value_onthelist(slug){
   
 function show_pins_custom_search(){
     console.log ('show_pins_custom_search1');
-    //console.log (mapfunctions_vars);
+    console.log (mapfunctions_vars);
     var val1, val2, val3, val4, val5, val6, val7, val8, position;
     
     val1 =  get_custom_value (mapfunctions_vars.slugs[0]);
@@ -1784,7 +1827,7 @@ function show_pins_custom_search(){
     val8 =  get_custom_value (mapfunctions_vars.slugs[7]);
 
     //console.log(mapfunctions_vars.slugs[0] +' / '+ val1+' / ');
-	console.log('hi' + mapfunctions_vars.slugs[2] +' / '+ val3);
+	console.log('hi' + mapfunctions_vars.slugs[3] +' / '+ val4);
 
     position = parseInt( mapfunctions_vars.slider_price_position );
     if( mapfunctions_vars.slider_price ==='yes' && position>0 ){
@@ -1833,15 +1876,16 @@ function show_pins_custom_search(){
     
 
     if(  typeof gmarkers!=='undefined'){
+		//console.log(gmarkers);
 		for (var i=0; i<gmarkers.length; i++) {
-            //console.log("xxxxxxxxxxxxxx      "+mapfunctions_vars.slugs[4] +' / '+ val5+' / '+ gmarkers[i].val5);
+				console.log("xxxxxxxxxxxxxx   "+mapfunctions_vars.hows[3] +'/'+mapfunctions_vars.slugs[3] +' / '+ val4+' / '+ gmarkers[i].available_from_date);
 				if ( !visible_or_not(mapfunctions_vars.hows[0], gmarkers[i].val1, val1, mapfunctions_vars.slugs[0]) ){
                     gmarkers[i].setVisible(false);
                 } else if (gmarkers[i].action == 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[1],gmarkers[i].val2, val2, mapfunctions_vars.slugs[1]) ){
                     gmarkers[i].setVisible(false);
                 } else if (gmarkers[i].action != 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[2],gmarkers[i].val3, val3, mapfunctions_vars.slugs[2]) ){
                     gmarkers[i].setVisible(false);
-                } else if ( !visible_or_not(mapfunctions_vars.hows[3],gmarkers[i].val4, val4, mapfunctions_vars.slugs[3]) ){
+                } else if ( !visible_or_not(mapfunctions_vars.hows[3],gmarkers[i].available_from_date, val4, mapfunctions_vars.slugs[3]) ){
                     gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[4],gmarkers[i].val5, val5, mapfunctions_vars.slugs[4]) ){
                      gmarkers[i].setVisible(false);
@@ -2510,7 +2554,7 @@ function custompin(image){
   
     var extension='';
     var ratio = jQuery(window).dense('devicePixelRatio');
-  
+	ratio = 1; // this is to show icons on mobile site as well : Arsh Sharma
     if(ratio>1){
     
         extension='_2x';
@@ -2746,6 +2790,8 @@ function custompinhover(){
     var extension='';
     var ratio = jQuery(window).dense('devicePixelRatio');
     
+	ratio = 1; // this is to show icons on mobile site as well : Arsh Sharma
+    
     if(ratio>1){
         extension='_2x';
     }
@@ -2925,4 +2971,14 @@ function show_pins_filters_from_file() {
 
 function map_callback(callback){
     callback(1);
+}
+
+/*By Savu*/
+function checkMobileDevice(){
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+	{	  
+		return true;
+	}else{
+		return false;
+	}
 }

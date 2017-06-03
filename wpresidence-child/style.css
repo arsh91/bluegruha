@@ -21,11 +21,11 @@
 .disabled_contact_btn{opacity:0.5;}
 
 /* Home Page css*/
-.home_page_wrapper { height: calc(100% - 20px);max-height: calc(100% - 20px);overflow: hidden;}
+.home_page_wrapper { height: calc(100% - 30px);max-height: calc(100% - 30px);overflow: hidden;}
 .adv-search-1{bottom:15px;}
 .mainWrapper {float: left;height: 100%;position: relative;width: 100%;}
 #googleMap, .home #gmap_wrapper, .header_media {height: 100% !important;}
-.footerMain{height: 20px;overflow: hidden;}
+.footerMain{height: 30px;overflow: hidden;}
 .main_wrapper {height: 100%;}
 .header_media {height: 100%;}
 
@@ -333,6 +333,9 @@ margin-bottom: 15px;
 .innerContainer.propertDetailContainer h2 span {
 color: #4d9a01;
 }
+
+.agent_contact_form_modal .alert-message{float:left;width:100%;margin: 10px 0 5px 0;}
+.agent_contact_form_modal .email_varify_cont{width:100%;}
 /* Property detail Modal Css END*/
 
 .footerMain p {
@@ -420,7 +423,7 @@ div#gmapzoomminus {
 top: 122px;
 }
 #google-default-search {
-top: 88px;
+top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 }
 
 /*@media (max-width:1200px){*/
@@ -431,8 +434,8 @@ top: 88px;
 	.logo:after{left: 220px; top: 23px;}
 	.headerBtn {height: 32px; padding: 7px 15px;}
 	#google-default-search {top: 73px;}
-	div#gmapzoomplus {top: 75px;}
-	div#gmapzoomminus {top: 107px;}
+	div#gmapzoomplus {top: 75px;padding: 7px 0px 0px 8px;}
+	div#gmapzoomminus {top: 107px;padding: 7px 0px 0px 8px;}
 	.inputContainer{padding: 8px 20px 11px 20px; height: 55px;width:25%;}
 }
 /*css for small popup on map home page*/
@@ -443,7 +446,7 @@ top: 88px;
 .propertyPopup h2 i.fa-female{color:#f06ad6;}
 .propertyArea{font-size:14px; float:left; width:100%; color:#92bb21; padding:0 15px;text-transform:capitalize;}
 .propertyArea i{margin-right:10px;}
-.propertyDetails{font-size:14px; color:#666666; float:left; width:100%; padding:0 15px; margin-top:10px;}
+.propertyDetails{font-size: 12px; color:#666666; float:left; width:100%; padding:0 5px; margin-top:10px;}
 .propertyDetails span{margin-right:25px;}
 .propertyDetails span i{margin-right:0px; font-sie:16px;}
 .otherDetails{font-size:14px; float:left; width:100%; border-top:1px solid #b4b4b4; margin-top:10px; padding:10px 15px;}
@@ -456,8 +459,94 @@ span.availiblity span.view_detail_link i {margin-left:5px;}
 .child_theme #infocloser{top:1px;right:1px;}
 
 /*header social icons start*/
-.headerSocial {float: right; position: relative; right: 220px; top: 18px;z-index: 9;}
-.headerSocial a {font-size: 20px; margin: 0 5px; float: left;}
+.headerSocial {float: right; position: relative; right: 220px; top: 15px;z-index: 9;}
+.headerSocial a {font-size: 24px; margin: 0 5px; float: left;}
 .headerSocial a i{color:#fff;}
 .headerSocial a:hover i{color:#92bb21;}
+.page-template-user_dashboard_add .headerSocial{top:10px}
 /*header social icons end*/
+body.home .ui-datepicker {
+max-width: 15.35em;
+}
+.subfooter_menu .menu>li {
+line-height: 25px !important;
+height: 25px !important;
+}
+#footer-widget-area{
+padding: 0px 30px 0 30px !important;
+}
+.sub_footer{
+height: 25px !important;	
+}
+#colophon .subfooter_menu a {
+color:#fff;
+}
+#colophon a:hover, #colophon li a:hover{
+color:#92bb21 !important;
+}
+.mobile{display:none;}
+/*20 May 2016 Savu*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.propertyPopup{
+		width: 100%;
+	}
+	#detailPage .propertyPrice .amount {
+		float: left;
+		width: 100%;
+	}
+	#detailPage .propertyPrice.priceModal > span {
+		float: left;
+		width: 100%;
+	}
+	#detailPage .actionItems{
+		display:none;
+	}
+	#detailPage .propertDetailContainer h6 {font-size: 16px;}
+
+	#detailPage .description{ border-top: 1px solid #cfcfcf;}
+	#detailPage .heading {
+		float: left;
+		margin-top: 10px;
+		width: 100%;
+	}
+	#detailPage .rightSidebar h4{
+		font-size: 14px;
+	}
+	#detailPage .ownerInfo h5{
+		font-size: 14px;
+	}
+
+	#detailPage .agent_contact_form_modal .form-control:not(textarea){
+		 height: 30px;
+	}
+
+	#detailPage .agent_contact_form_modal #varify_cont_email{
+		padding:7px 30px 0;
+		 height: 32px;
+	}
+
+	#detailPage .comment-form #submit, .wpresidence_button{
+		padding: 8px 12px;
+	}
+
+	#detailPage #agent_comment{
+		font-size:11px;
+	}
+
+	#detailPage .shareWidget > span {
+		color: #666666;
+		float: left;
+		margin: 0 0 10px;
+		width: 25%;
+	}
+
+	#detailPage .shareWidget > a {
+		margin: 3px 7px;
+		float:left;
+	}
+	.propertyDetails .bedroom_tag, .propertyDetails .bathroom_tag{display:none;}
+	.desktop{display:none;}
+	.mobile{display:block;}
+}
+
+

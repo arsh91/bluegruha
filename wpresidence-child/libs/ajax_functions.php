@@ -1646,7 +1646,7 @@ function wpestate_ajax_register_user(){
         }
         
         if(filter_var($user_email,FILTER_VALIDATE_EMAIL) === false) {
-             print __('The email doesn\'t look right !','wpestate');
+             print __('That email address isn\'t correct!','wpestate');
             exit();
         }
         
@@ -3510,7 +3510,7 @@ function wpestate_ajax_agent_contact_form(){
                     echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
                     exit(); 
               } else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
-                    echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
+                    echo json_encode(array('sent'=>false, 'response'=>__('That email address isn\'t correct!','wpestate') ) ); 
                     exit();
               } else {
                     $email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
@@ -3556,7 +3556,7 @@ function wpestate_ajax_agent_contact_form(){
 				$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 				
 				$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
-				echo json_encode(array('sent'=>false, 'response'=>__('OTP sent on your Email, Please check.','wpestate') ) ); 
+				echo json_encode(array('sent'=>false, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) );
 				 exit();
 			}
 		}
@@ -3599,8 +3599,17 @@ function wpestate_ajax_agent_contact_form(){
         $headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
         
         $mail = @wp_mail($receiver_email, $subject, $message, $headers);
-       
-        
+		global $wpdb;
+        $table = $wpdb->prefix.'emails';
+		$fields = array(
+					'from_email'=>$email,
+					'to_email'=>$receiver_email,
+					'from_name'=>$name,
+					'message'=>$comment,
+					'prop_id'=>$propid
+				);
+		$res = $wpdb->insert($table,$fields);
+		var_dump($res);
         $duplicate_email_adr        =   esc_html ( get_option('wp_estate_duplicate_email_adr','') );
         
         if($duplicate_email_adr!=''){
@@ -3632,7 +3641,7 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 			echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
 			exit(); 
 		} else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
-			echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
+			echo json_encode(array('sent'=>false, 'response'=>__('That email address isn\'t correct!','wpestate') ) ); 
 			exit();
 		} else {
 			$email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
@@ -3646,7 +3655,7 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 		
 		$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
-		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent on your Email, Please check.','wpestate') ) ); 
+		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) ); 
 	}
 
 	exit();
@@ -3667,7 +3676,7 @@ function wpestate_ajax_agent_contact_form_check_email(){
 				echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
 				exit(); 
 		  } else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
-				echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
+				echo json_encode(array('sent'=>false, 'response'=>__('That email address isn\'t correct!','wpestate') ) ); 
 				exit();
 		  } else {
 				$response = '';
@@ -3755,7 +3764,7 @@ function wpestate_ajax_contact_form_footer(){
                     echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
                     exit(); 
               } else if( filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
-                    echo json_encode(array('sent'=>false, 'response'=>__('The email doesn\'t look right !','wpestate') ) ); 
+                    echo json_encode(array('sent'=>false, 'response'=>__('That email address isn\'t correct!','wpestate') ) ); 
                     exit();
               } else {
                     $email = wp_kses( trim($_POST['email']),$allowed_html );
@@ -3841,7 +3850,7 @@ function wpestate_ajax_contact_form(){
             $error[] = __('The email field is empty','wpestate');
         } else if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) === false) {
             $hasError = true;
-            $error[] = __('The email doesn\'t look right !','wpestate');
+            $error[] = __('That email address isn\'t correct!','wpestate');
         } else {
             $email = wp_kses( trim($_POST['email']),$allowed_html );
         }

@@ -79,13 +79,13 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
         <?php 
             if(  get_option('wp_estate_show_g_search','') ==='yes'){
                 $street_view_class=" lower_street ";
-                echo '<input type="text" id="google-default-search" name="google-default-search" placeholder="'.__('Google Maps Search','wpestate').'" value="" class="advanced_select  form-control"> '; 
+                echo '<input type="text" id="google-default-search" name="google-default-search" placeholder="'.__('Enter address, city, zip code or university','wpestate').'" value="" class="advanced_select  form-control"> '; 
             }
         ?>
        
        
-        <div id="gmapzoomplus"><i class="fa fa-plus"></i> </div>
-        <div id="gmapzoomminus"><i class="fa fa-minus"></i></div>
+        <div id="gmapzoomplus"><i class="fa fa-search-plus"></i> </div>
+        <div id="gmapzoomminus"><i class="fa fa-search-minus"></i></div>
         
         <?php 
             if( isset($post->ID) && get_post_type($post->ID)=='estate_property' && !is_tax() && !is_archive() ){

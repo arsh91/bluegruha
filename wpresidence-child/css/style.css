@@ -204,6 +204,11 @@ ul.uni_result {
 .uni_not_found_msg{display:none;}
 .container.content_wrapper {margin-top: 20px;}
 .commonForm .formContainer .multiselect{box-shadow: none;text-transform:capitalize;}
+.commonForm .formContainer ul.multiselect-container{width: 225px;}
+.commonForm .formContainer ul.multiselect-container li{float: left;width: 100%;padding: 2px 0px 2px 5px;border-bottom: 1px solid #ccc;}
+.commonForm .formContainer ul.multiselect-container li a{background:none;}
+.commonForm .formContainer ul.multiselect-container li label{padding-left:30px;color:#000;}
+
 .ui-menu .ui-menu-item {border-bottom: 1px solid #666666;cursor: pointer;margin: 0 !important;padding: 7px 10px !important;width: 100% !important;font-size: 14px;}
 .ui-autocomplete.ui-menu .ui-state-focus{background-color: #a5cd38 !important;}
 .wpresidence_success {background-color: #a5cd38;border-bottom: 3px solid #84aa1d;}

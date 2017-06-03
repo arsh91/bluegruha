@@ -91,7 +91,7 @@ if ($action=='edit'){
 				</div>
 			  
 				<button id="aaiu-uploader"  class="wpresidence_button wpresidence_success">
-					<?php _e('Select Media','wpestate');?>
+					<?php _e('Select Photos','wpestate');?>
 				</button>
 				<input type="hidden" name="attachid" id="attachid" value="<?php echo esc_html($attachid);?>">
 				<input type="hidden" name="attachthumb" id="attachthumb" value="<?php echo esc_html($thumbid);?>">

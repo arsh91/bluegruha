@@ -399,6 +399,7 @@ function wpestate_listing_pins($args='',$jump=0){
 					$available_from       =   get_post_meta($the_id, 'available_from', true);
 					if($available_from){
 						$place_markers['available_from'] = rawurlencode (date ('j M Y', strtotime($available_from)));
+						$place_markers['available_from_date'] = rawurlencode ($available_from);
 					}
 					$bathroom_type       =   get_post_meta($the_id, 'bathroom_type', true);
 					if($bathroom_type){

@@ -50,9 +50,9 @@ if(!empty($userID)){
 		<div class="form-group col-md-6">
 			<span class="verification" id="varify_cont_email">Verify your email</span>
 		</div>
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-6 hide">
 			<label class="control-label">One time password (OTP)</label>
-			<input type="text" class="form-control otpField" placeholder="Please enter your OTP" name="otp" id="agent_contact_otp">
+			<input type="text" class="form-control otpField" placeholder="Please enter your OTP" name="otp" id="agent_contact_otp" size="4" />
 		</div>
 	</div>
 <?php } ?>

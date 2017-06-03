@@ -52,7 +52,7 @@ if ( $extended_search =='yes' ){
             if ( $custom_advanced_search == 'yes'){
                 foreach($adv_search_what as $key=>$search_field){
 					if($search_field != 'none'){
-						$style = ($search_field=='categories') ?'display:none;':'';
+						$style = ($search_field=='property bedrooms') ?'display:none;':'';
 						echo "<div class='inputContainer $search_field' style='$style'>";
 							wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
 						echo '</div>';

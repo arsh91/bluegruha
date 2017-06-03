@@ -25,7 +25,7 @@ if( $user_small_picture_id == '' ){
             <!--<a class="navicon-button x">
                 <div class="navicon"></div>
             </a>-->
-        <div class="submit_action"><a class="headerBtn submitProperty" href="javascript:void(0);"><i class="fa fa-building" aria-hidden="true"></i> <?php _e('Post your Ad','wpestate');?></a></div>
+        <div class="submit_action"><a class="headerBtn submitProperty" href="javascript:void(0);"><i class="fa fa-bars" aria-hidden="true"></i> <?php _e('Post your Ad','wpestate');?></a></div>
 <?php } ?>   
                   
     </div> 

@@ -62,12 +62,7 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 					
 					<a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
 					
-					<!--<a href="https://plus.google.com/share?url=<?php echo get_the_permalink($propid); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" class="share_google gpIco"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>-->
-					<?php
-					if ( wp_is_mobile() ) { 
-					?>
-						<a style="border-color:#5CBE4A; color:#5CBE4A;" data-text="<?php echo get_the_title($propid); ?>" data-link="<?php echo get_the_permalink($propid); ?>" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large" href="whatsapp://send?text=<?php echo get_the_title($propid); ?> - <?php echo get_the_permalink($propid); ?>"><i class="fa fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
-					<?php } ?>
+					<a href="https://plus.google.com/share?url=<?php echo get_the_permalink($propid); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" class="share_google gpIco"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>
 				</div>
 				<div class="actionItems">
 					<span class="no_views dashboad-tooltip" data-original-title="<?php _e('Number of Page Views','wpestate');?>"><i class="fa fa-eye" aria-hidden="true"></i><?php echo intval( get_post_meta($propid, 'wpestate_total_views', true) );?></span>
@@ -91,7 +86,6 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 				<?php 
 					$amenities = json_decode(get_post_meta($propid, 'amenities', true));
 					if(is_array($amenities)){
-					
 				?>
 						<h6>Amenities:</h6>
 						<div class="amenitiesDetails">
@@ -128,7 +122,7 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 					<h4><?php _e('Contact Advertiser', 'wpestate'); ?></h4>
 					<?php get_template_part('templates/agent_contact'); ?>
 				</div>
-				<!--<form>=
+				<!--<form>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Your Name">
 						<input type="email" class="form-control" placeholder="Email">
@@ -141,41 +135,3 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 		</div>
 	</div>
 </div>
-<!--10th may 2017 code to add whatsapp button-->
-<script>
-// jQuery(document).ready(function() {
-
-// var isMobile = {
-    // Android: function() {
-        // return navigator.userAgent.match(/Android/i);
-    // },
-    // BlackBerry: function() {
-        // return navigator.userAgent.match(/BlackBerry/i);
-    // },
-    // iOS: function() {
-        // return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    // },
-    // Opera: function() {
-        // return navigator.userAgent.match(/Opera Mini/i);
-    // },
-    // Windows: function() {
-        // return navigator.userAgent.match(/IEMobile/i);
-    // },
-    // any: function() {
-        // return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    // }
-// };
- // jQuery(document).on("click", '.whatsapp', function() {
-        // if( isMobile.any() ) {
-
-            // var text = jQuery(this).attr("data-text");
-            // var url = jQuery(this).attr("data-link");
-            // var message = encodeURIComponent(text) + " - " + encodeURIComponent(url);
-            // var whatsapp_url = "whatsapp://send?text=" + message;
-            // window.location.href = whatsapp_url;1
-        // }
-
-    // });
-// });
-
-</script>

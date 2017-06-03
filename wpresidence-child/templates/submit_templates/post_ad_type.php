@@ -7,7 +7,7 @@ if(!isset($current_user->data->ID)){
 		$disabled = 'disabled';
 		$class = 'postUniAdd disabled_contact_btn';
 }
-?>
+?><!--
 <div class="form-group col-md-12 addTypeCon">
 	<label class="control-label">Add Type</label>
 	<div id="addType" class="addType">
@@ -22,10 +22,10 @@ if(!isset($current_user->data->ID)){
 		  </label>
 		</div>
 	</div>
-</div>
+</div>-->
 <div class="col-md-12 buttonContainer">
 	<input type="submit" id="postUniAdd" class="<?php echo $class; ?>" value="Post your free add" name="add_property" <?php echo $disabled; ?> />
-	<div class="tooltipCustom">
+	<!--<div class="tooltipCustom">
 		<ul id="freeAd">
 			<li>Valid upto 7 days</li>
 			<li>Limited Contact Details</li>
@@ -38,7 +38,7 @@ if(!isset($current_user->data->ID)){
 			<li>Featured Listing</li>
 			<li>Similar Promotions</li>
 		</ul>
-	</div>
+	</div>-->
 </div>
 <input type="hidden" name="edit_id" value="<?php print $edit_id;?>">
 <input type="hidden" name="images_todelete" id="images_todelete" value="">

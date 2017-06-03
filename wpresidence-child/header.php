@@ -127,7 +127,7 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
 <div class="mainWrapper">
 <?php } ?>
 <div class="website-wrapper <?php echo (is_home()) ? 'home_page_wrapper' : ''; ?>" id="all_wrapper" >
-<div class="<?php echo (isset($post->ID) && $post->ID == 82) ? 'container-fluid' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
+<div class="<?php echo (isset($post->ID) && $post->ID == 82) ? '' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
 
     <div class="master_header <?php print esc_html($wide_class.' '.$header_transparent_class); ?>">
         

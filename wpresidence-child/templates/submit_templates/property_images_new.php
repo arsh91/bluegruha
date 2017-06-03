@@ -48,7 +48,7 @@ if ($action=='edit'){
 
 ?>
 	<div class="col-md-12 headingPanel">
-		<h3>Listing Media</h3>
+		<h3>Listing Photos</h3>
 	</div>
 	<div class="submit_container col-md-12">
 	<!--<div class="submit_container_header"><?php //_e('Listing Media','wpestate');?></div>-->
@@ -90,7 +90,7 @@ if ($action=='edit'){
 				</div>
 			  
 				<button id="aaiu-uploader"  class="wpresidence_button wpresidence_success">
-					<?php _e('Select Media','wpestate');?>
+					<?php _e('Select Photos','wpestate');?>
 				</button>
 				<input type="hidden" name="attachid" id="attachid" value="<?php echo esc_html($attachid);?>">
 				<input type="hidden" name="attachthumb" id="attachthumb" value="<?php echo esc_html($thumbid);?>">
