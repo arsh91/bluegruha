@@ -398,6 +398,12 @@ jQuery(document).ready(function ($) {
         close_mobile_menu();        
     });
     
+	jQuery('body').click(function(e) {
+		var className = e.target.className;
+		if(className == 'snap-drawers'){
+			close_mobile_user_menu();
+		}
+	});
     function close_mobile_user_menu(){
         $('#all_wrapper').css('-webkit-transform', 'translate(0px, 0px)');
         $('#all_wrapper').css('-moz-transform', 'translate(0px, 0px)');

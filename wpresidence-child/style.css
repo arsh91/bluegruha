@@ -15,7 +15,7 @@
 .child-adv-search .adv1-holder {height: auto;}
 .child-adv-search #adv-search-header-1{display:none;}
 .child-adv-search  .adv1-holder .adv_search_slider{width: 25%;}
-.child_theme.info_details{height:auto;max-height:297px;min-height:80px;}
+.child_theme.info_details{height:auto;max-height:320px;min-height:80px;}
 .child_theme.info_details .prop_pricex{position:relative;float:left;}
 .email_varify_cont{float:left;}
 .disabled_contact_btn{opacity:0.5;}
@@ -159,9 +159,13 @@ p.description {border-bottom: 1px solid #cfcfcf; color: #666666; float: left; fo
 .shareWidget {
   margin: 30px 0; float:left; width:100%;
 }
+@media (min-width: 481px){
+
 .shareWidget > a.fbIco{border-color:#43609c; color:#43609c;} 
 .shareWidget > a.twIco{border-color:#55acee; color:#55acee;} 
 .shareWidget > a.gpIco{border-color:#dd4b39; color:#dd4b39;} 
+.shareWidget > a.mob{display:none;}
+.shareWidget > a.desk{display:inline-block;}
 .shareWidget > a {
   border: 1px solid #666666;
   border-radius: 30px;
@@ -169,6 +173,24 @@ p.description {border-bottom: 1px solid #cfcfcf; color: #666666; float: left; fo
   margin: 0 7px;
   padding: 5px 10px;
   text-decoration: none;
+}
+}
+@media (max-width: 481px){
+.shareWidget > a.fbIco{border-color:#43609c; color:#43609c;} 
+.shareWidget > a.twIco{border-color:#55acee; color:#55acee;} 
+.shareWidget > a.gpIco{border-color:#dd4b39; color:#dd4b39;} 
+
+.shareWidget > a.mob{display:inline-block;}
+.shareWidget > a.desk{display:none;}
+	.shareWidget > a {
+  /*border: 1px solid #666666;
+  border-radius: 30px;
+  padding: 5px 10px;*/
+  font-size: 30px;
+  margin: 0 3px;
+
+  text-decoration: none;
+}
 }
 .propertyPrice {
   float: right;
@@ -193,7 +215,7 @@ p.description {border-bottom: 1px solid #cfcfcf; color: #666666; float: left; fo
 .propertyPrice > span strong{color:#003f61;}
 .propertySpecs{float:left; width:100%;}
 .specsProperty{float:left; border:1px solid #e8e8e8;}
-.specsProperty span{float:left; border-right:1px solid #e8e8e8; width:120px; text-align:center; color:#666666; padding:15px 0 12px; font-size:13px;}
+.specsProperty span{float:left; border-right:1px solid #e8e8e8;  text-align:center; color:#666666; padding:15px 0 12px; font-size:13px;}
 .specsProperty span:last-child{border-right:0}
 .shareWidget > a i{margin-right:2px;}
 .shareWidget > span {color: #666666;}
@@ -451,10 +473,10 @@ top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 .propertyDetails span i{margin-right:0px; font-sie:16px;}
 .otherDetails{font-size:14px; float:left; width:100%; border-top:1px solid #b4b4b4; margin-top:10px; padding:10px 15px;}
 .otherDetails span{font-size:16px; color:#a5cd38; font-weight:600;}
-span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal;}
+span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal; width:80%;}
 span.availiblity strong{color:#92bb21; font-weight:normal;}
-span.availiblity span.view_detail_link{margin-left:40px;font-weight:normal;}
-span.availiblity span.view_detail_link i {margin-left:5px;}
+span.availiblity span.view_detail_link{margin-left:40px;font-weight:normal; font-size:14px;}
+span.availiblity span.view_detail_link i {margin-left:1px;}
 .propertyPopup #infobox_title{width: 100%;margin: 0;padding: 0;}
 .child_theme #infocloser{top:1px;right:1px;}
 
@@ -492,11 +514,12 @@ color:#92bb21 !important;
 	}
 	#detailPage .propertyPrice .amount {
 		float: left;
-		width: 100%;
+		width: 50%;
 	}
 	#detailPage .propertyPrice.priceModal > span {
 		float: left;
-		width: 100%;
+		width: 40%;
+		font-size:12px;
 	}
 	#detailPage .actionItems{
 		display:none;
@@ -546,7 +569,16 @@ color:#92bb21 !important;
 	}
 	.propertyDetails .bedroom_tag, .propertyDetails .bathroom_tag{display:none;}
 	.desktop{display:none;}
-	.mobile{display:block;}
+	.mobile{display:block; float:right; height:25px; }
+	span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal; width:70%;}
+	span.availiblity span.view_detail_link{margin-left:40px;font-weight:normal; font-size:14px; margin-top:10px;}
+	
+	.mobilewrapper-user {background:none; z-index: 1;}
+
+
+
+
 }
 
 
+	#googlelogin, #googleloginsidebar_mobile, #googleloginsidebar_topbar, #googleloginsidebar {margin-bottom: 14px; width: 100%;}

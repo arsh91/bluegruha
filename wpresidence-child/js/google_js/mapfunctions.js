@@ -733,6 +733,16 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		//jQuery('body').data('infoBoxStatus', 'OPEN');
 		map_callback( new_open_close_map );
 		google.maps.event.trigger(map, 'resize');
+		google.maps.event.addDomListener(map, 'click', function () {  
+			infoBox.close();
+			jQuery('input#google-default-search').show();
+		});
+		
+		var isMobile = checkMobileDevice();
+		//if it's mobile device then a new page will be open
+		if(isMobile){
+			jQuery('input#google-default-search').hide();
+		}
 
 		if(this.image===''){
 
@@ -1580,12 +1590,6 @@ function visible_or_not(how, slug, value, read){
       
        if( document.cookie.indexOf('my_custom_curr_coef') >= 0) {
            
-		   
-		   
-		   
-		   
-		   
-		   
             var my_custom_curr_coef    =   parseFloat( getCookieMap('my_custom_curr_coef'));
             if(my_custom_curr_coef!=0){
             

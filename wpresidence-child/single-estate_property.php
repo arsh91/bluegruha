@@ -87,11 +87,11 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 
 ?>
 
-<div class="row"><a onclick="goBack()" class="headerBtn submitProperty" href="javascript:void(0)">Back</a></div>
+<div class="row"><a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Home</a></div>
 <div class="modal-header">	
 	<h3 class="modal-title"><i class="fa fa-building" aria-hidden="true"></i> <?php echo get_post_meta($propid, 'property_label', true); ?></h3>
 </div>
-<div class="row" id="detailPage">
+<div class="row mobileDetailPage" id="detailPage">
 	<div class="col-md-8">
 		<div class="innerContainer propertDetailContainer">	
 			<h3>				
@@ -109,20 +109,20 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 				<div class="specsProperty">
 					<?php 
 						if($catDetail[0]->term_id == 47 || $catDetail[0]->term_id == 48){ ?>
-							<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedroom_type', true); ?> Bedroom</span>
-							<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathroom_type', true); ?> Bathroom</span>
-							<span><i class="fa <?php echo $genderCatDetail[0]->description; ?>" aria-hidden="true"></i> <?php echo $genderCatDetail[0]->name; ?> Roomie</span>
+							<span class="col-xs-4"><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedroom_type', true); ?> Bedroom</span>
+							<span class="col-xs-4"><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathroom_type', true); ?> Bathroom</span>
+							<span class="col-xs-4"><i class="fa <?php echo $genderCatDetail[0]->description; ?>" aria-hidden="true"></i> <?php echo $genderCatDetail[0]->name; ?> Roomie</span>
 					<?php }else{ ?>
-							<span><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bedrooms', true); ?> Bedroom(s)</span>
-							<span><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bathrooms', true); ?> Bathroom(s)</span>
-							<span><i class="fa fa-area-chart" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_size', true); ?> Sq Ft</span>
+							<span class="col-xs-4"><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bedrooms', true); ?> Bedroom(s)</span>
+							<span class="col-xs-4"><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bathrooms', true); ?> Bathroom(s)</span>
+							<span class="col-xs-4"><i class="fa fa-area-chart" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_size', true); ?> Sq Ft</span>
 					<?php } ?>
 				</div>
 			</div>
 			
 			<div class="propertyPrice priceModal">
 				<div class="amount">$<?php echo get_post_meta($propid, 'property_price', true); ?><div class='permonth'>per month</div></div>
-				<span>Available From: <strong><?php echo date ('j M Y', strtotime(get_post_meta($propid, 'available_from', true))); ?></strong></span>
+				<span>From: <strong><?php echo date ('j M Y', strtotime(get_post_meta($propid, 'available_from', true))); ?></strong></span>
 			</div>
 			
 			<div class="locationAddress"><i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -131,14 +131,17 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 			<div class="shareWidget">
 				<span>Share at :</span>
 				
-				<a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+				<a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco desk"><i class="fa fa-facebook " aria-hidden="true">facebook</i></a>
+                <a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco mob"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
 				
-				<a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
+				<a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco desk" target="_blank"><i class="fa fa-twitter">Twitter</i></a>
+                <a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco mob" target="_blank"><i class="fa fa-twitter-square"></i></a>
 				
 				<?php
 				if ( wp_is_mobile() ) { 
 				?>
-					<a style="border-color:#5CBE4A; color:#5CBE4A;" data-text="<?php echo get_the_title($propid); ?>" data-link="<?php echo get_the_permalink($propid); ?>" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large" href="whatsapp://send?text=<?php echo get_the_title($propid); ?> - <?php echo get_the_permalink($propid); ?>"><i class="fa fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+					<a style="border-color:#5CBE4A; color:#5CBE4A;" data-text="<?php echo get_the_title($propid); ?>" data-link="<?php echo get_the_permalink($propid); ?>" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large desk" href="whatsapp://send?text=<?php echo get_the_title($propid); ?> - <?php echo get_the_permalink($propid); ?>"><i class="fa fa-whatsapp" aria-hidden="true">whatsapp</i></a>
+                    <a style="border-color:#5CBE4A; color:#5CBE4A;" data-text="<?php echo get_the_title($propid); ?>" data-link="<?php echo get_the_permalink($propid); ?>" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large mob" href="whatsapp://send?text=<?php echo get_the_title($propid); ?> - <?php echo get_the_permalink($propid); ?>"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
 				<?php } ?>
 			</div>
 			<div class="actionItems">
