@@ -1,5 +1,6 @@
 <?php
 global $userID;
+global $form_no;
 $first_name = $last_name = $user_email = $user_mobile = '';
 if(!empty($userID)){
 	$first_name             =   get_the_author_meta( 'first_name' , $userID );
@@ -7,10 +8,35 @@ if(!empty($userID)){
 	$user_email             =   get_the_author_meta( 'user_email' , $userID );
 	$user_mobile            =   get_the_author_meta( 'mobile' , $userID );
 }
+$categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>false, 'order'=>'desc', 'exclude'=>array(50)));
 ?>
 <div class="col-md-12 headingPanel">
 	<h3>Please Enter Your Contact Details</h3>
 </div>
+<?php if($form_no != 3){ ?>
+<div class="form-group col-md-12">
+	<label class="control-label">Gender *</label>
+	<div class="inputContainer" style="">
+		<div class="genderSelect pull_r">
+			<?php
+			$i=1;
+			foreach($categories as $val){
+				$checked='';
+				if($i==1){
+					$checked='checked';
+					$i=0;
+				}
+			?>
+			
+			<span class="genderContainer">
+				<input data-toggle="tooltip" data-placement="top" title="" type="radio" id="<?php echo strtolower($val->name); ?>" class="<?php echo strtolower($val->name); ?> gender" name="advertiser_gender" value="<?php echo $val->term_taxonomy_id; ?>" data-original-title="<?php echo $val->name; ?>" <?php echo $checked; ?> />
+				<label title="<?php echo $val->name; ?>"><?php echo $val->name; ?></label>
+			</span>
+		<?php } ?>
+		</div>
+	</div>
+</div>
+<?php } ?>
 <div class="form-group col-md-6">
 	<label class="control-label">Name *</label>
 	<?php

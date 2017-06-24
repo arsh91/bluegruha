@@ -1,0 +1,162 @@
+*{transition: all 0.3s ease; outline:none;}
+body{font-family: 'Open Sans', sans-serif;}
+img{max-width:100%;}
+.mb-0{margin-bottom:0 !important;}
+.mt-0{margin-top:0 !important;}
+.innerContainer{margin-bottom:50px; float:left; width:100%;}
+.innerContainer h2{color:#434a54; font-size:36px; font-weight:300; margin-top:0; margin-bottom:30px;}
+.innerContainer .nav-tabs{border:none;}
+.innerContainer hr{border-color:#cfcfcf;}
+.innerContainer .nav-tabs.active li{width:200px; padding-left:15px; margin-right:20px; padding-right:15px;}
+.innerContainer .nav-tabs.active li:last-child{margin-right:0px;}
+.innerContainer .nav-tabs.active li a{font-size:18px; font-weight:600; width:200px; max-height:115px; padding-top:25px;}
+.innerContainer .nav-tabs.active li a i{font-size:30px; max-height:30px;}
+.innerContainer .nav-tabs.active li a i.fa-home{font-size:40px;}
+.innerContainer .nav-tabs li{width:33.33%;}
+.innerContainer .nav-tabs li a{border:none; text-align:center; background:#3c90be; color:#fff; border-radius:5px; height:145px; font-size:22px; padding-top:32px; padding-bottom:30px; cursor:pointer; margin-right:0; padding-left:8px; padding-right:8px;}
+.innerContainer .nav-tabs li a:hover,.innerContainer .nav-tabs li.active a,.innerContainer .nav-tabs li a.active,.innerContainer .nav-tabs li a:focus{background:#003f61; border:none; color:#fff; cursor:pointer;}
+.innerContainer .nav-tabs li a i {display: block; max-height:36px; font-size: 36px; margin-bottom: 15px;}
+.innerContainer .nav-tabs li a i.fa-home {font-size: 44px;}
+.formContainer{margin-top:15px; float:left;font-size:14px;}
+.commonForm input.form-control,.commonForm .formContainer .bootstrap-select,.commonForm .formContainer .btn-group{box-shadow:none; border-color:#c4c4c4; max-width:calc(100% - 185px); min-width:calc(100% - 183px); float:right; height:36px; font-weight:300;}
+.commonForm .formContainer .multiselect{max-width:225px; min-width:225px; text-align:left;box-shadow: none; }
+.commonForm .formContainer .multiselect-selected-text {float: left; width: calc(100% - 10px);}
+.commonForm .form-group{margin-bottom:30px;}
+.form-group.full-width {height: auto !important;}
+.full-width label{margin-bottom:20px;}
+.form-group textarea, .form-group textarea:focus {border-color: #c4c4c4; box-shadow:none; resize:none; font-weight:300;}
+.commonForm label.control-label{float:left; font-size:16px; color:#434a54; font-weight:300; margin-top:7px; margin-right:20px;}
+.formContainer .options {float: right; height:36px; width: 225px; border:1px solid #c4c4c4; border-radius:4px;}
+.addType{float:right; width:calc(100% - 183px);}
+.addType .radio label{font-size:14px;}
+.commonForm {float: left; width: 100%;}
+.addType .radio {display: inline-block; margin-right: 35px;}
+.formContainer .options .radio {float:left; width:50%; margin:0;}
+.formContainer #gender .radio{width:33.33%;}
+.formContainer #gender .radio label{font-size:13px; padding-top:8px; padding-bottom:8px;}
+.formContainer #gender .radio label i{margin-right:5px;}
+.formContainer .options .radio label {float:left; width:100%; text-align:center; padding-bottom: 7px; padding-top: 7px; padding-left:0;font-size:14px;}
+.formContainer .options .radio label i{color:#3c90be; margin-right:10px;}
+.formContainer .options .radio label input[type="radio"]{opacity:0.01; position:absolute; padding:0; margin:0;}
+.formContainer .options .radio label.activeRadio{background:#3c90be; color:#fff;}
+.formContainer .options .radio label.activeRadio i{color:#fff;}
+.formContainer h3 {background: #efefef none repeat scroll 0 0; border-bottom: 1px solid #cfcfcf; color: #003f61; float: left; font-size: 16px; font-weight: 300; padding: 10px 20px; width: 100%; margin-bottom:35px; margin-top:10px;}
+.addType #featured + small + span{color:#448701; font-weight:600;}
+input.postUniAdd{width:350px; height:46px; text-align:center; color:#fff; border-radius:5px; border:none; outline:none; font-size:18px; font-weight:600; background:#3c90be; box-shadow: 0 4px 0 0 rgba(1, 53, 82, 0.75);}
+span.verification {background: #3c90be none repeat scroll 0 0; border: medium none; border-radius: 5px; color: #ffffff; float: left; font-size: 16px; height: 36px; outline: medium none; padding: 5px 30px; text-align: center; width: calc(100% - 185px);}
+input.featuredAdd{background:#4d9a01; box-shadow: 0 4px 0 0 rgba(78, 157, 0, 0.75);}
+.addType input{position:relative; opacity:0.01;}
+.addType input + small.customRadio{display:inline-block; width:14px; height:14px; border:2px solid #3c90be; border-radius:50%; top:2px; left:-20px; position:relative;}
+.addType input:checked + small.customRadio{background:#3c90be;}
+.commonForm .highlight label label{color:#003f61;}
+.commonForm .highlight input.form-control{border-color:#003f61;}
+.commonForm .highlight input.form-control.required{border-color:red;}
+.highlight em {color: #7c8187; float: right; font-size: 12px; font-weight: 600; margin-top: 10px; width: calc(100% - 183px);}
+.locationContainer{float:left; width:100%; /*border-top:1px solid #cfcfcf; border-bottom:1px solid #cfcfcf; padding-top:30px; padding-bottom:30px;*/ margin-bottom:20px;}
+.locationContainer .form-group{float:left; width:100%; margin-bottom:20px;}
+.locationContainer .map{float:left; width:100%; border-radius:5px; border:1px solid #c4c4c4; height:200px;position:relative;}
+.locationContainer .map #googleMapsubmit {height:200px;margin:0px;position:absolute !important;}
+.tooltipCustom{border-radius:5px; padding:10px 20px; background:rgba(0,0,0,0.6); color:#fff; position:absolute; top:-35px; left:390px; font-size:12px;}
+.tooltipCustom:after {right: 100%;top: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(102, 102, 102, 0);border-right-color: #666666;border-width: 15px;margin-top: -15px;}
+ul#featuredAd{display:none;}
+.tooltipCustom ul {padding:0;}
+.tooltipCustom li {list-style:none; margin:5px 0;}
+.formContainer .options.roomCount{border:none;}
+.roomCount a{border: 1px solid #c4c4c4; border-radius: 4px; color:#003f61; margin-right:8px; padding:7px; text-align:center; text-decoration:none; float:left; width:38px;}
+.formContainer .options.roomCount a:hover, .formContainer .options.roomCount a.selected{color:#fff; background:#003f61; border-color:#003f61;}
+.roomCount a:last-child{margin-right:0;}
+@media only screen and (max-width: 360px){
+.innerContainer .nav.nav-tabs li a{height:145px !important;}
+}
+@media only screen and (max-width: 640px) and (min-width: 361px){
+.innerContainer .nav.nav-tabs li a{height:120px !important;}
+}
+@media only screen and (max-width: 640px){
+.locationWrapper {padding: 0;}
+.locationContainer{padding-top:20px; padding-bottom:20px;}
+.innerContainer h2{font-size:22px;}
+.innerContainer .nav-tabs li{max-width:50%;}
+.innerContainer .nav.nav-tabs li a{font-size:14px; word-wrap: break-word; max-height:145px; height:auto; max-width:100%; padding-top:22px; font-weight:normal;}
+.innerContainer .nav-tabs li,.innerContainer .nav-tabs.active li{margin-right:0; width:33.33%;}
+.innerContainer .nav-tabs li a i, .innerContainer .nav-tabs.active li a i{font-size:28px; margin-bottom:8px;}
+.innerContainer .nav-tabs li a i.fa-home, .innerContainer .nav-tabs.active li a i.fa-home{font-size:32px; height:32px; max-height:32px;}
+input.postUniAdd{width:100%; font-size:16px;}
+.commonForm .form-group{padding-left:0; padding-right:0;}
+.headingPanel{padding-left:0; padding-right:0;}
+.tooltipCustom{top:80px; left:calc(50% - 85px); width:170px;}
+.tooltipCustom::after{top:-15px; left:calc(50% - 15px); transform: rotate(90deg);}
+}
+@media only screen and (max-width: 991px){
+span.verification{float:left; width:100%;}
+.commonForm .form-group.highlight{width:100%;}
+.highlight em{width:100%;}
+.headingPanel{float:left; width:100%;}
+.commonForm label.control-label{width:100%; margin-bottom:15px; margin-right:0;}
+.formContainer .options{float:left;}
+.formContainer{width:100%; margin-left:0; margin-right:0;}
+.commonForm input.form-control, .commonForm .formContainer .bootstrap-select, .commonForm .formContainer .btn-group{float:left; max-width:100%; width:100% !important;}
+.commonForm .formContainer .multiselect{max-width: 100%; min-width: 100%;}
+.commonForm .form-group {display: inline-block; margin-bottom: 20px; width:100%;}
+.innerContainer .tab-content{float:left; width:100%;}
+.addType{float:left; width:100%;}
+.formContainer h3{margin-bottom:20px;}
+}
+@media only screen and (min-width: 641px) and (max-width: 991px){
+.commonForm .addTypeCon.form-group {width: 100%;}
+.buttonContainer{float:left; width:100%;}
+input.featuredAdd{float:left;}
+.commonForm .form-group{float:left; width:50%;}
+.commonForm .form-group.full-width{width:100%;}
+.innerContainer .nav-tabs li a{font-size:20px; max-width:100%;}
+.innerContainer .nav-tabs.active li, .innerContainer .nav-tabs li{margin-right:0; width:33.33%;}
+.innerContainer .nav-tabs.active li a{width:100%; padding-left:8px; padding-right:8px;}
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+.formContainer .options, .commonForm .formContainer .multiselect{width:186px; max-width: 186px; min-width: 186px;}
+.commonForm input.form-control, .commonForm .formContainer .bootstrap-select, .commonForm .formContainer .btn-group{min-width: calc(100% - 149px); max-width: calc(100% - 149px);}
+.highlight em{width: calc(100% - 149px);}
+.roomCount a{width:30px;}
+.addType{width: calc(100% - 149px);}
+.commonForm .highlight input.form-control {border-color: #003f61;max-width: calc(100% - 185px);min-width: calc(100% - 185px);}
+
+}
+.bootstrap-select>.dropdown-toggle{box-shadow: none; text-transform: capitalize;}
+/*
+ul.uni_result {
+  background: #efefef none repeat scroll 0 0;
+  float: left;
+  max-height: 253px;
+  list-style: outside none none;
+  overflow-y: auto;
+  position: absolute;
+  right: 15px;
+  top: 36px;
+  width: calc(100% - 213px);
+  z-index: 1;
+}
+.uni_loader {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+.uni_result li {float: left;padding: 5px 15px 7px;width: 100%; font-size:13px;}
+.uni_result li.university {border-bottom: 1px solid #cfcfcf;cursor: pointer;}
+.uni_result li.university:hover {background: #3c90be none repeat scroll 0 0;color: #ffffff;}
+*/
+.submit_container {border: medium none;box-shadow: none;}
+.form-group .uni_loader{display:none;}
+.commonForm .form-group input.required{border:1px solid red;}
+
+.ui-autocomplete {max-height: 100px;overflow-y: auto;/* prevent horizontal scrollbar */overflow-x: hidden;}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {height: 100px;}
+.commonForm .form-control {margin-bottom:0px}
+.form-group.col-md-12.title-field {margin-bottom: 15px;}
+.form-group{position:relative;}
+.validation_msg {bottom: -20px;color: red;font-size: 12px;position: absolute;right: 13px;width: auto;}
+.full-width .validation_msg{bottom: -7px;right: 0;}
+.image-section-add-property .submit_container{margin-bottom:0;padding-bottom:0;}
+.commonForm  .alert-box .alert-message{max-width:256px;}
+.uni_not_found_msg{display:none;}

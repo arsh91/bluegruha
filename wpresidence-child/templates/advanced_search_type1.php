@@ -44,40 +44,43 @@ if ( $extended_search =='yes' ){
             print do_action( 'wpml_add_language_form_field' );
         }
         ?>   
-        
-        
-        <div class="adv1-holder filterContainer">
-            <?php
-            $custom_advanced_search= get_option('wp_estate_custom_advanced_search','');
-            if ( $custom_advanced_search == 'yes'){
-                foreach($adv_search_what as $key=>$search_field){
-					if($search_field != 'none'){
-						$style = ($search_field=='property bedrooms') ?'display:none;':'';
-						echo "<div class='inputContainer $search_field' style='$style'>";
-							wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
-						echo '</div>';
+        <div id="filter">
+			<div class="filterContainerHead">
+				<h5 class="text-center"><b>Roomie Preference</b></h5>
+			</div>
+			<div class="adv1-holder filterContainer">
+				<?php
+				$custom_advanced_search= get_option('wp_estate_custom_advanced_search','');
+				if ( $custom_advanced_search == 'yes'){
+					foreach($adv_search_what as $key=>$search_field){
+						if($search_field != 'none'){
+							$style = ($search_field=='property bedrooms') ?'display:none;':'';
+							echo "<div class='inputContainer $search_field' style='$style'>";
+								wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);
+							echo '</div>';
+						}
 					}
-                }
-            }else{
-                $search_form = wpestate_show_search_field_classic_form('main',$action_select_list,$categ_select_list ,$select_city_list,$select_area_list);
-                print $search_form;
-            }
+				}else{
+					$search_form = wpestate_show_search_field_classic_form('main',$action_select_list,$categ_select_list ,$select_city_list,$select_area_list);
+					print $search_form;
+				}
 
-            if($extended_search=='yes'){
-               show_extended_search('adv');
-            }
-            ?>
-        </div>
-       
-        <input name="submit" type="submit" class="wpresidence_button" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES','wpestate');?>">
-        <?php if ($adv_search_type!=2) { ?>
-        <div id="results">
-            <?php _e('We found ','wpestate'); ?> <span id="results_no">0</span> <?php _e('results.','wpestate'); ?>  
-            <span id="showinpage"> <?php _e('Do you want to load the results now ?','wpestate');?> </span>
-        </div>
-        <?php } ?>
-		<input type = 'hidden' name = 'google_city' value = '' id = 'google_srch_city'/>
-		<input type = 'hidden' name = 'google_county' value = '' id = 'google_srch_county' />
+				if($extended_search=='yes'){
+				   show_extended_search('adv');
+				}
+				?>
+			</div>
+		   
+			<input name="submit" type="submit" class="wpresidence_button" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES','wpestate');?>">
+			<?php if ($adv_search_type!=2) { ?>
+			<div id="results">
+				<?php _e('We found ','wpestate'); ?> <span id="results_no">0</span> <?php _e('results.','wpestate'); ?>  
+				<span id="showinpage"> <?php _e('Do you want to load the results now ?','wpestate');?> </span>
+			</div>
+			<?php } ?>
+			<input type = 'hidden' name = 'google_city' value = '' id = 'google_srch_city'/>
+			<input type = 'hidden' name = 'google_county' value = '' id = 'google_srch_county' />
+		</div>
     </form>   
        <div style="clear:both;"></div>
 </div>

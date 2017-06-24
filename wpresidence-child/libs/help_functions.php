@@ -1571,7 +1571,6 @@ if( !function_exists('wpestate_show_search_field') ):
             $return_string=''; 
         }
         else if($search_field=='types'){
-           
             if(isset($_GET['filter_search_action'][0]) && $_GET['filter_search_action'][0]!='' && $_GET['filter_search_action'][0]!='all'){
                 $full_name          =   get_term_by('slug', ( ( $_GET['filter_search_action'][0] ) ),'property_action_category');
                 $adv_actions_value  =   $adv_actions_value1 = $full_name->name;
@@ -1580,8 +1579,11 @@ if( !function_exists('wpestate_show_search_field') ):
                 $adv_actions_value1 =   'all';
             } 
 
-            $return_string  .=   wpestate_build_dropdown_adv($appendix,'actionslist','adv_actions',$adv_actions_value,$adv_actions_value1,'filter_search_action',$action_select_list);
-
+			if($adv_search_label[$key] == 'HouseRent'){
+				$return_string  .= '<span class="checkboxContainer genderSelect"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Property to Rent" type="checkbox" id="prop_to_rent" class="prop_to_rent"><label>Property to Rent</label></span>';
+			}else{
+				$return_string  .=   wpestate_build_dropdown_adv($appendix,'actionslist','adv_actions',$adv_actions_value,$adv_actions_value1,'filter_search_action',$action_select_list);
+			}
 
         }else if($search_field=='categories'){
             
@@ -1594,7 +1596,7 @@ if( !function_exists('wpestate_show_search_field') ):
             }
 			if($adv_search_label[$key] == 'Gender'){
 				
-				$return_string='<div class="genderSelect"><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Male"  type="checkbox" id="male" class="male gender" name="adv_categ_male" value="male"/><label>Male</label></span><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Female" type="checkbox" id="female" class="female gender" name="adv_categ_female" value="female"/><label>Female</label></span><span class="checkboxContainer"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Any" type="checkbox" id="any" class="any gender" name="adv_categ_neutral" value="any" /><label>Any</label></span><input type="hidden" name="selGender" value="All" /></div>';
+				$return_string='<div class="genderSelect"><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Male"  type="checkbox" id="male" class="male gender" name="adv_categ_male" value="male"/><label>Male</label></span><span class="checkboxContainer"><input data-toggle="tooltip" data-placement="top" title="Female" type="checkbox" id="female" class="female gender" name="adv_categ_female" value="female"/><label>Female</label></span><input type="hidden" name="selGender" value="All" /></div>';
 			}else{
 				$return_string=wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
 			}
