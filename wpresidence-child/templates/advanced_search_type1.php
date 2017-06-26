@@ -46,7 +46,10 @@ if ( $extended_search =='yes' ){
         ?>   
         <div id="filter">
 			<div class="filterContainerHead">
-				<h5 class="text-center"><b>Roomie Preference</b></h5>
+				<h5 class="text-center"><b>Shared Property</b></h5>
+			</div>
+			<div class="filterContainerHead">
+				<h5 class="text-center"><b>Private Property</b></h5>
 			</div>
 			<div class="adv1-holder filterContainer">
 				<?php
@@ -105,6 +108,13 @@ if ( $extended_search =='yes' ){
 			selGender = 'All';
 		}
 		jQuery('input[name=selGender]').val(selGender);
+		
+		if(jQuery('input[name=filter_search_action]').is(':checked')){
+			jQuery('input[name=filter_search_action]').attr('data-value', 'property-to-rent');
+		}else{
+			jQuery('input[name=filter_search_action]').attr('data-value', 'All');
+		}
+
 	});
 	jQuery('.increment').click(function() {
 		var val;

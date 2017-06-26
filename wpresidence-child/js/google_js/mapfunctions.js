@@ -1599,7 +1599,6 @@ function visible_or_not(how, slug, value, read){
             }
         }else{
         }
-       
         if( slug >=  slider_min && slug<= slider_max){
             return true;
         }else{
@@ -1726,6 +1725,9 @@ function get_custom_value(slug){
 		if(slug === 'adv_categ' && typeof value =='undefined'){
 			value = jQuery('input[name=selGender]').val();
 		}
+		if(slug === 'adv_actions' && typeof value =='undefined'){
+			value = jQuery('input[name=filter_search_action]').val();
+		}
 		if(slug === 'advanced_city' && value == ''){
 			value = jQuery('#google_srch_city').val();
 		}
@@ -1817,7 +1819,7 @@ function get_custom_value_onthelist(slug){
   
   
 function show_pins_custom_search(){
-    console.log ('show_pins_custom_search1');
+	console.log ('show_pins_custom_search1');
     console.log (mapfunctions_vars);
     var val1, val2, val3, val4, val5, val6, val7, val8, position;
     
@@ -1880,25 +1882,32 @@ function show_pins_custom_search(){
     
 
     if(  typeof gmarkers!=='undefined'){
-		//console.log(gmarkers);
+		console.log(gmarkers);
 		for (var i=0; i<gmarkers.length; i++) {
-				console.log("xxxxxxxxxxxxxx   "+mapfunctions_vars.hows[3] +'/'+mapfunctions_vars.slugs[3] +' / '+ val4+' / '+ gmarkers[i].available_from_date);
 				if ( !visible_or_not(mapfunctions_vars.hows[0], gmarkers[i].val1, val1, mapfunctions_vars.slugs[0]) ){
+					console.log("xxxxxxxxxxxxxx 1 "+mapfunctions_vars.hows[0] +'/'+gmarkers[i].val1 +' / '+ val1+' / '+ mapfunctions_vars.slugs[0]);
                     gmarkers[i].setVisible(false);
-                } else if (gmarkers[i].action == 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[1],gmarkers[i].val2, val2, mapfunctions_vars.slugs[1]) ){
-                    gmarkers[i].setVisible(false);
-                } else if (gmarkers[i].action != 'property-to-rent' && !visible_or_not(mapfunctions_vars.hows[2],gmarkers[i].val3, val3, mapfunctions_vars.slugs[2]) ){
-                    gmarkers[i].setVisible(false);
-                } else if ( !visible_or_not(mapfunctions_vars.hows[3],gmarkers[i].available_from_date, val4, mapfunctions_vars.slugs[3]) ){
-                    gmarkers[i].setVisible(false);
+                } else if (!visible_or_not(mapfunctions_vars.hows[1],gmarkers[i].val2, val2, mapfunctions_vars.slugs[1]) ){
+                    console.log("xxxxxxxxxxxxxx 2  "+mapfunctions_vars.hows[1] +'/'+gmarkers[i].val2 +' / '+ val2+' / '+ mapfunctions_vars.slugs[1]);
+					gmarkers[i].setVisible(false);
+                } else if (!visible_or_not(mapfunctions_vars.hows[2],gmarkers[i].available_from_date, val3, mapfunctions_vars.slugs[2]) ){
+                    console.log("xxxxxxxxxxxxxx 3  "+mapfunctions_vars.hows[2] +'/'+gmarkers[i].available_from_date +' / '+ val3+' / '+ mapfunctions_vars.slugs[2]);
+					gmarkers[i].setVisible(false);
+                } else if ( !visible_or_not(mapfunctions_vars.hows[3],gmarkers[i].val4, val4, mapfunctions_vars.slugs[3]) ){
+                    console.log("xxxxxxxxxxxxxx 4  "+mapfunctions_vars.hows[3] +'/'+gmarkers[i].val4 +' / '+ val4+' / '+ mapfunctions_vars.slugs[3]);
+					gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[4],gmarkers[i].val5, val5, mapfunctions_vars.slugs[4]) ){
-                     gmarkers[i].setVisible(false);
+                     console.log("xxxxxxxxxxxxxx 5 "+mapfunctions_vars.hows[4] +'/'+gmarkers[i].val5 +' / '+ val5+' / '+ mapfunctions_vars.slugs[4]);
+					 gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[5],gmarkers[i].val6, val6, mapfunctions_vars.slugs[5]) ){
-                    gmarkers[i].setVisible(false);
+                    console.log("xxxxxxxxxxxxxx 6 "+mapfunctions_vars.hows[5] +'/'+gmarkers[i].val6 +' / '+ val6+' / '+ mapfunctions_vars.slugs[5]);
+					gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[6],gmarkers[i].val7, val7, mapfunctions_vars.slugs[6]) ){
-                    gmarkers[i].setVisible(false);
+                    console.log("xxxxxxxxxxxxxx 7 "+mapfunctions_vars.hows[6] +'/'+gmarkers[i].val7 +' / '+ val7+' / '+ mapfunctions_vars.slugs[6]);
+					gmarkers[i].setVisible(false);
                 } else if ( !visible_or_not(mapfunctions_vars.hows[7],gmarkers[i].val8, val8, mapfunctions_vars.slugs[7]) ){
-                    gmarkers[i].setVisible(false);
+                    console.log("xxxxxxxxxxxxxx 8 "+mapfunctions_vars.hows[7] +'/'+gmarkers[i].val8 +' / '+ val8+' / '+ mapfunctions_vars.slugs[7]);
+					gmarkers[i].setVisible(false);
                 } else{
                     gmarkers[i].setVisible(true);
                     results_no++;

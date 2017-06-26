@@ -1237,12 +1237,15 @@ jQuery(document).ready(function ($) {
          if (typeof (show_pins) !== "undefined") {    
             first_time_wpestate_show_inpage_ajax_half=1
 			var selectedVal = jQuery(this).data('value');
-			if(selectedVal == 'property-to-rent'){
-				jQuery('.categories').hide();
-				jQuery('.bedrooms, .rooms').show();
-			}else{
-				jQuery('.bedrooms, .rooms').hide();
-				jQuery('.categories').show();
+			// if(selectedVal == 'property-to-rent'){
+				// jQuery('.categories').hide();
+				// jQuery('.bedrooms, .rooms').show();
+			// }else{
+				// jQuery('.bedrooms, .rooms').hide();
+				// jQuery('.categories').show();
+			// }
+			if(selectedVal == 'male' || selectedVal == 'female'){
+				jQuery('input[name=filter_search_action]').prop('checked', false); 
 			}
 			if(selectedVal == 'property-to-rent' || selectedVal == 'room-to-rent' || selectedVal == 'university-housing' || selectedVal == 'all'){
 				jQuery("#slider_price").slider("option", "values", [0, 10000]);
