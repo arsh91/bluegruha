@@ -21,10 +21,6 @@ global $property_county_state;
 
 	<div class="col-md-12 locationWrapper">
 		<div class="locationContainer">
-			<div class="form-group full-width">
-				<label class="control-label"><?php _e('Location Address *','wpestate');?></label>
-				<input type="text" placeholder="Enter home or street address" class="form-control property_address" id="property_address" size="40" name="property_address" rows="3" cols="42" value ="<?php print $property_address; ?>">
-			</div>
 			<?php
 				$style = 'display:none;';
 				if (!wp_is_mobile()) { ?>
@@ -38,7 +34,11 @@ global $property_county_state;
 					</div>-->
 			<?php 
 				$style = 'display:block;';
-				} ?> 
+				} ?>
+			<div class="form-group full-width">
+				<label class="control-label"><?php _e('Location Address *','wpestate');?></label>
+				<input type="text" placeholder="Enter home or street address" class="form-control property_address" id="property_address" size="40" name="property_address" rows="3" cols="42" value ="<?php print $property_address; ?>">
+			</div>
 			<div class="map" style="<?php echo $style; ?>" >
 				<div id="googleMapsubmit" ></div>   
 			</div> 

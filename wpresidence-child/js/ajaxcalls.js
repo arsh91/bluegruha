@@ -1661,6 +1661,7 @@ jQuery(document).ready(function ($) {
 						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
 						$(obj).closest('form').find('input[type=submit]').attr('disabled',true);
 						$(obj).closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
+						$(obj).closest('form').find('.btnDisNote').show();
 						$('#agent_user_email').removeClass('required');
 						if(data.response){
 							$('#alert-agent-contact').empty().append(data.response);
@@ -1674,6 +1675,7 @@ jQuery(document).ready(function ($) {
 						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
 						$(obj).closest('form').find('input[type=submit]').attr('disabled',false);
 						$(obj).closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
+						$(obj).closest('form').find('.btnDisNote').hide();
 						$('#agent_contact_otp').val('');
 						$('#varify_cont_email').text("Verify Email");
 					}
@@ -1741,11 +1743,13 @@ jQuery(document).ready(function ($) {
 						// $('#agent_submit, #postUniAdd').addClass('disabled_contact_btn');
 						$(obj).closest('form').find('input[type=submit]').attr('disabled',true);
 						$(obj).closest('form').find('input[type=submit]').addClass('disabled_contact_btn');
+						$(obj).closest('form').find('.btnDisNote').show();
 					}else{
 						// $('#agent_submit, #postUniAdd').attr('disabled',false);
 						// $('#agent_submit, #postUniAdd').removeClass('disabled_contact_btn');
 						$(obj).closest('form').find('input[type=submit]').attr('disabled',false);
 						$(obj).closest('form').find('input[type=submit]').removeClass('disabled_contact_btn');
+						$(obj).closest('form').find('.btnDisNote').hide();
 					}
 				}
 			});

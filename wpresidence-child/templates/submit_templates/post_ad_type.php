@@ -25,6 +25,10 @@ if(!isset($current_user->data->ID)){
 </div>-->
 <div class="col-md-12 buttonContainer">
 	<input type="submit" id="postUniAdd" class="<?php echo $class; ?>" value="Post your free add" name="add_property" <?php echo $disabled; ?> />
+	<?php 
+	if($disabled){ ?>
+		<i class='btnDisNote'>*Disabled untill email is verified.</i>
+	<?php } ?>
 	<!--<div class="tooltipCustom">
 		<ul id="freeAd">
 			<li>Valid upto 7 days</li>

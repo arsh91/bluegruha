@@ -13,30 +13,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 <div class="col-md-12 headingPanel">
 	<h3>Please Enter Your Contact Details</h3>
 </div>
-<?php if($form_no != 3){ ?>
-<div class="form-group col-md-12">
-	<label class="control-label">Gender *</label>
-	<div class="inputContainer" style="">
-		<div class="genderSelect pull_r">
-			<?php
-			$i=1;
-			foreach($categories as $val){
-				$checked='';
-				if($i==1){
-					$checked='checked';
-					$i=0;
-				}
-			?>
-			
-			<span class="genderContainer">
-				<input data-toggle="tooltip" data-placement="top" title="" type="radio" id="<?php echo strtolower($val->name); ?>" class="<?php echo strtolower($val->name); ?> gender" name="advertiser_gender" value="<?php echo $val->term_taxonomy_id; ?>" data-original-title="<?php echo $val->name; ?>" <?php echo $checked; ?> />
-				<label title="<?php echo $val->name; ?>"><?php echo $val->name; ?></label>
-			</span>
-		<?php } ?>
-		</div>
-	</div>
-</div>
-<?php } ?>
+
 <div class="form-group col-md-6">
 	<label class="control-label">Name *</label>
 	<?php
@@ -59,6 +36,30 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 		<input type="text" class="form-control" placeholder="(555)555-5555" name="agent_phone" />
 	<?php } ?>
 </div>
+<?php if($form_no != 3){ ?>
+<div class="form-group col-md-12">
+	<label class="control-label">Are you? *</label>
+	<div class="inputContainer" style="">
+		<div class="genderSelect pull_r">
+			<?php
+			$i=1;
+			foreach($categories as $val){
+				$checked='';
+				if($i==1){
+					$checked='checked';
+					$i=0;
+				}
+			?>
+			
+			<span class="genderContainer">
+				<input data-toggle="tooltip" data-placement="top" title="" type="radio" id="<?php echo strtolower($val->name); ?>" class="<?php echo strtolower($val->name); ?> gender" name="advertiser_gender" value="<?php echo $val->term_taxonomy_id; ?>" data-original-title="<?php echo $val->name; ?>" <?php echo $checked; ?> />
+				<label title="<?php echo $val->name; ?>"><?php echo $val->name; ?></label>
+			</span>
+		<?php } ?>
+		</div>
+	</div>
+</div>
+<?php } ?>
 <div class="form-group col-md-6">
 	<label class="control-label">Email *</label>
 	<?php

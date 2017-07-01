@@ -377,21 +377,11 @@ color: #92bb21 !important;
 /* Filters css Start */
 
 #filter{ width:80%; height:70px; margin:0 auto;}
-.filterContainerHead{background: #92bb21 none repeat scroll 0 0;	
-	width:20%;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
- border-right: 1px solid;color: #ffffff;float: left;}
+.filterContainerHead{background: #92bb21 none repeat scroll 0 0;border-radius: 0;border-right: 1px solid;color: #ffffff;float: left;width: 16%;}
 .filterContainerHead h5{ margin-bottom: 10px;margin-top: 10px;}
 .filterContainerHead h5 b{color:#fff;}
 .filterContainer{background:rgba(0,0,0,0.6); float:left; width:100%; margin-bottom:30px; }
 .inputContainer{float:left; padding:16px 1%; width:35%; border-right:1px solid #fff; height:70px;}
-
-.inputContainerGender{float:left; padding:16px 1%; width:15%; border-right:1px solid #fff; height:70px;}
-.inputContainerHome{float:left; padding:16px 1%; width:15%; border-right:1px solid #fff; height:70px;}
-
 .inputContainer.categories{float:left; padding:16px 1%; width:20%; border-right:1px solid #fff; height:70px;}
 .inputContainer.types{float:left; padding:16px 1%; width:10%; border-right:1px solid #fff; height:70px;}
 .inputContainer:last-child{border:none;}
@@ -405,9 +395,7 @@ color: #92bb21 !important;
 
 .genderSelect{float:left; width:100%;}
 
-.genderSelect input[type="checkbox"]{float:left; margin:0 20px 0 7px; position:relative; width:25px; height:41px; opacity:0.01; cursor:pointer; z-index:9;}
-.houeRentCont input[type="checkbox"]{position:absolute; left:39px;}
-.houeRentCont label{position:absolute; left:45px;}
+.genderSelect input[type="checkbox"]{float:left; margin:0 18px; position:relative; width:25px; height:41px; opacity:0.01; cursor:pointer; z-index:9;}
 .genderSelect input[type="checkbox"]:checked ~ label:after{content:"\f058"; font: normal normal normal 18px/1 FontAwesome; color:#fff; position:absolute; top:26px; left:5px;  visibility:visible;}
 .checkboxContainer{float: left; text-align:center; position:relative;width: 33.33%;}
 .checkboxContainer label{height:41px; width:25px; visibility:hidden; position:absolute; left:20px;}
@@ -471,7 +459,7 @@ top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 
 /*@media (max-width:1200px){*/
 /*@media (min-width:1370px) { */
-@media only screen and (max-width: 1370px) and (min-width: 801px){
+@media only screen and (max-device-width: 1370px) and (min-device-width: 801px){
 	.header_wrapper {height: 55px !important;}
 	#logo_image{max-height:100%;}
 	.logo:after{left: 220px; top: 23px;}
@@ -479,7 +467,7 @@ top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 	#google-default-search {top: 73px;}
 	div#gmapzoomplus {top: 75px;padding: 7px 0px 0px 8px;}
 	div#gmapzoomminus {top: 107px;padding: 7px 0px 0px 8px;}
-	/*.inputContainer{padding: 8px 20px 11px 20px; height: 55px;width:35%;}*/
+	.inputContainer{padding: 8px 20px 11px 20px; height: 55px;width:35%;}
 }
 /*css for small popup on map home page*/
 .propertyPopup{width:400px; border:1px solid #b4b4b4; float:left;background:#fff;}
