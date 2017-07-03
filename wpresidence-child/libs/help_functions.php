@@ -1580,7 +1580,7 @@ if( !function_exists('wpestate_show_search_field') ):
             } 
 
 			if($adv_search_label[$key] == 'HouseRent'){
-				$return_string  .= '<span class="checkboxContainer genderSelect houeRentCont"><input aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Property to Rent" type="checkbox" id="adv_actions" class="prop_to_rent" name="filter_search_action" data-value="All"><label>Property to Rent</label></span>';
+				$return_string  .= '<span class="checkboxContainer genderSelect houeRentCont"><input type="checkbox" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Property to Rent" id="adv_actions" class="prop_to_rent" name="filter_search_action" data-value="All"><label>Property to Rent</label></span>';
 			}else{
 				$return_string  .=   wpestate_build_dropdown_adv($appendix,'actionslist','adv_actions',$adv_actions_value,$adv_actions_value1,'filter_search_action',$action_select_list);
 			}

@@ -43,7 +43,7 @@ global $option_slider;
 global $form_no;
 
 $universities_list = get_universities();
-$actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC'));
+$actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC', 'exclude'=>47));
 ?>
 <div class="innerContainer">
 	<h2>Please Select your Property Type</h2>

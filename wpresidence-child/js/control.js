@@ -1237,22 +1237,25 @@ jQuery(document).ready(function ($) {
          if (typeof (show_pins) !== "undefined") {    
             first_time_wpestate_show_inpage_ajax_half=1
 			var selectedVal = jQuery(this).data('value');
-			// if(selectedVal == 'property-to-rent'){
-				// jQuery('.categories').hide();
-				// jQuery('.bedrooms, .rooms').show();
-			// }else{
-				// jQuery('.bedrooms, .rooms').hide();
-				// jQuery('.categories').show();
-			// }
 			if(selectedVal == 'male' || selectedVal == 'female'){
+				jQuery('input[name=filter_search_action]').attr('data-value', 'All');
 				jQuery('input[name=filter_search_action]').prop('checked', false); 
+				jQuery('.inputContainer.categories').removeClass('disabled');
+				jQuery('.inputContainer.types').addClass('disabled');				
+			}else{
+				jQuery(".genderSelect input[name=selGender]").val('All');
+				jQuery('input[name=adv_categ_male], input[name=adv_categ_female]').prop('checked', false); 
+				jQuery('.inputContainer.categories').addClass('disabled');
+				jQuery('.inputContainer.types').removeClass('disabled');
 			}
+			
 			if(selectedVal == 'property-to-rent' || selectedVal == 'room-to-rent' || selectedVal == 'university-housing' || selectedVal == 'all'){
 				jQuery("#slider_price").slider("option", "values", [0, 10000]);
 				jQuery("#counter, #property-bedrooms, .genderSelect input[name=selGender]").val('All');
 				jQuery("#available-from").val('');
 				jQuery('input[name=adv_categ_male], input[name=adv_categ_female], input[name=adv_categ_neutral]').prop('checked', false); 
 			}
+
             show_pins(); 
         }
     });

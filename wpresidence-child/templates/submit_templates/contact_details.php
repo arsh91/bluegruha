@@ -37,30 +37,28 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<?php } ?>
 </div>
 <?php if($form_no != 3){ ?>
-<div class="form-group col-md-12">
+<div class="form-group col-md-6 areyouCont">
 	<label class="control-label">Are you? *</label>
-	<div class="inputContainer" style="">
-		<div class="genderSelect pull_r">
-			<?php
-			$i=1;
-			foreach($categories as $val){
-				$checked='';
-				if($i==1){
-					$checked='checked';
-					$i=0;
-				}
-			?>
-			
-			<span class="genderContainer">
-				<input data-toggle="tooltip" data-placement="top" title="" type="radio" id="<?php echo strtolower($val->name); ?>" class="<?php echo strtolower($val->name); ?> gender" name="advertiser_gender" value="<?php echo $val->term_taxonomy_id; ?>" data-original-title="<?php echo $val->name; ?>" <?php echo $checked; ?> />
-				<label title="<?php echo $val->name; ?>"><?php echo $val->name; ?></label>
-			</span>
-		<?php } ?>
-		</div>
+	<div class="genderSelect pull_r">
+		<?php
+		$i=1;
+		foreach($categories as $val){
+			$checked='';
+			if($i==1){
+				$checked='checked';
+				$i=0;
+			}
+		?>
+		
+		<span class="genderContainer">
+			<input data-toggle="tooltip" data-placement="top" title="" type="radio" id="<?php echo strtolower($val->name); ?>" class="<?php echo strtolower($val->name); ?> gender" name="advertiser_gender" value="<?php echo $val->term_taxonomy_id; ?>" data-original-title="<?php echo $val->name; ?>" <?php echo $checked; ?> />
+			<label title="<?php echo $val->name; ?>" for="<?php echo strtolower($val->name); ?>"><span><?php echo $val->name; ?></span></label>
+		</span>
+	<?php } ?>
 	</div>
 </div>
 <?php } ?>
-<div class="form-group col-md-6">
+<div class="form-group col-md-6" style="clear:both;">
 	<label class="control-label">Email *</label>
 	<?php
 		if(!empty($userID)){

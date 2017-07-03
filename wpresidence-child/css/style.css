@@ -221,3 +221,13 @@ ul.uni_result {
 .commonForm label.control-label{margin-right:10px;}
 }
 .btnDisNote{color:#6e6e6e;}
+.form-group.areyouCont{margin-bottom:45px;}
+.genderSelect{float: right;position: relative;width: 55%;}
+.genderSelect .genderContainer{float: left;width: 25%;}
+.areyouCont input[type="radio"]{ cursor: pointer;display: inline-block;height: 70px;margin: 5px 0 0 12px;opacity: 1;outline: medium none;position: absolute;top: 0;width: 16px;z-index: 9;}
+.areyouCont label:before{position:absolute;  top:0px; content:"";  width:25px; height:50px; visibility:visible; cursor:pointer;}
+.areyouCont input.male[type="radio"] ~ label:before{background-image:url('../img/male.png'); left:7px; z-index:1; background-repeat:no-repeat;top: -5px;}
+.areyouCont input.female[type="radio"] ~ label:before{background-image:url('../img/female.png'); left:62px; z-index:1; background-repeat:no-repeat;top: -5px;}
+.areyouCont input.male[type="radio"] ~ label span{ position:absolute; top:48px; left:6px;}
+.areyouCont input.female[type="radio"] ~ label span{ position:absolute; top:48px; left:55px;}
+.mrg{ width:50px;}	
