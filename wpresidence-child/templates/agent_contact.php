@@ -38,16 +38,18 @@ if (function_exists('icl_translate') ){
         <input type="text" name="phone"  class="form-control" id="agent_phone" placeholder="<?php _e('Enter Your Phone', 'wpestate'); ?>" >
         <input type="text" name="email" class="form-control" id="agent_user_email" aria-required="true" placeholder="<?php _e('Enter Your Email', 'wpestate'); ?>" >
 		<!-- Arsh sharma code changes for adding OTP on contact me section-->
+		<!--
 		<div class ="email_varify_cont">
 			<span><a href="javascript:void(0);" id="varify_cont_email">Verify Email</a></span>
 			
 			<input type="text" name="contact_otp"  size="4" class="form-control hide" id="agent_contact_otp" placeholder="<?php _e('Enter OTP', 'wpestate'); ?>" />
 
 		</div>
+		-->
+        <textarea id="agent_comment" name="comment" class="form-control" cols="45" rows="4" aria-required="true" placeholder="<?php _e('I am interested in your property!', 'wpestate'); ?>" ></textarea>
 
-        <textarea id="agent_comment" name="comment" class="form-control" cols="45" rows="4" aria-required="true" placeholder="<?php _e('Enter Your Message', 'wpestate'); ?>" >I am interested in your property!</textarea>
-
-        <input type="submit" class="wpresidence_button disabled_contact_btn"  id="agent_submit" value="<?php _e('Send Message', 'wpestate');?>" disabled="true">
+        <!--<input type="submit" class="wpresidence_button disabled_contact_btn"  id="agent_submit" value="<?php _e('Send Message', 'wpestate');?>" disabled="true">-->
+        <input type="submit" class="wpresidence_button"  id="agent_submit" value="<?php _e('Send Message', 'wpestate');?>" />
 		<!-- Arsh sharma code changes for adding OTP on contact me section-->
         <input name="prop_id" type="hidden"  id="agent_property_id" value="<?php echo intval($propid);?>">
         <input name="prop_id" type="hidden"  id="agent_id" value="<?php echo intval($agent_id);?>">

@@ -941,9 +941,9 @@ function openModal(id = null, pageLink=null){
 				jQuery('#demoModal').find('.modal-content').html(data);
 				jQuery('#demoModal').modal('show');
 				
-				jQuery('#agent_user_email').unbind('blur').bind('blur', function(){
-					checkEmailOnBlur(this);
-				});
+				//jQuery('#agent_user_email').unbind('blur').bind('blur', function(){
+				//	checkEmailOnBlur(this);
+				//});
 				jQuery('#agent_submit').unbind('click').bind('click', function(){
 					agent_submit(this);
 				});

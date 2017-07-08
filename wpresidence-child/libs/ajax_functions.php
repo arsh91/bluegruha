@@ -3515,10 +3515,11 @@ function wpestate_ajax_agent_contact_form(){
               } else {
                     $email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
               }
-        }
+        }else{
+			  echo json_encode(array('sent'=>false, 'response'=>__('The email field is empty','wpestate' ) ) );      
+              exit(); 
+		}
 
-        
-        
         $phone = sanitize_text_field(wp_kses( trim($_POST['phone']),$allowed_html) );
         $subject =__('Contact form from ','wpestate') . home_url() ;
 
@@ -3533,33 +3534,33 @@ function wpestate_ajax_agent_contact_form(){
         } 
 
 		// Arsh Contact OTP Code
-		if(!in_array($_POST['email'], $_SESSION['varified_emails'])){
-			if(isset($_SESSION['contact_otp'])){
-				if ( isset($_POST['contact_otp'])) {
-					$sessionOtp = $_POST['email'].'-'.$_POST['contact_otp'];
-					if($_SESSION['contact_otp'] != $sessionOtp){
-						echo json_encode(array('sent'=>false, 'response'=>__('OTP doesn\'t match, Please check again!','wpestate') ) ); 
-						exit();
-					}else{
-						unset($_SESSION['contact_otp']);
-						$_SESSION['varified_emails'][] = $_POST['email'];
-					}
-				}else{
-					echo json_encode(array('sent'=>false, 'response'=>__('OTP field can not be empty.','wpestate') ) );
-					exit();
-				}
-			}else{
-				$otp = rand (1000 , 9999);
-				$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
-				$message .= __('Please use this OTP for Email Varification','wpestate').": " . $otp . "\n\n ";
-				$message .="\n\n".__('Message sent from ','wpestate').$permalink;
-				$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
+		// if(!in_array($_POST['email'], $_SESSION['varified_emails'])){
+			// if(isset($_SESSION['contact_otp'])){
+				// if ( isset($_POST['contact_otp'])) {
+					// $sessionOtp = $_POST['email'].'-'.$_POST['contact_otp'];
+					// if($_SESSION['contact_otp'] != $sessionOtp){
+						// echo json_encode(array('sent'=>false, 'response'=>__('OTP doesn\'t match, Please check again!','wpestate') ) ); 
+						// exit();
+					// }else{
+						// unset($_SESSION['contact_otp']);
+						// $_SESSION['varified_emails'][] = $_POST['email'];
+					// }
+				// }else{
+					// echo json_encode(array('sent'=>false, 'response'=>__('OTP field can not be empty.','wpestate') ) );
+					// exit();
+				// }
+			// }else{
+				// $otp = rand (1000 , 9999);
+				// $_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
+				// $message .= __('Please use this OTP for Email Varification','wpestate').": " . $otp . "\n\n ";
+				// $message .="\n\n".__('Message sent from ','wpestate').$permalink;
+				// $headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 				
-				$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
-				echo json_encode(array('sent'=>false, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) );
-				 exit();
-			}
-		}
+				// $mail = @wp_mail($_POST['email'], $subject, $message, $headers);
+				// echo json_encode(array('sent'=>false, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) );
+				 // exit();
+			// }
+		// }
 
 
         $message='';
@@ -3609,7 +3610,6 @@ function wpestate_ajax_agent_contact_form(){
 					'prop_id'=>$propid
 				);
 		$res = $wpdb->insert($table,$fields);
-		var_dump($res);
         $duplicate_email_adr        =   esc_html ( get_option('wp_estate_duplicate_email_adr','') );
         
         if($duplicate_email_adr!=''){

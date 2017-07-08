@@ -21,7 +21,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<div class="options" id="bedRoom">
 		<div class="radio">
 			<label>
-				<input type="radio" name="bedroom_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Separate
+				<input type="radio" name="bedroom_type" value = "Private" checked><i class="fa fa-user" aria-hidden="true"></i>Private
 			</label>
 		</div>
 		<div class="radio">
@@ -36,7 +36,7 @@ $categories = get_terms(array('taxonomy'=>'property_category','hide_empty'=>fals
 	<div class="options" id="bathRoom">
 		<div class="radio">
 			<label>
-				<input type="radio" name="bath_type" value = "Separate" checked><i class="fa fa-user" aria-hidden="true"></i>Separate
+				<input type="radio" name="bath_type" value = "Private" checked><i class="fa fa-user" aria-hidden="true"></i>Private
 			</label>
 		</div>
 		<div class="radio">

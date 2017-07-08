@@ -110,7 +110,7 @@ if( $user_small_picture_id == '' ){
                             <div class="login_form" id="login-div_mobile">
 
 								<?php
-									print '<a href='.get_page_link(82).' class="guest_login"><div id="guestloginsidebar_topbar" data-social="guest">'.__('Login as Guest','wpestate').'</div></a>';
+									print '<a href='.get_page_link(82).' class="guest_login"><div id="guestloginsidebar_topbar" data-social="guest">'.__('Continue as Guest','wpestate').'</div></a>';
 
 									if($facebook_status=='yes'){ 
 									print '<div id="facebookloginsidebar_mobile" data-social="facebook">'.__('Login with Facebook','wpestate').'</div>';
