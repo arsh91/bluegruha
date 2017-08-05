@@ -13,6 +13,12 @@ global $property_area;
 global $property_city;
 global $property_county_state;
 
+$apartment_name	= esc_html( get_post_meta($edit_id, 'apartment_name', true));
+$property_address = esc_html( get_post_meta($edit_id, 'property_address', true) );
+$property_county = esc_html( get_post_meta($edit_id, 'property_county', true) );
+$property_zip    = esc_html( get_post_meta($edit_id, 'property_zip', true) );
+$country_selected= esc_html( get_post_meta($edit_id, 'property_country', true) );
+
 ?>
 <div class = 'add_property_location'>
 	<div class="col-md-12 headingPanel">
@@ -26,7 +32,7 @@ global $property_county_state;
 				if (!wp_is_mobile()) { ?>
 					<div class="form-group full-width">
 						<label class="control-label">Apartment name</label>
-						<input type="text" placeholder="Enter your Apartment name" class="form-control" name="apartment_name">
+						<input type="text" placeholder="Enter your Apartment name" class="form-control" name="apartment_name" value="<?php echo $apartment_name; ?>" />
 					</div>
 					<!--
 					<div class="form-group full-width">

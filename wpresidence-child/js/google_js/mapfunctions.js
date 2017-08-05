@@ -1034,6 +1034,8 @@ function set_google_search(map){
         gmarkers.push(marker);
 
         bounds.extend(place.geometry.location);
+		
+		document.cookie = "userSrchLoc="+place.geometry.location.lat()+','+place.geometry.location.lng(); 
     
     }
 
@@ -1216,8 +1218,12 @@ jQuery('#mobile-geolocation-button,#geolocation-button').click(function(){
 
 
 function myposition(map){    
-    
-    if(navigator.geolocation){
+    /*Change arsh sharma related to home page back functionality*/
+	if( document.cookie.indexOf('userSrchLoc') > 0) {
+		var userSrchLoc = getCookieMap('userSrchLoc');
+		var srchlatlong = userSrchLoc.split(',');
+		showMyPosition (srchlatlong);
+	}else if(navigator.geolocation){
         var latLong;
         if (location.protocol === 'https:') {
             navigator.geolocation.getCurrentPosition(showMyPosition_original,errorCallback,{timeout:10000});

@@ -50,7 +50,7 @@ $property_category          =   get_the_term_list($post->ID, 'property_category'
 $property_action            =   get_the_term_list($post->ID, 'property_action_category', '', ', ', '');   
 $slider_size                =   'small';
 $thumb_prop_face            =   wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'property_full');
-
+$roomie_gender				=	esc_html( get_post_meta($post->ID, 'roomie_gender', true));
 if($curent_fav){
     if ( in_array ($post->ID,$curent_fav) ){
         $favorite_class =   'isfavorite';     
@@ -87,7 +87,10 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 
 ?>
 
-<div class="row"><a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Home</a></div>
+<div class="row">
+	<a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+	
+</div>
 <div class="modal-header">	
 	<h3 class="modal-title"><i class="fa fa-building" aria-hidden="true"></i> <?php echo get_post_meta($propid, 'property_label', true); ?></h3>
 </div>
@@ -111,7 +114,19 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 						if($catDetail[0]->term_id == 47 || $catDetail[0]->term_id == 48){ ?>
 							<span class="col-xs-4"><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bedroom_type', true); ?> Bedroom</span>
 							<span class="col-xs-4"><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'bathroom_type', true); ?> Bathroom</span>
-							<span class="col-xs-4"><i class="fa <?php echo $genderCatDetail[0]->description; ?>" aria-hidden="true"></i> <?php echo $genderCatDetail[0]->name; ?> Roomie</span>
+							<span class="col-xs-4">
+								<?php
+									if($roomie_gender == 'Male'){
+										$tag='fa-male';
+									}else if($roomie_gender == 'Female'){
+										$tag='fa-female';
+									}else{
+										$tag = 'fa-globe';
+									}
+								?>
+								<i class="fa <?php echo $tag; ?>" aria-hidden="true"></i> 
+								<?php echo $roomie_gender; ?> Roomie
+							</span>
 					<?php }else{ ?>
 							<span class="col-xs-4"><i class="fa fa-bed" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bedrooms', true); ?> Bedroom(s)</span>
 							<span class="col-xs-4"><i class="fa fa-bath" aria-hidden="true"></i><?php echo get_post_meta($propid, 'property_bathrooms', true); ?> Bathroom(s)</span>
@@ -217,8 +232,9 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 <?php  //include(locate_template('sidebar.php')); ?>
 </div> 
 <script>
-function goBack(){
+/*function goBack(){
 	setTimeout(function(){history.back();}, 500);
 }
+*/
 </script>
 <?php get_footer(); ?>

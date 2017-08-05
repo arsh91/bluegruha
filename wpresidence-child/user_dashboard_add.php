@@ -1062,8 +1062,7 @@ $options=wpestate_page_details($post->ID);
 
 <div id="cover"></div>
 <div class="row">
-    <?php //get_template_part('templates/breadcrumbs'); ?>
-	<?php
+    <?php
 	if(!wp_is_mobile() && is_user_logged_in()){ ?>
 		<div class="col-md-3">
 		   <?php get_template_part('templates/user_menu'); ?>

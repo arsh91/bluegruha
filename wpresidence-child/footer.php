@@ -89,7 +89,7 @@ if ($ga != '') { ?>
 <?php
 //print_r($_COOKIE);
 
-if (is_page_template('user_dashboard_add.php') ){
+if (is_page_template('user_dashboard_add.php') || is_page_template('add_property.php') ){
 ?>
 <!-- Initialize the plugin: -->
 <script type="text/javascript">

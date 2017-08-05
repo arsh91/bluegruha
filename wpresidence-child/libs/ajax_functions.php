@@ -3650,7 +3650,9 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		unset($_SESSION['contact_otp']);
 		$otp					=	rand (1000 , 9999);
 		$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
-		$message .= __('Please use this OTP for Email Varification','wpestate').": " . $otp . "\n\n ";
+		
+		$subject =__('OTP from OyeRoomie','wpestate');
+		$message .= __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
 		$message .="\n\n".__('Message sent from ','wpestate').$permalink;
 		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 		

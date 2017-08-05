@@ -230,7 +230,7 @@ if( !function_exists('getHTML') ):
             $file       =   array_slice($file, 0, count($file) - 1);
              $path       =   implode('/', $file);
 
-            if(is_page_template('user_dashboard_add.php') ){
+            if(is_page_template('user_dashboard_add.php') || is_page_template('add_property.php') ){
                 $image      =   $attachment['data']['sizes']['thumbnail']['file'];
             }else{
                  $image      =   $attachment['data']['sizes']['user_picture_profile']['file'];

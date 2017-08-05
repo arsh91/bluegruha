@@ -102,10 +102,10 @@ function initialize(){
 
     //set map cluster
     map_cluster();
-	/***************** Code Changes : Arsh Sharma *******/
-		
+	/***************** Code Changes : Arsh Sharma (TO center the map on user current location)*******/
+	if(jQuery('body').hasClass('home')){
 		myposition(map);
-
+	}
 	/***************** Code Changes : Arsh Sharma *******/
     if ( mapfunctions_vars.adv_search_type==='2'){
         if(  document.getElementById('basepoint') ){

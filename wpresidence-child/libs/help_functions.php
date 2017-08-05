@@ -1126,7 +1126,7 @@ if( !function_exists('get_dasboard_add_listing') ):
     function get_dasboard_add_listing(){
         $pages = get_pages(array(
             'meta_key' => '_wp_page_template',
-            'meta_value' => 'user_dashboard_add.php'
+            'meta_value' => 'add_property.php'
                 ));
 
         if( $pages ){

@@ -3,6 +3,10 @@ global $edit_id;
 global $current_user;
 $disabled = '';
 $class = 'postUniAdd';
+$btnVal='Post your free ad';
+if($edit_id){
+	$btnVal='Save';
+}
 if(!isset($current_user->data->ID)){
 		$disabled = 'disabled';
 		$class = 'postUniAdd disabled_contact_btn';
@@ -24,7 +28,7 @@ if(!isset($current_user->data->ID)){
 	</div>
 </div>-->
 <div class="col-md-12 buttonContainer">
-	<input type="submit" id="postUniAdd" class="<?php echo $class; ?>" value="Post your free add" name="add_property" <?php echo $disabled; ?> />
+	<input type="submit" id="postUniAdd" class="<?php echo $class; ?>" value="<?php echo $btnVal; ?>" name="add_property" <?php echo $disabled; ?> />
 	<?php 
 	if($disabled){ ?>
 		<i class='btnDisNote'>*Disabled untill email is verified.</i>

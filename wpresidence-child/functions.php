@@ -2,6 +2,7 @@
 if (!session_id()) {
     session_start();
 }
+require_once 'libs/css_js_include.php';
 require_once 'libs/help_functions.php';
 require_once 'libs/pin_management.php';
 require_once 'libs/ajax_functions.php';
@@ -15,7 +16,6 @@ if($use_mimify==='yes'){
 }
 
 
-add_action('wp_enqueue_scripts', 'mapfunctionsChanges');
 function mapfunctionsChanges(){
 	wp_deregister_script('mapfunctions');
 	wp_register_script('mapfunctions', get_stylesheet_directory_uri().'/js/google_js/mapfunctions'.$mimify_prefix .'.js');
@@ -41,11 +41,13 @@ function mapfunctionsChanges(){
 	wp_deregister_script('control');
 	wp_register_script('control', get_stylesheet_directory_uri().'/js/control'.$mimify_prefix .'.js');
 	
+	wp_enqueue_script('jquery-cookie', get_stylesheet_directory_uri().'/js/jquery.cookie.js',array( 'jquery' ));
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////file upload ajax - profile and user dashboard
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    if( is_page_template('user_dashboard_profile.php') || is_page_template('user_dashboard_add.php')   ){
+    if( is_page_template('user_dashboard_profile.php') || is_page_template('user_dashboard_add.php') || is_page_template('add_property.php')  ){
 		$max_file_size  = 100 * 1000 * 1000;
         $is_profile=0;
         if ( is_page_template('user_dashboard_profile.php') ){
@@ -73,6 +75,7 @@ function mapfunctionsChanges(){
 	wp_register_style('custom-style-css',  get_stylesheet_directory_uri() .'/css/style'.$mimify_prefix.'.css');
 
 }
+add_action('wp_enqueue_scripts', 'mapfunctionsChanges');
 
 add_filter( 'wp_image_editors', 'change_graphic_lib');
 
@@ -112,7 +115,7 @@ function saveProperty(){
 		}
 	}
 	
-	if(!isset($_POST['property_address']) || empty($_POST['property_address'])){
+	if(!isset($_POST['edit_id']) && (!isset($_POST['property_address']) || empty($_POST['property_address']))){
 		$errors['property_address'] = 1;
 	}
 	if(empty($current_user->ID)){
@@ -205,14 +208,38 @@ function saveProperty(){
 		if($admin_submission_status=='no' && $paid_submission_status!='per listing'){
 		   $new_status='publish';  
 		}
+		
+		if( !isset($_POST['property_city']) ) {
+            $property_city='';           
+        }else{
+            $property_city  =   wp_kses(esc_html($_POST['property_city']),$allowed_html);
+        }
+        
+        if( !isset($_POST['property_area']) ) {
+            $property_area='';           
+        }else{
+            $property_area  =   wp_kses(esc_html($_POST['property_area']),$allowed_html);
+        }
+       
+        
+        if( !isset($_POST['property_county']) ) {
+            $property_county_state='';           
+        }else{
+            $property_county_state  =   wp_kses(esc_html($_POST['property_county']),$allowed_html);
+        }
+		$post_id = wp_kses(esc_html($_POST['edit_id']));
+		if(!$_POST['edit_id']){
+			$post_id = 0;
+		}
 		$post = array(
 			'post_title'	=> $post_title,
 			'post_content'	=> $post_content,
 			'post_status'	=> $new_status, 
 			'post_type'     => 'estate_property' ,
-			'post_author'   => $post_author
+			'post_author'   => $post_author,
+			'ID'			=>$post_id
 		);
-		$post_id =  wp_insert_post($post);  
+		$post_id =  wp_insert_post($post); 
 		if( $paid_submission_status == 'membership'){ // update pack status
 			wpestate_update_listing_no($current_user->ID);                
 			//if($prop_featured==1){
@@ -247,10 +274,10 @@ function saveProperty(){
 				}
 			}
             //end uploaded images
-            if( !isset($_POST['roomie_gender']) ) {
+            if( !isset($_POST['advertiser_gender']) ) {
 				$prop_category=0;           
 			}else{
-				$prop_category  =   intval($_POST['roomie_gender']);
+				$prop_category  =   intval($_POST['advertiser_gender']);
 			}
 			$prop_category                  =   get_term( $prop_category, 'property_category');
 			if(isset($prop_category->term_id)){
@@ -300,6 +327,7 @@ function saveProperty(){
 			$bathroom_type                 	=   wp_kses( esc_html($_POST['bath_type']),$allowed_html);
 			$bedroom_type                 	=   wp_kses( esc_html($_POST['bedroom_type']),$allowed_html);
 			$security_amount                =   wp_kses( esc_html($_POST['security_amount']),$allowed_html);
+			$roomie_gender                =   wp_kses( esc_html($_POST['roomie_gender']),$allowed_html);
 			$available_from                	=   wp_kses( esc_html($_POST['available_from']),$allowed_html);
 			$amenities						= 	json_encode($_POST['amenities']);
 			$language                		=   wp_kses( esc_html($_POST['language']),$allowed_html);
@@ -312,33 +340,36 @@ function saveProperty(){
 			$google_camera_angle            =   wp_kses( esc_html($_POST['google_camera_angle']),$allowed_html); 
 			$has_errors                     =   false;
 			$errors                         =   array();
-            update_post_meta($post_id, 'sidebar_agent_option', 'global');
-            update_post_meta($post_id, 'local_pgpr_slider_type', 'global');
-            update_post_meta($post_id, 'local_pgpr_content_type', 'global');
-            update_post_meta($post_id, 'prop_featured', 0);
-            update_post_meta($post_id, 'property_address', $property_address);
-            update_post_meta($post_id, 'property_county', $property_county);
-            update_post_meta($post_id, 'property_zip', $property_zip);
-            update_post_meta($post_id, 'property_state', $property_state);
-            update_post_meta($post_id, 'property_country', $country_selected);
-            update_post_meta($post_id, 'property_status', $prop_stat);
-           
+            if(!isset($_POST['edit_id'])){
+				update_post_meta($post_id, 'sidebar_agent_option', 'global');
+				update_post_meta($post_id, 'local_pgpr_slider_type', 'global');
+				update_post_meta($post_id, 'local_pgpr_content_type', 'global');
+				update_post_meta($post_id, 'prop_featured', 0);
+				update_post_meta($post_id, 'property_address', $property_address);
+				update_post_meta($post_id, 'property_county', $property_county);
+				update_post_meta($post_id, 'property_zip', $property_zip);
+				update_post_meta($post_id, 'property_state', $property_state);
+				update_post_meta($post_id, 'property_country', $country_selected);
+				update_post_meta($post_id, 'property_status', $prop_stat);
+				
+				update_post_meta($post_id, 'property_latitude', $property_latitude);
+				update_post_meta($post_id, 'property_longitude', $property_longitude);
+				update_post_meta($post_id, 'property_google_view',  $google_view);
+				update_post_meta($post_id, 'google_camera_angle', $google_camera_angle);
+				update_post_meta($post_id, 'pay_status', 'not paid');
+				update_post_meta($post_id, 'page_custom_zoom', 16);
+			}
             update_post_meta($post_id, 'property_price', $property_price);
             update_post_meta($post_id, 'property_label', $property_label);
             update_post_meta($post_id, 'bathroom_type', $bathroom_type);
             update_post_meta($post_id, 'bedroom_type', $bedroom_type);
             update_post_meta($post_id, 'security_amount', $security_amount);
+            update_post_meta($post_id, 'roomie_gender', $roomie_gender);
             update_post_meta($post_id, 'available_from', $available_from);
             update_post_meta($post_id, 'amenities', $amenities);
             update_post_meta($post_id, 'language', $language);
 			
 			
-            update_post_meta($post_id, 'property_latitude', $property_latitude);
-            update_post_meta($post_id, 'property_longitude', $property_longitude);
-            update_post_meta($post_id, 'property_google_view',  $google_view);
-            update_post_meta($post_id, 'google_camera_angle', $google_camera_angle);
-            update_post_meta($post_id, 'pay_status', 'not paid');
-            update_post_meta($post_id, 'page_custom_zoom', 16);
 			if($_POST['term_id'] == 47){
 				update_post_meta($post_id, 'property_university', $university);
 				update_post_meta($post_id, 'university_id', $university_id);
@@ -498,7 +529,26 @@ function savePropertyToRent(){
 				}
 			}
             //end uploaded images
-
+			
+			if( !isset($_POST['property_city']) ) {
+				$property_city='';           
+			}else{
+				$property_city  =   wp_kses(esc_html($_POST['property_city']),$allowed_html);
+			}
+			
+			if( !isset($_POST['property_area']) ) {
+				$property_area='';           
+			}else{
+				$property_area  =   wp_kses(esc_html($_POST['property_area']),$allowed_html);
+			}
+		   
+			
+			if( !isset($_POST['property_county']) ) {
+				$property_county_state='';           
+			}else{
+				$property_county_state  =   wp_kses(esc_html($_POST['property_county']),$allowed_html);
+			}
+			
 			if( !isset($_POST['term_id']) ) {
 				$prop_action_category=0;           
 			}else{
