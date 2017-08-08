@@ -77,9 +77,21 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
         </div>
 		----------------------------- Code Changes : Arsh Sharma -------------------->
         <?php 
-            if(  get_option('wp_estate_show_g_search','') ==='yes'){
+            if(get_option('wp_estate_show_g_search','') ==='yes'){
                 $street_view_class=" lower_street ";
                 echo '<input type="text" id="google-default-search" name="google-default-search" placeholder="'.__('Enter address, city, zip code or university','wpestate').'" value="" class="advanced_select  form-control"> '; 
+				
+				/*------ for city drop down on home page--------*/
+				echo $cities = '<div class="dropdown show dropdown_cities">
+									<a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Select city <i class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<a class="dropdown-item" href="#">Atlanta</a>
+										<a class="dropdown-item" href="http://oyeroomie.com/city/indianapolis/">Indianapolis</a>
+										<a class="dropdown-item" href="http://oyeroomie.com/state/new-jersey/" style="border:none;">New Jersey</a>
+									</div>
+								</div>';
             }
         ?>
        

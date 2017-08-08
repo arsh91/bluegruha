@@ -735,13 +735,13 @@ function createMarker (county_state, size, i,id,lat,lng,pin,title,counter,image,
 		google.maps.event.trigger(map, 'resize');
 		google.maps.event.addDomListener(map, 'click', function () {  
 			infoBox.close();
-			jQuery('input#google-default-search').show();
+			jQuery('#gmap_wrapper .gmap-controls').show();
 		});
 		
 		var isMobile = checkMobileDevice();
 		//if it's mobile device then a new page will be open
 		if(isMobile){
-			jQuery('input#google-default-search').hide();
+			jQuery('#gmap_wrapper .gmap-controls').hide();
 		}
 
 		if(this.image===''){
@@ -1035,7 +1035,14 @@ function set_google_search(map){
 
         bounds.extend(place.geometry.location);
 		
-		document.cookie = "userSrchLoc="+place.geometry.location.lat()+','+place.geometry.location.lng(); 
+		var cookieName = 'userSrchLoc';
+		var cookieVal = place.geometry.location.lat() + ',' + place.geometry.location.lng();
+		var expires = 7;
+		
+		createCookie(cookieName, cookieVal, expires);
+		//var expiration = new Date();
+        //expiration.setDate(expiration.getDate()+7);
+		//document.cookie = "userSrchLoc=" + place.geometry.location.lat() + ',' + place.geometry.location.lng() + ',expires=' + expiration + ',path=/'; 
     
     }
 
@@ -1219,8 +1226,8 @@ jQuery('#mobile-geolocation-button,#geolocation-button').click(function(){
 
 function myposition(map){    
     /*Change arsh sharma related to home page back functionality*/
-	if( document.cookie.indexOf('userSrchLoc') > 0) {
-		var userSrchLoc = getCookieMap('userSrchLoc');
+	if( readCookie('userSrchLoc') != '') {
+		var userSrchLoc = readCookie('userSrchLoc');
 		var srchlatlong = userSrchLoc.split(',');
 		showMyPosition (srchlatlong);
 	}else if(navigator.geolocation){
@@ -3000,4 +3007,39 @@ function checkMobileDevice(){
 	}else{
 		return false;
 	}
+}
+
+// Create cookie
+function createCookie(name, value, days) {
+    var expires;
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        expires = "; expires="+date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+// Read cookie
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) === 0) {
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return null;
+}
+
+// Erase cookie
+function eraseCookie(name) {
+    createCookie(name,"",-1);
 }

@@ -460,14 +460,10 @@ background: none !important;
 .header_media.with_search_1 {
 padding-top: 0 !important;
 }
-div#gmapzoomplus {
-top: 90px;
-}
-div#gmapzoomminus {
-top: 122px;
-}
-#google-default-search {
-top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
+div#gmapzoomplus {top: 100px;}
+div#gmapzoomminus {top: 134px;}
+.gmap-controls #google-default-search {
+top: 88px !important;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 }
 
 /*@media (max-width:1200px){*/
@@ -477,11 +473,25 @@ top: 88px;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 	#logo_image{max-height:100%;}
 	.logo:after{left: 220px; top: 23px;}
 	.headerBtn {height: 32px; padding: 7px 15px;}
-	#google-default-search {top: 73px;}
+	.gmap-controls #google-default-search {top: 73px !important;width:300px;}
+	.gmap-controls .dropdown_cities{top:120px;}
 	div#gmapzoomplus {top: 75px;padding: 7px 0px 0px 8px;}
 	div#gmapzoomminus {top: 107px;padding: 7px 0px 0px 8px;}
 	/*.inputContainer{padding: 8px 20px 11px 20px; height: 55px;width:35%;}*/
 }
+@media (max-width:770px){
+	.gmap-controls .dropdown_cities{left:50px;}
+}
+@media only screen and (max-width: 420px){
+	.gmap-controls #google-default-search {
+		width:200px !important;
+		top:20px !important;
+		left:10px;
+	}
+	.gmap-controls .dropdown_cities{width: 120px;top:70px;left:10px;}
+	#gmapzoomplus, #gmapzoomminus{display:none;}
+}
+
 /*css for small popup on map home page*/
 .propertyPopup{width:400px; border:1px solid #b4b4b4; float:left;background:#fff;}
 .propertyPopup h2{color:#666666; font-size:16px; float:left; width:100%; padding:0 15px; margin:10px 0;}
@@ -598,3 +608,10 @@ color:#92bb21 !important;
 	.mobilewrapper-user {background:none; z-index: 1;}
 }
 #googlelogin, #googleloginsidebar_mobile, #googleloginsidebar_topbar, #googleloginsidebar {margin-bottom: 14px; width: 100%;}
+
+.dropdown_cities{position: absolute;top: 135px;left: 90px;width: 150px;pointer-events: auto;}
+.dropdown_cities a.btn{background:#92bb21;color: #fff;width: 100%;box-shadow: none;font-size:16px;padding: 6px;text-align: left;text-transform: capitalize;font-weight: bold;}
+.dropdown_cities a.btn i{top: 2px;position: absolute;right: 10px;}
+.dropdown_cities .dropdown-menu{background: #666;opacity: 0.9;float: left;margin: 0px 0px 0px 0px;width: 99%;padding: 5px 0 5px 0;min-width: 120px; border: 1px solid;}
+.dropdown_cities .dropdown-menu a{border-bottom: 1px solid #cecece;float: left;width: 100%;color: #fff;padding: 6px 0px 6px 10px;font-size: 14px;}
+.dropdown_cities .dropdown-item:focus, .dropdown-item:hover {background-color: #92bb21;color: #fff !important;text-decoration: none;}

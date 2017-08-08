@@ -19,6 +19,7 @@ if( $user_small_picture_id == '' ){
                 <div class="navicon"></div>
             </a>
         <div class="menu_user_picture" style="background-image: url('<?php print $user_small_picture[0]; ?>');"></div>
+		
 <?php }else{ ?>
     <div class="user_menu" id="user_menu_u">   
         <a class="menu_user_tools dropdown" id="user_menu_trigger" data-toggle="dropdown">  
