@@ -1691,6 +1691,7 @@ jQuery(document).ready(function ($) {
 	window.varifyContEmail = function varifyContEmail(obj){
 		//var obj = $(this);
 		var email = $(obj).closest('form').find('#agent_user_email').val();
+		var name =  $(obj).closest('form').find('#agent_name').val();
 		var ajaxurl        =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
 		$(obj).closest('form').find('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
 		if(email != ''){
@@ -1700,7 +1701,8 @@ jQuery(document).ready(function ($) {
 				url: ajaxurl,
 				data: {
 					'action'    :   'wpestate_ajax_agent_contact_form_send_otp',
-					'email'		: email
+					'email'		: email,
+					'name'		: name
 				},
 				success: function (data) {
 					$(obj).closest('form').find('#alert-agent-contact').empty().append(data.response);

@@ -51,6 +51,15 @@ if (get_post_type()== 'estate_property'){
 <?php 
 } 
 ?>
+<meta name="google-site-verification" content="D0JOArHA5kUS9LTYxVoRGvE5LQrlaTILB6xflpx_vOw" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-104240025-1', 'auto');
+ga('send', 'pageview');
+</script>
 </head>
 
 
@@ -117,14 +126,17 @@ if(  trim($header_transparent_class) == 'header_transparent' && $transparent_log
 <body <?php body_class($halfmap_body_class); ?> data-infoBoxStatus="CLOSE">  
    
 
-<?php   get_template_part('templates/mobile_menu' ); ?> 
-
-<?php
+<?php   get_template_part('templates/mobile_menu' ); 
+$mainClass = '';
 	if(is_home()){
+		$mainClass	= 'home_page_wrapper';
 ?>
-<div class="mainWrapper savuu">
-<?php } ?>
-<div class="website-wrapper <?php echo (is_home()) ? 'home_page_wrapper' : ''; ?>" id="all_wrapper" >
+<div class="mainWrapper">
+<?php }else if(is_tax()){
+	$mainClass	= 'taxonomy_wrapper';
+}
+?>
+<div class="website-wrapper <?php echo $mainClass; ?>" id="all_wrapper" >
 <div class="<?php echo (isset($post->ID) && $post->ID == 82) ? '' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
 
     <div class="master_header <?php print esc_html($wide_class.' '.$header_transparent_class); ?>">

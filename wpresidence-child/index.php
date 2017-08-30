@@ -53,21 +53,5 @@ $blog_unit          =   esc_html ( get_option('wp_estate_blog_unit','') );
 <?php  //include(locate_template('sidebar.php')); ?>
 <!-- </div>   -->
 </div> <!--End home_page_wrapper-->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="demoModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Modal Header</h4>
-		</div>
-		<div class="modal-body">
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		</div>
-    </div>
-  </div>
-</div>
-
 <?php get_footer(); ?>
 </div>

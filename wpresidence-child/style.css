@@ -21,10 +21,10 @@
 .disabled_contact_btn{opacity:0.5;}
 
 /* Home Page css*/
-.home_page_wrapper { height: calc(100% - 30px);max-height: calc(100% - 30px);overflow: hidden;}
+.home_page_wrapper, .taxonomy_wrapper { height: calc(100% - 30px);max-height: calc(100% - 30px);overflow: hidden;}
 .adv-search-1{bottom:15px;}
 .mainWrapper {float: left;height: 100%;position: relative;width: 100%;}
-#googleMap, .home #gmap_wrapper, .header_media {height: 100% !important;}
+#googleMap, .home #gmap_wrapper, .archive #gmap_wrapper, .header_media {height: 100% !important;}
 .footerMain{height: 30px;overflow: hidden;}
 .main_wrapper {height: 100%;}
 .header_media {height: 100%;}
@@ -453,8 +453,9 @@ font-weight:bold
 .master_header.wide {
 border:none; 
 background: rgba(0,0,0,0.6);
+position: fixed;
 }
-.home .header_wrapper {
+.home .header_wrapper, .archive .header_wrapper {
 background: none !important;
 }
 .header_media.with_search_1 {
@@ -485,10 +486,10 @@ top: 88px !important;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 @media only screen and (max-width: 420px){
 	.gmap-controls #google-default-search {
 		width:200px !important;
-		top:20px !important;
+		top:80px !important;
 		left:10px;
 	}
-	.gmap-controls .dropdown_cities{width: 120px;top:70px;left:10px;}
+	.gmap-controls .dropdown_cities{width: 120px;top:130px;left:10px;}
 	#gmapzoomplus, #gmapzoomminus{display:none;}
 }
 
@@ -507,7 +508,7 @@ top: 88px !important;width: 400px;border: 2px solid #99a3b1;margin-top: 2px;
 .otherDetails span{font-size:16px; color:#a5cd38; font-weight:600;}
 span.availiblity{float:right; font-size:14px; color:#666666; font-weight:normal; width:80%;}
 span.availiblity strong{color:#92bb21; font-weight:normal;}
-span.availiblity span.view_detail_link{margin-left:40px;font-weight:normal; font-size:14px;}
+span.availiblity span.view_detail_link{margin-left:39px;font-weight:normal; font-size:14px;}
 span.availiblity span.view_detail_link i {margin-left:1px;}
 .propertyPopup #infobox_title{width: 100%;margin: 0;padding: 0;}
 .child_theme #infocloser{top:1px;right:1px;}
@@ -519,7 +520,7 @@ span.availiblity span.view_detail_link i {margin-left:1px;}
 .headerSocial a:hover i{color:#92bb21;}
 .page-template-user_dashboard_add .headerSocial{top:10px}
 /*header social icons end*/
-body.home .ui-datepicker {
+body.home .ui-datepicker, body.archive .ui-datepicker  {
 max-width: 15.35em;
 }
 .subfooter_menu .menu>li {
@@ -615,3 +616,16 @@ color:#92bb21 !important;
 .dropdown_cities .dropdown-menu{background: #666;opacity: 0.9;float: left;margin: 0px 0px 0px 0px;width: 99%;padding: 5px 0 5px 0;min-width: 120px; border: 1px solid;}
 .dropdown_cities .dropdown-menu a{border-bottom: 1px solid #cecece;float: left;width: 100%;color: #fff;padding: 6px 0px 6px 10px;font-size: 14px;}
 .dropdown_cities .dropdown-item:focus, .dropdown-item:hover {background-color: #92bb21;color: #fff !important;text-decoration: none;}
+.mobile_header {
+    background-color: grey;
+}
+@media only screen and (max-width: 1023px){
+	.mobile_header {
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	}
+}
+@media only screen and (max-width: 640px){
+	.content_wrapper {
+		margin-top: 70px;
+	}
+}

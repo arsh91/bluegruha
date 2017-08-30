@@ -14,7 +14,7 @@ $universities_list = get_universities();
 	<!-- Nav tabs -->
 	<?php
 			if(!$prop_action_category_selected){ ?>
-				<ul class="nav nav-tabs row" role="tablist">
+				<ul class="nav nav-tabs row property_types" role="tablist">
 					<?php
 					$actions = get_terms(array('taxonomy'=>'property_action_category','hide_empty'=>false,'order'=>'DESC', 'exclude'=>47));
 					foreach($actions as $key=>$val){

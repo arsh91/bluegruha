@@ -1,6 +1,5 @@
 </div><!-- end content_wrapper started in header -->
 <?php
-//print_R($_COOKIE);
 $footer_background          =   get_option('wp_estate_footer_background','');
 $repeat_footer_back_status  =   get_option('wp_estate_repeat_footer_back','');
 $footer_style       =   '';
@@ -98,7 +97,21 @@ if (is_page_template('user_dashboard_add.php') || is_page_template('add_property
 	});
 </script>
 <?php } ?>
-
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="demoModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Modal Header</h4>
+		</div>
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+    </div>
+  </div>
+</div>
 </div> <!-- end class container -->
 </div> <!-- end website wrapper -->
 </body>

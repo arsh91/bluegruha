@@ -11,12 +11,12 @@ $current_user       =   wp_get_current_user();
 wp_estate_count_page_stats($post->ID);
 
 $propid                     =   $post->ID;
-$options                    =   wpestate_page_details($post->ID);
-$gmap_lat                   =   esc_html( get_post_meta($post->ID, 'property_latitude', true));
-$gmap_long                  =   esc_html( get_post_meta($post->ID, 'property_longitude', true));
+$options                    =   wpestate_page_details($propid);
+$gmap_lat                   =   esc_html( get_post_meta($propid, 'property_latitude', true));
+$gmap_long                  =   esc_html( get_post_meta($propid, 'property_longitude', true));
 $unit                       =   esc_html( get_option('wp_estate_measure_sys', '') );
 $currency                   =   esc_html( get_option('wp_estate_currency_symbol', '') );
-$use_floor_plans            =   intval( get_post_meta($post->ID, 'use_floor_plans', true) );      
+$use_floor_plans            =   intval( get_post_meta($propid, 'use_floor_plans', true) );      
 
 
 if (function_exists('icl_translate') ){
@@ -44,13 +44,13 @@ $favorite_text              =   __('add to favorites','wpestate');
 $feature_list               =   esc_html( get_option('wp_estate_feature_list') );
 $feature_list_array         =   explode( ',',$feature_list);
 $pinteres                   =   array();
-$property_city              =   get_the_term_list($post->ID, 'property_city', '', ', ', '') ;
-$property_area              =   get_the_term_list($post->ID, 'property_area', '', ', ', '');
-$property_category          =   get_the_term_list($post->ID, 'property_category', '', ', ', '') ;
-$property_action            =   get_the_term_list($post->ID, 'property_action_category', '', ', ', '');   
+$property_city              =   get_the_term_list($propid, 'property_city', '', ', ', '') ;
+$property_area              =   get_the_term_list($propid, 'property_area', '', ', ', '');
+$property_category          =   get_the_term_list($propid, 'property_category', '', ', ', '') ;
+$property_action            =   get_the_term_list($propid, 'property_action_category', '', ', ', '');   
 $slider_size                =   'small';
-$thumb_prop_face            =   wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'property_full');
-$roomie_gender				=	esc_html( get_post_meta($post->ID, 'roomie_gender', true));
+$thumb_prop_face            =   wp_get_attachment_image_src( get_post_thumbnail_id($propid), 'property_full');
+$roomie_gender				=	esc_html( get_post_meta($propid, 'roomie_gender', true));
 if($curent_fav){
     if ( in_array ($post->ID,$curent_fav) ){
         $favorite_class =   'isfavorite';     
@@ -88,7 +88,13 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 ?>
 
 <div class="row">
-	<a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+	<?php
+	if($_SERVER['HTTP_REFERER']){ ?>
+		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+	<?php
+	}else{ ?>
+		<a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+	<?php } ?>
 	
 </div>
 <div class="modal-header">	

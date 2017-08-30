@@ -374,4 +374,7 @@ jQuery(document).ready(function() {
         });
     };
 		
+	if(jQuery('ul.property_types').length){
+		jQuery('ul.property_types li:eq(0) a').trigger('click');
+	}
 });

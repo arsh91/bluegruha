@@ -3631,7 +3631,9 @@ endif; // end   wpestate_ajax_agent_contact_form
 //Arsh Sharma Contact OTP Code
 
 add_action( 'wp_ajax_nopriv_wpestate_ajax_agent_contact_form_send_otp', 'wpestate_ajax_agent_contact_form_send_otp' );  
+
 add_action( 'wp_ajax_wpestate_ajax_agent_contact_form_send_otp', 'wpestate_ajax_agent_contact_form_send_otp');  
+
 if( !function_exists('wpestate_ajax_agent_contact_form_send_otp') ):
 
 function wpestate_ajax_agent_contact_form_send_otp(){
@@ -3646,26 +3648,82 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		} else {
 			$email = sanitize_text_field ( wp_kses( trim($_POST['email']),$allowed_html) );
 		}
-		  
+	//check name, need to put validations
+	if ( isset($_POST['name']) ) {
+           if( trim($_POST['name']) =='' || trim($_POST['name']) ==__('Your Name','wpestate') ){
+               echo json_encode(array('sent'=>false, 'response'=>__('The name field is empty !','wpestate') ));         
+               exit(); 
+           }else {
+               $name = wp_kses( trim($_POST['name']),$allowed_html );
+           }          
+        } 
+	
 		unset($_SESSION['contact_otp']);
 		$otp					=	rand (1000 , 9999);
 		$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
 		
 		$subject =__('OTP from OyeRoomie','wpestate');
-		$message .= __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
-		$message .="\n\n".__('Message sent from ','wpestate').$permalink;
+				$message = '
+					<html>
+					<body>
+					<center style="padding:25px; background-color:#f7f7f7;">
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="max-width:600px; font-family:Arial; color:#373435; font-size:13px;">
+					  <tr>
+						<th scope="row">&nbsp;</th>
+					  </tr>
+					   <tr>
+						<th scope="row">&nbsp;</th>
+					  </tr>
+					  <tr>
+						<th align="center" scope="row" style="padding-bottom:30px;"><img src="http://oyeroomie.com/wp-content/uploads/2017/08/logo-used-in-email.jpg"/></th>
+					  </tr>
+					  <tr>
+						<th align="left" scope="row" style="padding-bottom:15px;">Dear '.$_POST['name'].',</th>
+					  </tr> 
+					  <tr>
+						<th align="left" scope="row" style="padding-bottom:15px;"><strong style="font-size:20px;"><span style="font-size:20px;">Your one time Registration Code is '.$otp.'</span></strong></th>
+					  </tr>
+					  <tr>
+						<th align="left" scope="row" style="padding-bottom:30px;">Please use this code to verify your email and post your ad on Oye Roomie.</th>
+					  </tr>
+					  <tr>
+						<th align="left" scope="row" style="padding-bottom:30px;">Thanks!<br />Team Oye Roomie
+					</th>
+					  </tr>
+						<tr>
+						<th align="left" scope="row" style="border-top:solid 2px #e3e3e4;">&nbsp;</th>
+					  </tr>
+					   <tr>
+						<th align="left" scope="row" style="color:#989a9c;">If you are having any issue to access your account,<br />
+					please contact us by replying this mail</th>
+					  </tr>
+						<tr>
+						<th align="left" scope="row">&nbsp;</th>
+					  </tr>
+					   <tr>
+						<th align="left" scope="row">&nbsp;</th>
+					  </tr>
+					  </table>
+					</center>
+				</body>
+			</html>';
+		add_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
+		//$message .= __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
+		//$message .="\n\n".__('Message sent from ','wpestate').$permalink;
 		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 		
 		$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
 		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) ); 
 	}
-
+		remove_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
 	exit();
 
 }
 
 endif; // end   wpestate_ajax_agent_contact_form_send_otp
-
+function wpdocs_set_html_mail_content_type() {
+    return 'text/html';
+}
 add_action( 'wp_ajax_nopriv_wpestate_ajax_agent_contact_form_check_email', 'wpestate_ajax_agent_contact_form_check_email' );  
 add_action( 'wp_ajax_wpestate_ajax_agent_contact_form_check_email', 'wpestate_ajax_agent_contact_form_check_email');  
 if( !function_exists('wpestate_ajax_agent_contact_form_check_email') ):

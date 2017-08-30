@@ -2871,7 +2871,7 @@ function show_advanced_search(closer){
                jQuery('#search_wrapper') .css({top:'112px'});
        
             }
-         }
+       f  }
         
          
          
