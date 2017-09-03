@@ -1,16 +1,25 @@
 <?php
 global $edit_id;
 global $current_user;
+global $the_post;
+
 $disabled = '';
 $class = 'postUniAdd';
 $btnVal='Post your free ad';
 if($edit_id){
 	$btnVal='Save';
 }
-if(!isset($current_user->data->ID)){
-		$disabled = 'disabled';
-		$class = 'postUniAdd disabled_contact_btn';
+
+if(!isset($current_user->data->ID))  {
+	$disabled = 'disabled';
+	$class = 'postUniAdd disabled_contact_btn';
 }
+
+if(isset($_GET['param']) && !empty($_GET['param']) && isset($the_post->ID)){
+	$disabled = '';
+	$class = 'postUniAdd';	
+}
+
 ?><!--
 <div class="form-group col-md-12 addTypeCon">
 	<label class="control-label">Add Type</label>

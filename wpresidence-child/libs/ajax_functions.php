@@ -3664,8 +3664,6 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		
 		$subject =__('OTP from OyeRoomie','wpestate');
 				$message = '
-					<html>
-					<body>
 					<center style="padding:25px; background-color:#f7f7f7;">
 					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="max-width:600px; font-family:Arial; color:#373435; font-size:13px;">
 					  <tr>
@@ -3704,13 +3702,12 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 						<th align="left" scope="row">&nbsp;</th>
 					  </tr>
 					  </table>
-					</center>
-				</body>
-			</html>';
+					</center>';
 		add_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
 		//$message .= __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
 		//$message .="\n\n".__('Message sent from ','wpestate').$permalink;
-		$headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
+		$headers[] = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
+		$headers[] = 'Content-Type: text/html; charset=UTF-8';
 		
 		$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
 		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) ); 

@@ -137,7 +137,7 @@ $mainClass = '';
 }
 ?>
 <div class="website-wrapper <?php echo $mainClass; ?>" id="all_wrapper" >
-<div class="<?php echo (isset($post->ID) && $post->ID == 82) ? '' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
+<div class="<?php echo (isset($post->ID) && ($post->ID == 82 || $post->ID == 404)) ? '' :'container'; ?> main_wrapper <?php print esc_html($wide_class); print esc_html('has_header_'.$logo_header_type.' '.$header_transparent_class); ?> ">
 
     <div class="master_header <?php print esc_html($wide_class.' '.$header_transparent_class); ?>">
         

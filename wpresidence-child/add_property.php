@@ -23,6 +23,17 @@ if( isset( $_GET['listing_edit'] ) && is_numeric( $_GET['listing_edit'] ) ){
     }
 
 }
+if( isset( $_GET['param'] ) && !empty( $_GET['param'] ) ){
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    /////// If we have edit load current values
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    $edit_id                        =  decryptStr($_GET['param']);
+	
+	$the_post= get_post( $edit_id); 
+	if(!isset($the_post->ID)) {
+        exit('Oops, Broken Link.');
+    }
+}
 
 if( 'POST' == $_SERVER['REQUEST_METHOD'] && ($_POST['term_id']==47 || $_POST['term_id']==48)) {
 	$errors = saveProperty();

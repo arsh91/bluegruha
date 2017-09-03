@@ -118,7 +118,12 @@ function saveProperty(){
 	if(!isset($_POST['edit_id']) && (!isset($_POST['property_address']) || empty($_POST['property_address']))){
 		$errors['property_address'] = 1;
 	}
-	if(empty($current_user->ID)){
+	$hash='';
+	if(isset( $_GET['param'] ) && !empty( $_GET['param'] )){
+		$hash =  decryptStr($_GET['param']);
+	}
+	
+	if(empty($current_user->ID) && ($hash != $_POST['edit_id'])){
 		if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
 			$errors['agent_email'] = 1;
 		}else{
@@ -661,5 +666,85 @@ function savePropertyToRent(){
 	}
 	exit;
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// prevent changing the author id when admin hit publish
+///////////////////////////////////////////////////////////////////////////////////////////
+
+add_action( 'transition_post_status', 'wpestate_correct_post_data',10,3 );
+
+if( !function_exists('wpestate_correct_post_data') ):
+    
+function wpestate_correct_post_data( $strNewStatus,$strOldStatus,$post) {
+    /* Only pay attention to posts (i.e. ignore links, attachments, etc. ) */
+    if( $post->post_type !== 'estate_property' )
+        return;
+
+    if( $strOldStatus === 'new' ) {
+        update_post_meta( $post->ID, 'original_author', $post->post_author );
+    }
+
+       
+    
+    /* If this post is being published, try to restore the original author */
+      if( $strNewStatus === 'publish' ) {
+    
+         // print_r($post);         
+         //$originalAuthor = get_post_meta( $post->ID, 'original_author' );
+          
+            $originalAuthor_id =$post->post_author;
+            $user = get_user_by('id',$originalAuthor_id); 
+            $user_email=$user->user_email;
+            $edit_link = get_page_link(404).'?param='.encryptStr($post->ID);
+            $del_link = get_page_link(407).'?param='.encryptStr($post->ID);
+            if( $user->roles[0]=='subscriber'){
+                $arguments=array(
+                    'post_id'           =>  $post->ID,
+                    'property_url'      =>  get_permalink($post->ID),
+                    'property_title'    =>  get_the_title($post->ID),
+                    'edit_link'    		=>  $edit_link,
+                    'delete_link'    	=>  $del_link
+                );
+
+                wpestate_select_email_type($user_email,'approved_listing',$arguments);    
+              
+            }
+    }
+}
+endif; // end   wpestate_correct_post_data 
+
+
+/*
+ * Function is used to encrypt string into hash
+ */	
+
+function encryptStr($str =''){
+	if($str){
+
+		$encryptedHash = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5(HASH_SALT), $str, MCRYPT_MODE_CBC, md5(md5(HASH_SALT))));
+
+
+		// Convert to hexadecimal and send to browser
+		$encryptedHash = BIN2HEX($encryptedHash);
+
+		return $encryptedHash;
+	}
+}
+
+/*
+ * Function is used to decrypt string into hash
+ */
+
+function decryptStr($hash =''){
+	if($hash){
+		$hash = HEX2BIN($hash);
+			
+		$decrypted_hash = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5(HASH_SALT), base64_decode($hash), MCRYPT_MODE_CBC, md5(md5(HASH_SALT))), "\0");
+
+		return $decrypted_hash;
+	}
+}
+
 
 ?>
