@@ -2320,6 +2320,29 @@ jQuery(document).ready(function ($) {
 		// $('#agent_user_email').val(uniDomain);
 		// $(this).parents('.uni_result').hide();
 	// }
+
+	jQuery('.deleteProperty').click(function(){
+		var orderId = jQuery(this).data('property');
+		var r = confirm("Are you sure?");
+		if(r == true){
+			var ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+			jQuery.ajax({
+				type: 'POST',
+				url: ajaxurl,
+				data: {
+					'action' :	'ajax_delete_property',
+					'hash'	 :	orderId
+				},
+				success: function (data) { 
+					if(data){
+						window.location.href = "http://oyeroomie.com/";
+					}else{
+						alert('something went wrong! Please try again.');
+					}
+				}
+			});
+		}
+	});
 }); // end ready jquery
 //End ready ********************************************************************
 function thefunction(){

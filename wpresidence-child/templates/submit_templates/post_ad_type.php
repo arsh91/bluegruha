@@ -57,6 +57,5 @@ if(isset($_GET['param']) && !empty($_GET['param']) && isset($the_post->ID)){
 		</ul>
 	</div>-->
 </div>
-<input type="hidden" name="edit_id" value="<?php print $edit_id;?>">
 <input type="hidden" name="images_todelete" id="images_todelete" value="">
 <?php wp_nonce_field('submit_new_estate','new_estate'); ?>

@@ -27,7 +27,10 @@ if( isset( $_GET['param'] ) && !empty( $_GET['param'] ) ){
     ///////////////////////////////////////////////////////////////////////////////////////////
     /////// If we have edit load current values
     ///////////////////////////////////////////////////////////////////////////////////////////
-    $edit_id                        =  decryptStr($_GET['param']);
+    
+	$decryptedHash                  =  decryptStr($_GET['param']);
+	$decryptedHash					= explode("|", $decryptedHash);
+	$edit_id                        =  $decryptedHash[0];
 	
 	$the_post= get_post( $edit_id); 
 	if(!isset($the_post->ID)) {

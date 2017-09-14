@@ -87,9 +87,9 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
 									Select city <i class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
 									</a>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item" href="http://oyeroomie.com/state/georgia/">Atlanta</a>
-										<a class="dropdown-item" href="http://oyeroomie.com/state/indiana/">Indianapolis</a>
-										<a class="dropdown-item" href="http://oyeroomie.com/state/new-jersey/" style="border:none;">New Jersey</a>
+										<a class="dropdown-item" href="https://www.oyeroomie.com/state/georgia/">Atlanta</a>
+										<a class="dropdown-item" href="https://www.oyeroomie.com/state/indiana/">Indianapolis</a>
+										<a class="dropdown-item" href="https://www.oyeroomie.com/state/new-jersey/" style="border:none;">New Jersey</a>
 									</div>
 								</div>';
             }

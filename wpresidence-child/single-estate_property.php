@@ -1,7 +1,22 @@
 <?php
+// Template Name: Property Detail
 // Index Page
 // Wp Estate Pack
+if($post->ID == 407 && empty( $_GET['param'] )){ //delete page without param
+	exit('Oops, Broken Link.');
+}
 get_header('single');
+$delPage = false;
+if( isset( $_GET['param'] ) && !empty( $_GET['param'] ) ){
+	$decryptedHash                  =  decryptStr($_GET['param']);
+	$decryptedHash					= explode("|", $decryptedHash);
+	$edit_id                        =  $decryptedHash[0];
+	$post= get_post( $edit_id); 
+	if(!isset($post->ID)) {
+        exit('Oops, Broken Link.');
+    }
+	$delPage = true;
+}
 global $current_user;
 global $feature_list_array;
 global $propid ;
@@ -87,13 +102,16 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 
 ?>
 
-<div class="row">
+<div class="row <?php echo ($delPage) ? 'delete_page' : ''; ?>">
 	<?php
-	if($_SERVER['HTTP_REFERER']){ ?>
-		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+	if($delPage){ ?>
+		<span>Do you want to delete this Property?</span><a href="javascript:void(0)" class="headerBtn deleteProperty btn-danger" data-property="<?php echo $_GET['param']; ?>">Delete</a>
+	<?php
+	}else if($_SERVER['HTTP_REFERER']){ ?>
+		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="headerBtn submitProperty">Back</a>
 	<?php
 	}else{ ?>
-		<a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty" href="javascript:void(0)">Back</a>
+		<a href="<?php echo home_url('','login');?>" class="headerBtn submitProperty">Back</a>
 	<?php } ?>
 	
 </div>
@@ -152,11 +170,11 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 			<div class="shareWidget">
 				<span>Share at :</span>
 				
-				<a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco desk"><i class="fa fa-facebook " aria-hidden="true">facebook</i></a>
-                <a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco mob"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+				<a href="https://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco desk"><i class="fa fa-facebook " aria-hidden="true">facebook</i></a>
+                <a href="https://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco mob"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
 				
-				<a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco desk" target="_blank"><i class="fa fa-twitter">Twitter</i></a>
-                <a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco mob" target="_blank"><i class="fa fa-twitter-square"></i></a>
+				<a href="https://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco desk" target="_blank"><i class="fa fa-twitter">Twitter</i></a>
+                <a href="https://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco mob" target="_blank"><i class="fa fa-twitter-square"></i></a>
 				
 				<?php
 				if ( wp_is_mobile() ) { 

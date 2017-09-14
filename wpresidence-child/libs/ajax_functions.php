@@ -3663,56 +3663,67 @@ function wpestate_ajax_agent_contact_form_send_otp(){
 		$_SESSION['contact_otp'] = $_POST['email'].'-'.$otp;
 		
 		$subject =__('OTP from OyeRoomie','wpestate');
-				$message = '
-					<center style="padding:25px; background-color:#f7f7f7;">
-					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="max-width:600px; font-family:Arial; color:#373435; font-size:13px;">
-					  <tr>
-						<th scope="row">&nbsp;</th>
-					  </tr>
-					   <tr>
-						<th scope="row">&nbsp;</th>
-					  </tr>
-					  <tr>
-						<th align="center" scope="row" style="padding-bottom:30px;"><img src="http://oyeroomie.com/wp-content/uploads/2017/08/logo-used-in-email.jpg"/></th>
-					  </tr>
-					  <tr>
-						<th align="left" scope="row" style="padding-bottom:15px;">Dear '.$_POST['name'].',</th>
-					  </tr> 
-					  <tr>
-						<th align="left" scope="row" style="padding-bottom:15px;"><strong style="font-size:20px;"><span style="font-size:20px;">Your one time Registration Code is '.$otp.'</span></strong></th>
-					  </tr>
-					  <tr>
-						<th align="left" scope="row" style="padding-bottom:30px;">Please use this code to verify your email and post your ad on Oye Roomie.</th>
-					  </tr>
-					  <tr>
-						<th align="left" scope="row" style="padding-bottom:30px;">Thanks!<br />Team Oye Roomie
-					</th>
-					  </tr>
-						<tr>
-						<th align="left" scope="row" style="border-top:solid 2px #e3e3e4;">&nbsp;</th>
-					  </tr>
-					   <tr>
-						<th align="left" scope="row" style="color:#989a9c;">If you are having any issue to access your account,<br />
-					please contact us by replying this mail</th>
-					  </tr>
-						<tr>
-						<th align="left" scope="row">&nbsp;</th>
-					  </tr>
-					   <tr>
-						<th align="left" scope="row">&nbsp;</th>
-					  </tr>
-					  </table>
-					</center>';
-		add_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
-		//$message .= __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
+		$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+					<html xmlns="http://www.w3.org/1999/xhtml">
+					 <head>
+					  <title>OTP from OyeRoomie</title>
+					</head>
+					<body>
+						<center style="padding:25px; background-color:#f7f7f7;">
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="max-width:600px; font-family:Arial; color:#373435; font-size:13px;">
+								<tbody>
+									<tr>
+										<td scope="row">&nbsp;</td>
+									</tr>
+									<tr>
+										<td scope="row">&nbsp;</td>
+									</tr>
+									<tr>
+										<td align="center" scope="row" style="padding-bottom:30px;">
+											<img src="http://oyeroomie.com/wp-content/uploads/2017/08/logo-used-in-email.jpg" />
+										</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row" style="padding-bottom:15px;">Dear '.$_POST['name'].',</td>
+									</tr> 
+									<tr>
+										<td align="left" scope="row" style="padding-bottom:15px;">
+											<strong style="font-size:20px;"><span style="font-size:20px;">Your one time Registration Code is '.$otp.'</span></strong>
+										</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row" style="padding-bottom:30px;">Please use this code to verify your email and post your ad on Oye Roomie.</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row" style="padding-bottom:30px;">Thanks!<br />Team Oye Roomie</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row" style="border-top:solid 2px #e3e3e4;">&nbsp;</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row" style="color:#989a9c;">If you are having any issue to access your account,<br />please contact us by replying this mail</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row">&nbsp;</td>
+									</tr>
+									<tr>
+										<td align="left" scope="row">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</center>
+					</body>
+				</html>';
+		//$message = __('Please use this OTP for Email verification','wpestate').": " . $otp . "\n\n ";
 		//$message .="\n\n".__('Message sent from ','wpestate').$permalink;
-		$headers[] = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
-		$headers[] = 'Content-Type: text/html; charset=UTF-8';
+		$headers = 'From: Oyeroomies <admin@oyeroomie.com>' . "\r\n";
+		$headers .= 'Reply-To: <admin@oyeroomie.com>'."\r\n";
+		$headers .= 'Return-Path: <admin@oyeroomie.com>'."\r\n";
+		$headers .= 'Content-type: text/html;charset=utf-8' . "\r\n";
 		
 		$mail = @wp_mail($_POST['email'], $subject, $message, $headers);
 		echo json_encode(array('sent'=>true, 'response'=>__('OTP sent to your email. Please check.','wpestate') ) ); 
 	}
-		remove_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
 	exit();
 
 }
@@ -4187,6 +4198,40 @@ add_action( 'wp_ajax_get_propdetail_modal', 'get_propdetail_modal' );
 if( !function_exists('get_propdetail_modal') ):
     function get_propdetail_modal(){
 		include(locate_template('templates/property_detail_modal.php'));
+		exit;
+	}
+endif;
+
+add_action( 'wp_ajax_nopriv_ajax_delete_property', 'ajax_delete_property' );
+add_action( 'wp_ajax_ajax_delete_property', 'ajax_delete_property' );
+if( !function_exists('ajax_delete_property') ):
+    function ajax_delete_property(){
+		if( isset( $_POST['hash'] ) && !empty( $_POST['hash'] ) ){
+			$decryptedHash	=  decryptStr($_GET['param']);
+			$decryptedHash	= explode("|", $decryptedHash);
+			$delete_id	=  $decryptedHash[0];
+			if(is_numeric($delete_id)){
+				 // delete attchaments
+				$arguments = array(
+					'numberposts' => -1,
+					'post_type' => 'attachment',
+					'post_parent' => $delete_id,
+					'post_status' => null,
+					'exclude' => get_post_thumbnail_id(),
+					'orderby' => 'menu_order',
+					'order' => 'ASC'
+				);
+				$post_attachments = get_posts($arguments);
+				
+				foreach ($post_attachments as $attachment) {
+				   wp_delete_post($attachment->ID);                      
+				}
+				wp_delete_post( $delete_id ); 
+				echo 'true';
+			}else{
+				echo 'false';
+			}
+		}
 		exit;
 	}
 endif;

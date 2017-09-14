@@ -58,9 +58,9 @@ $genderCatDetail = get_the_terms($propid, 'property_category');
 				<div class="shareWidget">
 					<span>Share at :</span>
 					
-					<a href="http://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+					<a href="https://www.facebook.com/sharer.php?u=<?php echo get_the_permalink($propid); ?>&amp;t=<?php echo urlencode(get_the_title($propid)); ?>" target="_blank" class="share_facebook fbIco"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
 					
-					<a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
+					<a href="https://twitter.com/home?status=<?php echo urlencode(get_the_title($propid) .' '. get_the_permalink($propid)); ?>" class="share_tweet twIco" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
 					
 					<!--<a href="https://plus.google.com/share?url=<?php echo get_the_permalink($propid); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" class="share_google gpIco"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>-->
 					<?php

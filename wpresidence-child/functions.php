@@ -114,16 +114,20 @@ function saveProperty(){
 			$errors['property_university'] = 1;
 		}
 	}
+	$hash='';
+	$editId=0;
+	if(isset( $_GET['param'] ) && !empty( $_GET['param'] )){
+		$decryptedHash	=  decryptStr($_GET['param']);
+		$decryptedHash	= explode("|", $decryptedHash);
+		$editId	=  $decryptedHash[0];
+		$_POST['agent_email']	= $decryptedHash[1];
+	}
 	
-	if(!isset($_POST['edit_id']) && (!isset($_POST['property_address']) || empty($_POST['property_address']))){
+	if(!isset($editId) && (!isset($_POST['property_address']) || empty($_POST['property_address']))){
 		$errors['property_address'] = 1;
 	}
-	$hash='';
-	if(isset( $_GET['param'] ) && !empty( $_GET['param'] )){
-		$hash =  decryptStr($_GET['param']);
-	}
 	
-	if(empty($current_user->ID) && ($hash != $_POST['edit_id'])){
+	if(empty($current_user->ID) && (!$editId)){
 		if(!isset($_POST['agent_email']) || empty($_POST['agent_email'])){
 			$errors['agent_email'] = 1;
 		}else{
@@ -173,6 +177,7 @@ function saveProperty(){
 			}
 			$university_id                 	=   wp_kses( esc_html($universityId),$allowed_html);
 		}
+
 		if(empty($current_user->ID)){
 			$userId = email_exists(wp_filter_nohtml_kses( $_POST['agent_email']));
 			if(!$userId){
@@ -199,6 +204,7 @@ function saveProperty(){
 			}
 		}
 		$post_author					= $userId;
+			
 		$post_content 	            	=   wp_filter_nohtml_kses( $_POST['description']);
         $property_address               =   wp_kses( $_POST['property_address'],$allowed_html);
         $property_county                =   wp_kses( $_POST['property_county'],$allowed_html);
@@ -232,8 +238,8 @@ function saveProperty(){
         }else{
             $property_county_state  =   wp_kses(esc_html($_POST['property_county']),$allowed_html);
         }
-		$post_id = wp_kses(esc_html($_POST['edit_id']));
-		if(!$_POST['edit_id']){
+		$post_id = wp_kses(esc_html($editId));
+		if(!$editId){
 			$post_id = 0;
 		}
 		$post = array(
@@ -252,81 +258,83 @@ function saveProperty(){
 			//}
 		}
 		if($post_id) {
-			// uploaded images
-			if ($_POST['attachid'] !=''){
-				$order=0;
-				$attchs=explode(',',$_POST['attachid']);
-				$last_id='';
-				foreach($attchs as $att_id){
-					if( !is_numeric($att_id) ){
+			if(!$editId){
+				// uploaded images
+				if ($_POST['attachid'] !=''){
+					$order=0;
+					$attchs=explode(',',$_POST['attachid']);
+					$last_id='';
+					foreach($attchs as $att_id){
+						if( !is_numeric($att_id) ){
 
-					}else{
-						if($last_id==''){
-							$last_id=  $att_id;  
+						}else{
+							if($last_id==''){
+								$last_id=  $att_id;  
+							}
+							$order++;
+							wp_update_post( array(
+										'ID' => $att_id,
+										'post_parent' => $post_id,
+										'menu_order'=>$order
+									));
 						}
-						$order++;
-						wp_update_post( array(
-									'ID' => $att_id,
-									'post_parent' => $post_id,
-									'menu_order'=>$order
-								));
+					}
+					if( is_numeric($_POST['attachthumb']) && $_POST['attachthumb']!=''  ){
+						set_post_thumbnail( $post_id, wp_kses(esc_html($_POST['attachthumb']),$allowed_html )); 
+					}else{
+						set_post_thumbnail( $post_id, $last_id );
 					}
 				}
-				if( is_numeric($_POST['attachthumb']) && $_POST['attachthumb']!=''  ){
-					set_post_thumbnail( $post_id, wp_kses(esc_html($_POST['attachthumb']),$allowed_html )); 
+				//end uploaded images
+				if( !isset($_POST['advertiser_gender']) ) {
+					$prop_category=0;
 				}else{
-					set_post_thumbnail( $post_id, $last_id );
+					$prop_category  =   intval($_POST['advertiser_gender']);
+				}
+				$prop_category                  =   get_term( $prop_category, 'property_category');
+				if(isset($prop_category->term_id)){
+					$prop_category_selected         =   $prop_category->term_id;
+				}
+				if( isset($prop_category->name) ){
+					wp_set_object_terms($post_id,$prop_category->name,'property_category'); 
+				}
+				if( !isset($_POST['term_id']) ) {
+					$prop_action_category=0;           
+				}else{
+					$prop_action_category  =   intval($_POST['term_id']);
+				}
+				$prop_action_category           =   get_term( $prop_action_category, 'property_action_category');  
+				if(isset($prop_action_category->term_id)){
+					 $prop_action_category_selected  =   $prop_action_category->term_id;
+				}
+				if ( isset ($prop_action_category->name) ){
+					wp_set_object_terms($post_id,$prop_action_category->name,'property_action_category'); 
+				}
+				if( isset($property_city) && $property_city!='none' ){
+					if($property_city == -1 ){
+						$property_city='';
+					}
+					wp_set_object_terms($post_id,$property_city,'property_city'); 
+				}  
+				if( isset($property_area) && $property_area!='none' ){
+					wp_set_object_terms($post_id,$property_area,'property_area'); 
+				}  
+				if( isset($property_county_state) && $property_county_state!='none' ){
+					if($property_county_state == -1){
+						$property_county_state='';
+					}
+					wp_set_object_terms($post_id,$property_county_state,'property_county_state'); 
+				}
+				if($property_area!=''){
+					$terms= get_term_by('name', $property_area, 'property_area');
+					//print_R($terms);
+					if($terms!=''){
+						$t_id=$terms->term_id;
+						$term_meta=array('cityparent'=>$property_city);
+						add_option( "taxonomy_$t_id", $term_meta ); 
+					}
 				}
 			}
-            //end uploaded images
-            if( !isset($_POST['advertiser_gender']) ) {
-				$prop_category=0;           
-			}else{
-				$prop_category  =   intval($_POST['advertiser_gender']);
-			}
-			$prop_category                  =   get_term( $prop_category, 'property_category');
-			if(isset($prop_category->term_id)){
-				$prop_category_selected         =   $prop_category->term_id;
-			}
-            if( isset($prop_category->name) ){
-                wp_set_object_terms($post_id,$prop_category->name,'property_category'); 
-            }
-			if( !isset($_POST['term_id']) ) {
-				$prop_action_category=0;           
-			}else{
-				$prop_action_category  =   intval($_POST['term_id']);
-			}
-			$prop_action_category           =   get_term( $prop_action_category, 'property_action_category');  
-			if(isset($prop_action_category->term_id)){
-				 $prop_action_category_selected  =   $prop_action_category->term_id;
-			}
-            if ( isset ($prop_action_category->name) ){
-                wp_set_object_terms($post_id,$prop_action_category->name,'property_action_category'); 
-            }
-            if( isset($property_city) && $property_city!='none' ){
-                if($property_city == -1 ){
-                    $property_city='';
-                }
-                wp_set_object_terms($post_id,$property_city,'property_city'); 
-            }  
-            if( isset($property_area) && $property_area!='none' ){
-                wp_set_object_terms($post_id,$property_area,'property_area'); 
-            }  
-            if( isset($property_county_state) && $property_county_state!='none' ){
-                if($property_county_state == -1){
-                    $property_county_state='';
-                }
-                wp_set_object_terms($post_id,$property_county_state,'property_county_state'); 
-            }
-            if($property_area!=''){
-                $terms= get_term_by('name', $property_area, 'property_area');
-                //print_R($terms);
-                if($terms!=''){
-                    $t_id=$terms->term_id;
-                    $term_meta=array('cityparent'=>$property_city);
-                    add_option( "taxonomy_$t_id", $term_meta ); 
-                }
-            }
 			$property_price                 =   wp_kses( esc_html($_POST['rent']),$allowed_html);
 			$property_label                 =   wp_kses( esc_html($_POST['title']),$allowed_html);
 			$bathroom_type                 	=   wp_kses( esc_html($_POST['bath_type']),$allowed_html);
@@ -345,7 +353,7 @@ function saveProperty(){
 			$google_camera_angle            =   wp_kses( esc_html($_POST['google_camera_angle']),$allowed_html); 
 			$has_errors                     =   false;
 			$errors                         =   array();
-            if(!isset($_POST['edit_id'])){
+            if(!isset($editId)){
 				update_post_meta($post_id, 'sidebar_agent_option', 'global');
 				update_post_meta($post_id, 'local_pgpr_slider_type', 'global');
 				update_post_meta($post_id, 'local_pgpr_content_type', 'global');
@@ -696,8 +704,8 @@ function wpestate_correct_post_data( $strNewStatus,$strOldStatus,$post) {
             $originalAuthor_id =$post->post_author;
             $user = get_user_by('id',$originalAuthor_id); 
             $user_email=$user->user_email;
-            $edit_link = get_page_link(404).'?param='.encryptStr($post->ID);
-            $del_link = get_page_link(407).'?param='.encryptStr($post->ID);
+            $edit_link = get_page_link(404).'?param='.encryptStr($post->ID.'|'.$user_email);
+            $del_link = get_page_link(407).'?param='.encryptStr($post->ID.'|'.$user_email);
             if( $user->roles[0]=='subscriber'){
                 $arguments=array(
                     'post_id'           =>  $post->ID,
